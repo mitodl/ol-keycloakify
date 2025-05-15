@@ -12,7 +12,7 @@ export default defineConfig({
       accountThemeImplementation: "none",
       keycloakVersionTargets: {
         "22-to-25": false,
-        "all-other-versions": "keycloakify-theme-${new Date().toLocaleDateString().replace(/\//g, '-')}-${new Date().getHours()}${new Date().getMinutes()}.jar",
+        "all-other-versions": `keycloakify-theme-${new Date().toLocaleDateString().replace(/\//g, '-')}-${new Date().getHours()}${new Date().getMinutes()}.jar`,
       },
       postBuild: async (buildContext) => {
         await buildEmailTheme({
