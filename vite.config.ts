@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     keycloakify({
       themeName: ["ol-learn", "ol-data-platform"],
-      accountThemeImplementation: "none",
+      accountThemeImplementation: "Single-Page",
       keycloakVersionTargets: {
         "22-to-25": false,
         "all-other-versions": `keycloakify-theme-${new Date().toLocaleDateString().replace(/\//g, '-')}-${new Date().getHours()}${new Date().getMinutes()}.jar`,
