@@ -44,8 +44,11 @@ export const ValidationMessage = styled.span(({ theme }) => ({
     marginTop: "8px"
 }));
 
-export const Info = styled.span(({ theme }) => ({
+export const Info = styled.div(({ theme }) => ({
     ...theme.typography.body2,
     color: theme.custom.colors.darkGray1,
-    marginTop: "8px"
+    marginTop: "8px",
+    a: {
+        ...theme.typography.body2
+    }
 }));
