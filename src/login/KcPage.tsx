@@ -7,6 +7,7 @@ import Template from "./Template";
 import Login from "./pages/Login";
 import { ThemeProvider } from "@mitodl/smoot-design";
 import { GlobalStyles } from "./components/GlobalStyles";
+import LoginUsername from "./pages/LoginUsername";
 
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
@@ -28,6 +29,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         case "login.ftl":
                             return (
                                 <Login
+                                    {...{ kcContext, i18n, classes }}
+                                    Template={Template}
+                                    doUseDefaultCss={false}
+                                />
+                            );
+                        case "login-username.ftl":
+                            return (
+                                <LoginUsername
                                     {...{ kcContext, i18n, classes }}
                                     Template={Template}
                                     doUseDefaultCss={false}

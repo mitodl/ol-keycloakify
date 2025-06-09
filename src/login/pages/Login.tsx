@@ -1,44 +1,12 @@
-import type { JSX } from "keycloakify/tools/JSX";
 import { useState } from "react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
-import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed";
+// import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed";
 import { clsx } from "keycloakify/tools/clsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { Input, Button } from "@mitodl/smoot-design";
-import styled from "@emotion/styled";
-import { pxToRem } from "../components/typography";
-
-const Label = styled.label(({ theme }) => ({
-    ...theme.typography.body1,
-    display: "block",
-    marginBottom: pxToRem(12)
-}));
-
-const StyledInput = styled(Input)({
-    width: "100%"
-});
-
-const StyledButton = styled(Button)({
-    width: "100%"
-});
-
-const Form = styled.form({
-    display: "flex",
-    flexDirection: "column",
-    gap: "24px"
-});
-
-const Link = styled.a(({ theme }) => ({
-    ...theme.typography.body1,
-    color: theme.custom.colors.red,
-    ":hover": {
-        color: theme.custom.colors.lightRed,
-        textDecoration: "underline"
-    }
-}));
+import { Link, Label, Input, Button, Form, ValidationMessage, Info } from "../components/Elements";
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -66,12 +34,12 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             infoNode={
                 <div id="kc-registration-container">
                     <div id="kc-registration">
-                        <span>
+                        <Info>
                             {msg("noAccount")}{" "}
-                            <a tabIndex={8} href={url.registrationUrl}>
+                            <Link tabIndex={8} href={url.registrationUrl}>
                                 {msg("doRegister")}
-                            </a>
-                        </span>
+                            </Link>
+                        </Info>
                     </div>
                 </div>
             }
@@ -128,7 +96,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                               ? msg("usernameOrEmail")
                                               : msg("email")}
                                     </Label>
-                                    <StyledInput
+                                    <Input
                                         tabIndex={2}
                                         id="username"
                                         name="username"
@@ -151,7 +119,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         aria-invalid={messagesPerField.existsError("username", "password")}
                                     /> */}
                                     {messagesPerField.existsError("username", "password") && (
-                                        <span
+                                        <ValidationMessage
                                             id="input-error"
                                             className={kcClsx("kcInputErrorMessageClass")}
                                             aria-live="polite"
@@ -177,7 +145,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         autoComplete="current-password"
                                         aria-invalid={messagesPerField.existsError("username", "password")}
                                     /> */}
-                                <StyledInput
+                                <Input
                                     tabIndex={3}
                                     id="password"
                                     name="password"
@@ -238,7 +206,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     type="submit"
                                     value={msgStr("doLogIn")}
                                 /> */}
-                                <StyledButton
+                                <Button
                                     tabIndex={7}
                                     disabled={isLoginButtonDisabled}
                                     className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
@@ -249,7 +217,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     size="large"
                                 >
                                     {msgStr("doLogIn")}
-                                </StyledButton>
+                                </Button>
                             </div>
                         </Form>
                     )}

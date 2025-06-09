@@ -10,6 +10,7 @@ import type { KcContext } from "./KcContext";
 import Logos from "./components/Logos";
 import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
+import { Link, Message } from "./components/Elements";
 
 const Container = styled.div({
     width: "600px",
@@ -17,7 +18,6 @@ const Container = styled.div({
     minHeight: "1152px",
     justifyContent: "center",
     display: "flex",
-    border: "1px solid red",
     flexDirection: "column",
     margin: "0 auto"
 });
@@ -142,12 +142,12 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         ) : (
                             <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
                                 <label id="kc-attempted-username">{auth.attemptedUsername}</label>
-                                <a id="reset-login" href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
+                                <Link id="reset-login" href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
                                     <div className="kc-login-tooltip">
                                         <i className={kcClsx("kcResetFlowIcon")}></i>
                                         <span className="kc-tooltip-text">{msg("restartLoginTooltip")}</span>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                         );
 
@@ -180,12 +180,12 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                 )}
                             >
                                 <div className="pf-c-alert__icon">
-                                    {message.type === "success" && <span className={kcClsx("kcFeedbackSuccessIcon")}></span>}
-                                    {message.type === "warning" && <span className={kcClsx("kcFeedbackWarningIcon")}></span>}
-                                    {message.type === "error" && <span className={kcClsx("kcFeedbackErrorIcon")}></span>}
-                                    {message.type === "info" && <span className={kcClsx("kcFeedbackInfoIcon")}></span>}
+                                    {message.type === "success" && <Message className={kcClsx("kcFeedbackSuccessIcon")}></Message>}
+                                    {message.type === "warning" && <Message className={kcClsx("kcFeedbackWarningIcon")}></Message>}
+                                    {message.type === "error" && <Message className={kcClsx("kcFeedbackErrorIcon")}></Message>}
+                                    {message.type === "info" && <Message className={kcClsx("kcFeedbackInfoIcon")}></Message>}
                                 </div>
-                                <span
+                                <Message
                                     className={kcClsx("kcAlertTitleClass")}
                                     dangerouslySetInnerHTML={{
                                         __html: kcSanitize(message.summary)
