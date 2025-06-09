@@ -46,6 +46,12 @@ const Card = styled.div({
     width: "100%"
 });
 
+const Footer = styled.footer(({ theme }) => ({
+    ...theme.typography.body3,
+    textAlign: "center",
+    color: theme.custom.colors.silverGrayDark
+}));
+
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
         displayInfo = false,
@@ -221,6 +227,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         )}
                     </div>
                 </Content>
+                <Footer>
+                    <strong>MIT Learn</strong> • 77 Massachusetts Avenue • Cambridge, MA 02139 • USA
+                </Footer>
             </Card>
         </Container>
     );
