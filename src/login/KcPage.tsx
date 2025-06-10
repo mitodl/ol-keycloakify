@@ -4,14 +4,16 @@ import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import Template from "./Template";
-import Login from "./pages/Login";
 import { ThemeProvider } from "@mitodl/smoot-design";
 import { GlobalStyles } from "./components/GlobalStyles";
+import Login from "./pages/Login";
 import LoginUsername from "./pages/LoginUsername";
+import Register from "./pages/Register";
+import UserProfileFormFields from "./UserProfileFormFields";
 
-const UserProfileFormFields = lazy(
-    () => import("keycloakify/login/UserProfileFormFields")
-);
+// const UserProfileFormFields = lazy(
+//     () => import("./UserProfileFormFields")
+// );
 
 const doMakeUserConfirmPassword = true;
 
@@ -40,6 +42,16 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                     {...{ kcContext, i18n, classes }}
                                     Template={Template}
                                     doUseDefaultCss={false}
+                                />
+                            );
+                        case "register.ftl":
+                            return (
+                                <Register
+                                    {...{ kcContext, i18n, classes }}
+                                    Template={Template}
+                                    doUseDefaultCss={false}
+                                    UserProfileFormFields={UserProfileFormFields}
+                                    doMakeUserConfirmPassword={doMakeUserConfirmPassword}
                                 />
                             );
                         default:

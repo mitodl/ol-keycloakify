@@ -39,13 +39,19 @@ You can customize this behavior, see documentation [here](https://docs.keycloaki
 # Initializing the account theme
 
 ```bash
-npx keycloakify initialize-account-theme
+yarn keycloakify initialize-account-theme
 ```
 
 # Initializing the email theme
 
 ```bash
-npx keycloakify initialize-email-theme
+yarn keycloakify initialize-email-theme
+```
+
+# Start in Docker
+
+```
+yarn keycloakify start-keycloak
 ```
 
 # GitHub Actions

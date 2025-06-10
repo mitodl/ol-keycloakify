@@ -9,8 +9,11 @@ const { useI18n, ofTypeI18n } = i18nBuilder
         en: {
             loginAccountTitle: "Log in",
             noAccount: "Don't have an account? ",
-            doRegister: "Sign up",
-            doForgotPassword: "Reset password?"
+            doRegister: "Sign Up",
+            doForgotPassword: "Reset password?",
+            registerTitle: "Join MIT Learn for free",
+            backToLogin: "Log In",
+            alreadyHaveAnAccountRegister: "Already have an account? "
         }
     })
     .build();
