@@ -59,3 +59,8 @@ export const Subtitle = styled.div(({ theme }) => ({
     marginTop: "-16px",
     marginBottom: "24px"
 }));
+
+export const Paragraph = styled.p(({ theme }) => ({
+    ...theme.typography.body1,
+    color: theme.custom.colors.darkGray1
+}));

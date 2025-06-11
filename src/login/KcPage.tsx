@@ -13,6 +13,7 @@ import UserProfileFormFields from "./UserProfileFormFields";
 import LoginResetPassword from "./pages/LoginResetPassword";
 import LoginPassword from "./pages/LoginPassword";
 import LoginUpdatePassword from "./pages/LoginUpdatePassword";
+import LoginVerifyEmail from "./pages/LoginVerifyEmail";
 
 // const UserProfileFormFields = lazy(
 //     () => import("./UserProfileFormFields")
@@ -81,6 +82,15 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                     doUseDefaultCss={false}
                                 />
                             );
+                        case "login-verify-email.ftl":
+                            return (
+                                <LoginVerifyEmail
+                                    {...{ kcContext, i18n, classes }}
+                                    Template={Template}
+                                    doUseDefaultCss={false}
+                                />
+                            );
+
                         default:
                             return (
                                 <DefaultPage
