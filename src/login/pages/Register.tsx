@@ -26,7 +26,7 @@ export default function Register(props: RegisterProps) {
     const { messageHeader, url, messagesPerField, recaptchaRequired, recaptchaVisible, recaptchaSiteKey, recaptchaAction, termsAcceptanceRequired } =
         kcContext;
 
-    const { msg, msgStr, advancedMsg } = i18n;
+    const { msg, advancedMsg } = i18n;
 
     const [isFormSubmittable, setIsFormSubmittable] = useState(false);
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);

@@ -13,7 +13,10 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             doForgotPassword: "Reset password?",
             registerTitle: "Join MIT Learn for free",
             backToLogin: "Log In",
-            alreadyHaveAnAccountRegister: "Already have an account? "
+            alreadyHaveAnAccountRegister: "Already have an account? ",
+            emailForgotTitle: "Reset Password",
+            emailInstruction: "Enter your email for a password reset link.",
+            doResetPasswordSubmit: "Send Reset Email"
         }
     })
     .build();

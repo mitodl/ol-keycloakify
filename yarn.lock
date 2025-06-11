@@ -2303,6 +2303,13 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-2.1.0.tgz#052aa67a48eccc4309d7f0191b7e41434b90bb78"
   integrity sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==
 
+"@types/node@^24.0.0":
+  version "24.0.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.0.0.tgz#14a278ce74dd33993f2c4e5dd614760728c0fba8"
+  integrity sha512-yZQa2zm87aRVcqDyH5+4Hv9KYgSdgwX1rFnGvpbzMaC7YAljmhBET93TPiTd3ObwTL+gSpIzPKg5BqVxdCvxKg==
+  dependencies:
+    undici-types "~7.8.0"
+
 "@types/parse-json@^4.0.0":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.2.tgz#5950e50960793055845e956c427fc2b0d70c5239"
@@ -4865,7 +4872,7 @@ keycloak-js@^26.2.0:
 
 keycloakify-emails@^3.1.0:
   version "3.1.0"
-  resolved "https://registry.npmjs.org/keycloakify-emails/-/keycloakify-emails-3.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/keycloakify-emails/-/keycloakify-emails-3.1.0.tgz#281892dd5b98876580d7701358707192b321fb57"
   integrity sha512-J/OgFjbExiu7BWzCfdiq1sew24JlA2ZVkTOqSPN09jMq0yEERMbxn/iNAK0WXGLvOoGcqY2TswTrQk7tJcw94A==
   dependencies:
     esbuild "^0.24.0"
@@ -6990,6 +6997,11 @@ unbox-primitive@^1.0.2:
     has-bigints "^1.0.2"
     has-symbols "^1.0.3"
     which-boxed-primitive "^1.0.2"
+
+undici-types@~7.8.0:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-7.8.0.tgz#de00b85b710c54122e44fbfd911f8d70174cd294"
+  integrity sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==
 
 unicorn-magic@^0.1.0:
   version "0.1.0"

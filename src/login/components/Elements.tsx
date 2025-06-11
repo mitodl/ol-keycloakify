@@ -52,3 +52,10 @@ export const Info = styled.div(({ theme }) => ({
         ...theme.typography.body2
     }
 }));
+
+export const Subtitle = styled.div(({ theme }) => ({
+    ...theme.typography.body1,
+    color: theme.custom.colors.darkGray1,
+    marginTop: "-16px",
+    marginBottom: "24px"
+}));

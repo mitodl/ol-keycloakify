@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import type { ClassKey } from "keycloakify/login";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import LoginUsername from "./pages/LoginUsername";
 import Register from "./pages/Register";
 import UserProfileFormFields from "./UserProfileFormFields";
+import LoginResetPassword from "./pages/LoginResetPassword";
 
 // const UserProfileFormFields = lazy(
 //     () => import("./UserProfileFormFields")
@@ -52,6 +53,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                     doUseDefaultCss={false}
                                     UserProfileFormFields={UserProfileFormFields}
                                     doMakeUserConfirmPassword={doMakeUserConfirmPassword}
+                                />
+                            );
+                        case "login-reset-password.ftl":
+                            return (
+                                <LoginResetPassword
+                                    {...{ kcContext, i18n, classes }}
+                                    Template={Template}
+                                    doUseDefaultCss={false}
                                 />
                             );
                         default:
