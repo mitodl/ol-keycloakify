@@ -16,7 +16,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             alreadyHaveAnAccountRegister: "Already have an account? ",
             emailForgotTitle: "Reset Password",
             emailInstruction: "Enter your email for a password reset link.",
-            doResetPasswordSubmit: "Send Reset Email"
+            doResetPasswordSubmit: "Send Reset Email",
+            updatePasswordTitle: "Create a new password",
+            doSubmit: "Next"
         }
     })
     .build();

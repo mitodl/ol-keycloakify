@@ -11,6 +11,8 @@ import LoginUsername from "./pages/LoginUsername";
 import Register from "./pages/Register";
 import UserProfileFormFields from "./UserProfileFormFields";
 import LoginResetPassword from "./pages/LoginResetPassword";
+import LoginPassword from "./pages/LoginPassword";
+import LoginUpdatePassword from "./pages/LoginUpdatePassword";
 
 // const UserProfileFormFields = lazy(
 //     () => import("./UserProfileFormFields")
@@ -45,6 +47,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                     doUseDefaultCss={false}
                                 />
                             );
+                        case "login-password.ftl":
+                            return (
+                                <LoginPassword
+                                    {...{ kcContext, i18n, classes }}
+                                    Template={Template}
+                                    doUseDefaultCss={false}
+                                />
+                            );
                         case "register.ftl":
                             return (
                                 <Register
@@ -58,6 +68,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         case "login-reset-password.ftl":
                             return (
                                 <LoginResetPassword
+                                    {...{ kcContext, i18n, classes }}
+                                    Template={Template}
+                                    doUseDefaultCss={false}
+                                />
+                            );
+                        case "login-update-password.ftl":
+                            return (
+                                <LoginUpdatePassword
                                     {...{ kcContext, i18n, classes }}
                                     Template={Template}
                                     doUseDefaultCss={false}
