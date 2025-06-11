@@ -16,7 +16,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
     const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField } = kcContext;
 
-    const { msg, msgStr } = i18n;
+    const { msg } = i18n;
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
@@ -137,8 +137,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                     name="login"
                                     id="kc-login"
                                     type="submit"
+                                    size="large"
                                 >
-                                    {msgStr("doLogIn")}
+                                    Next
                                 </Button>
                             </div>
                         </Form>

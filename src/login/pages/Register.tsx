@@ -89,6 +89,7 @@ export default function Register(props: RegisterProps) {
                                 disabled={!isFormSubmittable || (termsAcceptanceRequired && !areTermsAccepted)}
                                 className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
                                 type="submit"
+                                size="large"
                             >
                                 {msg("doRegister")}
                             </Button>
