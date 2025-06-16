@@ -16,9 +16,11 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
         classes
     });
 
+    console.info("kcContext", kcContext);
+
     const { realm, url, messagesPerField } = kcContext;
 
-    const { msg, msgStr } = i18n;
+    const { msg } = i18n;
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 

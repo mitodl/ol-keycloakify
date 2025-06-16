@@ -16,6 +16,9 @@ export const Default: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                olSettings: {
+                    homeUrl: "https://learn.mit.edu/"
+                },
                 user: {
                     email: "john.doe@gmail.com"
                 }
@@ -34,6 +37,9 @@ export const WithSuccessMessage: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                olSettings: {
+                    homeUrl: "https://learn.mit.edu/"
+                },
                 message: {
                     summary: "Your email has been successfully verified.",
                     type: "success"
@@ -59,6 +65,9 @@ export const WithErrorMessage: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                olSettings: {
+                    homeUrl: "https://learn.mit.edu/"
+                },
                 message: {
                     summary: "There was an error verifying your email. Please try again.",
                     type: "error"
@@ -84,6 +93,9 @@ export const WithInfoMessage: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                olSettings: {
+                    homeUrl: "https://learn.mit.edu/"
+                },
                 message: {
                     summary: "Please verify your email to continue using our services.",
                     type: "info"

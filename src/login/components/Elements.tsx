@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
-import { Input as SmootInput, Button as SmootButton } from "@mitodl/smoot-design";
+import {
+    Input as SmootInput,
+    Button as SmootButton,
+    ButtonLink as SmootButtonLink
+} from "@mitodl/smoot-design";
 import { pxToRem } from "./typography";
 
 export const Link = styled.a(({ theme }) => ({
@@ -22,6 +26,10 @@ export const Input = styled(SmootInput)({
 });
 
 export const Button = styled(SmootButton)({
+    width: "100%"
+});
+
+export const ButtonLink = styled(SmootButtonLink)({
     width: "100%"
 });
 

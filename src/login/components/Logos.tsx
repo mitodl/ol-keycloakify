@@ -8,11 +8,15 @@ const Container = styled.div({
     marginBottom: "48px"
 });
 
-export default function Logos() {
+export default function Logos({ homeUrl }: { homeUrl: string }) {
     return (
         <Container>
-            <img src={mitLearnLogo} alt="MIT Learn Logo" height={24} />
-            <img src={mitLogo} alt="MIT Logo" height={24} />
+            <a href={homeUrl ?? ""}>
+                <img src={mitLearnLogo} alt="MIT Learn Logo" height={24} />
+            </a>
+            <a href="https://mit.edu">
+                <img src={mitLogo} alt="MIT Logo" height={24} />
+            </a>
         </Container>
     );
 }

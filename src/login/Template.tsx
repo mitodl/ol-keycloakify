@@ -73,7 +73,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     const { msg, msgStr } = i18n;
 
-    const { realm, auth, url, message, isAppInitiatedAction } = kcContext;
+    const { realm, auth, url, message, isAppInitiatedAction, olSettings } = kcContext;
+
+    console.log("OL SETTINGS", olSettings);
 
     useEffect(() => {
         document.title = documentTitle ?? msgStr("loginTitle", realm.displayName);
@@ -105,7 +107,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
             <Card className={kcClsx("kcFormCardClass")}>
                 <Header className={kcClsx("kcFormHeaderClass")}>
-                    <Logos />
+                    <Logos homeUrl={olSettings?.homeUrl} />
                     {/* {enabledLanguages.length > 1 && (
                         <div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
                             <div id="kc-locale-wrapper" className={kcClsx("kcLocaleWrapperClass")}>

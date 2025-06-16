@@ -13,7 +13,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => <KcPageStory />
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                olSettings: {
+                    homeUrl: "https://learn.mit.edu/"
+                }
+            }}
+        />
+    )
 };
 
 /**
@@ -26,6 +34,9 @@ export const WithPasswordError: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                olSettings: {
+                    homeUrl: "https://learn.mit.edu/"
+                },
                 realm: {
                     resetPasswordAllowed: true
                 },
@@ -52,6 +63,9 @@ export const WithoutResetPasswordOption: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                olSettings: {
+                    homeUrl: "https://learn.mit.edu/"
+                },
                 realm: {
                     resetPasswordAllowed: false
                 },

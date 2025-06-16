@@ -8,6 +8,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
     .withCustomTranslations({
         en: {
             loginAccountTitle: "Log in",
+            loginGreeting: "Hello, {0}",
             noAccount: "Don't have an account? ",
             doRegister: "Sign Up",
             doForgotPassword: "Reset password?",
@@ -25,7 +26,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
                 "Check the email inbox you signed up with. You may need to check the Spam folder.",
             emailVerifyInstruction4Bold: "Still no verification email? ",
             emailVerifyInstruction4:
-                "Please contact our MIT Learn Customer Support Center" // TODO "Customer Support Center" link (existing not working in Prod)
+                "Please contact our MIT Learn Customer Support Center", // TODO "Customer Support Center" link (existing not working in Prod)
+            createPassword: "Create Password"
         }
     })
     .build();
