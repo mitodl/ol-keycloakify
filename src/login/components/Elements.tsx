@@ -33,6 +33,19 @@ export const ButtonLink = styled(SmootButtonLink)({
     width: "100%"
 });
 
+export const SocialProviderButtonLink = styled(SmootButtonLink)(({ theme }) => ({
+    width: "100%",
+    color: theme.custom.colors.black,
+    ...theme.typography.subtitle1,
+    fontWeight: theme.typography.fontWeightBold,
+    "&:hover, &:hover:not(:disabled)": {
+        backgroundColor: "inherit",
+        borderColor: theme.custom.colors.black,
+        borderWidth: "2px",
+        padding: "11px 23px"
+    }
+}));
+
 export const Form = styled.form({
     display: "flex",
     flexDirection: "column",
@@ -72,3 +85,31 @@ export const Paragraph = styled.p(({ theme }) => ({
     ...theme.typography.body1,
     color: theme.custom.colors.darkGray1
 }));
+
+const Separator = styled.div(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "16px 0",
+    "&::before, &::after": {
+        content: '""',
+        flex: 1,
+        borderBottom: `1px solid ${theme.custom.colors.silverGrayLight}`,
+        position: "relative",
+        top: "1px"
+    },
+    span: {
+        textAlign: "center",
+        margin: "0 20px",
+        fontSize: "16px",
+        color: theme.custom.colors.darkGray2
+    }
+}));
+
+export const OrBar = () => {
+    return (
+        <Separator>
+            <span>or</span>
+        </Separator>
+    );
+};

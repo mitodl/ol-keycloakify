@@ -7,6 +7,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
     .withThemeName<ThemeName>()
     .withCustomTranslations({
         en: {
+            doLogIn: "Log in",
             loginAccountTitle: "Log in",
             loginGreeting: "Hello, {0}",
             noAccount: "Don't have an account? ",

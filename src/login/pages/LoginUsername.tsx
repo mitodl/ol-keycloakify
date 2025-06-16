@@ -4,7 +4,7 @@ import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { Link, Label, Input, Button, Form, ValidationMessage, Info } from "../components/Elements";
+import { Link, Label, Input, Button, Form, ValidationMessage, Info, SocialProviderButtonLink, OrBar } from "../components/Elements";
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -14,7 +14,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
         classes
     });
 
-    const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField } = kcContext;
+    const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, loginAttempt } = kcContext;
 
     const { msg } = i18n;
 
@@ -28,6 +28,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
             classes={classes}
             displayMessage={!messagesPerField.existsError("username")}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
+            headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("doLogIn")}
             infoNode={
                 <div id="kc-registration">
                     <Info>
@@ -38,33 +39,34 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                     </Info>
                 </div>
             }
-            headerNode={msg("doLogIn")}
             socialProvidersNode={
                 <>
                     {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
                         <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
-                            <hr />
-                            <h2>{msg("identity-provider-login-label")}</h2>
-                            <ul className={kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass")}>
-                                {social.providers.map((...[p, , providers]) => (
-                                    <li key={p.alias}>
-                                        <a
-                                            id={`social-${p.alias}`}
-                                            className={kcClsx(
-                                                "kcFormSocialAccountListButtonClass",
-                                                providers.length > 3 && "kcFormSocialAccountGridItem"
-                                            )}
-                                            type="button"
-                                            href={p.loginUrl}
-                                        >
-                                            {p.iconClasses && <i className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses)} aria-hidden="true"></i>}
-                                            <span className={clsx(kcClsx("kcFormSocialAccountNameClass"), p.iconClasses && "kc-social-icon-text")}>
-                                                {p.displayName}
-                                            </span>
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
+                            {/* <h2>{msg("identity-provider-login-label")}</h2> */}
+                            <OrBar />
+                            {/* <ul className={kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass")}> */}
+                            {social.providers.map((...[p, , providers]) => (
+                                <li key={p.alias}>
+                                    <SocialProviderButtonLink
+                                        id={`social-${p.alias}`}
+                                        className={kcClsx(
+                                            "kcFormSocialAccountListButtonClass",
+                                            providers.length > 3 && "kcFormSocialAccountGridItem"
+                                        )}
+                                        type="button"
+                                        href={p.loginUrl}
+                                        variant="text"
+                                        size="large"
+                                    >
+                                        {p.iconClasses && <i className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses)} aria-hidden="true"></i>}
+                                        <span className={clsx(kcClsx("kcFormSocialAccountNameClass"), p.iconClasses && "kc-social-icon-text")}>
+                                            {p.displayName}
+                                        </span>
+                                    </SocialProviderButtonLink>
+                                </li>
+                            ))}
+                            {/* </ul> */}
                         </div>
                     )}
                 </>

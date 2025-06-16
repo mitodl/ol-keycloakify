@@ -290,7 +290,6 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
                 }
                 // pattern={attribute.annotations.inputTypePattern}
                 // size={attribute.annotations.inputTypeSize === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeSize}`)}
-                size="small"
                 // maxLength={
                 //     attribute.annotations.inputTypeMaxlength === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeMaxlength}`)
                 // }

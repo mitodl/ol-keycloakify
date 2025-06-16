@@ -75,7 +75,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     const { realm, auth, url, message, isAppInitiatedAction, olSettings } = kcContext;
 
-    console.log("OL SETTINGS", olSettings);
+    console.log("CONTEXT", kcContext);
 
     useEffect(() => {
         document.title = documentTitle ?? msgStr("loginTitle", realm.displayName);
@@ -206,7 +206,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                             <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
                                 <div className={kcClsx("kcFormGroupClass")}>
                                     <input type="hidden" name="tryAnotherWay" value="on" />
-                                    <a
+                                    <Link
                                         href="#"
                                         id="try-another-way"
                                         onClick={() => {
@@ -215,11 +215,10 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                         }}
                                     >
                                         {msg("doTryAnotherWay")}
-                                    </a>
+                                    </Link>
                                 </div>
                             </form>
                         )}
-                        {socialProvidersNode}
                         {displayInfo && (
                             <div id="kc-info" className={kcClsx("kcSignUpClass")}>
                                 <div id="kc-info-wrapper" className={kcClsx("kcInfoAreaWrapperClass")}>
@@ -227,6 +226,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                 </div>
                             </div>
                         )}
+                        {socialProvidersNode}
                     </div>
                 </Content>
                 <Footer>

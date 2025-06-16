@@ -18,7 +18,7 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
 
     console.info("kcContext", kcContext);
 
-    const { realm, url, messagesPerField } = kcContext;
+    const { realm, url, messagesPerField, loginAttempt } = kcContext;
 
     const { msg } = i18n;
 
@@ -30,7 +30,7 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
             i18n={i18n}
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
-            headerNode={msg("doLogIn")} // TODO "Hello, <Full Name>!"
+            headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("doLogIn")}
             displayMessage={!messagesPerField.existsError("password")}
         >
             <div id="kc-form">
