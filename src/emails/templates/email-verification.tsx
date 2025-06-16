@@ -69,6 +69,6 @@ export const getTemplate: GetTemplate = async props => {
     return await render(<Template {...props} />, { plainText: props.plainText });
 };
 
-export const getSubject: GetSubject = async props => {
+export const getSubject: GetSubject = async () => {
     return "Verify email";
 };

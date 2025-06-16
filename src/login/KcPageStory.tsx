@@ -9,8 +9,17 @@ const kcContextExtension: KcContextExtension = {
     themeName: themeNames[0],
     properties: {
         ...kcEnvDefaults
+    },
+    olSettings: {
+        homeUrl: "https://learn.mit.edu/"
+    },
+    loginAttempt: {
+        userFullname: undefined,
+        hasSocialProviderAuth: false,
+        needsPassword: false
     }
 };
+
 const kcContextExtensionPerPage: KcContextExtensionPerPage = {};
 
 export const { getKcContextMock } = createGetKcContextMock({

@@ -13,24 +13,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => (
-        <KcPageStory
-            kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                }
-            }}
-        />
-    )
+    render: () => <KcPageStory />
 };
 
 export const WithEmailAsUsername: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: {
                     loginWithEmailAllowed: true,
                     registrationEmailAsUsername: true
@@ -49,9 +38,6 @@ export const WithUsernameError: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: {
                     loginWithEmailAllowed: false,
                     registrationEmailAsUsername: false,

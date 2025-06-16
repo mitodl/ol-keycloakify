@@ -9,7 +9,7 @@ export type KcContextExtension = {
     // See: https://docs.keycloakify.dev/faq-and-help/some-values-you-need-are-missing-from-in-kccontext
 
     loginAttempt: {
-        userFullname: string;
+        userFullname?: string;
         needsPassword: boolean;
         hasSocialProviderAuth: boolean;
     };

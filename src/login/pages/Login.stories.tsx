@@ -13,15 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => (
-        <KcPageStory
-            kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                }
-            }}
-        />
-    )
+    render: () => <KcPageStory />
 };
 
 export const WithGreeting: Story = {
@@ -43,9 +35,6 @@ export const WithNeedsPassword: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: { resetPasswordAllowed: true },
                 loginAttempt: {
                     userFullname: "First Last",
@@ -61,9 +50,6 @@ export const WithNeedsPasswordNoReset: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: { resetPasswordAllowed: false },
                 loginAttempt: {
                     userFullname: "First Last",
@@ -79,9 +65,6 @@ export const WithInvalidCredential: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 login: {
                     username: "johndoe"
                 },
@@ -108,9 +91,6 @@ export const WithoutRegistration: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: { registrationAllowed: false }
             }}
         />
@@ -121,9 +101,6 @@ export const WithoutRememberMe: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: { rememberMe: false }
             }}
         />
@@ -134,9 +111,6 @@ export const WithoutPasswordReset: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: { resetPasswordAllowed: false }
             }}
         />
@@ -147,9 +121,6 @@ export const WithEmailAsUsername: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: { loginWithEmailAllowed: false }
             }}
         />
@@ -160,9 +131,6 @@ export const WithPresetUsername: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 login: { username: "max.mustermann@mail.com" }
             }}
         />
@@ -173,9 +141,6 @@ export const WithImmutablePresetUsername: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 auth: {
                     attemptedUsername: "max.mustermann@mail.com",
                     showUsername: true
@@ -194,9 +159,6 @@ export const WithSocialProviders: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 social: {
                     displayInfo: true,
                     providers: [
@@ -295,9 +257,6 @@ export const WithoutPasswordField: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 realm: { password: false }
             }}
         />
@@ -308,9 +267,6 @@ export const WithErrorMessage: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 message: {
                     summary: "The time allotted for the connection has elapsed.<br/>The login process will restart from the beginning.",
                     type: "error"
@@ -325,9 +281,6 @@ export const WithOneSocialProvider: Story = {
         <KcPageStory
             {...args}
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 social: {
                     displayInfo: true,
                     providers: [
@@ -350,9 +303,6 @@ export const WithTwoSocialProviders: Story = {
         <KcPageStory
             {...args}
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 social: {
                     displayInfo: true,
                     providers: [
@@ -381,9 +331,6 @@ export const WithNoSocialProviders: Story = {
         <KcPageStory
             {...args}
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 social: {
                     displayInfo: true,
                     providers: []
@@ -397,9 +344,6 @@ export const WithMoreThanTwoSocialProviders: Story = {
         <KcPageStory
             {...args}
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 social: {
                     displayInfo: true,
                     providers: [
@@ -442,9 +386,6 @@ export const WithSocialProvidersAndWithoutRememberMe: Story = {
         <KcPageStory
             {...args}
             kcContext={{
-                olSettings: {
-                    homeUrl: "https://learn.mit.edu/"
-                },
                 social: {
                     displayInfo: true,
                     providers: [
