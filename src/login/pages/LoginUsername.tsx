@@ -47,24 +47,20 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                             <OrBar />
                             {/* <ul className={kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass")}> */}
                             {social.providers.map((...[p, , providers]) => (
-                                <li key={p.alias}>
-                                    <SocialProviderButtonLink
-                                        id={`social-${p.alias}`}
-                                        className={kcClsx(
-                                            "kcFormSocialAccountListButtonClass",
-                                            providers.length > 3 && "kcFormSocialAccountGridItem"
-                                        )}
-                                        type="button"
-                                        href={p.loginUrl}
-                                        variant="text"
-                                        size="large"
-                                    >
-                                        {p.iconClasses && <i className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses)} aria-hidden="true"></i>}
-                                        <span className={clsx(kcClsx("kcFormSocialAccountNameClass"), p.iconClasses && "kc-social-icon-text")}>
-                                            {p.displayName}
-                                        </span>
-                                    </SocialProviderButtonLink>
-                                </li>
+                                <SocialProviderButtonLink
+                                    key={p.alias}
+                                    id={`social-${p.alias}`}
+                                    className={kcClsx("kcFormSocialAccountListButtonClass", providers.length > 3 && "kcFormSocialAccountGridItem")}
+                                    type="button"
+                                    href={p.loginUrl}
+                                    variant="text"
+                                    size="large"
+                                >
+                                    {p.iconClasses && <i className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses)} aria-hidden="true"></i>}
+                                    <span className={clsx(kcClsx("kcFormSocialAccountNameClass"), p.iconClasses && "kc-social-icon-text")}>
+                                        {p.displayName}
+                                    </span>
+                                </SocialProviderButtonLink>
                             ))}
                             {/* </ul> */}
                         </div>

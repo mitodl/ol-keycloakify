@@ -3,6 +3,7 @@ on:
     push:
         branches:
             - main
+            - jk/initial
 
     pull_request:
         branches:
@@ -19,7 +20,7 @@ jobs:
 
     check_if_version_upgraded:
         name: Check if version upgrade
-        # if: github.event_name == 'push'
+        if: github.event_name == 'push'
         runs-on: ubuntu-latest
         needs: test
         outputs:
