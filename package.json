@@ -1,10 +1,10 @@
 {
-    "name": "keycloakify-starter",
-    "version": "0.0.3",
-    "description": "Starter for Keycloakify 11",
+    "name": "ol-keycloakify",
+    "version": "0.0.4",
+    "description": "Keycloakify theme for Open Learning",
     "repository": {
         "type": "git",
-        "url": "git://github.com/codegouvfr/keycloakify-starter.git"
+        "url": "git://github.com/mitodl/ol-keycloakify.git"
     },
     "type": "module",
     "scripts": {

@@ -37,6 +37,9 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
     return (
         <>
             {formFieldStates.map(({ attribute, displayableErrors, valueOrValues }) => {
+                if (attribute.name === "emailOptIn") {
+                    return <input type="hidden" name="emailOptIn" value="1" key={attribute.name} />;
+                }
                 return (
                     <Fragment key={attribute.name}>
                         <GroupLabel attribute={attribute} groupNameRef={groupNameRef} i18n={i18n} kcClsx={kcClsx} />
@@ -143,7 +146,7 @@ function GroupLabel(props: {
 
                         return (
                             <div className={kcClsx("kcContentWrapperClass")}>
-                                <Label id={`header-${attribute.group.name}`} className={kcClsx("kcFormGroupHeader")}>
+                                <Label id={`header-${attribute.group.name}`} className={kcClsx("kcFormGroupHeader")} style={{ fontWeight: "bold" }}>
                                     {groupHeaderText}
                                 </Label>
                             </div>
