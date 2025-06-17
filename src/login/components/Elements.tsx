@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 import {
     Input as SmootInput,
     Button as SmootButton,
-    ButtonLink as SmootButtonLink
+    ButtonLink as SmootButtonLink,
+    Alert as SmootAlert
 } from "@mitodl/smoot-design";
 import { pxToRem } from "./typography";
 
@@ -126,3 +127,7 @@ export const FooterLink = styled.a(({ theme }) => ({
         textDecoration: "underline"
     }
 }));
+
+export const Alert = styled(SmootAlert)({
+    marginBottom: "20px"
+});

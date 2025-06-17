@@ -10,7 +10,7 @@ import type { KcContext } from "./KcContext";
 import Logos from "./components/Logos";
 import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
-import { Info, Link, Message, FooterLink } from "./components/Elements";
+import { Info, Link, Alert, FooterLink } from "./components/Elements";
 
 const Container = styled.div({
     width: "600px",
@@ -190,18 +190,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                     `pf-m-${message?.type === "error" ? "danger" : message.type}`
                                 )}
                             >
-                                <div className="pf-c-alert__icon">
-                                    {message.type === "success" && <Message className={kcClsx("kcFeedbackSuccessIcon")}></Message>}
-                                    {message.type === "warning" && <Message className={kcClsx("kcFeedbackWarningIcon")}></Message>}
-                                    {message.type === "error" && <Message className={kcClsx("kcFeedbackErrorIcon")}></Message>}
-                                    {message.type === "info" && <Message className={kcClsx("kcFeedbackInfoIcon")}></Message>}
-                                </div>
-                                <Message
-                                    className={kcClsx("kcAlertTitleClass")}
-                                    dangerouslySetInnerHTML={{
-                                        __html: kcSanitize(message.summary)
-                                    }}
-                                />
+                                <Alert severity={message.type}>{kcSanitize(message.summary)}</Alert>
                             </div>
                         )}
                         {children}

@@ -29,6 +29,19 @@ export const WithEmailAsUsername: Story = {
     )
 };
 
+export const WithErrorMessage: Story = {
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                message: {
+                    summary: "Your sign in attempt timed out. Sign in will start from the beginning.",
+                    type: "error"
+                }
+            }}
+        />
+    )
+};
+
 export const WithSocialProviders: Story = {
     render: () => (
         <KcPageStory
