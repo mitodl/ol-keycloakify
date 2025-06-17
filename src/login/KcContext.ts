@@ -16,6 +16,7 @@ export type KcContextExtension = {
 
     olSettings: {
         homeUrl: string;
+        termsOfServiceUrl: string;
     };
 };
 

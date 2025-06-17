@@ -10,7 +10,7 @@ import type { KcContext } from "./KcContext";
 import Logos from "./components/Logos";
 import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
-import { Link, Message } from "./components/Elements";
+import { Info, Link, Message, FooterLink } from "./components/Elements";
 
 const Container = styled.div({
     width: "600px",
@@ -49,7 +49,10 @@ const Card = styled.div({
 const Footer = styled.footer(({ theme }) => ({
     ...theme.typography.body3,
     textAlign: "center",
-    color: theme.custom.colors.silverGrayDark
+    color: theme.custom.colors.silverGrayDark,
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px"
 }));
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
@@ -205,17 +208,19 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         {auth !== undefined && auth.showTryAnotherWayLink && (
                             <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
                                 <div className={kcClsx("kcFormGroupClass")}>
-                                    <input type="hidden" name="tryAnotherWay" value="on" />
-                                    <Link
-                                        href="#"
-                                        id="try-another-way"
-                                        onClick={() => {
-                                            document.forms["kc-select-try-another-way-form" as never].submit();
-                                            return false;
-                                        }}
-                                    >
-                                        {msg("doTryAnotherWay")}
-                                    </Link>
+                                    <Info>
+                                        <input type="hidden" name="tryAnotherWay" value="on" />
+                                        <Link
+                                            href="#"
+                                            id="try-another-way"
+                                            onClick={() => {
+                                                document.forms["kc-select-try-another-way-form" as never].submit();
+                                                return false;
+                                            }}
+                                        >
+                                            {msg("doTryAnotherWay")}
+                                        </Link>
+                                    </Info>
                                 </div>
                             </form>
                         )}
@@ -230,7 +235,12 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                     </div>
                 </Content>
                 <Footer>
-                    <strong>MIT Learn</strong> • 77 Massachusetts Avenue • Cambridge, MA 02139 • USA
+                    <div>
+                        <strong>MIT Learn</strong> • 77 Massachusetts Avenue • Cambridge, MA 02139 • USA
+                    </div>
+                    <div>
+                        {olSettings?.termsOfServiceUrl ? <FooterLink href={olSettings?.termsOfServiceUrl}>{msg("termsOfService")}</FooterLink> : null}
+                    </div>
                 </Footer>
             </Card>
         </Container>

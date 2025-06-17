@@ -28,7 +28,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             emailVerifyInstruction4Bold: "Still no verification email? ",
             emailVerifyInstruction4:
                 "Please contact our MIT Learn Customer Support Center", // TODO "Customer Support Center" link (existing not working in Prod)
-            createPassword: "Create Password"
+            createPassword: "Create Password",
+            termsOfService: "Terms of Service"
         }
     })
     .build();

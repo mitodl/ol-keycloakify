@@ -5,7 +5,7 @@ import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Link, Label, Input, Button, Form, ValidationMessage, Info, SocialProviderButtonLink, OrBar } from "../components/Elements";
-
+import mitLogo from "../components/mit-logo.svg";
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -43,26 +43,23 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                 <>
                     {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
                         <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
-                            {/* <h2>{msg("identity-provider-login-label")}</h2> */}
                             <OrBar />
-                            {/* <ul className={kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass")}> */}
-                            {social.providers.map((...[p, , providers]) => (
+                            {social.providers.map(p => (
                                 <SocialProviderButtonLink
                                     key={p.alias}
                                     id={`social-${p.alias}`}
-                                    className={kcClsx("kcFormSocialAccountListButtonClass", providers.length > 3 && "kcFormSocialAccountGridItem")}
                                     type="button"
                                     href={p.loginUrl}
-                                    variant="text"
+                                    variant="bordered"
                                     size="large"
                                 >
                                     {p.iconClasses && <i className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses)} aria-hidden="true"></i>}
+                                    {p.alias === "touchstone-idp" ? <img src={mitLogo} alt="MIT Logo" width={29} /> : null}
                                     <span className={clsx(kcClsx("kcFormSocialAccountNameClass"), p.iconClasses && "kc-social-icon-text")}>
                                         {p.displayName}
                                     </span>
                                 </SocialProviderButtonLink>
                             ))}
-                            {/* </ul> */}
                         </div>
                     )}
                 </>

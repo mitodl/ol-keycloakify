@@ -11,7 +11,8 @@ const kcContextExtension: KcContextExtension = {
         ...kcEnvDefaults
     },
     olSettings: {
-        homeUrl: "https://learn.mit.edu/"
+        homeUrl: "https://learn.mit.edu/",
+        termsOfServiceUrl: "https://learn.mit.edu/terms"
     },
     loginAttempt: {
         userFullname: undefined,

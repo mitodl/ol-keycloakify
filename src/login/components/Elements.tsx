@@ -38,6 +38,10 @@ export const SocialProviderButtonLink = styled(SmootButtonLink)(({ theme }) => (
     color: theme.custom.colors.black,
     ...theme.typography.subtitle1,
     fontWeight: theme.typography.fontWeightBold,
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "8px",
     "&:hover, &:hover:not(:disabled)": {
         backgroundColor: "inherit",
         borderColor: theme.custom.colors.black,
@@ -113,3 +117,12 @@ export const OrBar = () => {
         </Separator>
     );
 };
+
+export const FooterLink = styled.a(({ theme }) => ({
+    ...theme.typography.body3,
+    color: theme.custom.colors.red,
+    ":hover": {
+        color: theme.custom.colors.lightRed,
+        textDecoration: "underline"
+    }
+}));

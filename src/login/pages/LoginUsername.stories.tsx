@@ -28,3 +28,50 @@ export const WithEmailAsUsername: Story = {
         />
     )
 };
+
+export const WithSocialProviders: Story = {
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                social: {
+                    displayInfo: true,
+                    providers: [
+                        {
+                            displayName: "Okta test",
+                            providerId: "saml",
+                            loginUrl: "/realms/olapps/broker/okta-test/login?client_id=ol-mitlearn-client&tab_id=-ObQDXtAv0M&client_data=***",
+                            iconClasses: "",
+                            alias: "okta-test"
+                        },
+                        {
+                            displayName: "Fake Touchstone",
+                            providerId: "saml",
+                            loginUrl: "/realms/olapps/broker/fake-touchstone/login?client_id=ol-mitlearn-client&tab_id=-ObQDXtAv0M&client_data=***",
+                            iconClasses: "",
+                            alias: "fake-touchstone"
+                        },
+                        {
+                            displayName: "Use Touchstone@MIT",
+                            providerId: "saml",
+                            loginUrl: "/realms/olapps/broker/touchstone-idp/login?client_id=ol-mitlearn-client&tab_id=-ObQDXtAv0M&client_data=***",
+                            iconClasses: "",
+                            alias: "touchstone-idp"
+                        }
+                    ]
+                }
+            }}
+        />
+    )
+};
+
+export const WithTryAnotherWayLink: Story = {
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                auth: {
+                    showTryAnotherWayLink: true
+                }
+            }}
+        />
+    )
+};
