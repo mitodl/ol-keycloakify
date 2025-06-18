@@ -145,21 +145,34 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                             </div>
                         </div>
                     )} */}
+                    {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
+                    {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
+                        <div
+                            className={clsx(
+                                `alert-${message.type}`,
+                                kcClsx("kcAlertClass"),
+                                `pf-m-${message?.type === "error" ? "danger" : message.type}`
+                            )}
+                        >
+                            <Alert severity={message.type}>{kcSanitize(message.summary)}</Alert>
+                        </div>
+                    )}
                     {(() => {
-                        const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
+                        const node = (
+                            // !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                             <Title id="kc-page-title" variant="h4">
                                 {headerNode}
                             </Title>
-                        ) : (
-                            <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
-                                <label id="kc-attempted-username">{auth.attemptedUsername}</label>
-                                <Link id="reset-login" href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
-                                    <div className="kc-login-tooltip">
-                                        <i className={kcClsx("kcResetFlowIcon")}></i>
-                                        <span className="kc-tooltip-text">{msg("restartLoginTooltip")}</span>
-                                    </div>
-                                </Link>
-                            </div>
+                            // ) : (
+                            //     <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
+                            //         <label id="kc-attempted-username">{auth.attemptedUsername}</label>
+                            //         <Link id="reset-login" href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
+                            //             <div className="kc-login-tooltip">
+                            //                 <i className={kcClsx("kcResetFlowIcon")}></i>
+                            //                 <span className="kc-tooltip-text">{msg("restartLoginTooltip")}</span>
+                            //             </div>
+                            //         </Link>
+                            //     </div>
                         );
 
                         if (displayRequiredFields) {
@@ -181,18 +194,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 </Header>
                 <Content id="kc-content">
                     <div id="kc-content-wrapper">
-                        {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
-                        {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
-                            <div
-                                className={clsx(
-                                    `alert-${message.type}`,
-                                    kcClsx("kcAlertClass"),
-                                    `pf-m-${message?.type === "error" ? "danger" : message.type}`
-                                )}
-                            >
-                                <Alert severity={message.type}>{kcSanitize(message.summary)}</Alert>
-                            </div>
-                        )}
                         {children}
                         {auth !== undefined && auth.showTryAnotherWayLink && (
                             <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
