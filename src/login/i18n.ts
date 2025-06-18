@@ -30,12 +30,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
                 "Please contact our MIT Learn Customer Support Center", // TODO "Customer Support Center" link (existing not working in Prod)
             createPassword: "Create Password",
             termsOfService: "Terms of Service",
+            registerLegalAgreementText: "By creating an account I agree to the",
+            registerTermsOfService: "Terms of Service",
 
             // From ol-keycloak https://github.com/mitodl/ol-keycloak/blob/main/ol-keycloak/oltheme/src/main/resources/theme/ol/email/messages/messages_en.properties
             doRegisterSubmit: "Sign Up",
             registerInstruction: "Enter your information to sign up",
-            registerLegalAgreementText: "By creating an account I agree to the",
-            registerTermsOfService: "Terms of Service",
             registerPrivacyPolicy: "Privacy Policy",
             "ol-linked-identity-provider-label": "You already have a login with",
             // doResetPasswordSubmit: "Next",

@@ -23,8 +23,17 @@ export default function Register(props: RegisterProps) {
         classes
     });
 
-    const { messageHeader, url, messagesPerField, recaptchaRequired, recaptchaVisible, recaptchaSiteKey, recaptchaAction, termsAcceptanceRequired } =
-        kcContext;
+    const {
+        messageHeader,
+        url,
+        messagesPerField,
+        recaptchaRequired,
+        recaptchaVisible,
+        recaptchaSiteKey,
+        recaptchaAction,
+        termsAcceptanceRequired,
+        olSettings
+    } = kcContext;
 
     const { msg, advancedMsg } = i18n;
 
@@ -40,6 +49,12 @@ export default function Register(props: RegisterProps) {
             headerNode={messageHeader !== undefined ? advancedMsg(messageHeader) : msg("registerTitle")}
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields={false}
+            displayInfo
+            infoNode={
+                <Info>
+                    {msg("registerLegalAgreementText")} <Link href={olSettings?.termsOfServiceUrl || "#"}>{msg("registerTermsOfService")}</Link>.
+                </Info>
+            }
         >
             <Form id="kc-register-form" className={kcClsx("kcFormClass")} action={url.registrationAction} method="post">
                 <UserProfileFormFields
@@ -95,11 +110,12 @@ export default function Register(props: RegisterProps) {
                             </Button>
                         </div>
                     )}
+
                     <div id="kc-form-options" className={kcClsx("kcFormOptionsClass")}>
                         <div className={kcClsx("kcFormOptionsWrapperClass")}>
                             <Info>
                                 {msg("alreadyHaveAnAccountRegister")}
-                                <Link href={url.loginUrl}>{msg("backToLogin")}</Link>
+                                <Link href={url.loginUrl}>{msg("backToLogin")}</Link>.
                             </Info>
                         </div>
                     </div>
