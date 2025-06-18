@@ -132,7 +132,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         />
                                     </PasswordWrapper>
                                     {usernameHidden && messagesPerField.existsError("username", "password") && (
-                                        <span
+                                        <ValidationMessage
                                             id="input-error"
                                             className={kcClsx("kcInputErrorMessageClass")}
                                             aria-live="polite"
