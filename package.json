@@ -1,6 +1,6 @@
 {
     "name": "ol-keycloakify",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "description": "Keycloakify theme for Open Learning",
     "repository": {
         "type": "git",
