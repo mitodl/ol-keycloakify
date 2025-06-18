@@ -29,7 +29,69 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             emailVerifyInstruction4:
                 "Please contact our MIT Learn Customer Support Center", // TODO "Customer Support Center" link (existing not working in Prod)
             createPassword: "Create Password",
-            termsOfService: "Terms of Service"
+            termsOfService: "Terms of Service",
+
+            // From ol-keycloak https://github.com/mitodl/ol-keycloak/blob/main/ol-keycloak/oltheme/src/main/resources/theme/ol/email/messages/messages_en.properties
+            doRegisterSubmit: "Sign Up",
+            registerInstruction: "Enter your information to sign up",
+            registerLegalAgreementText: "By creating an account I agree to the",
+            registerTermsOfService: "Terms of Service",
+            registerPrivacyPolicy: "Privacy Policy",
+            "ol-linked-identity-provider-label": "You already have a login with",
+            // doResetPasswordSubmit: "Next",
+            resetPasswordSubtitle: "Enter your email for a password reset link.",
+            emailForgotSubtitle: "Enter your email for a password reset link.",
+            logInRegister: "Log In",
+            loginSubtitle: "Please enter your email address.",
+            loginUsernameSubtitle: "Choose one of the options to log in",
+            forgotPasswordSendResetEmail: "Send Reset Email",
+            emailVerifyResend: "Resend Email",
+            emailVerifySupportLinkTitle: "Customer Support Center",
+            passwordRequiredTitle: "Password Required.",
+            passwordRequiredText:
+                "For security reasons you will need to create a new password for your account.",
+            passwordRequiredUnableText:
+                "Unable to log you in - you have no password and password reset is disabled by the administrator.",
+            and: "and",
+            touchstoneAtMIT: "Use Touchstone@MIT",
+            // doLogIn: "Next",
+            doRegisterSecurityKey: "Sign up",
+            loginTitle: "MIT Learn",
+            loginTitleHtml: "Open Learning",
+            loginTimeout:
+                "Your sign in attempt timed out.  Sign in will start from the beginning.",
+            browserRequired: "Browser required to sign in",
+            usernameOrEmail: "Email",
+            fullName: "Full name",
+            restartLoginTooltip: "Restart sign in",
+            loginChooseAuthenticator: "Select sign in method",
+            // backToLogin: "&laquo; Back to Log In",
+            pageExpiredMsg1: "To restart the sign in process",
+            pageExpiredMsg2: "To continue the sign in process",
+            invalidUsernameOrEmailMessage:
+                " We do not have an account for that email on record. Please try another email or sign up for free.",
+            invalidPasswordMessage:
+                "The password you have entered is incorrect. Please try again or select Forgot Password below.",
+            expiredCodeMessage: "Sign in timeout. Please sign in again.",
+            expiredActionMessage: "Action expired. Please continue with sign in now.",
+            federatedIdentityExistsMessage:
+                "User with {0} {1} already exists. Please sign in to account management to link the account.",
+            emailSentMessage:
+                "We''ve emailed your instructions for setting your password.  You should receive them shortly.",
+            delegationCompleteHeader: "Sign In Successful",
+            delegationFailedHeader: "Sign In Failed",
+            delegationFailedMessage:
+                "You may close this browser window and go back to your console application and try signing in again.",
+            invalidCodeMessage:
+                "An error occurred, please sign in again through your application.",
+            identityProviderLinkSuccess:
+                "You successfully verified your email. Please go back to your original browser and continue there with the sign in.",
+            staleCodeMessage:
+                "This page is no longer valid, please go back to your application and sign in again",
+            "password-help-text": "Sign in by entering your password.",
+            "auth-username-form-help-text": "Start sign in by entering your username",
+            "auth-username-password-form-help-text":
+                "Sign in by entering your username and password."
         }
     })
     .build();

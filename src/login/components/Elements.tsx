@@ -67,7 +67,8 @@ export const Message = styled.div(({ theme }) => ({
 export const ValidationMessage = styled.span(({ theme }) => ({
     ...theme.typography.body2,
     color: theme.custom.colors.red,
-    marginTop: "8px"
+    marginTop: "4px",
+    display: "block"
 }));
 
 export const Info = styled.div(({ theme }) => ({
