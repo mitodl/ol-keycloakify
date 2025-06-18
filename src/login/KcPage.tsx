@@ -14,6 +14,7 @@ import LoginResetPassword from "./pages/LoginResetPassword";
 import LoginPassword from "./pages/LoginPassword";
 import LoginUpdatePassword from "./pages/LoginUpdatePassword";
 import LoginVerifyEmail from "./pages/LoginVerifyEmail";
+import LoginPageExpired from "./pages/LoginPageExpired";
 
 // const UserProfileFormFields = lazy(
 //     () => import("./UserProfileFormFields")
@@ -85,6 +86,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         case "login-verify-email.ftl":
                             return (
                                 <LoginVerifyEmail
+                                    {...{ kcContext, i18n, classes }}
+                                    Template={Template}
+                                    doUseDefaultCss={false}
+                                />
+                            );
+                        case "login-page-expired.ftl":
+                            return (
+                                <LoginPageExpired
                                     {...{ kcContext, i18n, classes }}
                                     Template={Template}
                                     doUseDefaultCss={false}
