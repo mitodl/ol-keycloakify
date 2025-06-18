@@ -7,7 +7,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
     .withThemeName<ThemeName>()
     .withCustomTranslations({
         en: {
-            doLogIn: "Log in",
+            doLogIn: "Next",
             loginAccountTitle: "Log in",
             loginGreeting: "Hello, {0}",
             noAccount: "Don't have an account? ",
@@ -54,7 +54,6 @@ const { useI18n, ofTypeI18n } = i18nBuilder
                 "Unable to log you in - you have no password and password reset is disabled by the administrator.",
             and: "and",
             touchstoneAtMIT: "Use Touchstone@MIT",
-            // doLogIn: "Next",
             doRegisterSecurityKey: "Sign up",
             loginTitle: "MIT Learn",
             loginTitleHtml: "Open Learning",

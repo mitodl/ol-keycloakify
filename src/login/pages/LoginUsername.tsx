@@ -28,7 +28,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
             classes={classes}
             displayMessage={!messagesPerField.existsError("username")}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
-            headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("doLogIn")}
+            headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("loginAccountTitle")}
             infoNode={
                 <div id="kc-registration">
                     <Info>
