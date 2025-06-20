@@ -57,3 +57,5 @@ yarn keycloakify start-keycloak
 # GitHub Actions
 
 The GitHub Actions CI will produce a release when the package.json version is bumped. The CI/CD pipeline at <https://cicd.odl.mit.edu/teams/infrastructure/pipelines/docker-packer-pulumi-keycloak> pulls the output JAR from the release assets, see <https://github.com/mitodl/ol-keycloakify/releases>.
+
+The Storybook build publishes to GitHub Pages at <https://mitodl.github.io/ol-keycloakify>
