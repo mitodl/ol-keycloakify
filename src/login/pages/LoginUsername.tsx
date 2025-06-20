@@ -6,6 +6,7 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Link, Label, Input, Button, Form, ValidationMessage, Info, SocialProviderButtonLink, OrBar } from "../components/Elements";
 import mitLogo from "../components/mit-logo.svg";
+
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -104,26 +105,6 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                     )}
                                 </div>
                             )}
-                            {/*
-                            <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
-                                <div id="kc-form-options">
-                                    {realm.rememberMe && !usernameHidden && (
-                                        <div className="checkbox">
-                                            <label>
-                                                <input
-                                                    tabIndex={3}
-                                                    id="rememberMe"
-                                                    name="rememberMe"
-                                                    type="checkbox"
-                                                    defaultChecked={!!login.rememberMe}
-                                                />{" "}
-                                                {msg("rememberMe")}
-                                            </label>
-                                        </div>
-                                    )}
-                                </div>
-                            </div> */}
-
                             <div id="kc-form-buttons" className={kcClsx("kcFormGroupClass")}>
                                 <Button
                                     tabIndex={4}

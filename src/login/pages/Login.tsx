@@ -8,6 +8,7 @@ import type { I18n } from "../i18n";
 import { Link, Label, Input, Button, Form, ValidationMessage, Info, ButtonLink, SocialProviderButtonLink, OrBar } from "../components/Elements";
 import { PasswordWrapper } from "../components/PasswordWrapper";
 import mitLogo from "../components/mit-logo.svg";
+
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -143,22 +144,6 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     )}
                                 </div>
                                 <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
-                                    {/* <div id="kc-form-options">
-                                    {realm.rememberMe && !usernameHidden && (
-                                        <div className="checkbox">
-                                            <label>
-                                                <input
-                                                    tabIndex={5}
-                                                    id="rememberMe"
-                                                    name="rememberMe"
-                                                    type="checkbox"
-                                                    defaultChecked={!!login.rememberMe}
-                                                />{" "}
-                                                {msg("rememberMe")}
-                                            </label>
-                                        </div>
-                                    )}
-                                </div> */}
                                     <div className={kcClsx("kcFormOptionsWrapperClass")}>
                                         {realm.resetPasswordAllowed && (
                                             <span>

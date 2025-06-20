@@ -92,7 +92,6 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                     </div>
                 </div>
                 <div className={kcClsx("kcFormGroupClass")}>
-                    {/* <LogoutOtherSessions kcClsx={kcClsx} i18n={i18n} /> */}
                     <div id="kc-form-buttons" className={kcClsx("kcFormButtonsClass")}>
                         <Button
                             className={kcClsx(
@@ -122,24 +121,3 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
         </Template>
     );
 }
-
-/*
-    function LogoutOtherSessions(props: { kcClsx: KcClsx; i18n: I18n }) {
-    const { kcClsx, i18n } = props;
-
-    const { msg } = i18n;
-
-    return (
-        <div id="kc-form-options" className={kcClsx("kcFormOptionsClass")}>
-            <div className={kcClsx("kcFormOptionsWrapperClass")}>
-                <div className="checkbox">
-                    <label>
-                        <input type="checkbox" id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} />
-                        {msg("logoutOtherSessions")}
-                    </label>
-                </div>
-            </div>
-        </div>
-    );
-}
-*/

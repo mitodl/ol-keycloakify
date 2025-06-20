@@ -25,9 +25,9 @@ yarn install # Or use an other package manager, just be sure to delete the yarn.
 You need to have [Maven](https://maven.apache.org/) installed to build the theme (Maven >= 3.1.1, Java >= 7).
 The `mvn` command must be in the $PATH.
 
--   On macOS: `brew install maven`
--   On Debian/Ubuntu: `sudo apt-get install maven`
--   On Windows: `choco install openjdk` and `choco install maven` (Or download from [here](https://maven.apache.org/download.cgi))
+- On macOS: `brew install maven`
+- On Debian/Ubuntu: `sudo apt-get install maven`
+- On Windows: `choco install openjdk` and `choco install maven` (Or download from [here](https://maven.apache.org/download.cgi))
 
 ```bash
 yarn build-keycloak-theme
@@ -56,9 +56,4 @@ yarn keycloakify start-keycloak
 
 # GitHub Actions
 
-The starter comes with a generic GitHub Actions workflow that builds the theme and publishes
-the jars [as GitHub releases artifacts](https://github.com/mitodl/ol-keycloakify/releases/tag/v10.0.0).
-To release a new version **just update the `package.json` version and push**.
-
-To enable the workflow go to your fork of this repository on GitHub then navigate to:
-`Settings` > `Actions` > `Workflow permissions`, select `Read and write permissions`.
+The GitHub Actions CI will produce a release when the package.json version is bumped. The CI/CD pipeline at <https://cicd.odl.mit.edu/teams/infrastructure/pipelines/docker-packer-pulumi-keycloak> pulls the output JAR from the release assets, see <https://github.com/mitodl/ol-keycloakify/releases>.

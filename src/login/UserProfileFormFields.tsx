@@ -291,17 +291,6 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
                 placeholder={
                     attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
                 }
-                // pattern={attribute.annotations.inputTypePattern}
-                // size={attribute.annotations.inputTypeSize === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeSize}`)}
-                // maxLength={
-                //     attribute.annotations.inputTypeMaxlength === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeMaxlength}`)
-                // }
-                // minLength={
-                //     attribute.annotations.inputTypeMinlength === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeMinlength}`)
-                // }
-                // max={attribute.annotations.inputTypeMax}
-                // min={attribute.annotations.inputTypeMin}
-                // step={attribute.annotations.inputTypeStep}
                 {...Object.fromEntries(Object.entries(attribute.html5DataAnnotations ?? {}).map(([key, value]) => [`data-${key}`, value]))}
                 onChange={event =>
                     dispatchFormAction({

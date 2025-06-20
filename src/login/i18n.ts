@@ -64,7 +64,6 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             fullName: "Full name",
             restartLoginTooltip: "Restart sign in",
             loginChooseAuthenticator: "Select sign in method",
-            // backToLogin: "&laquo; Back to Log In",
             pageExpiredMsg1: "To restart the sign in process",
             pageExpiredMsg2: "To continue the sign in process",
             invalidUsernameOrEmailMessage:

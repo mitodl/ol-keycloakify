@@ -22,7 +22,6 @@ export default function LoginVerifyEmail(props: PageProps<Extract<KcContext, { p
                 <>
                     <Paragraph className="instruction">{msg("emailVerifyInstruction2")}</Paragraph>
                     <hr />
-                    {/* <Link href={url.loginAction}>{msg("doClickHere")}</Link> */}
                     <Paragraph>{msg("emailVerifyInstruction3")}</Paragraph>
                     <Paragraph>
                         <strong>{msg("emailVerifyInstruction4Bold")}</strong>

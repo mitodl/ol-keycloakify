@@ -102,49 +102,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <Container className={kcClsx("kcLoginClass")}>
-            {/* <div id="kc-header" className={kcClsx("kcHeaderClass")}>
-                <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
-                    {msg("loginTitleHtml", realm.displayNameHtml)}
-                </div>
-            </div> */}
-
             <Card className={kcClsx("kcFormCardClass")}>
                 <Header className={kcClsx("kcFormHeaderClass")}>
                     <Logos homeUrl={olSettings?.homeUrl} />
-                    {/* {enabledLanguages.length > 1 && (
-                        <div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
-                            <div id="kc-locale-wrapper" className={kcClsx("kcLocaleWrapperClass")}>
-                                <div id="kc-locale-dropdown" className={clsx("menu-button-links", kcClsx("kcLocaleDropDownClass"))}>
-                                    <button
-                                        tabIndex={1}
-                                        id="kc-current-locale-link"
-                                        aria-label={msgStr("languages")}
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        aria-controls="language-switch1"
-                                    >
-                                        {currentLanguage.label}
-                                    </button>
-                                    <ul
-                                        role="menu"
-                                        tabIndex={-1}
-                                        aria-labelledby="kc-current-locale-link"
-                                        aria-activedescendant=""
-                                        id="language-switch1"
-                                        className={kcClsx("kcLocaleListClass")}
-                                    >
-                                        {enabledLanguages.map(({ languageTag, label, href }, i) => (
-                                            <li key={languageTag} className={kcClsx("kcLocaleListItemClass")} role="none">
-                                                <a role="menuitem" id={`language-${i + 1}`} className={kcClsx("kcLocaleItemClass")} href={href}>
-                                                    {label}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    )} */}
                     {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
                     {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
                         <div
@@ -159,20 +119,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                     )}
                     {(() => {
                         const node = (
-                            // !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                             <Title id="kc-page-title" variant="h4">
                                 {headerNode}
                             </Title>
-                            // ) : (
-                            //     <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
-                            //         <label id="kc-attempted-username">{auth.attemptedUsername}</label>
-                            //         <Link id="reset-login" href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
-                            //             <div className="kc-login-tooltip">
-                            //                 <i className={kcClsx("kcResetFlowIcon")}></i>
-                            //                 <span className="kc-tooltip-text">{msg("restartLoginTooltip")}</span>
-                            //             </div>
-                            //         </Link>
-                            //     </div>
                         );
 
                         if (displayRequiredFields) {

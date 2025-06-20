@@ -16,10 +16,6 @@ import LoginUpdatePassword from "./pages/LoginUpdatePassword";
 import LoginVerifyEmail from "./pages/LoginVerifyEmail";
 import LoginPageExpired from "./pages/LoginPageExpired";
 
-// const UserProfileFormFields = lazy(
-//     () => import("./UserProfileFormFields")
-// );
-
 const doMakeUserConfirmPassword = true;
 
 export default function KcPage(props: { kcContext: KcContext }) {
