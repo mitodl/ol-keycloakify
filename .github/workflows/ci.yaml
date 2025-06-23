@@ -19,9 +19,6 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
 
-      - name: Enable Corepack
-        run: corepack enable
-
       - name: Lints
         run: yarn run lint
 
