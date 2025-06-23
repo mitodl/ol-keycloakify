@@ -14,8 +14,15 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4
-            - uses: bahmutov/npm-install@v1
-            - run: npm run build-keycloak-theme
+              with:
+                  node-version: "^22.0.0"
+                  cache: yarn
+                  cache-dependency-path: yarn.lock
+
+            - name: Lints
+              run: yarn run lint
+
+            - run: yarn build-keycloak-theme
 
     check_if_version_upgraded:
         name: Check if version upgrade

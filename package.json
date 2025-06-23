@@ -16,7 +16,9 @@
         "build-storybook": "storybook build",
         "serve-storybook": "yarn build-storybook && serve -s storybook-static",
         "format": "prettier . --write",
-        "start": "keycloakify start-keycloak"
+        "start": "keycloakify start-keycloak",
+        "lint": "eslint src/",
+        "lint:fix": "yarn lint --fix"
     },
     "license": "MIT",
     "keywords": [],
