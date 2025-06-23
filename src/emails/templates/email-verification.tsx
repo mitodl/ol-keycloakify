@@ -2,8 +2,6 @@ import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { createVariablesHelper } from "keycloakify-emails/variables";
 import { Text, Body, Container, Section, Preview, Html, Head, render } from "jsx-email";
 
-interface TemplateProps extends Omit<GetTemplateProps, "plainText"> {}
-
 const main = {
     backgroundColor: "#f6f9fc",
     fontFamily:
@@ -28,7 +26,7 @@ const paragraph = {
 };
 
 // used by Preview App of jsx-email
-export const previewProps: TemplateProps = {
+export const previewProps: Omit<GetTemplateProps, "plainText"> = {
     locale: "en",
     themeName: "vanilla"
 };
@@ -37,7 +35,7 @@ export const templateName = "Email Verification";
 
 const { exp } = createVariablesHelper("email-verification.ftl");
 
-export const Template = ({ locale }: TemplateProps) => (
+export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
     <Html lang={locale}>
         <Head />
         <Preview>Verification link from {exp("realmName")}</Preview>
@@ -57,7 +55,7 @@ export const Template = ({ locale }: TemplateProps) => (
                         {exp("linkExpirationFormatter(linkExpiration)")}.
                     </Text>
                     <Text style={paragraph}>
-                        If you didn't create this account, just ignore this message.
+                        If you didn&apos;t create this account, just ignore this message.
                     </Text>
                 </Section>
             </Container>
