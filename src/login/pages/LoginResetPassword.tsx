@@ -1,4 +1,3 @@
-import { getKcClsx } from "keycloakify/login/lib/kcClsx"
 import { kcSanitize } from "keycloakify/lib/kcSanitize"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
@@ -7,11 +6,6 @@ import { Button, Input, Label, Form, ValidationMessage, Subtitle } from "../comp
 
 export default function LoginResetPassword(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
-
-  const { kcClsx } = getKcClsx({
-    doUseDefaultCss,
-    classes
-  })
 
   const { url, realm, auth, messagesPerField } = kcContext
 
@@ -28,19 +22,18 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
       headerNode={msg("emailForgotTitle")}
     >
       <Subtitle>{realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}</Subtitle>
-      <Form id="kc-reset-password-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
-        <div className={kcClsx("kcFormGroupClass")}>
-          <div className={kcClsx("kcLabelWrapperClass")}>
-            <Label htmlFor="username" className={kcClsx("kcLabelClass")}>
+      <Form id="kc-reset-password-form" action={url.loginAction} method="post">
+        <div>
+          <div>
+            <Label htmlFor="username">
               {!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
             </Label>
           </div>
-          <div className={kcClsx("kcInputWrapperClass")}>
+          <div>
             <Input
               type="text"
               id="username"
               name="username"
-              className={kcClsx("kcInputClass")}
               autoFocus
               defaultValue={auth.attemptedUsername ?? ""}
               aria-invalid={messagesPerField.existsError("username")}
@@ -48,7 +41,6 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
             {messagesPerField.existsError("username") && (
               <ValidationMessage
                 id="input-error-username"
-                className={kcClsx("kcInputErrorMessageClass")}
                 aria-live="polite"
                 dangerouslySetInnerHTML={{
                   __html: kcSanitize(messagesPerField.get("username"))
@@ -57,13 +49,9 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
             )}
           </div>
         </div>
-        <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
-          <div id="kc-form-buttons" className={kcClsx("kcFormButtonsClass")}>
-            <Button
-              className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
-              type="submit"
-              size="large"
-            >
+        <div>
+          <div id="kc-form-buttons">
+            <Button type="submit" size="large">
               {msgStr("doResetPasswordSubmit")}
             </Button>
           </div>

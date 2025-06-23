@@ -14,8 +14,8 @@ import type { I18n } from "./i18n"
 import { Input, Label, ValidationMessage } from "./components/Elements"
 import { PasswordWrapper } from "./components/PasswordWrapper"
 
-export default function UserProfileFormFields(props: UserProfileFormFieldsProps<KcContext, I18n>) {
-  const { kcContext, i18n, kcClsx, onIsFormSubmittableValueChange, doMakeUserConfirmPassword, BeforeField, AfterField } = props
+export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx">) {
+  const { kcContext, i18n, onIsFormSubmittableValueChange, doMakeUserConfirmPassword, BeforeField, AfterField } = props
 
   const { advancedMsg } = i18n
 
@@ -42,19 +42,18 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
         }
         return (
           <Fragment key={attribute.name}>
-            <GroupLabel attribute={attribute} groupNameRef={groupNameRef} i18n={i18n} kcClsx={kcClsx} />
+            <GroupLabel attribute={attribute} groupNameRef={groupNameRef} i18n={i18n} />
             {BeforeField !== undefined && (
               <BeforeField
                 attribute={attribute}
                 dispatchFormAction={dispatchFormAction}
                 displayableErrors={displayableErrors}
                 valueOrValues={valueOrValues}
-                kcClsx={kcClsx}
+                kcClsx={(() => {}) as KcClsx}
                 i18n={i18n}
               />
             )}
             <div
-              className={kcClsx("kcFormGroupClass")}
               style={{
                 display:
                   attribute.annotations.inputType === "hidden" || (attribute.name === "password-confirm" && !doMakeUserConfirmPassword)
@@ -62,15 +61,13 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                     : undefined
               }}
             >
-              <div className={kcClsx("kcLabelWrapperClass")}>
-                <Label htmlFor={attribute.name} className={kcClsx("kcLabelClass")}>
-                  {advancedMsg(attribute.displayName ?? "")}
-                </Label>
+              <div>
+                <Label htmlFor={attribute.name}>{advancedMsg(attribute.displayName ?? "")}</Label>
                 {/* {attribute.required && <> *</>} */}
               </div>
-              <div className={kcClsx("kcInputWrapperClass")}>
+              <div>
                 {attribute.annotations.inputHelperTextBefore !== undefined && (
-                  <div className={kcClsx("kcInputHelperTextBeforeClass")} id={`form-help-text-before-${attribute.name}`} aria-live="polite">
+                  <div id={`form-help-text-before-${attribute.name}`} aria-live="polite">
                     {advancedMsg(attribute.annotations.inputHelperTextBefore)}
                   </div>
                 )}
@@ -79,16 +76,11 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                   valueOrValues={valueOrValues}
                   displayableErrors={displayableErrors}
                   dispatchFormAction={dispatchFormAction}
-                  kcClsx={kcClsx}
                   i18n={i18n}
                 />
-                <FieldErrors attribute={attribute} displayableErrors={displayableErrors} kcClsx={kcClsx} fieldIndex={undefined} />
+                <FieldErrors attribute={attribute} displayableErrors={displayableErrors} fieldIndex={undefined} />
                 {attribute.annotations.inputHelperTextAfter !== undefined && (
-                  <ValidationMessage
-                    className={kcClsx("kcInputHelperTextAfterClass")}
-                    id={`form-help-text-after-${attribute.name}`}
-                    aria-live="polite"
-                  >
+                  <ValidationMessage id={`form-help-text-after-${attribute.name}`} aria-live="polite">
                     {advancedMsg(attribute.annotations.inputHelperTextAfter)}
                   </ValidationMessage>
                 )}
@@ -98,8 +90,8 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                     dispatchFormAction={dispatchFormAction}
                     displayableErrors={displayableErrors}
                     valueOrValues={valueOrValues}
-                    kcClsx={kcClsx}
                     i18n={i18n}
+                    kcClsx={(() => {}) as KcClsx}
                   />
                 )}
                 {/* NOTE: Downloading of html5DataAnnotations scripts is done in the useUserProfileForm hook */}
@@ -118,9 +110,8 @@ function GroupLabel(props: {
     current: string
   }
   i18n: I18n
-  kcClsx: KcClsx
 }) {
-  const { attribute, groupNameRef, i18n, kcClsx } = props
+  const { attribute, groupNameRef, i18n } = props
 
   const { advancedMsg } = i18n
 
@@ -131,17 +122,14 @@ function GroupLabel(props: {
       assert(attribute.group !== undefined)
 
       return (
-        <div
-          className={kcClsx("kcFormGroupClass")}
-          {...Object.fromEntries(Object.entries(attribute.group.html5DataAnnotations).map(([key, value]) => [`data-${key}`, value]))}
-        >
+        <div {...Object.fromEntries(Object.entries(attribute.group.html5DataAnnotations).map(([key, value]) => [`data-${key}`, value]))}>
           {(() => {
             const groupDisplayHeader = attribute.group.displayHeader ?? ""
             const groupHeaderText = groupDisplayHeader !== "" ? advancedMsg(groupDisplayHeader) : attribute.group.name
 
             return (
-              <div className={kcClsx("kcContentWrapperClass")}>
-                <Label id={`header-${attribute.group.name}`} className={kcClsx("kcFormGroupHeader")} style={{ fontWeight: "bold" }}>
+              <div>
+                <Label id={`header-${attribute.group.name}`} style={{ fontWeight: "bold" }}>
                   {groupHeaderText}
                 </Label>
               </div>
@@ -154,10 +142,8 @@ function GroupLabel(props: {
               const groupDescriptionText = advancedMsg(groupDisplayDescription)
 
               return (
-                <div className={kcClsx("kcLabelWrapperClass")}>
-                  <Label id={`description-${attribute.group.name}`} className={kcClsx("kcLabelClass")}>
-                    {groupDescriptionText}
-                  </Label>
+                <div>
+                  <Label id={`description-${attribute.group.name}`}>{groupDescriptionText}</Label>
                 </div>
               )
             }
@@ -172,8 +158,8 @@ function GroupLabel(props: {
   return null
 }
 
-function FieldErrors(props: { attribute: Attribute; displayableErrors: FormFieldError[]; fieldIndex: number | undefined; kcClsx: KcClsx }) {
-  const { attribute, fieldIndex, kcClsx } = props
+function FieldErrors(props: { attribute: Attribute; displayableErrors: FormFieldError[]; fieldIndex: number | undefined }) {
+  const { attribute, fieldIndex } = props
 
   const displayableErrors = props.displayableErrors.filter(error => error.fieldIndex === fieldIndex)
 
@@ -182,11 +168,7 @@ function FieldErrors(props: { attribute: Attribute; displayableErrors: FormField
   }
 
   return (
-    <span
-      id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`}
-      className={kcClsx("kcInputErrorMessageClass")}
-      aria-live="polite"
-    >
+    <span id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`} aria-live="polite">
       {displayableErrors
         .filter(error => error.fieldIndex === fieldIndex)
         .map(({ errorMessage }, i, arr) => (
@@ -205,7 +187,6 @@ type InputFieldByTypeProps = {
   displayableErrors: FormFieldError[]
   dispatchFormAction: React.Dispatch<FormAction>
   i18n: I18n
-  kcClsx: KcClsx
 }
 
 function InputFieldByType(props: InputFieldByTypeProps) {
@@ -239,7 +220,7 @@ function InputFieldByType(props: InputFieldByTypeProps) {
 
       if (attribute.name === "password" || attribute.name === "password-confirm") {
         return (
-          <PasswordWrapper kcClsx={props.kcClsx} i18n={props.i18n} passwordInputId={attribute.name}>
+          <PasswordWrapper i18n={props.i18n} passwordInputId={attribute.name}>
             {inputNode}
           </PasswordWrapper>
         )
@@ -251,7 +232,7 @@ function InputFieldByType(props: InputFieldByTypeProps) {
 }
 
 function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefined }) {
-  const { attribute, fieldIndex, kcClsx, dispatchFormAction, valueOrValues, i18n, displayableErrors } = props
+  const { attribute, fieldIndex, dispatchFormAction, valueOrValues, i18n, displayableErrors } = props
 
   const { advancedMsgStr } = i18n
 
@@ -279,7 +260,6 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
           return valueOrValues
         })()}
-        className={kcClsx("kcInputClass")}
         aria-invalid={displayableErrors.find(error => error.fieldIndex === fieldIndex) !== undefined}
         disabled={attribute.readOnly}
         autoComplete={attribute.autocomplete}
@@ -327,7 +307,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
         return (
           <>
-            <FieldErrors attribute={attribute} kcClsx={kcClsx} displayableErrors={displayableErrors} fieldIndex={fieldIndex} />
+            <FieldErrors attribute={attribute} displayableErrors={displayableErrors} fieldIndex={fieldIndex} />
             <AddRemoveButtonsMultiValuedAttribute
               attribute={attribute}
               values={values}
@@ -399,9 +379,9 @@ function AddRemoveButtonsMultiValuedAttribute(props: {
 }
 
 function InputTagSelects(props: InputFieldByTypeProps) {
-  const { attribute, dispatchFormAction, kcClsx, i18n, valueOrValues } = props
+  const { attribute, dispatchFormAction, i18n, valueOrValues } = props
 
-  const { classDiv, classInput, classLabel, inputType } = (() => {
+  const { inputType } = (() => {
     const { inputType } = attribute.annotations
 
     assert(inputType === "select-radiobuttons" || inputType === "multiselect-checkboxes")
@@ -409,17 +389,11 @@ function InputTagSelects(props: InputFieldByTypeProps) {
     switch (inputType) {
       case "select-radiobuttons":
         return {
-          inputType: "radio",
-          classDiv: kcClsx("kcInputClassRadio"),
-          classInput: kcClsx("kcInputClassRadioInput"),
-          classLabel: kcClsx("kcInputClassRadioLabel")
+          inputType: "radio"
         }
       case "multiselect-checkboxes":
         return {
-          inputType: "checkbox",
-          classDiv: kcClsx("kcInputClassCheckbox"),
-          classInput: kcClsx("kcInputClassCheckboxInput"),
-          classLabel: kcClsx("kcInputClassCheckboxLabel")
+          inputType: "checkbox"
         }
     }
   })()
@@ -451,13 +425,12 @@ function InputTagSelects(props: InputFieldByTypeProps) {
   return (
     <>
       {options.map(option => (
-        <div key={option} className={classDiv}>
+        <div key={option}>
           <input
             type={inputType}
             id={`${attribute.name}-${option}`}
             name={attribute.name}
             value={option}
-            className={classInput}
             aria-invalid={props.displayableErrors.length !== 0}
             disabled={attribute.readOnly}
             checked={valueOrValues instanceof Array ? valueOrValues.includes(option) : valueOrValues === option}
@@ -492,12 +465,7 @@ function InputTagSelects(props: InputFieldByTypeProps) {
               })
             }
           />
-          <Label
-            htmlFor={`${attribute.name}-${option}`}
-            className={`${classLabel}${attribute.readOnly ? ` ${kcClsx("kcInputClassRadioCheckboxLabelDisabled")}` : ""}`}
-          >
-            {inputLabel(i18n, attribute, option)}
-          </Label>
+          <Label htmlFor={`${attribute.name}-${option}`}>{inputLabel(i18n, attribute, option)}</Label>
         </div>
       ))}
     </>
@@ -505,7 +473,7 @@ function InputTagSelects(props: InputFieldByTypeProps) {
 }
 
 function TextareaTag(props: InputFieldByTypeProps) {
-  const { attribute, dispatchFormAction, kcClsx, displayableErrors, valueOrValues } = props
+  const { attribute, dispatchFormAction, displayableErrors, valueOrValues } = props
 
   assert(typeof valueOrValues === "string")
 
@@ -515,7 +483,6 @@ function TextareaTag(props: InputFieldByTypeProps) {
     <textarea
       id={attribute.name}
       name={attribute.name}
-      className={kcClsx("kcInputClass")}
       aria-invalid={displayableErrors.length !== 0}
       disabled={attribute.readOnly}
       cols={attribute.annotations.inputTypeCols === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeCols}`)}
@@ -541,7 +508,7 @@ function TextareaTag(props: InputFieldByTypeProps) {
 }
 
 function SelectTag(props: InputFieldByTypeProps) {
-  const { attribute, dispatchFormAction, kcClsx, displayableErrors, i18n, valueOrValues } = props
+  const { attribute, dispatchFormAction, displayableErrors, i18n, valueOrValues } = props
 
   const isMultiple = attribute.annotations.inputType === "multiselect"
 
@@ -549,7 +516,6 @@ function SelectTag(props: InputFieldByTypeProps) {
     <select
       id={attribute.name}
       name={attribute.name}
-      className={kcClsx("kcInputClass")}
       aria-invalid={displayableErrors.length !== 0}
       disabled={attribute.readOnly}
       multiple={isMultiple}

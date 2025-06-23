@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import { KcClsx } from "keycloakify/login/lib/kcClsx"
 import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed"
 import { RiEyeLine, RiEyeOffLine } from "@remixicon/react"
 import { I18n } from "../i18n"
@@ -30,12 +29,10 @@ const AdornmentButton = styled.button(({ theme }) => ({
 }))
 
 export const PasswordWrapper = ({
-  kcClsx,
   i18n,
   passwordInputId,
   children
 }: {
-  kcClsx: KcClsx
   i18n: I18n
   passwordInputId: string
   children: JSX.Element
@@ -47,23 +44,15 @@ export const PasswordWrapper = ({
   })
 
   return (
-    <div className={kcClsx("kcInputGroup")} style={{ position: "relative" }}>
+    <div style={{ position: "relative" }}>
       {children}
       <AdornmentButton
         type="button"
-        className={kcClsx("kcFormPasswordVisibilityButtonClass")}
         aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
         aria-controls={passwordInputId}
         onClick={toggleIsPasswordRevealed}
       >
-        {isPasswordRevealed ? (
-          <RiEyeLine className={kcClsx("kcFormPasswordVisibilityIconHide")} aria-hidden />
-        ) : (
-          <RiEyeOffLine
-            className={kcClsx("kcFormPasswordVisibilityIconShow")}
-            aria-hidden
-          />
-        )}
+        {isPasswordRevealed ? <RiEyeLine aria-hidden /> : <RiEyeOffLine aria-hidden />}
       </AdornmentButton>
     </div>
   )

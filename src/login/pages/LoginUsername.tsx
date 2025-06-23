@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { clsx } from "keycloakify/tools/clsx"
-import { getKcClsx } from "keycloakify/login/lib/kcClsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
@@ -9,11 +8,6 @@ import mitLogo from "../components/mit-logo.svg"
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
-
-  const { kcClsx } = getKcClsx({
-    doUseDefaultCss,
-    classes
-  })
 
   const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, loginAttempt } = kcContext
 
@@ -43,13 +37,13 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
       socialProvidersNode={
         <>
           {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
-            <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
+            <div id="kc-social-providers">
               <OrBar />
               {social.providers.map(p => (
                 <SocialProviderButtonLink key={p.alias} id={`social-${p.alias}`} type="button" href={p.loginUrl} variant="bordered" size="large">
-                  {p.iconClasses && <i className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses)} aria-hidden="true"></i>}
+                  {p.iconClasses && <i className={clsx(p.iconClasses)} aria-hidden="true"></i>}
                   {p.alias === "touchstone-idp" ? <img src={mitLogo} alt="MIT Logo" width={29} /> : null}
-                  <span className={clsx(kcClsx("kcFormSocialAccountNameClass"), p.iconClasses && "kc-social-icon-text")}>{p.displayName}</span>
+                  <span className={clsx(p.iconClasses && "kc-social-icon-text")}>{p.displayName}</span>
                 </SocialProviderButtonLink>
               ))}
             </div>
@@ -70,14 +64,13 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
               method="post"
             >
               {!usernameHidden && (
-                <div className={kcClsx("kcFormGroupClass")}>
-                  <Label htmlFor="username" className={kcClsx("kcLabelClass")}>
+                <div>
+                  <Label htmlFor="username">
                     {!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
                   </Label>
                   <Input
                     tabIndex={2}
                     id="username"
-                    className={kcClsx("kcInputClass")}
                     name="username"
                     defaultValue={login.username ?? ""}
                     type="text"
@@ -86,22 +79,14 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                     aria-invalid={messagesPerField.existsError("username")}
                   />
                   {messagesPerField.existsError("username") && (
-                    <ValidationMessage id="input-error" className={kcClsx("kcInputErrorMessageClass")} aria-live="polite">
+                    <ValidationMessage id="input-error" aria-live="polite">
                       {messagesPerField.getFirstError("username")}
                     </ValidationMessage>
                   )}
                 </div>
               )}
-              <div id="kc-form-buttons" className={kcClsx("kcFormGroupClass")}>
-                <Button
-                  tabIndex={4}
-                  disabled={isLoginButtonDisabled}
-                  className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
-                  name="login"
-                  id="kc-login"
-                  type="submit"
-                  size="large"
-                >
+              <div id="kc-form-buttons">
+                <Button tabIndex={4} disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" size="large">
                   Next
                 </Button>
               </div>

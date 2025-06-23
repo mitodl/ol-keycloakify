@@ -1,9 +1,6 @@
 import { useEffect } from "react"
-import { clsx } from "keycloakify/tools/clsx"
 import { kcSanitize } from "keycloakify/lib/kcSanitize"
 import type { TemplateProps } from "keycloakify/login/TemplateProps"
-import { getKcClsx } from "keycloakify/login/lib/kcClsx"
-import { useSetClassName } from "keycloakify/tools/useSetClassName"
 import { useInitialize } from "keycloakify/login/Template.useInitialize"
 import type { I18n } from "./i18n"
 import type { KcContext } from "./KcContext"
@@ -64,15 +61,11 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     socialProvidersNode = null,
     infoNode = null,
     documentTitle,
-    bodyClassName,
     kcContext,
     i18n,
     doUseDefaultCss,
-    classes,
     children
   } = props
-
-  const { kcClsx } = getKcClsx({ doUseDefaultCss, classes })
 
   const { msg, msgStr } = i18n
 
@@ -84,16 +77,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     document.title = documentTitle ?? msgStr("loginTitle", realm.displayName)
   }, [])
 
-  useSetClassName({
-    qualifiedName: "html",
-    className: kcClsx("kcHtmlClass")
-  })
-
-  useSetClassName({
-    qualifiedName: "body",
-    className: bodyClassName ?? kcClsx("kcBodyClass")
-  })
-
   const { isReadyToRender } = useInitialize({ kcContext, doUseDefaultCss })
 
   if (!isReadyToRender) {
@@ -101,13 +84,13 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
   }
 
   return (
-    <Container className={kcClsx("kcLoginClass")}>
-      <Card className={kcClsx("kcFormCardClass")}>
-        <Header className={kcClsx("kcFormHeaderClass")}>
+    <Container>
+      <Card>
+        <Header>
           <Logos homeUrl={olSettings?.homeUrl} />
           {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
           {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
-            <div className={clsx(`alert-${message.type}`, kcClsx("kcAlertClass"), `pf-m-${message?.type === "error" ? "danger" : message.type}`)}>
+            <div className={`alert-${message.type} pf-m-${message?.type === "error" ? "danger" : message.type}`}>
               <Alert severity={message.type}>{kcSanitize(message.summary)}</Alert>
             </div>
           )}
@@ -120,8 +103,8 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
             if (displayRequiredFields) {
               return (
-                <div className={kcClsx("kcContentWrapperClass")}>
-                  <div className={clsx(kcClsx("kcLabelWrapperClass"), "subtitle")}>
+                <div>
+                  <div className="subtitle">
                     <span className="subtitle">
                       <span className="required">*</span>
                       {msg("requiredFields")}
@@ -140,7 +123,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             {children}
             {auth !== undefined && auth.showTryAnotherWayLink && (
               <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
-                <div className={kcClsx("kcFormGroupClass")}>
+                <div>
                   <Info>
                     <input type="hidden" name="tryAnotherWay" value="on" />
                     <Link
@@ -158,10 +141,8 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
               </form>
             )}
             {displayInfo && (
-              <div id="kc-info" className={kcClsx("kcSignUpClass")}>
-                <div id="kc-info-wrapper" className={kcClsx("kcInfoAreaWrapperClass")}>
-                  {infoNode}
-                </div>
+              <div id="kc-info">
+                <div id="kc-info-wrapper">{infoNode}</div>
               </div>
             )}
             {socialProvidersNode}

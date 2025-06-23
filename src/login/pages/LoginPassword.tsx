@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { kcSanitize } from "keycloakify/lib/kcSanitize"
-import { clsx } from "keycloakify/tools/clsx"
-import { getKcClsx } from "keycloakify/login/lib/kcClsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
@@ -10,11 +8,6 @@ import { PasswordWrapper } from "../components/PasswordWrapper"
 
 export default function LoginPassword(props: PageProps<Extract<KcContext, { pageId: "login-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
-
-  const { kcClsx } = getKcClsx({
-    doUseDefaultCss,
-    classes
-  })
 
   const { realm, url, messagesPerField, loginAttempt } = kcContext
 
@@ -42,16 +35,13 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
             action={url.loginAction}
             method="post"
           >
-            <div className={clsx(kcClsx("kcFormGroupClass"), "no-bottom-margin")}>
-              <Label htmlFor="password" className={kcClsx("kcLabelClass")}>
-                {msg("password")}
-              </Label>
+            <div>
+              <Label htmlFor="password">{msg("password")}</Label>
 
-              <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password">
+              <PasswordWrapper i18n={i18n} passwordInputId="password">
                 <Input
                   tabIndex={2}
                   id="password"
-                  className={kcClsx("kcInputClass")}
                   name="password"
                   type="password"
                   autoFocus
@@ -63,7 +53,6 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
               {messagesPerField.existsError("password") && (
                 <ValidationMessage
                   id="input-error-password"
-                  className={kcClsx("kcInputErrorMessageClass")}
                   aria-live="polite"
                   dangerouslySetInnerHTML={{
                     __html: kcSanitize(messagesPerField.get("password"))
@@ -71,9 +60,9 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
                 />
               )}
             </div>
-            <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
+            <div>
               <div id="kc-form-options" />
-              <div className={kcClsx("kcFormOptionsWrapperClass")}>
+              <div>
                 {realm.resetPasswordAllowed && (
                   <span>
                     <Link tabIndex={5} href={url.loginResetCredentialsUrl}>
@@ -83,16 +72,8 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
                 )}
               </div>
             </div>
-            <div id="kc-form-buttons" className={kcClsx("kcFormGroupClass")}>
-              <Button
-                tabIndex={4}
-                className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
-                name="login"
-                id="kc-login"
-                type="submit"
-                disabled={isLoginButtonDisabled}
-                size="large"
-              >
+            <div id="kc-form-buttons">
+              <Button tabIndex={4} name="login" id="kc-login" type="submit" disabled={isLoginButtonDisabled} size="large">
                 Next
               </Button>
             </div>
