@@ -19,6 +19,9 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
 
+      - name: Install dependencies
+        run: yarn install --immutable
+
       - name: Lints
         run: yarn run lint
 
