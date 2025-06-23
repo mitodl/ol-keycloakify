@@ -42,7 +42,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
               {social.providers.map(p => (
                 <SocialProviderButtonLink key={p.alias} id={`social-${p.alias}`} type="button" href={p.loginUrl} variant="bordered" size="large">
                   {p.iconClasses && <i className={clsx(p.iconClasses)} aria-hidden="true"></i>}
-                  {p.alias === "touchstone-idp" ? <img src={mitLogo} alt="MIT Logo" width={29} /> : null}
+                  {p.alias === "touchstone-idp" ? <img src={mitLogo} width={29} /> : null}
                   <span className={clsx(p.iconClasses && "kc-social-icon-text")}>{p.displayName}</span>
                 </SocialProviderButtonLink>
               ))}

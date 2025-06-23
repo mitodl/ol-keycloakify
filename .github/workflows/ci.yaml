@@ -23,7 +23,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Format
-        run: yarn run fmt-check
+        run: yarn run format
 
       - name: Lint
         run: yarn run lint
