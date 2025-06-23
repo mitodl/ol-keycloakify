@@ -11,11 +11,11 @@ const Container = styled.div({
 export default function Logos({ homeUrl }: { homeUrl: string }) {
     return (
         <Container>
-            <a href={homeUrl ?? ""}>
-                <img src={mitLearnLogo} alt="MIT Learn Logo" height={24} />
+            <a href={homeUrl ?? ""} title="MIT Learn Homepage">
+                <img src={mitLearnLogo} alt="" height={24} />
             </a>
-            <a href="https://mit.edu">
-                <img src={mitLogo} alt="MIT Logo" height={24} />
+            <a href="https://mit.edu" title="MIT Homepage">
+                <img src={mitLogo} alt="" height={24} />
             </a>
         </Container>
     );
