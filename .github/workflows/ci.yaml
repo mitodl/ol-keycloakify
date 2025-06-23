@@ -28,6 +28,9 @@ jobs:
       - name: Lint
         run: yarn run lint
 
+      - name: Typecheck
+        run: yarn typecheck
+
       - run: yarn build-keycloak-theme
 
   check_if_version_upgraded:

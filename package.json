@@ -16,6 +16,7 @@
     "build-storybook": "storybook build",
     "serve-storybook": "yarn build-storybook && serve -s storybook-static",
     "start": "keycloakify start-keycloak",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint src/emails/ src/login/",
     "lint:fix": "yarn lint --fix",
     "format": "prettier \"src/emails/**/*.{ts,tsx}\" \"src/login/**/*.{ts,tsx}\" --check",
