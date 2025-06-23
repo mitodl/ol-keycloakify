@@ -19,10 +19,13 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
 
-      - name: Install dependencies
+      - name: Install
         run: yarn install --immutable
 
-      - name: Lints
+      - name: Format
+        run: yarn run fmt-check
+
+      - name: Lint
         run: yarn run lint
 
       - run: yarn build-keycloak-theme

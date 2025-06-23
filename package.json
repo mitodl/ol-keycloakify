@@ -15,10 +15,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "serve-storybook": "yarn build-storybook && serve -s storybook-static",
-    "format": "prettier . --write",
     "start": "keycloakify start-keycloak",
     "lint": "eslint src/emails/ src/login/",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "format": "prettier \"src/emails/**/*.{ts,tsx}\" \"src/login/**/*.{ts,tsx}\" --check",
+    "format:fix": "prettier \"src/emails/**/*.{ts,tsx}\" \"src/login/**/*.{ts,tsx}\" --write"
   },
   "license": "MIT",
   "keywords": [],
