@@ -5,7 +5,6 @@ import {
     ButtonLink as SmootButtonLink,
     Alert as SmootAlert
 } from "@mitodl/smoot-design";
-import { pxToRem } from "./typography";
 
 export const Link = styled.a(({ theme }) => ({
     ...theme.typography.body1,
@@ -19,7 +18,7 @@ export const Link = styled.a(({ theme }) => ({
 export const Label = styled.label(({ theme }) => ({
     ...theme.typography.body1,
     display: "block",
-    marginBottom: pxToRem(12)
+    marginBottom: theme.typography.pxToRem(12)
 }));
 
 export const Input = styled(SmootInput)({
