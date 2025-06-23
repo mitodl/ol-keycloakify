@@ -1,33 +1,33 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { createKcPageStory } from "../KcPageStory";
+import type { Meta, StoryObj } from "@storybook/react-vite"
+import { createKcPageStory } from "../KcPageStory"
 
-const { KcPageStory } = createKcPageStory({ pageId: "login-reset-password.ftl" });
+const { KcPageStory } = createKcPageStory({ pageId: "login-reset-password.ftl" })
 
 const meta = {
-    title: "login/login-reset-password.ftl",
-    component: KcPageStory
-} satisfies Meta<typeof KcPageStory>;
+  title: "login/login-reset-password.ftl",
+  component: KcPageStory
+} satisfies Meta<typeof KcPageStory>
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-    render: () => <KcPageStory />
-};
+  render: () => <KcPageStory />
+}
 
 export const WithEmailAsUsername: Story = {
-    render: () => (
-        <KcPageStory
-            kcContext={{
-                realm: {
-                    loginWithEmailAllowed: true,
-                    registrationEmailAsUsername: true
-                }
-            }}
-        />
-    )
-};
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        realm: {
+          loginWithEmailAllowed: true,
+          registrationEmailAsUsername: true
+        }
+      }}
+    />
+  )
+}
 /**
  * WithUsernameError:
  * - Purpose: Tests behavior when an error occurs with the username input (e.g., invalid username).
@@ -35,26 +35,26 @@ export const WithEmailAsUsername: Story = {
  * - Key Aspect: Ensures the username input shows error messages when validation fails.
  */
 export const WithUsernameError: Story = {
-    render: () => (
-        <KcPageStory
-            kcContext={{
-                realm: {
-                    loginWithEmailAllowed: false,
-                    registrationEmailAsUsername: false,
-                    duplicateEmailsAllowed: false
-                },
-                url: {
-                    loginAction: "/mock-login-action",
-                    loginUrl: "/mock-login-url"
-                },
-                messagesPerField: {
-                    existsError: (field: string) => field === "username",
-                    get: () => "Invalid username"
-                },
-                auth: {
-                    attemptedUsername: "invalid_user"
-                }
-            }}
-        />
-    )
-};
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        realm: {
+          loginWithEmailAllowed: false,
+          registrationEmailAsUsername: false,
+          duplicateEmailsAllowed: false
+        },
+        url: {
+          loginAction: "/mock-login-action",
+          loginUrl: "/mock-login-url"
+        },
+        messagesPerField: {
+          existsError: (field: string) => field === "username",
+          get: () => "Invalid username"
+        },
+        auth: {
+          attemptedUsername: "invalid_user"
+        }
+      }}
+    />
+  )
+}

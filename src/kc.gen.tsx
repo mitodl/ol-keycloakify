@@ -7,17 +7,17 @@
 
 // noinspection JSUnusedGlobalSymbols
 
-import { lazy, Suspense, type ReactNode } from "react";
+import { lazy, Suspense, type ReactNode } from "react"
 
-export type ThemeName = "ol-learn" | "ol-data-platform";
+export type ThemeName = "ol-learn" | "ol-data-platform"
 
-export const themeNames: ThemeName[] = ["ol-learn", "ol-data-platform"];
+export const themeNames: ThemeName[] = ["ol-learn", "ol-data-platform"]
 
-export type KcEnvName = never;
+export type KcEnvName = never
 
-export const kcEnvNames: KcEnvName[] = [];
+export const kcEnvNames: KcEnvName[] = []
 
-export const kcEnvDefaults: Record<KcEnvName, string> = {};
+export const kcEnvDefaults: Record<KcEnvName, string> = {}
 
 /**
  * NOTE: Do not import this type except maybe in your entrypoint.
@@ -25,30 +25,30 @@ export const kcEnvDefaults: Record<KcEnvName, string> = {};
  * Depending on the theme type you are working on.
  */
 export type KcContext =
-    | import("./login/KcContext").KcContext
-    | import("./account/KcContext").KcContext;
+  | import("./login/KcContext").KcContext
+  | import("./account/KcContext").KcContext
 
 declare global {
-    interface Window {
-        kcContext?: KcContext;
-    }
+  interface Window {
+    kcContext?: KcContext
+  }
 }
 
-export const KcLoginPage = lazy(() => import("./login/KcPage"));
-export const KcAccountPage = lazy(() => import("./account/KcPage"));
+export const KcLoginPage = lazy(() => import("./login/KcPage"))
+export const KcAccountPage = lazy(() => import("./account/KcPage"))
 
 export function KcPage(props: { kcContext: KcContext; fallback?: ReactNode }) {
-    const { kcContext, fallback } = props;
-    return (
-        <Suspense fallback={fallback}>
-            {(() => {
-                switch (kcContext.themeType) {
-                    case "login":
-                        return <KcLoginPage kcContext={kcContext} />;
-                    case "account":
-                        return <KcAccountPage kcContext={kcContext} />;
-                }
-            })()}
-        </Suspense>
-    );
+  const { kcContext, fallback } = props
+  return (
+    <Suspense fallback={fallback}>
+      {(() => {
+        switch (kcContext.themeType) {
+          case "login":
+            return <KcLoginPage kcContext={kcContext} />
+          case "account":
+            return <KcAccountPage kcContext={kcContext} />
+        }
+      })()}
+    </Suspense>
+  )
 }

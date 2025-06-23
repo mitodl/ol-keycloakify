@@ -1,1 +1,1 @@
-import "@mitodl/smoot-design/type-augmentation";
+import "@mitodl/smoot-design/type-augmentation"
