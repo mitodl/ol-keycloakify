@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - jk/initial
 
   pull_request:
     branches:

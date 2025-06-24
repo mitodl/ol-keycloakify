@@ -188,7 +188,7 @@ type InputFieldByTypeProps = {
 }
 
 function InputFieldByType(props: InputFieldByTypeProps) {
-  const { attribute, valueOrValues, label, displayableErrors } = props
+  const { attribute, valueOrValues } = props
 
   switch (attribute.annotations.inputType) {
     // NOTE: Unfortunately, keycloak won't let you define input type="hidden" in the Admin Console.
@@ -214,27 +214,7 @@ function InputFieldByType(props: InputFieldByTypeProps) {
         )
       }
 
-      const inputNode = <InputTag {...props} fieldIndex={undefined} />
-
-      if (attribute.name === "password" || attribute.name === "password-confirm") {
-        return (
-          <TextField
-            id={attribute.name}
-            name={attribute.name}
-            label={label}
-            type="password"
-            disabled={attribute.readOnly}
-            InputProps={{
-              autoComplete: "on",
-              "aria-invalid": displayableErrors.length !== 0
-            }}
-            endAdornment={<RevealPasswordButton i18n={props.i18n} passwordInputId={attribute.name} />}
-            fullWidth
-          />
-        )
-      }
-
-      return inputNode
+      return <InputTag {...props} fieldIndex={undefined} />
     }
   }
 }
@@ -251,6 +231,10 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
         name={attribute.name}
         label={label}
         type={(() => {
+          if (attribute.name === "password" || attribute.name === "password-confirm") {
+            return "password"
+          }
+
           const { inputType } = attribute.annotations
 
           if (inputType?.startsWith("html5-")) {
@@ -273,7 +257,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
         placeholder={
           attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
         }
-        onChange={event =>
+        onChange={event => {
           dispatchFormAction({
             action: "update",
             name: attribute.name,
@@ -293,7 +277,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
               return event.target.value
             })()
           })
-        }
+        }}
         onBlur={() =>
           dispatchFormAction({
             action: "focus lost",
@@ -307,6 +291,11 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
           autoComplete: attribute.autocomplete
         }}
         fullWidth
+        endAdornment={
+          attribute.name === "password" || attribute.name === "password-confirm" ? (
+            <RevealPasswordButton i18n={props.i18n} passwordInputId={attribute.name} />
+          ) : undefined
+        }
       />
       {(() => {
         if (fieldIndex === undefined) {
