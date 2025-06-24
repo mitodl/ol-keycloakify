@@ -16,8 +16,6 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
 
-  console.log(">>>>>>>>.", kcSanitize(messagesPerField.getFirstError("username", "password")))
-
   return (
     <Template
       kcContext={kcContext}
