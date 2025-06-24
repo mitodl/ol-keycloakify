@@ -3,8 +3,12 @@ import {
   Input as SmootInput,
   Button as SmootButton,
   ButtonLink as SmootButtonLink,
-  Alert as SmootAlert
+  Alert as SmootAlert,
+  AdornmentButton as SmootAdornmentButton
 } from "@mitodl/smoot-design"
+import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed"
+import { RiEyeLine, RiEyeOffLine } from "@remixicon/react"
+import type { I18n } from "../i18n"
 
 export const Link = styled.a(({ theme }) => ({
   ...theme.typography.body1,
@@ -131,3 +135,58 @@ export const FooterLink = styled.a(({ theme }) => ({
 export const Alert = styled(SmootAlert)({
   marginBottom: "20px"
 })
+
+const AdornmentButton = styled(SmootAdornmentButton)(({ theme }) => ({
+  ...theme.typography.button,
+  boxSizing: "content-box",
+  border: "none",
+  background: "transparent",
+  transition: `background ${theme.transitions.duration.short}ms`,
+  cursor: "pointer",
+  color: theme.custom.colors.silverGray,
+  "&&& svg": {
+    fill: theme.custom.colors.silverGrayLight,
+    width: "16px",
+    height: "16px"
+  },
+  "&&": {
+    width: "28px"
+  },
+  "&&:hover": {
+    background: "transparent",
+    svg: {
+      fill: theme.custom.colors.darkGray2
+    }
+  }
+}))
+
+export const RevealPasswordButton = ({
+  i18n,
+  passwordInputId
+}: {
+  i18n: I18n
+  passwordInputId: string
+}) => {
+  const { msgStr } = i18n
+
+  const { isPasswordRevealed, toggleIsPasswordRevealed } = useIsPasswordRevealed({
+    passwordInputId
+  })
+
+  return (
+    <AdornmentButton
+      type="button"
+      aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
+      aria-controls={passwordInputId}
+      onClick={toggleIsPasswordRevealed}
+    >
+      {isPasswordRevealed ? <RiEyeLine aria-hidden /> : <RiEyeOffLine aria-hidden />}
+    </AdornmentButton>
+  )
+}
+
+export const HelperText = styled.p(({ theme }) => ({
+  ...theme.typography.body2,
+  color: theme.custom.colors.darkGray1,
+  marginTop: "8px"
+}))

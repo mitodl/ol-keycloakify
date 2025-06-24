@@ -3,9 +3,9 @@ import { kcSanitize } from "keycloakify/lib/kcSanitize"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, Label, Input, Button, Form, ValidationMessage, Info, ButtonLink, SocialProviderButtonLink, OrBar } from "../components/Elements"
-import { PasswordWrapper } from "../components/PasswordWrapper"
+import { Link, Button, Form, Info, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
+import { TextField } from "@mitodl/smoot-design"
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -15,6 +15,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
   const { msg, msgStr } = i18n
 
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
+
+  console.log(">>>>>>>>.", kcSanitize(messagesPerField.getFirstError("username", "password")))
 
   return (
     <Template
@@ -69,64 +71,49 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 method="post"
               >
                 {!usernameHidden && (
-                  <div>
-                    <Label htmlFor="username">
-                      {!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
-                    </Label>
-                    <Input
-                      tabIndex={2}
-                      id="username"
-                      name="username"
-                      defaultValue={login.username ?? ""}
-                      type="text"
-                      autoFocus
-                      autoComplete="username"
-                      aria-invalid={messagesPerField.existsError("username", "password")}
-                    />
-
-                    {messagesPerField.existsError("username", "password") && (
-                      <ValidationMessage
-                        id="input-error"
-                        aria-live="polite"
-                        dangerouslySetInnerHTML={{
-                          __html: kcSanitize(messagesPerField.getFirstError("username", "password"))
-                        }}
-                      />
-                    )}
-                  </div>
+                  <TextField
+                    id="username"
+                    label={
+                      !realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")
+                    }
+                    name="username"
+                    type="text"
+                    aria-invalid={messagesPerField.existsError("username")}
+                    fullWidth
+                    InputProps={{
+                      defaultValue: login.username ?? "",
+                      autoFocus: true,
+                      autoComplete: "username"
+                    }}
+                    errorText={messagesPerField.getFirstError("username")}
+                    error={messagesPerField.existsError("username")}
+                  />
                 )}
+
+                <TextField
+                  id="password"
+                  label={msg("password")}
+                  name="password"
+                  type="password"
+                  aria-invalid={messagesPerField.existsError("username", "password")}
+                  fullWidth
+                  InputProps={{
+                    autoComplete: "current-password"
+                  }}
+                  errorText={
+                    usernameHidden && messagesPerField.existsError("username", "password") ? undefined : messagesPerField.getFirstError("password")
+                  }
+                  error={usernameHidden && messagesPerField.existsError("username", "password")}
+                  endAdornment={<RevealPasswordButton i18n={i18n} passwordInputId="password" />}
+                />
                 <div>
-                  <Label htmlFor="password">{msg("password")}</Label>
-                  <PasswordWrapper i18n={i18n} passwordInputId="password">
-                    <Input
-                      tabIndex={3}
-                      id="password"
-                      name="password"
-                      type="password"
-                      autoComplete="current-password"
-                      aria-invalid={messagesPerField.existsError("username", "password")}
-                    />
-                  </PasswordWrapper>
-                  {usernameHidden && messagesPerField.existsError("username", "password") && (
-                    <ValidationMessage
-                      id="input-error"
-                      aria-live="polite"
-                      dangerouslySetInnerHTML={{
-                        __html: kcSanitize(messagesPerField.getFirstError("username", "password"))
-                      }}
-                    />
+                  {realm.resetPasswordAllowed && (
+                    <span>
+                      <Link tabIndex={6} href={url.loginResetCredentialsUrl}>
+                        {msg("doForgotPassword")}
+                      </Link>
+                    </span>
                   )}
-                </div>
-                <div>
-                  <div>
-                    {realm.resetPasswordAllowed && (
-                      <span>
-                        <Link tabIndex={6} href={url.loginResetCredentialsUrl}>
-                          {msg("doForgotPassword")}
-                        </Link>
-                      </span>
-                    )}
-                  </div>
                 </div>
                 <div id="kc-form-buttons">
                   <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />

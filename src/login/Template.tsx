@@ -71,8 +71,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
   const { realm, auth, url, message, isAppInitiatedAction, olSettings } = kcContext
 
-  console.log("CONTEXT", kcContext)
-
   useEffect(() => {
     document.title = documentTitle ?? msgStr("loginTitle", realm.displayName)
   }, [])
@@ -123,21 +121,19 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             {children}
             {auth !== undefined && auth.showTryAnotherWayLink && (
               <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
-                <div>
-                  <Info>
-                    <input type="hidden" name="tryAnotherWay" value="on" />
-                    <Link
-                      href="#"
-                      id="try-another-way"
-                      onClick={() => {
-                        document.forms["kc-select-try-another-way-form" as never].submit()
-                        return false
-                      }}
-                    >
-                      {msg("doTryAnotherWay")}
-                    </Link>
-                  </Info>
-                </div>
+                <Info>
+                  <input type="hidden" name="tryAnotherWay" value="on" />
+                  <Link
+                    href="#"
+                    id="try-another-way"
+                    onClick={() => {
+                      document.forms["kc-select-try-another-way-form" as never].submit()
+                      return false
+                    }}
+                  >
+                    {msg("doTryAnotherWay")}
+                  </Link>
+                </Info>
               </form>
             )}
             {displayInfo && (

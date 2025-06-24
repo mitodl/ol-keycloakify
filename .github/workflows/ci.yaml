@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - jk/initial
 
   pull_request:
     branches:
@@ -23,10 +24,10 @@ jobs:
         run: yarn install --immutable
 
       - name: Format
-        run: yarn run format
+        run: yarn format
 
       - name: Lint
-        run: yarn run lint
+        run: yarn lint
 
       - name: Typecheck
         run: yarn typecheck

@@ -3,8 +3,9 @@ import { clsx } from "keycloakify/tools/clsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, Label, Input, Button, Form, ValidationMessage, Info, SocialProviderButtonLink, OrBar } from "../components/Elements"
+import { Link, Button, Form, Info, SocialProviderButtonLink, OrBar } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
+import { TextField } from "@mitodl/smoot-design"
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -64,26 +65,21 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
               method="post"
             >
               {!usernameHidden && (
-                <div>
-                  <Label htmlFor="username">
-                    {!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
-                  </Label>
-                  <Input
-                    tabIndex={2}
-                    id="username"
-                    name="username"
-                    defaultValue={login.username ?? ""}
-                    type="text"
-                    autoFocus
-                    autoComplete="username"
-                    aria-invalid={messagesPerField.existsError("username")}
-                  />
-                  {messagesPerField.existsError("username") && (
-                    <ValidationMessage id="input-error" aria-live="polite">
-                      {messagesPerField.getFirstError("username")}
-                    </ValidationMessage>
-                  )}
-                </div>
+                <TextField
+                  id="username"
+                  label={!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
+                  name="username"
+                  type="text"
+                  aria-invalid={messagesPerField.existsError("username")}
+                  fullWidth
+                  InputProps={{
+                    defaultValue: login.username ?? "",
+                    autoFocus: true,
+                    autoComplete: "username"
+                  }}
+                  errorText={messagesPerField.getFirstError("username")}
+                  error={messagesPerField.existsError("username")}
+                />
               )}
               <div id="kc-form-buttons">
                 <Button tabIndex={4} disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" size="large">

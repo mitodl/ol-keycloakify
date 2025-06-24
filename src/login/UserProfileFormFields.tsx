@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from "react"
+import { useEffect, Fragment, ReactElement } from "react"
 import { assert } from "keycloakify/tools/assert"
 import type { KcClsx } from "keycloakify/login/lib/kcClsx"
 import {
@@ -11,8 +11,8 @@ import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFo
 import type { Attribute } from "keycloakify/login/KcContext"
 import type { KcContext } from "./KcContext"
 import type { I18n } from "./i18n"
-import { Input, Label, ValidationMessage } from "./components/Elements"
-import { PasswordWrapper } from "./components/PasswordWrapper"
+import { Label, ValidationMessage, RevealPasswordButton, HelperText } from "./components/Elements"
+import { TextField } from "@mitodl/smoot-design"
 
 export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx">) {
   const { kcContext, i18n, onIsFormSubmittableValueChange, doMakeUserConfirmPassword, BeforeField, AfterField } = props
@@ -62,17 +62,14 @@ export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsP
               }}
             >
               <div>
-                <Label htmlFor={attribute.name}>{advancedMsg(attribute.displayName ?? "")}</Label>
-                {/* {attribute.required && <> *</>} */}
-              </div>
-              <div>
-                {attribute.annotations.inputHelperTextBefore !== undefined && (
-                  <div id={`form-help-text-before-${attribute.name}`} aria-live="polite">
+                {attribute.annotations.inputHelperTextBefore && (
+                  <HelperText id={`form-help-text-before-${attribute.name}`} aria-live="polite">
                     {advancedMsg(attribute.annotations.inputHelperTextBefore)}
-                  </div>
+                  </HelperText>
                 )}
                 <InputFieldByType
                   attribute={attribute}
+                  label={advancedMsg(attribute.displayName ?? "")}
                   valueOrValues={valueOrValues}
                   displayableErrors={displayableErrors}
                   dispatchFormAction={dispatchFormAction}
@@ -183,6 +180,7 @@ function FieldErrors(props: { attribute: Attribute; displayableErrors: FormField
 
 type InputFieldByTypeProps = {
   attribute: Attribute
+  label: string | ReactElement
   valueOrValues: string | string[]
   displayableErrors: FormFieldError[]
   dispatchFormAction: React.Dispatch<FormAction>
@@ -190,7 +188,7 @@ type InputFieldByTypeProps = {
 }
 
 function InputFieldByType(props: InputFieldByTypeProps) {
-  const { attribute, valueOrValues } = props
+  const { attribute, valueOrValues, label, displayableErrors } = props
 
   switch (attribute.annotations.inputType) {
     // NOTE: Unfortunately, keycloak won't let you define input type="hidden" in the Admin Console.
@@ -220,9 +218,19 @@ function InputFieldByType(props: InputFieldByTypeProps) {
 
       if (attribute.name === "password" || attribute.name === "password-confirm") {
         return (
-          <PasswordWrapper i18n={props.i18n} passwordInputId={attribute.name}>
-            {inputNode}
-          </PasswordWrapper>
+          <TextField
+            id={attribute.name}
+            name={attribute.name}
+            label={label}
+            type="password"
+            disabled={attribute.readOnly}
+            InputProps={{
+              autoComplete: "on",
+              "aria-invalid": displayableErrors.length !== 0
+            }}
+            endAdornment={<RevealPasswordButton i18n={props.i18n} passwordInputId={attribute.name} />}
+            fullWidth
+          />
         )
       }
 
@@ -232,13 +240,75 @@ function InputFieldByType(props: InputFieldByTypeProps) {
 }
 
 function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefined }) {
-  const { attribute, fieldIndex, dispatchFormAction, valueOrValues, i18n, displayableErrors } = props
+  const { attribute, fieldIndex, dispatchFormAction, valueOrValues, i18n, displayableErrors, label } = props
 
   const { advancedMsgStr } = i18n
 
   return (
     <>
-      <Input
+      <TextField
+        id={attribute.name}
+        name={attribute.name}
+        label={label}
+        type={(() => {
+          const { inputType } = attribute.annotations
+
+          if (inputType?.startsWith("html5-")) {
+            return inputType.slice(6)
+          }
+
+          return inputType ?? "text"
+        })()}
+        disabled={attribute.readOnly}
+        value={(() => {
+          if (fieldIndex !== undefined) {
+            assert(valueOrValues instanceof Array)
+            return valueOrValues[fieldIndex]
+          }
+
+          assert(typeof valueOrValues === "string")
+
+          return valueOrValues
+        })()}
+        placeholder={
+          attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
+        }
+        onChange={event =>
+          dispatchFormAction({
+            action: "update",
+            name: attribute.name,
+            valueOrValues: (() => {
+              if (fieldIndex !== undefined) {
+                assert(valueOrValues instanceof Array)
+
+                return valueOrValues.map((value, i) => {
+                  if (i === fieldIndex) {
+                    return event.target.value
+                  }
+
+                  return value
+                })
+              }
+
+              return event.target.value
+            })()
+          })
+        }
+        onBlur={() =>
+          dispatchFormAction({
+            action: "focus lost",
+            name: attribute.name,
+            fieldIndex: fieldIndex
+          })
+        }
+        {...Object.fromEntries(Object.entries(attribute.html5DataAnnotations ?? {}).map(([key, value]) => [`data-${key}`, value]))}
+        InputProps={{
+          "aria-invalid": displayableErrors.length !== 0,
+          autoComplete: attribute.autocomplete
+        }}
+        fullWidth
+      />
+      {/* <Input
         type={(() => {
           const { inputType } = attribute.annotations
 
@@ -295,7 +365,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
             fieldIndex: fieldIndex
           })
         }
-      />
+      /> */}
       {(() => {
         if (fieldIndex === undefined) {
           return null

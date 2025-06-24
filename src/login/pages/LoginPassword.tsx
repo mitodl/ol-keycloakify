@@ -1,10 +1,9 @@
 import { useState } from "react"
-import { kcSanitize } from "keycloakify/lib/kcSanitize"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, ValidationMessage, Form, Button, Input, Label } from "../components/Elements"
-import { PasswordWrapper } from "../components/PasswordWrapper"
+import { Link, Form, Button, RevealPasswordButton } from "../components/Elements"
+import { TextField } from "@mitodl/smoot-design"
 
 export default function LoginPassword(props: PageProps<Extract<KcContext, { pageId: "login-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -35,43 +34,27 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
             action={url.loginAction}
             method="post"
           >
-            <div>
-              <Label htmlFor="password">{msg("password")}</Label>
-
-              <PasswordWrapper i18n={i18n} passwordInputId="password">
-                <Input
-                  tabIndex={2}
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoFocus
-                  autoComplete="on"
-                  aria-invalid={messagesPerField.existsError("username", "password")}
-                />
-              </PasswordWrapper>
-
-              {messagesPerField.existsError("password") && (
-                <ValidationMessage
-                  id="input-error-password"
-                  aria-live="polite"
-                  dangerouslySetInnerHTML={{
-                    __html: kcSanitize(messagesPerField.get("password"))
-                  }}
-                />
-              )}
-            </div>
-            <div>
-              <div id="kc-form-options" />
-              <div>
-                {realm.resetPasswordAllowed && (
-                  <span>
-                    <Link tabIndex={5} href={url.loginResetCredentialsUrl}>
-                      {msg("doForgotPassword")}
-                    </Link>
-                  </span>
-                )}
-              </div>
-            </div>
+            <TextField
+              id="password"
+              label={msg("password")}
+              name="password"
+              type="password"
+              aria-invalid={messagesPerField.existsError("username")}
+              fullWidth
+              InputProps={{
+                autoComplete: "on"
+              }}
+              errorText={messagesPerField.get("password")}
+              error={messagesPerField.existsError("password")}
+              endAdornment={<RevealPasswordButton i18n={i18n} passwordInputId="password" />}
+            />
+            {realm.resetPasswordAllowed && (
+              <span>
+                <Link tabIndex={5} href={url.loginResetCredentialsUrl}>
+                  {msg("doForgotPassword")}
+                </Link>
+              </span>
+            )}
             <div id="kc-form-buttons">
               <Button tabIndex={4} name="login" id="kc-login" type="submit" disabled={isLoginButtonDisabled} size="large">
                 Next

@@ -1,13 +1,13 @@
-import { kcSanitize } from "keycloakify/lib/kcSanitize"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Button, Input, Label, Form, ValidationMessage, Subtitle } from "../components/Elements"
+import { Button, Form, Subtitle } from "../components/Elements"
+import { TextField } from "@mitodl/smoot-design"
 
 export default function LoginResetPassword(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
 
-  const { url, realm, auth, messagesPerField } = kcContext
+  const { url, realm, messagesPerField } = kcContext
 
   const { msg, msgStr } = i18n
 
@@ -23,38 +23,23 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
     >
       <Subtitle>{realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}</Subtitle>
       <Form id="kc-reset-password-form" action={url.loginAction} method="post">
-        <div>
-          <div>
-            <Label htmlFor="username">
-              {!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
-            </Label>
-          </div>
-          <div>
-            <Input
-              type="text"
-              id="username"
-              name="username"
-              autoFocus
-              defaultValue={auth.attemptedUsername ?? ""}
-              aria-invalid={messagesPerField.existsError("username")}
-            />
-            {messagesPerField.existsError("username") && (
-              <ValidationMessage
-                id="input-error-username"
-                aria-live="polite"
-                dangerouslySetInnerHTML={{
-                  __html: kcSanitize(messagesPerField.get("username"))
-                }}
-              />
-            )}
-          </div>
-        </div>
-        <div>
-          <div id="kc-form-buttons">
-            <Button type="submit" size="large">
-              {msgStr("doResetPasswordSubmit")}
-            </Button>
-          </div>
+        <TextField
+          id="username"
+          label={!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
+          name="username"
+          type="text"
+          fullWidth
+          InputProps={{
+            autoComplete: "on",
+            "aria-invalid": messagesPerField.existsError("username")
+          }}
+          errorText={messagesPerField.get("username")}
+          error={messagesPerField.existsError("username")}
+        />
+        <div id="kc-form-buttons">
+          <Button type="submit" size="large">
+            {msgStr("doResetPasswordSubmit")}
+          </Button>
         </div>
       </Form>
     </Template>
