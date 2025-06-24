@@ -75,12 +75,12 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     }
                     name="username"
                     type="text"
-                    aria-invalid={messagesPerField.existsError("username")}
                     fullWidth
                     InputProps={{
                       defaultValue: login.username ?? "",
                       autoFocus: true,
-                      autoComplete: "username"
+                      autoComplete: "username",
+                      "aria-invalid": messagesPerField.existsError("username")
                     }}
                     errorText={messagesPerField.getFirstError("username")}
                     error={messagesPerField.existsError("username")}
@@ -92,10 +92,10 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                   label={msg("password")}
                   name="password"
                   type="password"
-                  aria-invalid={messagesPerField.existsError("username", "password")}
                   fullWidth
                   InputProps={{
-                    autoComplete: "current-password"
+                    autoComplete: "current-password",
+                    "aria-invalid": messagesPerField.existsError("password")
                   }}
                   errorText={
                     usernameHidden && messagesPerField.existsError("username", "password") ? undefined : messagesPerField.getFirstError("password")

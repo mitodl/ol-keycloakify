@@ -39,10 +39,10 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
               label={msg("password")}
               name="password"
               type="password"
-              aria-invalid={messagesPerField.existsError("username")}
               fullWidth
               InputProps={{
-                autoComplete: "on"
+                autoComplete: "on",
+                "aria-invalid": messagesPerField.existsError("password")
               }}
               errorText={messagesPerField.get("password")}
               error={messagesPerField.existsError("password")}

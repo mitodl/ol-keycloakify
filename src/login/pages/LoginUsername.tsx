@@ -70,12 +70,12 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   label={!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
                   name="username"
                   type="text"
-                  aria-invalid={messagesPerField.existsError("username")}
                   fullWidth
                   InputProps={{
                     defaultValue: login.username ?? "",
                     autoFocus: true,
-                    autoComplete: "username"
+                    autoComplete: "username",
+                    "aria-invalid": messagesPerField.existsError("username")
                   }}
                   errorText={messagesPerField.getFirstError("username")}
                   error={messagesPerField.existsError("username")}
