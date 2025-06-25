@@ -69,6 +69,8 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
   const { msg, msgStr } = i18n
 
+  console.log("kcContext", kcContext)
+
   const { realm, auth, url, message, isAppInitiatedAction, olSettings } = kcContext
 
   useEffect(() => {

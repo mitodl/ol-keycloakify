@@ -34,12 +34,21 @@ export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsP
 
   const groupNameRef = { current: "" }
 
+  console.log("formFieldStates", formFieldStates)
+
   return (
     <>
       {formFieldStates.map(({ attribute, displayableErrors, valueOrValues }) => {
         if (attribute.name === "emailOptIn") {
           return <input type="hidden" name="emailOptIn" value="1" key={attribute.name} />
         }
+
+        /* We have an attribute group configured in Prod with firstName and lastName
+           that is not shown in the ol-keycloak register.ftl template migrated from. */
+        if (attribute.group?.name === "legal-address") {
+          return <input type="hidden" name={attribute.name} value={valueOrValues} key={"legal-address-" + attribute.name} />
+        }
+
         return (
           <Fragment key={attribute.name}>
             <GroupLabel attribute={attribute} groupNameRef={groupNameRef} i18n={i18n} />
