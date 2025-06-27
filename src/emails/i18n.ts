@@ -1,10 +1,10 @@
-import { GetMessages } from "keycloakify-emails";
+import { GetMessages } from "keycloakify-emails"
 
 /**
  * we want to have this as function with a params, to give developers a
  * flexibility to initialize theirs own i18n solution here
  */
-export const getMessages: GetMessages = (_props) => {
+export const getMessages: GetMessages = () => {
   // this default properties are optional, if you omit them, they will be taken from a base theme
   return {
     "requiredAction.CONFIGURE_TOTP": "Configure OTP",
@@ -23,6 +23,6 @@ export const getMessages: GetMessages = (_props) => {
     "linkExpirationFormatter.timePeriodUnit.minutes":
       "{0,choice,0#minutes|1#minute|1<minutes}",
     "linkExpirationFormatter.timePeriodUnit.hours": "{0,choice,0#hours|1#hour|1<hours}",
-    "linkExpirationFormatter.timePeriodUnit.days": "{0,choice,0#days|1#day|1<days}",
-  };
-};
+    "linkExpirationFormatter.timePeriodUnit.days": "{0,choice,0#days|1#day|1<days}"
+  }
+}
