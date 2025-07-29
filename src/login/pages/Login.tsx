@@ -29,7 +29,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
           <div id="kc-registration">
             <Info>
               {msg("noAccount")}
-              <Link tabIndex={8} href={url.registrationUrl}>
+              <Link tabIndex={0} href={url.registrationUrl}>
                 {msg("doRegister")}
               </Link>
             </Info>
@@ -106,7 +106,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 <div>
                   {realm.resetPasswordAllowed && (
                     <span>
-                      <Link tabIndex={6} href={url.loginResetCredentialsUrl}>
+                      <Link tabIndex={0} href={url.loginResetCredentialsUrl}>
                         {msg("doForgotPassword")}
                       </Link>
                     </span>
@@ -114,7 +114,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 </div>
                 <div id="kc-form-buttons">
                   <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
-                  <Button tabIndex={7} disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" variant="primary" size="large">
+                  <Button tabIndex={0} disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" variant="primary" size="large">
                     {msgStr("doLogIn")}
                   </Button>
                 </div>

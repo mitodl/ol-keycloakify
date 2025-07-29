@@ -132,9 +132,17 @@ export const FooterLink = styled.a(({ theme }) => ({
   }
 }))
 
-export const Alert = styled(SmootAlert)({
-  marginBottom: "20px"
-})
+export const Alert = styled(SmootAlert)(({ theme }) => ({
+  paddingLeft: "12px",
+  ".MuiAlert-message": {
+    ...theme.typography.body1,
+    color: theme.custom.colors.darkGray1
+  },
+  "&& svg": {
+    width: "21px"
+  },
+  marginBottom: "40px"
+}))
 
 const AdornmentButton = styled(SmootAdornmentButton)(({ theme }) => ({
   ...theme.typography.button,

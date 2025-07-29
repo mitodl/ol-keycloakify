@@ -15,6 +15,7 @@ import LoginPassword from "./pages/LoginPassword"
 import LoginUpdatePassword from "./pages/LoginUpdatePassword"
 import LoginVerifyEmail from "./pages/LoginVerifyEmail"
 import LoginPageExpired from "./pages/LoginPageExpired"
+import Error from "./pages/Error"
 
 const doMakeUserConfirmPassword = true
 
@@ -95,7 +96,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                   doUseDefaultCss={false}
                 />
               )
-
+            case "error.ftl":
+              return (
+                <Error
+                  {...{ kcContext, i18n, classes }}
+                  Template={Template}
+                  doUseDefaultCss={true}
+                />
+              )
             default:
               return (
                 <DefaultPage

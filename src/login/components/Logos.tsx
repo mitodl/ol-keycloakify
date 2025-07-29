@@ -5,7 +5,10 @@ import mitLogo from "./mit-logo.svg"
 const Container = styled.div({
   display: "flex",
   justifyContent: "space-between",
-  marginBottom: "48px"
+  marginBottom: "48px",
+  img: {
+    height: "24px"
+  }
 })
 
 export default function Logos({ homeUrl }: { homeUrl: string }) {
