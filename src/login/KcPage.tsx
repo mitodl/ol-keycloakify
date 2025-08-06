@@ -101,7 +101,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                 <Error
                   {...{ kcContext, i18n, classes }}
                   Template={Template}
-                  doUseDefaultCss={true}
+                  doUseDefaultCss={false}
                 />
               )
             default:
