@@ -9,21 +9,35 @@ import styled from "@emotion/styled"
 import Typography from "@mui/material/Typography"
 import { Info, Link, Alert, FooterLink } from "./components/Elements"
 
-const Container = styled.div({
-  width: "600px",
-  maxWidth: "600px",
-  minHeight: "1152px",
+const Container = styled.div(({ theme }) => ({
+  minHeight: "100vh",
   justifyContent: "center",
   display: "flex",
+  alignItems: "center",
+  paddingBlockStart: "24px",
+  paddingBlockEnd: "24px",
+  [theme.breakpoints.down("sm")]: {
+    alignItems: "flex-start"
+  }
+}))
+
+const Card = styled.div({
+  width: "100%",
+  maxWidth: "600px",
+  display: "flex",
   flexDirection: "column",
-  margin: "0 auto"
+  padding: "0 16px 16px",
+  gap: "24px"
 })
 
-const Header = styled.header({
+const Header = styled.header(({ theme }) => ({
   paddingBlockStart: "80px",
   paddingInlineEnd: "32px",
-  paddingInlineStart: "32px"
-})
+  paddingInlineStart: "32px",
+  [theme.breakpoints.down("sm")]: {
+    paddingBlockStart: "10px"
+  }
+}))
 
 const Title = styled(Typography)({
   fontWeight: "normal"
@@ -34,22 +48,14 @@ const Content = styled.div({
   paddingInlineEnd: "32px"
 })
 
-const Card = styled.div({
-  display: "flex",
-  flexDirection: "column",
-  margin: "auto",
-  padding: "0 16px 16px",
-  gap: "24px",
-  width: "100%"
-})
-
 const Footer = styled.footer(({ theme }) => ({
   ...theme.typography.body3,
   textAlign: "center",
   color: theme.custom.colors.silverGrayDark,
   display: "flex",
   flexDirection: "column",
-  gap: "10px"
+  gap: "10px",
+  paddingInline: "32px"
 }))
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
