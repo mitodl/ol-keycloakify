@@ -22,7 +22,7 @@ const Container = styled.div(({ theme }) => ({
 }))
 
 const Card = styled.div({
-  width: "600px",
+  width: "100%",
   maxWidth: "600px",
   display: "flex",
   flexDirection: "column",
@@ -54,7 +54,8 @@ const Footer = styled.footer(({ theme }) => ({
   color: theme.custom.colors.silverGrayDark,
   display: "flex",
   flexDirection: "column",
-  gap: "10px"
+  gap: "10px",
+  paddingInline: "32px"
 }))
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
