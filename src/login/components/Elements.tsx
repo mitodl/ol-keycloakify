@@ -141,7 +141,15 @@ export const Alert = styled(SmootAlert)(({ theme }) => ({
   "&& svg": {
     width: "21px"
   },
-  marginBottom: "40px"
+  marginBottom: "40px",
+  /* Hide scrollbars on the Alert and child divs
+   * https://github.com/mitodl/ol-keycloakify/pull/24#pullrequestreview-3093846876 */
+  "&, & div": {
+    scrollbarWidth: "none",
+    "&::-webkit-scrollbar": {
+      display: "none"
+    }
+  }
 }))
 
 const AdornmentButton = styled(SmootAdornmentButton)(({ theme }) => ({
