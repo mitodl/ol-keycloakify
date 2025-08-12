@@ -132,9 +132,25 @@ export const FooterLink = styled.a(({ theme }) => ({
   }
 }))
 
-export const Alert = styled(SmootAlert)({
-  marginBottom: "20px"
-})
+export const Alert = styled(SmootAlert)(({ theme }) => ({
+  paddingLeft: "12px",
+  ".MuiAlert-message": {
+    ...theme.typography.body1,
+    color: theme.custom.colors.darkGray1
+  },
+  "&& svg": {
+    width: "21px"
+  },
+  marginBottom: "40px",
+  /* Hide scrollbars on the Alert and child divs
+   * https://github.com/mitodl/ol-keycloakify/pull/24#pullrequestreview-3093846876 */
+  "&, & div": {
+    scrollbarWidth: "none",
+    "&::-webkit-scrollbar": {
+      display: "none"
+    }
+  }
+}))
 
 const AdornmentButton = styled(SmootAdornmentButton)(({ theme }) => ({
   ...theme.typography.button,
