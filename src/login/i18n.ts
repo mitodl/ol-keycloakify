@@ -88,7 +88,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
       "password-help-text": "Sign in by entering your password.",
       "auth-username-form-help-text": "Start sign in by entering your username",
       "auth-username-password-form-help-text":
-        "Sign in by entering your username and password."
+        "Sign in by entering your username and password.",
+      updateEmailTitle: "Update your email",
+      "error-user-attribute-required": "Please fill in this field."
     }
   })
   .build()
