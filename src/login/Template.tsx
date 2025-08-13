@@ -62,7 +62,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
   const {
     displayInfo = false,
     displayMessage = true,
-    displayRequiredFields = false,
     headerNode,
     socialProvidersNode = null,
     infoNode = null,
@@ -74,8 +73,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
   } = props
 
   const { msg, msgStr } = i18n
-
-  console.log("kcContext", kcContext)
 
   const { realm, auth, url, message, isAppInitiatedAction, olSettings } = kcContext
 
@@ -106,20 +103,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 {headerNode}
               </Title>
             )
-
-            if (displayRequiredFields) {
-              return (
-                <div>
-                  <div className="subtitle">
-                    <span className="subtitle">
-                      <span className="required">*</span>
-                      {msg("requiredFields")}
-                    </span>
-                  </div>
-                  <div className="col-md-10">{node}</div>
-                </div>
-              )
-            }
 
             return node
           })()}
