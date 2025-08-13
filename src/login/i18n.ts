@@ -31,7 +31,6 @@ const { useI18n, ofTypeI18n } = i18nBuilder
       termsOfService: "Terms of Service",
       registerLegalAgreementText: "By creating an account I agree to the",
       registerTermsOfService: "Terms of Service",
-
       // From ol-keycloak https://github.com/mitodl/ol-keycloak/blob/main/ol-keycloak/oltheme/src/main/resources/theme/ol/email/messages/messages_en.properties
       doRegisterSubmit: "Sign Up",
       registerInstruction: "Enter your information to sign up",
@@ -90,7 +89,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
       "auth-username-password-form-help-text":
         "Sign in by entering your username and password.",
       updateEmailTitle: "Update your email",
-      "error-user-attribute-required": "Please fill in this field."
+      "error-user-attribute-required": "Please fill in this field.",
+      backToApplication: "Back to Application"
     }
   })
   .build()
