@@ -1,6 +1,6 @@
 {
   "name": "ol-keycloakify",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Keycloakify theme for Open Learning",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@keycloak/keycloak-admin-client": "26.3.2",
+    "@keycloak/keycloak-admin-client": "26.2.0",
     "@keycloakify/keycloak-account-ui": "~260200.1.0",
     "@keycloakify/keycloak-ui-shared": "~260200.0.0",
     "@mitodl/smoot-design": "^6.10.0",
