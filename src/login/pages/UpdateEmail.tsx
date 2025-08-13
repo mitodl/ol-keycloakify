@@ -41,7 +41,6 @@ export default function UpdateEmail(props: UpdateEmailProps) {
       doUseDefaultCss={doUseDefaultCss}
       classes={classes}
       displayMessage={messagesPerField.exists("global")}
-      displayRequiredFields
       headerNode={msg("updateEmailTitle")}
     >
       <Form id="kc-update-email-Form" action={url.loginAction} method="post">

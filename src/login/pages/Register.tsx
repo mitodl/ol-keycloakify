@@ -41,7 +41,6 @@ export default function Register(props: RegisterProps) {
       classes={classes}
       headerNode={messageHeader !== undefined ? advancedMsg(messageHeader) : msg("registerTitle")}
       displayMessage={messagesPerField.exists("global")}
-      displayRequiredFields={false}
       displayInfo
       infoNode={
         <Info>
