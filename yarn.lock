@@ -1914,6 +1914,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@patternfly/react-styles@npm:^6.0.0":
+  version: 6.3.1
+  resolution: "@patternfly/react-styles@npm:6.3.1"
+  checksum: 10c0/38de0afdf317a2cb869144028985396c2344cc520bc803a8bbff6a4e346c9d11919a3c0e00886464ed97f787563a6068eea82a84662eb9bdedf9a179d8f6fb5f
+  languageName: node
+  linkType: hard
+
 "@patternfly/react-table@npm:^5.4.16":
   version: 5.4.16
   resolution: "@patternfly/react-table@npm:5.4.16"
@@ -8428,7 +8435,7 @@ __metadata:
     "@patternfly/patternfly": "npm:^5.4.2"
     "@patternfly/react-core": "npm:^5.4.14"
     "@patternfly/react-icons": "npm:^5.4.2"
-    "@patternfly/react-styles": "npm:^5.4.1"
+    "@patternfly/react-styles": "npm:^6.0.0"
     "@patternfly/react-table": "npm:^5.4.16"
     "@remixicon/react": "npm:^4.6.0"
     "@storybook/addon-a11y": "npm:^9.0.6"
