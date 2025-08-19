@@ -3,9 +3,8 @@ import { clsx } from "keycloakify/tools/clsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, Button, Form, Info, SocialProviderButtonLink, OrBar } from "../components/Elements"
+import { Link, Button, Form, Info, SocialProviderButtonLink, OrBar, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
-import { TextField } from "@mitodl/smoot-design"
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -65,7 +64,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
               method="post"
             >
               {!usernameHidden && (
-                <TextField
+                <StyledTextField
                   id="username"
                   label={!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
                   name="username"

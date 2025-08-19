@@ -12,7 +12,7 @@ import type { Attribute } from "keycloakify/login/KcContext"
 import type { KcContext } from "./KcContext"
 import type { I18n } from "./i18n"
 import { Label, ValidationMessage, RevealPasswordButton, HelperText } from "./components/Elements"
-import { TextField } from "@mitodl/smoot-design"
+import { StyledTextField } from "./components/Elements"
 
 export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx">) {
   const { kcContext, i18n, onIsFormSubmittableValueChange, doMakeUserConfirmPassword, BeforeField, AfterField } = props
@@ -233,7 +233,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
   return (
     <>
-      <TextField
+      <StyledTextField
         size="medium"
         id={attribute.name}
         name={attribute.name}

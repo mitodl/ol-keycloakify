@@ -4,7 +4,8 @@ import {
   Button as SmootButton,
   ButtonLink as SmootButtonLink,
   Alert as SmootAlert,
-  AdornmentButton as SmootAdornmentButton
+  AdornmentButton as SmootAdornmentButton,
+  TextField
 } from "@mitodl/smoot-design"
 import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed"
 import { RiEyeLine, RiEyeOffLine } from "@remixicon/react"
@@ -22,7 +23,8 @@ export const Link = styled.a(({ theme }) => ({
 export const Label = styled.label(({ theme }) => ({
   ...theme.typography.body1,
   display: "block",
-  marginBottom: theme.typography.pxToRem(12)
+  marginBottom: theme.typography.pxToRem(12),
+  color: theme.custom.colors.darkGray1
 }))
 
 export const Input = styled(SmootInput)({
@@ -174,6 +176,12 @@ const AdornmentButton = styled(SmootAdornmentButton)(({ theme }) => ({
     svg: {
       fill: theme.custom.colors.darkGray2
     }
+  }
+}))
+
+export const StyledTextField = styled(TextField)(({ theme }) => ({
+  label: {
+    color: theme.custom.colors.darkGray1
   }
 }))
 

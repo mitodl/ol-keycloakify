@@ -55,8 +55,9 @@ const Footer = styled.footer(({ theme }) => ({
   color: theme.custom.colors.silverGrayDark,
   display: "flex",
   flexDirection: "column",
-  gap: "10px",
-  paddingInline: "32px"
+  gap: "16px",
+  paddingInline: "32px",
+  margin: "12px 0"
 }))
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {

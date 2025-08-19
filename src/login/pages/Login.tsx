@@ -2,9 +2,8 @@ import { useState } from "react"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, Button, Form, Info, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton } from "../components/Elements"
+import { Link, Button, Form, Info, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
-import { TextField } from "@mitodl/smoot-design"
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -68,7 +67,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 method="post"
               >
                 {!usernameHidden && (
-                  <TextField
+                  <StyledTextField
                     id="username"
                     label={
                       !realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")
@@ -87,7 +86,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                   />
                 )}
 
-                <TextField
+                <StyledTextField
                   id="password"
                   label={msg("password")}
                   name="password"

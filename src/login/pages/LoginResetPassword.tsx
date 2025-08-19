@@ -1,8 +1,7 @@
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Button, Form, Subtitle } from "../components/Elements"
-import { TextField } from "@mitodl/smoot-design"
+import { Button, Form, Subtitle, StyledTextField } from "../components/Elements"
 
 export default function LoginResetPassword(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -23,7 +22,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
     >
       <Subtitle>{realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}</Subtitle>
       <Form id="kc-reset-password-form" action={url.loginAction} method="post">
-        <TextField
+        <StyledTextField
           id="username"
           label={!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
           name="username"
