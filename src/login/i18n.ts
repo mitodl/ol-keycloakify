@@ -73,7 +73,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
       federatedIdentityExistsMessage:
         "User with {0} {1} already exists. Please sign in to account management to link the account.",
       emailSentMessage:
-        "We''ve emailed your instructions for setting your password.  You should receive them shortly.",
+        "We've emailed your instructions for setting your password.  You should receive them shortly.",
       delegationCompleteHeader: "Sign In Successful",
       delegationFailedHeader: "Sign In Failed",
       delegationFailedMessage:

@@ -17,6 +17,8 @@ export default function LoginVerifyEmail(props: PageProps<Extract<KcContext, { p
       doUseDefaultCss={doUseDefaultCss}
       classes={classes}
       displayInfo
+      /* Suppress default "You need to verify your email address to activate your account." */
+      displayMessage={kcContext.message?.type !== "warning"}
       headerNode={msg("emailVerifyTitle")}
       infoNode={
         <>

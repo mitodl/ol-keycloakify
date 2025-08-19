@@ -12,10 +12,19 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default:
+ * - Default warning message is suppressed.
+ */
+
 export const Default: Story = {
   render: () => (
     <KcPageStory
       kcContext={{
+        message: {
+          summary: "You need to verify your email address to activate your account.",
+          type: "warning"
+        },
         user: {
           email: "john.doe@gmail.com"
         }
