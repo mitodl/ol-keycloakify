@@ -6,7 +6,7 @@ import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFo
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Form, ValidationMessage, Button, Link, Info } from "../components/Elements"
+import { Form, ValidationMessage, Button, Link, Info, Subtitle } from "../components/Elements"
 
 type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
   UserProfileFormFields: LazyOrNot<(props: Omit<UserProfileFormFieldsProps, "kcClsx">) => JSX.Element>
@@ -48,6 +48,7 @@ export default function Register(props: RegisterProps) {
         </Info>
       }
     >
+      <Subtitle>{msg("registerInstruction")}</Subtitle>
       <Form id="kc-register-form" action={url.registrationAction} method="post">
         <UserProfileFormFields
           kcContext={kcContext}
