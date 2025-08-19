@@ -16,6 +16,7 @@ const Container = styled.div(({ theme }) => ({
   alignItems: "center",
   paddingBlockStart: "24px",
   paddingBlockEnd: "24px",
+  backgroundColor: theme.custom.colors.lightGray1,
   [theme.breakpoints.down("sm")]: {
     alignItems: "flex-start"
   }
@@ -39,9 +40,9 @@ const Header = styled.header(({ theme }) => ({
   }
 }))
 
-const Title = styled(Typography)({
-  fontWeight: "normal"
-})
+const Title = styled(Typography)(({ theme }) => ({
+  fontWeight: theme.typography.fontWeightBold
+}))
 
 const Content = styled.div({
   paddingInlineStart: "32px",
@@ -90,7 +91,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     <Container>
       <Card>
         <Header>
-          <Logos homeUrl={olSettings?.homeUrl} />
+          <Logos />
           {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
           {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
             <div className={`alert-${message.type} pf-m-${message?.type === "error" ? "danger" : message.type}`}>

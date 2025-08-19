@@ -44,7 +44,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
               {social.providers.map(p => (
                 <SocialProviderButtonLink key={p.alias} id={`social-${p.alias}`} type="button" href={p.loginUrl} variant="bordered" size="large">
                   {p.iconClasses && <i aria-hidden="true"></i>}
-                  {p.alias === "touchstone-idp" ? <img src={mitLogo} alt="MIT Logo" width={29} /> : null}
+                  {p.alias === "touchstone-idp" ? <img src={mitLogo} alt="MIT Logo" width={40} /> : null}
                   <span>{p.displayName}</span>
                 </SocialProviderButtonLink>
               ))}

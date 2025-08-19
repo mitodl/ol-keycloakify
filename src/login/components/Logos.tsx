@@ -11,7 +11,7 @@ const Container = styled.div({
   }
 })
 
-export default function Logos({ homeUrl }: { homeUrl: string }) {
+export default function Logos() {
   return (
     <Container>
       <img src={mitLearnLogo} alt="" height={24} />

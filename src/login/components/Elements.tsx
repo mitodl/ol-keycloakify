@@ -41,16 +41,15 @@ export const SocialProviderButtonLink = styled(SmootButtonLink)(({ theme }) => (
   width: "100%",
   color: theme.custom.colors.black,
   ...theme.typography.subtitle1,
-  fontWeight: theme.typography.fontWeightBold,
+  fontWeight: theme.typography.fontWeightMedium,
+  fontSize: theme.typography.pxToRem(14),
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",
   gap: "8px",
   "&:hover, &:hover:not(:disabled)": {
     backgroundColor: "inherit",
-    borderColor: theme.custom.colors.black,
-    borderWidth: "2px",
-    padding: "11px 23px"
+    borderColor: theme.custom.colors.black
   }
 }))
 
@@ -77,7 +76,7 @@ export const ValidationMessage = styled.span(({ theme }) => ({
 export const Info = styled.div(({ theme }) => ({
   ...theme.typography.body2,
   color: theme.custom.colors.darkGray1,
-  marginTop: "8px",
+  marginTop: "24px",
   a: {
     ...theme.typography.body2
   }
@@ -99,7 +98,7 @@ const Separator = styled.div(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   textAlign: "center",
-  padding: "16px 0",
+  padding: "24px 0",
   "&::before, &::after": {
     content: '""',
     flex: 1,
@@ -110,8 +109,10 @@ const Separator = styled.div(({ theme }) => ({
   span: {
     textAlign: "center",
     margin: "0 20px",
-    fontSize: "16px",
-    color: theme.custom.colors.darkGray2
+    fontSize: theme.typography.pxToRem(14),
+    color: theme.custom.colors.silverGrayDark,
+    height: "32px",
+    lineHeight: "32px"
   }
 }))
 

@@ -34,8 +34,6 @@ export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsP
 
   const groupNameRef = { current: "" }
 
-  console.log("formFieldStates", formFieldStates)
-
   return (
     <>
       {formFieldStates.map(({ attribute, displayableErrors, valueOrValues }) => {
@@ -236,6 +234,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
   return (
     <>
       <TextField
+        size="medium"
         id={attribute.name}
         name={attribute.name}
         label={label}
