@@ -26,7 +26,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
       emailVerifyInstruction3:
         "Check the email inbox you signed up with. You may need to check the Spam folder.",
       emailVerifyInstruction4Bold: "Still no verification email? ",
-      emailVerifyInstruction4: "Please contact our MIT Learn Customer Support Center", // TODO "Customer Support Center" link (existing not working in Prod)
+      emailVerifyInstruction4: "Please contact our",
       createPassword: "Create Password",
       termsOfService: "Terms of Service",
       registerLegalAgreementText: "By creating an account I agree to the",
@@ -90,7 +90,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
         "Sign in by entering your username and password.",
       updateEmailTitle: "Update your email",
       "error-user-attribute-required": "Please fill in this field.",
-      backToApplication: "Back to Application"
+      backToApplication: "Back to Application",
+      supportName: "MIT Learn Customer Support Center",
+      supportEmail: "mitlearn-support@mit.edu"
     }
   })
   .build()
