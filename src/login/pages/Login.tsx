@@ -2,7 +2,7 @@ import { useState } from "react"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, Button, Form, Info, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton } from "../components/Elements"
+import { Link, Button, Form, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
 import { TextField } from "@mitodl/smoot-design"
 
@@ -24,18 +24,6 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
       displayMessage={!messagesPerField.existsError("username", "password")}
       headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("loginAccountTitle")}
       displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
-      infoNode={
-        <div id="kc-registration-container">
-          <div id="kc-registration">
-            <Info>
-              {msg("noAccount")}
-              <Link tabIndex={0} href={url.registrationUrl}>
-                {msg("doRegister")}
-              </Link>
-            </Info>
-          </div>
-        </div>
-      }
       socialProvidersNode={
         <>
           {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
