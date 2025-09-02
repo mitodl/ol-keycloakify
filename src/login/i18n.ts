@@ -8,7 +8,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
   .withCustomTranslations({
     en: {
       doLogIn: "Next",
-      loginAccountTitle: "Log in",
+      loginAccountTitle: "Enter your email to start.",
       loginGreeting: "Hello, {0}",
       noAccount: "Don't have an account? ",
       doRegister: "Sign Up",
