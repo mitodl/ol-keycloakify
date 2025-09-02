@@ -3,7 +3,7 @@ import { clsx } from "keycloakify/tools/clsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, Button, Form, Info, SocialProviderButtonLink, OrBar, StyledTextField } from "../components/Elements"
+import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
@@ -24,16 +24,6 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
       displayMessage={!messagesPerField.existsError("username")}
       displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
       headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("loginAccountTitle")}
-      infoNode={
-        <div id="kc-registration">
-          <Info>
-            {msg("noAccount")}
-            <Link tabIndex={6} href={url.registrationUrl}>
-              {msg("doRegister")}
-            </Link>
-          </Info>
-        </div>
-      }
       socialProvidersNode={
         <>
           {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
