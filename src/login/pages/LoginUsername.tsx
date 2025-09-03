@@ -3,9 +3,8 @@ import { clsx } from "keycloakify/tools/clsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Button, Form, SocialProviderButtonLink, OrBar } from "../components/Elements"
+import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
-import { TextField } from "@mitodl/smoot-design"
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -33,7 +32,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
               {social.providers.map(p => (
                 <SocialProviderButtonLink key={p.alias} id={`social-${p.alias}`} type="button" href={p.loginUrl} variant="bordered" size="large">
                   {p.iconClasses && <i className={clsx(p.iconClasses)} aria-hidden="true"></i>}
-                  {p.alias === "touchstone-idp" ? <img src={mitLogo} width={29} /> : null}
+                  {p.alias === "touchstone-idp" ? <img src={mitLogo} width={40} /> : null}
                   <span className={clsx(p.iconClasses && "kc-social-icon-text")}>{p.displayName}</span>
                 </SocialProviderButtonLink>
               ))}
@@ -55,7 +54,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
               method="post"
             >
               {!usernameHidden && (
-                <TextField
+                <StyledTextField
                   id="username"
                   label={!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
                   name="username"

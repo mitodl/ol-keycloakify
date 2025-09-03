@@ -2,8 +2,7 @@ import { useState } from "react"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, Form, Button, RevealPasswordButton } from "../components/Elements"
-import { TextField } from "@mitodl/smoot-design"
+import { Link, Form, Button, RevealPasswordButton, StyledTextField } from "../components/Elements"
 
 export default function LoginPassword(props: PageProps<Extract<KcContext, { pageId: "login-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -34,7 +33,7 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
             action={url.loginAction}
             method="post"
           >
-            <TextField
+            <StyledTextField
               id="password"
               label={msg("password")}
               name="password"

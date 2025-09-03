@@ -1,8 +1,7 @@
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Button, Form, RevealPasswordButton } from "../components/Elements"
-import { TextField } from "@mitodl/smoot-design"
+import { Button, Form, RevealPasswordButton, StyledTextField } from "../components/Elements"
 
 export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, { pageId: "login-update-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -21,7 +20,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
       headerNode={msg("updatePasswordTitle")}
     >
       <Form id="kc-passwd-update-form" action={url.loginAction} method="post">
-        <TextField
+        <StyledTextField
           id="password-new"
           label={msg("passwordNew")}
           name="password-new"
@@ -36,7 +35,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
           error={messagesPerField.existsError("password")}
           endAdornment={<RevealPasswordButton i18n={i18n} passwordInputId="password-new" />}
         />
-        <TextField
+        <StyledTextField
           id="password-confirm"
           label={msg("passwordConfirm")}
           name="password-confirm"
