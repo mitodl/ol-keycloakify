@@ -7,6 +7,8 @@ import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField } from "
 import mitLogo from "../components/mit-logo.svg"
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
+  const [username, setUsername] = useState("")
+
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
 
   const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, loginAttempt } = kcContext
@@ -47,6 +49,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
             <Form
               id="kc-form-login"
               onSubmit={() => {
+                if (realm.registrationEmailAsUsername && username) {
+                  sessionStorage.setItem("email", username.trim())
+                }
                 setIsLoginButtonDisabled(true)
                 return true
               }}
@@ -68,6 +73,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   }}
                   errorText={messagesPerField.getFirstError("username")}
                   error={messagesPerField.existsError("username")}
+                  onChange={e => {
+                    setUsername(e.target.value)
+                  }}
                 />
               )}
               <div id="kc-form-buttons">

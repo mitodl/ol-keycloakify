@@ -231,6 +231,12 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
   const { advancedMsgStr } = i18n
 
+  let initialValue = ""
+
+  if (attribute.name === "email") {
+    initialValue = sessionStorage.getItem("email") || ""
+  }
+
   return (
     <>
       <StyledTextField
@@ -260,7 +266,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
           assert(typeof valueOrValues === "string")
 
-          return valueOrValues
+          return valueOrValues || initialValue
         })()}
         placeholder={
           attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
