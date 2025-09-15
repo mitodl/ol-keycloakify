@@ -16,6 +16,25 @@ export const Default: Story = {
   render: () => <KcPageStory />
 }
 
+export const WithUserFullname: Story = {
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        realm: {
+          resetPasswordAllowed: true
+        },
+        url: {
+          loginAction: "/mock-login",
+          loginResetCredentialsUrl: "/mock-reset-password"
+        },
+        loginAttempt: {
+          userFullname: "First Last"
+        }
+      }}
+    />
+  )
+}
+
 /**
  * WithPasswordError:
  * - Purpose: Tests the behavior when an error occurs in the password field (e.g., incorrect password).

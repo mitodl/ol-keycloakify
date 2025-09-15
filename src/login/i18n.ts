@@ -9,7 +9,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
     en: {
       doLogIn: "Next",
       loginAccountTitle: "Enter your email to start.",
-      loginGreeting: "Hello, {0}",
+      loginGreeting: "Hello, {0}!",
       noAccount: "Don't have an account? ",
       doRegister: "Sign Up",
       doForgotPassword: "Reset password?",
