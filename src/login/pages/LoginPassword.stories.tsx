@@ -61,6 +61,26 @@ export const WithPasswordError: Story = {
   )
 }
 
+export const WithPasswordGlobalError: Story = {
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        realm: {
+          resetPasswordAllowed: true
+        },
+        url: {
+          loginAction: "/mock-login",
+          loginResetCredentialsUrl: "/mock-reset-password"
+        },
+        message: {
+          summary: "The password you have entered is incorrect. Please try again or select Reset Password below.",
+          type: "error"
+        }
+      }}
+    />
+  )
+}
+
 /**
  * WithoutResetPasswordOption:
  * - Purpose: Tests the behavior when the reset password option is disabled.
