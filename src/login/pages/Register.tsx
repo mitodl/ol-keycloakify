@@ -97,7 +97,7 @@ export default function Register(props: RegisterProps) {
             <div>
               <Info>
                 {msg("alreadyHaveAnAccountRegister")}
-                <Link href={url.loginUrl}>{msg("backToLogin")}</Link>.
+                <Link href={url.loginRestartFlowUrl}>{msg("backToLogin")}</Link>.
               </Info>
             </div>
           </div>
