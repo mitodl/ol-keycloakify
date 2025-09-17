@@ -39,7 +39,7 @@
     "@patternfly/react-styles": "^5.4.1",
     "@patternfly/react-table": "^5.4.16",
     "@remixicon/react": "^4.6.0",
-    "i18next": "^24.2.3",
+    "i18next": "^25.0.0",
     "i18next-fetch-backend": "^6.0.0",
     "jsx-email": "^2.7.2",
     "keycloak-js": "^26.2.0",
