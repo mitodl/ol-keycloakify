@@ -27,7 +27,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@keycloak/keycloak-admin-client": "26.3.4",
+    "@keycloak/keycloak-admin-client": "26.2.0",
     "@keycloakify/keycloak-account-ui": "~260200.1.0",
     "@keycloakify/keycloak-ui-shared": "~260200.0.0",
     "@mitodl/smoot-design": "^6.10.0",
@@ -45,8 +45,8 @@
     "keycloak-js": "^26.2.0",
     "keycloakify": "^11.8.27",
     "lodash-es": "^4.17.21",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "react-hook-form": "^7.54.2",
     "react-i18next": "^15.4.1",
     "react-router-dom": "^6.30.0"
