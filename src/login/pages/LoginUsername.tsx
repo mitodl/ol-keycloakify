@@ -7,11 +7,11 @@ import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField } from "
 import mitLogo from "../components/mit-logo.svg"
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
-  const [username, setUsername] = useState("")
-
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
 
   const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, loginAttempt } = kcContext
+
+  const [username, setUsername] = useState(kcContext.login.username ?? "")
 
   const { msg } = i18n
 
