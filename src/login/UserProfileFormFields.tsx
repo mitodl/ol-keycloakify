@@ -1,4 +1,4 @@
-import { useEffect, Fragment, ReactElement } from "react"
+import { useEffect, Fragment, ReactElement, useState } from "react"
 import { assert } from "keycloakify/tools/assert"
 import type { KcClsx } from "keycloakify/login/lib/kcClsx"
 import {
@@ -231,6 +231,14 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
   const { advancedMsgStr } = i18n
 
+  const [touched, setTouched] = useState(false)
+
+  let initialValue = ""
+
+  if (attribute.name === "email" && fieldIndex === undefined) {
+    initialValue = sessionStorage.getItem("email") || ""
+  }
+
   return (
     <>
       <StyledTextField
@@ -260,12 +268,16 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
           assert(typeof valueOrValues === "string")
 
-          return valueOrValues
+          return touched ? valueOrValues : valueOrValues || initialValue
         })()}
         placeholder={
           attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
         }
         onChange={event => {
+          if (!touched) {
+            setTouched(true)
+          }
+
           dispatchFormAction({
             action: "update",
             name: attribute.name,

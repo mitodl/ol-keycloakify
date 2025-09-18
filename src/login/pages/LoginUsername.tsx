@@ -11,6 +11,8 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
   const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, loginAttempt } = kcContext
 
+  const [username, setUsername] = useState(kcContext.login.username ?? "")
+
   const { msg } = i18n
 
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
@@ -47,6 +49,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
             <Form
               id="kc-form-login"
               onSubmit={() => {
+                if (realm.registrationEmailAsUsername && username) {
+                  sessionStorage.setItem("email", username.trim())
+                }
                 setIsLoginButtonDisabled(true)
                 return true
               }}
@@ -68,6 +73,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   }}
                   errorText={messagesPerField.getFirstError("username")}
                   error={messagesPerField.existsError("username")}
+                  onChange={e => {
+                    setUsername(e.target.value)
+                  }}
                 />
               )}
               <div id="kc-form-buttons">
