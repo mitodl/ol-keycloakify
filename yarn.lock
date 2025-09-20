@@ -1262,9 +1262,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-account-ui@npm:~260200.1.0":
-  version: 260200.1.3
-  resolution: "@keycloakify/keycloak-account-ui@npm:260200.1.3"
+"@keycloakify/keycloak-account-ui@npm:~260200.2.0":
+  version: 260200.2.1
+  resolution: "@keycloakify/keycloak-account-ui@npm:260200.2.1"
   dependencies:
     tsafe: "npm:^1.8.5"
   peerDependencies:
@@ -1283,7 +1283,7 @@ __metadata:
     react-hook-form: ^7.54.2
     react-i18next: ^15.4.1
     react-router-dom: ^6.30.0
-  checksum: 10c0/1ca1a7d99be35e44d0ad79456a00c745d19cafeb99eb57b6c25ef388e0fa27cbeef4c536b7d70a5b779f5c5809eb5bc36c51a10af93a0516b17c087fe960e711
+  checksum: 10c0/48ba3f6b0f69e2806fb37d270f9020c1c2c396a8bd36d803ba5c8bc2142638c0e392d76a32d42e72500a4779ba1e950adfabee2cab45d73045815c7b2214d167
   languageName: node
   linkType: hard
 
@@ -8159,7 +8159,7 @@ __metadata:
     "@emotion/styled": "npm:^11.14.0"
     "@eslint/js": "npm:^9.15.0"
     "@keycloak/keycloak-admin-client": "npm:26.2.0"
-    "@keycloakify/keycloak-account-ui": "npm:~260200.1.0"
+    "@keycloakify/keycloak-account-ui": "npm:~260200.2.0"
     "@keycloakify/keycloak-ui-shared": "npm:~260200.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
     "@mui/lab": "npm:^7.0.0-beta.13"
