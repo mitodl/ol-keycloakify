@@ -1,5 +1,6 @@
 import type { StoryObj } from "@storybook/react-vite"
 import { createKcPageStory } from "../KcPageStory"
+import { enTranslations } from "../i18n"
 
 const { KcPageStory } = createKcPageStory({ pageId: "login.ftl" })
 
@@ -77,7 +78,7 @@ export const WithInvalidCredential: Story = {
           },
           get: (fieldName: string) => {
             if (fieldName === "username" || fieldName === "password") {
-              return "Invalid username or password."
+              return enTranslations.invalidPasswordMessage
             }
             return ""
           }
@@ -132,6 +133,40 @@ export const WithPresetUsername: Story = {
     <KcPageStory
       kcContext={{
         login: { username: "max.mustermann@mail.com" }
+      }}
+    />
+  )
+}
+
+export const WithUsernameHidden: Story = {
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        usernameHidden: true,
+        loginAttempt: {
+          userFullname: "First Last"
+        }
+      }}
+    />
+  )
+}
+
+export const WithUsernameHiddenPasswordError: Story = {
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        usernameHidden: true,
+        loginAttempt: {
+          userFullname: "First Last"
+        },
+        message: {
+          summary: enTranslations.invalidPasswordMessage,
+          type: "error"
+        },
+        messagesPerField: {
+          existsError: (field: string) => field === "password",
+          get: (field: string) => (field === "password" ? enTranslations.invalidPasswordMessage : "")
+        }
       }}
     />
   )
