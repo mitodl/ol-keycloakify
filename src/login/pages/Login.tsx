@@ -20,9 +20,9 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
       i18n={i18n}
       doUseDefaultCss={doUseDefaultCss}
       classes={classes}
+      displayMessage={!messagesPerField.existsError("password")}
       headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("loginAccountTitle")}
       displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
-      displayMessage={!messagesPerField.existsError("password")}
       socialProvidersNode={
         <>
           {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
