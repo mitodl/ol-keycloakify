@@ -233,11 +233,24 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
   const [touched, setTouched] = useState(false)
 
-  let initialValue = ""
+  let sessionStorageValue = null
 
   if (attribute.name === "email" && fieldIndex === undefined) {
-    initialValue = sessionStorage.getItem("email") || ""
+    sessionStorageValue = sessionStorage.getItem("email") || ""
   }
+
+  const [initialValue, setInitialValue] = useState<string | null>(sessionStorageValue)
+
+  useEffect(() => {
+    if (initialValue && !touched) {
+      dispatchFormAction({
+        action: "update",
+        name: attribute.name,
+        valueOrValues: initialValue
+      })
+      setTouched(true)
+    }
+  }, [initialValue, touched, dispatchFormAction, attribute.name])
 
   return (
     <>
@@ -268,7 +281,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
           assert(typeof valueOrValues === "string")
 
-          return touched ? valueOrValues : valueOrValues || initialValue
+          return initialValue || valueOrValues
         })()}
         placeholder={
           attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
@@ -276,6 +289,9 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
         onChange={event => {
           if (!touched) {
             setTouched(true)
+          }
+          if (initialValue) {
+            setInitialValue(null)
           }
 
           dispatchFormAction({
