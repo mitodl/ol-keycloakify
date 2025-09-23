@@ -1,6 +1,5 @@
 import type { StoryObj } from "@storybook/react-vite"
 import { createKcPageStory } from "../KcPageStory"
-import { enTranslations } from "../i18n"
 
 const { KcPageStory } = createKcPageStory({ pageId: "login.ftl" })
 
@@ -78,7 +77,7 @@ export const WithInvalidCredential: Story = {
           },
           get: (fieldName: string) => {
             if (fieldName === "username" || fieldName === "password") {
-              return enTranslations.invalidPasswordMessage
+              return "The password you have entered is incorrect. Please try again or select Reset Password below."
             }
             return ""
           }
@@ -160,12 +159,13 @@ export const WithUsernameHiddenPasswordError: Story = {
           userFullname: "First Last"
         },
         message: {
-          summary: enTranslations.invalidPasswordMessage,
+          summary: "The password you have entered is incorrect. Please try again or select Reset Password below.",
           type: "error"
         },
         messagesPerField: {
           existsError: (field: string) => field === "password",
-          get: (field: string) => (field === "password" ? enTranslations.invalidPasswordMessage : "")
+          get: (field: string) =>
+            field === "password" ? "The password you have entered is incorrect. Please try again or select Reset Password below." : ""
         }
       }}
     />
