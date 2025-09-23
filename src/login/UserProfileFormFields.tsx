@@ -233,13 +233,12 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
   const [touched, setTouched] = useState(false)
 
-  let sessionStorageValue = null
-
-  if (attribute.name === "email" && fieldIndex === undefined) {
-    sessionStorageValue = sessionStorage.getItem("email") || ""
-  }
-
-  const [initialValue, setInitialValue] = useState<string | null>(sessionStorageValue)
+  const [initialValue, setInitialValue] = useState<string | null>(() => {
+    if (attribute.name === "email" && fieldIndex === undefined) {
+      return sessionStorage.getItem("email")
+    }
+    return null
+  })
 
   useEffect(() => {
     if (initialValue && !touched) {
