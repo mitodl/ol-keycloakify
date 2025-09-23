@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { createKcPageStory } from "../KcPageStory"
-import { enTranslations } from "../i18n"
 
 const { KcPageStory } = createKcPageStory({ pageId: "login-password.ftl" })
 
@@ -55,7 +54,7 @@ export const WithPasswordError: Story = {
         },
         messagesPerField: {
           existsError: (field: string) => field === "password",
-          get: () => enTranslations.invalidPasswordMessage
+          get: () => "The password you have entered is incorrect. Please try again or select Reset Password below."
         }
       }}
     />
@@ -74,7 +73,7 @@ export const WithPasswordGlobalError: Story = {
           loginResetCredentialsUrl: "/mock-reset-password"
         },
         message: {
-          summary: enTranslations.invalidPasswordMessage,
+          summary: "The password you have entered is incorrect. Please try again or select Reset Password below.",
           type: "error"
         }
       }}
