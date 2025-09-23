@@ -20,7 +20,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
       i18n={i18n}
       doUseDefaultCss={doUseDefaultCss}
       classes={classes}
-      displayMessage={!messagesPerField.existsError("username", "password")}
+      displayMessage={!messagesPerField.existsError("password")}
       headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("loginAccountTitle")}
       displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
       socialProvidersNode={
@@ -84,10 +84,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     autoComplete: "current-password",
                     "aria-invalid": messagesPerField.existsError("password")
                   }}
-                  errorText={
-                    usernameHidden && messagesPerField.existsError("username", "password") ? undefined : messagesPerField.getFirstError("password")
-                  }
-                  error={usernameHidden && messagesPerField.existsError("username", "password")}
+                  errorText={messagesPerField.getFirstError("password")}
+                  error={messagesPerField.existsError("password")}
                   endAdornment={<RevealPasswordButton i18n={i18n} passwordInputId="password" />}
                 />
                 <div>
