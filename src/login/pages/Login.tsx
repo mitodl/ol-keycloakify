@@ -91,15 +91,13 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 <div>
                   {realm.resetPasswordAllowed && (
                     <span>
-                      <Link tabIndex={0} href={url.loginResetCredentialsUrl}>
-                        {msg("doForgotPassword")}
-                      </Link>
+                      <Link href={url.loginResetCredentialsUrl}>{msg("doForgotPassword")}</Link>
                     </span>
                   )}
                 </div>
                 <div id="kc-form-buttons">
                   <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
-                  <Button tabIndex={0} disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" variant="primary" size="large">
+                  <Button disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" variant="primary" size="large">
                     {msgStr("doLogIn")}
                   </Button>
                 </div>
