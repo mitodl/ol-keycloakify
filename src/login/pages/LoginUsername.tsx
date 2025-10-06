@@ -74,8 +74,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   errorText={messagesPerField.getFirstError("username")}
                   error={messagesPerField.existsError("username")}
                   onChange={e => {
-                    setUsername(e.target.value)
+                    setUsername(e.target.value.trim())
                   }}
+                  value={username}
                 />
               )}
               <div id="kc-form-buttons">
