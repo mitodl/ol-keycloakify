@@ -280,11 +280,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
 
           assert(typeof valueOrValues === "string")
 
-          if (attribute.name === "email") {
-            return initialValue || valueOrValues?.trim()
-          }
-
-          return valueOrValues
+          return valueOrValues || valueOrValues
         })()}
         placeholder={
           attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
@@ -314,7 +310,7 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
               }
 
               if (attribute.name === "email") {
-                return event.target.value?.trim() ?? ""
+                return event.target.value.trim()
               }
 
               return event.target.value

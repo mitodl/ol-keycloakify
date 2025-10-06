@@ -11,7 +11,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
   const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, loginAttempt } = kcContext
 
-  const [username, setUsername] = useState(kcContext.login.username ?? "")
+  const [username, setUsername] = useState(login.username ?? "")
 
   const { msg } = i18n
 
@@ -66,7 +66,6 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   type="text"
                   fullWidth
                   InputProps={{
-                    defaultValue: login.username ?? "",
                     autoFocus: true,
                     autoComplete: "username",
                     "aria-invalid": messagesPerField.existsError("username")
