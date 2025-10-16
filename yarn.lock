@@ -1251,14 +1251,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloak/keycloak-admin-client@npm:26.2.0":
-  version: 26.2.0
-  resolution: "@keycloak/keycloak-admin-client@npm:26.2.0"
+"@keycloak/keycloak-admin-client@npm:26.4.1":
+  version: 26.4.1
+  resolution: "@keycloak/keycloak-admin-client@npm:26.4.1"
   dependencies:
     camelize-ts: "npm:^3.0.0"
     url-join: "npm:^5.0.0"
     url-template: "npm:^3.1.1"
-  checksum: 10c0/1a5e70883c9f387ca296542a3969b992fbe4db506b106ae74ac5658f77a1b16424eae5f3b76926e52323a56db9c57e85b7e48372e0e707ec4b5ca8f4d519130c
+  checksum: 10c0/63425791a65c7398c9dad8211a0da676bfffc64db295b23af46ec9476a21812e3c180f6c7161dac25ce747841c4712dd553f0a562c388fa5c883609ca79bef46
   languageName: node
   linkType: hard
 
@@ -8156,7 +8156,7 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.0"
     "@eslint/js": "npm:^9.15.0"
-    "@keycloak/keycloak-admin-client": "npm:26.2.0"
+    "@keycloak/keycloak-admin-client": "npm:26.4.1"
     "@keycloakify/keycloak-account-ui": "npm:~260200.2.0"
     "@keycloakify/keycloak-ui-shared": "npm:~260200.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
