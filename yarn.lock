@@ -1298,24 +1298,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-ui-shared@npm:~260200.0.0":
-  version: 260200.0.0
-  resolution: "@keycloakify/keycloak-ui-shared@npm:260200.0.0"
+"@keycloakify/keycloak-ui-shared@npm:~260305.0.0":
+  version: 260305.0.0
+  resolution: "@keycloakify/keycloak-ui-shared@npm:260305.0.0"
   peerDependencies:
-    "@keycloak/keycloak-admin-client": 26.2.0
+    "@keycloak/keycloak-admin-client": 26.3.5
     "@patternfly/react-core": ^5.4.14
     "@patternfly/react-icons": ^5.4.2
     "@patternfly/react-styles": ^5.4.1
     "@patternfly/react-table": ^5.4.16
     "@types/lodash-es": ^4.17.12
     "@types/react": ^18.3.18
-    i18next: ^24.2.3
+    i18next: ^25.2.1
     keycloak-js: ^26.2.0
     lodash-es: ^4.17.21
     react: ^18.3.1
-    react-hook-form: 7.54.2
-    react-i18next: ^15.4.1
-  checksum: 10c0/07a7c0e3b669c78c80871ffeac90aa602a6a9d30f2f5123809c662690b9f047c213184e227ed3a4f446d7958cb5d6e00e25af7269060abfc316b5dad2fd2aedd
+    react-hook-form: 7.59.0
+    react-i18next: ^15.5.3
+  checksum: 10c0/d28a8626639c4353fcdd61c8b726a31e232938f3e2bea0d51396dd95c5d387183b63dcc052ac410efe1d1ffb0bbc1517913976ecfd490429fff206ebcd558482
   languageName: node
   linkType: hard
 
@@ -8209,7 +8209,7 @@ __metadata:
     "@eslint/js": "npm:^9.15.0"
     "@keycloak/keycloak-admin-client": "npm:26.4.5"
     "@keycloakify/keycloak-account-ui": "npm:~260305.0.0"
-    "@keycloakify/keycloak-ui-shared": "npm:~260200.0.0"
+    "@keycloakify/keycloak-ui-shared": "npm:~260305.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
     "@mui/lab": "npm:^7.0.0-beta.13"
     "@mui/material": "npm:^7.1.1"
