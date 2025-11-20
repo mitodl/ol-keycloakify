@@ -351,6 +351,8 @@ function BaseInputTag(
   )
 }
 
+const EMAIL_SUGGESTION_DOMAINS = [...emailSpellChecker.POPULAR_DOMAINS, "mit.edu"]
+
 function EmailTag(props: InputFieldByTypeProps & { fieldIndex: number | undefined }) {
   const { attribute, fieldIndex, dispatchFormAction, valueOrValues } = props
 
@@ -370,10 +372,9 @@ function EmailTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
     }
     const suggestion = emailSpellChecker.run({
       email: valueOrValues,
-      domains: [...emailSpellChecker.POPULAR_DOMAINS, "mit.edu"]
+      domains: EMAIL_SUGGESTION_DOMAINS
     })
-    console.log("suggestion", suggestion, emailSpellChecker.POPULAR_DOMAINS)
-    setSuggestion(suggestion?.full || "")
+    setSuggestion(suggestion?.full || null)
   }
 
   useEffect(() => {
