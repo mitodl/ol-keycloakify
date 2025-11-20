@@ -1,4 +1,5 @@
 import { useEffect, Fragment, ReactElement, useState } from "react"
+import emailSpellChecker from "@zootools/email-spell-checker"
 import { assert } from "keycloakify/tools/assert"
 import type { KcClsx } from "keycloakify/login/lib/kcClsx"
 import {
@@ -11,7 +12,7 @@ import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFo
 import type { Attribute } from "keycloakify/login/KcContext"
 import type { KcContext } from "./KcContext"
 import type { I18n } from "./i18n"
-import { Label, ValidationMessage, RevealPasswordButton, HelperText } from "./components/Elements"
+import { Label, ValidationMessage, RevealPasswordButton, HelperText, Suggestion } from "./components/Elements"
 import { StyledTextField } from "./components/Elements"
 
 export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx">) {
@@ -211,45 +212,34 @@ function InputFieldByType(props: InputFieldByTypeProps) {
     case "multiselect-checkboxes":
       return <InputTagSelects {...props} />
     default: {
+      const InputComponent = attribute.name === "email" ? EmailTag : InputTag
+
       if (valueOrValues instanceof Array) {
         return (
           <>
             {valueOrValues.map((...[, i]) => (
-              <InputTag key={i} {...props} fieldIndex={i} />
+              <InputComponent key={i} {...props} fieldIndex={i} />
             ))}
           </>
         )
       }
 
-      return <InputTag {...props} fieldIndex={undefined} />
+      return <InputComponent {...props} fieldIndex={undefined} />
     }
   }
 }
 
-function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefined }) {
-  const { attribute, fieldIndex, dispatchFormAction, valueOrValues, i18n, displayableErrors, label } = props
+function BaseInputTag(
+  props: InputFieldByTypeProps & {
+    fieldIndex: number | undefined
+    transformValue?: (value: string) => string
+    onBeforeChange?: () => void
+    onBlur?: () => void
+  }
+) {
+  const { attribute, fieldIndex, dispatchFormAction, valueOrValues, i18n, displayableErrors, label, transformValue, onBeforeChange, onBlur } = props
 
   const { advancedMsgStr } = i18n
-
-  const [touched, setTouched] = useState(false)
-
-  const [initialValue, setInitialValue] = useState<string | null>(() => {
-    if (attribute.name === "email" && fieldIndex === undefined) {
-      return sessionStorage.getItem("email")
-    }
-    return null
-  })
-
-  useEffect(() => {
-    if (initialValue && !touched) {
-      dispatchFormAction({
-        action: "update",
-        name: attribute.name,
-        valueOrValues: initialValue
-      })
-      setTouched(true)
-    }
-  }, [initialValue, touched, dispatchFormAction, attribute.name])
 
   return (
     <>
@@ -286,44 +276,43 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
           attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
         }
         onChange={event => {
-          if (!touched) {
-            setTouched(true)
-          }
-          if (initialValue) {
-            setInitialValue(null)
+          if (onBeforeChange) {
+            onBeforeChange()
           }
 
           dispatchFormAction({
             action: "update",
             name: attribute.name,
             valueOrValues: (() => {
+              const rawValue = event.target.value
+              const processedValue = transformValue ? transformValue(rawValue) : rawValue
+
               if (fieldIndex !== undefined) {
                 assert(valueOrValues instanceof Array)
 
                 return valueOrValues.map((value, i) => {
                   if (i === fieldIndex) {
-                    return event.target.value
+                    return processedValue
                   }
 
                   return value
                 })
               }
 
-              if (attribute.name === "email") {
-                return event.target.value.trim()
-              }
-
-              return event.target.value
+              return processedValue
             })()
           })
         }}
-        onBlur={() =>
+        onBlur={() => {
           dispatchFormAction({
             action: "focus lost",
             name: attribute.name,
             fieldIndex: fieldIndex
           })
-        }
+          if (onBlur) {
+            onBlur()
+          }
+        }}
         {...Object.fromEntries(Object.entries(attribute.html5DataAnnotations ?? {}).map(([key, value]) => [`data-${key}`, value]))}
         InputProps={{
           "aria-invalid": displayableErrors.length !== 0,
@@ -360,6 +349,82 @@ function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
       })()}
     </>
   )
+}
+
+function EmailTag(props: InputFieldByTypeProps & { fieldIndex: number | undefined }) {
+  const { attribute, fieldIndex, dispatchFormAction, valueOrValues } = props
+
+  const [touched, setTouched] = useState(false)
+  const [suggestion, setSuggestion] = useState<string | null>(null)
+
+  const [initialValue, setInitialValue] = useState<string | null>(() => {
+    if (fieldIndex === undefined) {
+      return sessionStorage.getItem("email")
+    }
+    return null
+  })
+
+  const checkEmailForSuggestion = () => {
+    if (typeof valueOrValues !== "string" || !valueOrValues) {
+      return
+    }
+    const suggestion = emailSpellChecker.run({
+      email: valueOrValues,
+      domains: [...emailSpellChecker.POPULAR_DOMAINS, "mit.edu"]
+    })
+    console.log("suggestion", suggestion, emailSpellChecker.POPULAR_DOMAINS)
+    setSuggestion(suggestion?.full || "")
+  }
+
+  useEffect(() => {
+    if (initialValue && !touched) {
+      dispatchFormAction({
+        action: "update",
+        name: attribute.name,
+        valueOrValues: initialValue
+      })
+      setTouched(true)
+    }
+  }, [initialValue, touched, dispatchFormAction, attribute.name])
+
+  return (
+    <>
+      <BaseInputTag
+        {...props}
+        transformValue={(value: string) => {
+          // Email-specific transformation: trim whitespace
+          return value.trim()
+        }}
+        onBeforeChange={() => {
+          if (!touched) {
+            setTouched(true)
+          }
+          if (initialValue) {
+            setInitialValue(null)
+          }
+        }}
+        onBlur={checkEmailForSuggestion}
+      />
+      {suggestion ? (
+        <Suggestion
+          onClick={() => {
+            setSuggestion(null)
+            dispatchFormAction({
+              action: "update",
+              name: attribute.name,
+              valueOrValues: suggestion
+            })
+          }}
+        >
+          Did you mean: {suggestion}?
+        </Suggestion>
+      ) : null}
+    </>
+  )
+}
+
+function InputTag(props: InputFieldByTypeProps & { fieldIndex: number | undefined }) {
+  return <BaseInputTag {...props} />
 }
 
 function AddRemoveButtonsMultiValuedAttribute(props: {

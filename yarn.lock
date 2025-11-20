@@ -1269,14 +1269,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloak/keycloak-admin-client@npm:26.4.5":
-  version: 26.4.5
-  resolution: "@keycloak/keycloak-admin-client@npm:26.4.5"
+"@keycloak/keycloak-admin-client@npm:26.3.5":
+  version: 26.3.5
+  resolution: "@keycloak/keycloak-admin-client@npm:26.3.5"
   dependencies:
     camelize-ts: "npm:^3.0.0"
     url-join: "npm:^5.0.0"
     url-template: "npm:^3.1.1"
-  checksum: 10c0/b8d0cea9ac186d5a96a0bb6599539dbf8a8f11ff852eb852b5dd1b60bdb56de21c9193fba7541b94df726ea7115bd8ccd9b836fd7f6da25cc0c67c574ee3dac0
+  checksum: 10c0/debbfd6ab146cca2f1673672439c33cbc1b2a2acc66e0f8ea94b34bfad0d9ecdcc96b996c134f09d8fc36cb2c329d374e6743ed48d9043b8200d00be9f5d0fd6
   languageName: node
   linkType: hard
 
@@ -2806,6 +2806,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.23.1":
+  version: 1.23.1
+  resolution: "@remix-run/router@npm:1.23.1"
+  checksum: 10c0/94ac9632c0070199b8275cd6dffe78eb4c02e8926328937c65561c5c30d7ddf842743df3c8f7df302f00a593dd204846d93667fbbbe3c3641437d7b8f333ed90
+  languageName: node
+  linkType: hard
+
 "@remixicon/react@npm:^4.6.0":
   version: 4.7.0
   resolution: "@remixicon/react@npm:4.7.0"
@@ -3910,6 +3917,13 @@ __metadata:
   version: 0.9.8
   resolution: "@xmldom/xmldom@npm:0.9.8"
   checksum: 10c0/2ea984270832de2843ab0bbb6df71bde9aa02126b69e5fd56b5512b98ace48e94aff7186e77d0b22fe4b6780483862be752bcf8577436638a9210109029a0503
+  languageName: node
+  linkType: hard
+
+"@zootools/email-spell-checker@npm:^1.12.0":
+  version: 1.12.0
+  resolution: "@zootools/email-spell-checker@npm:1.12.0"
+  checksum: 10c0/0b2fa9d0aaf1e6d846fe9e261276fecbd5c48db2689814b702bcec6b63729d097b245f59cdfb3dfca65d66b68de24b67e3b317494bcfbfdd166c244cd298a0cc
   languageName: node
   linkType: hard
 
@@ -6488,17 +6502,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^25.0.0":
-  version: 25.6.2
-  resolution: "i18next@npm:25.6.2"
+"i18next@npm:^25.2.1":
+  version: 25.6.3
+  resolution: "i18next@npm:25.6.3"
   dependencies:
-    "@babel/runtime": "npm:^7.27.6"
+    "@babel/runtime": "npm:^7.28.4"
   peerDependencies:
     typescript: ^5
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/8e9ac1c4ea8efb04209733e595a4be86361466a2ea2ac7d244770cc73ffad80224da132b38de50aa7cb2b23d4061ce562f81e0e00abad8efd539d9a0c0e19ba2
+  checksum: 10c0/cbeaff5641247ef724dbf1b609df2bc24306b610cfefc6afab1f574e3c6e4171731a1959915c82c606bdb9a535da374ac14d43c7849e680482e9b0d8a93c19fb
   languageName: node
   linkType: hard
 
@@ -8224,7 +8238,7 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.0"
     "@eslint/js": "npm:^9.15.0"
-    "@keycloak/keycloak-admin-client": "npm:26.4.5"
+    "@keycloak/keycloak-admin-client": "npm:26.3.5"
     "@keycloakify/keycloak-account-ui": "npm:~260305.0.0"
     "@keycloakify/keycloak-ui-shared": "npm:~260305.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
@@ -8251,6 +8265,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^5.0.0"
     "@vitest/browser": "npm:^3.2.3"
     "@vitest/coverage-v8": "npm:^3.2.3"
+    "@zootools/email-spell-checker": "npm:^1.12.0"
     eslint: "npm:^9.35.0"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-plugin-react: "npm:^7.37.2"
@@ -8258,7 +8273,7 @@ __metadata:
     eslint-plugin-react-refresh: "npm:^0.4.14"
     eslint-plugin-storybook: "npm:^9.0.6"
     globals: "npm:^16.0.0"
-    i18next: "npm:^25.0.0"
+    i18next: "npm:^25.2.1"
     i18next-fetch-backend: "npm:^6.0.0"
     jsx-email: "npm:^2.7.2"
     keycloak-js: "npm:^26.2.0"
@@ -8269,9 +8284,9 @@ __metadata:
     prettier: "npm:^3.6.2"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
-    react-hook-form: "npm:^7.54.2"
-    react-i18next: "npm:^15.4.1"
-    react-router-dom: "npm:^7.0.0"
+    react-hook-form: "npm:^7.59.0"
+    react-i18next: "npm:^15.5.3"
+    react-router-dom: "npm:^6.30.1"
     storybook: "npm:^9.0.6"
     typescript: "npm:^5.2.2"
     typescript-eslint: "npm:^8.15.0"
@@ -8839,16 +8854,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.54.2":
-  version: 7.66.0
-  resolution: "react-hook-form@npm:7.66.0"
+"react-hook-form@npm:^7.59.0":
+  version: 7.66.1
+  resolution: "react-hook-form@npm:7.66.1"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18 || ^19
-  checksum: 10c0/9faeafdaedfabfcbf5f8bb1aeefb81863b8e158eef4b089e2a32180fe474aec47d05fe3ed7d4faea085ca9f689118fb1135b94cdeed2022bd7d3fa3a56530c63
+  checksum: 10c0/f82238249d44111b377116bdfb6063045e3e81fef4c73d7f487160554fa4b43ff0970dec1f4d031e57bc2dfbdd974bdfba5608bc8c5785998a7b8a39a566428f
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^15.4.1":
+"react-i18next@npm:^15.5.3":
   version: 15.7.4
   resolution: "react-i18next@npm:15.7.4"
   dependencies:
@@ -8985,15 +9000,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^7.0.0":
-  version: 7.9.6
-  resolution: "react-router-dom@npm:7.9.6"
+"react-router-dom@npm:^6.30.1":
+  version: 6.30.2
+  resolution: "react-router-dom@npm:6.30.2"
   dependencies:
-    react-router: "npm:7.9.6"
+    "@remix-run/router": "npm:1.23.1"
+    react-router: "npm:6.30.2"
   peerDependencies:
-    react: ">=18"
-    react-dom: ">=18"
-  checksum: 10c0/63984c46385da232655b9e3a8a99f6dd7b94c36827be6e954f246c362f83740b5f59b1de99cae81da3b0cef2220d701dcc22e4fafb4a84600541e1c0450b9d57
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 10c0/d0c6edf4e2aa7639b4a4f64a7747f03d8861bdf4857e8981b1cff1451b7cb91fcdcd7e315a6e3df910271b2f5071825d2aec218d5f7890f2269fc074f198e42a
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.30.2":
+  version: 6.30.2
+  resolution: "react-router@npm:6.30.2"
+  dependencies:
+    "@remix-run/router": "npm:1.23.1"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 10c0/cff5ea92d248d2230adc46d4e2ed3fbeddfaf1ae2e63411da8b7ea6ddc207d71dbc522c05c492e671e553e2153934f4ab180ac02bd36205b274e097f2cfe6fc4
   languageName: node
   linkType: hard
 
@@ -9011,22 +9038,6 @@ __metadata:
     react-dom:
       optional: true
   checksum: 10c0/5972ecb783e0ac0512c500b84bd4ff475665ba49c67b69e13b79dc24c7ee0496d523858058bb43c70147367688e0cc0d6d6d0f51cabfdebfbc5556d559bff457
-  languageName: node
-  linkType: hard
-
-"react-router@npm:7.9.6":
-  version: 7.9.6
-  resolution: "react-router@npm:7.9.6"
-  dependencies:
-    cookie: "npm:^1.0.1"
-    set-cookie-parser: "npm:^2.6.0"
-  peerDependencies:
-    react: ">=18"
-    react-dom: ">=18"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-  checksum: 10c0/2a177bbe19021e3b8211df849ea5b3f3a4f482327e6de3341aaeaa4f1406dc9be7b675b229eefea6761e04a59a40ccaaf8188f2ee88eb2d0b2a6b6448daea368
   languageName: node
   linkType: hard
 
