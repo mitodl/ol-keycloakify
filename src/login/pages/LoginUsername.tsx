@@ -14,12 +14,18 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
   const [username, setUsername] = useState(login.username ?? "")
   const [usernameError, setUsernameError] = useState<string>("")
-  const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const { msg, msgStr } = i18n
 
-  // Compute button disabled state based on username validity
-  const isButtonDisabled = isLoginButtonDisabled || !username || !isValidEmail(username)
+  const shouldValidateEmail = realm.loginWithEmailAllowed
+
+  // Compute button disabled state based on username validity and realm config
+  // Button is disabled if:
+  // 1. Form is being submitted
+  // 2. Username field is empty
+  // 3. Email validation is required and email is invalid
+  const isButtonDisabled = isSubmitting || !username.trim() || (shouldValidateEmail && !isValidEmail(username))
 
   return (
     <Template
@@ -53,14 +59,15 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
             <Form
               id="kc-form-login"
               onSubmit={() => {
-                if (!isValidEmail(username)) {
-                   setUsernameError(msgStr("invalidEmailMessage"))
-                   return false
-                 }
+                // Validate email if email-based login is enabled
+                if (shouldValidateEmail && !isValidEmail(username)) {
+                  setUsernameError(msgStr("invalidEmailMessage"))
+                  return false
+                }
                 if (realm.registrationEmailAsUsername && username) {
                   sessionStorage.setItem("email", username.trim())
                 }
-                setIsLoginButtonDisabled(true)
+                setIsSubmitting(true)
                 return true
               }}
               action={url.loginAction}
@@ -84,13 +91,14 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   onChange={e => {
                    const value = e.target.value.trim()
                    setUsername(value)
-                   // Clear error when user starts typing a valid email
-                   if (value && isValidEmail(value)) {
+                   // Clear error when user types a valid email
+                   if (shouldValidateEmail && value && isValidEmail(value)) {
                      setUsernameError("")
                    }
                   }}
                   onBlur={() => {
-                    if (username && !isValidEmail(username)) {
+                    // Only validate if email-based login is enabled
+                    if (shouldValidateEmail && username && !isValidEmail(username)) {
                       setUsernameError(msgStr("invalidEmailMessage"))
                     } else {
                       setUsernameError("")

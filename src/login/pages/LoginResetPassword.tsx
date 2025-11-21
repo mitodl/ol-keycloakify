@@ -14,6 +14,9 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
 
   const [usernameError, setUsernameError] = useState<string>("")
   const [username, setUsername] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const shouldValidateEmail = realm.loginWithEmailAllowed
 
   return (
     <Template
@@ -32,10 +35,11 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
         method="post"
         onSubmit={() => {
            const usernameInput = document.getElementById("username") as HTMLInputElement
-           if (usernameInput && !isValidEmail(usernameInput.value)) {
+           if (usernameInput && shouldValidateEmail && !isValidEmail(usernameInput.value)) {
              setUsernameError(msgStr("invalidEmailMessage"))
              return false
            }
+           setIsSubmitting(true)
            return true
          }}
       >
@@ -53,11 +57,16 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
           errorText={usernameError || messagesPerField.get("username")}
           error={messagesPerField.existsError("username") || usernameError !== ""}
           onChange={(e) => {
-            setUsername(e.target.value)
-            setUsernameError("")
+            const value = e.target.value
+            setUsername(value)
+            // Clear error when user types a valid email
+            if (shouldValidateEmail && value && isValidEmail(value)) {
+              setUsernameError("")
+            }
           }}
           onBlur={() => {
-            if (username && !isValidEmail(username)) {
+            // Only validate if email-based login is enabled
+            if (shouldValidateEmail && username && !isValidEmail(username)) {
               setUsernameError(msgStr("invalidEmailMessage"))
             } else {
               setUsernameError("")
@@ -67,7 +76,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
         <div id="kc-form-buttons">
           <button 
             type="submit" 
-            disabled={!username || !isValidEmail(username)}
+            disabled={isSubmitting || !username.trim() || (shouldValidateEmail && !isValidEmail(username))}
             className="css-1qfsvrq"
           >
             {msgStr("doResetPasswordSubmit")}

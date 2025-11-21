@@ -13,9 +13,11 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
   const { msg, msgStr } = i18n
 
-  const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [usernameError, setUsernameError] = useState<string>("")
   const [username, setUsername] = useState(login.username ?? "")
+
+  const shouldValidateEmail = realm.loginWithEmailAllowed
 
   return (
     <Template
@@ -52,11 +54,11 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 id="kc-form-login"
                 onSubmit={() => {
                    const usernameInput = document.getElementById("username") as HTMLInputElement
-                   if (usernameInput && !isValidEmail(usernameInput.value)) {
+                   if (usernameInput && shouldValidateEmail && !isValidEmail(usernameInput.value)) {
                      setUsernameError(msgStr("invalidEmailMessage"))
                      return false
                    }
-                   setIsLoginButtonDisabled(true)
+                   setIsSubmitting(true)
                    return true
                  }}
                 action={url.loginAction}
@@ -80,16 +82,21 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     errorText={usernameError || messagesPerField.getFirstError("username")}
                     error={messagesPerField.existsError("username") || usernameError !== ""}
                     onChange={(e) => {
-                      setUsername(e.target.value)
-                      setUsernameError("")
-                    }}
-                    onBlur={() => {
-                      if (username && !isValidEmail(username)) {
-                        setUsernameError(msgStr("invalidEmailMessage"))
-                      } else {
-                        setUsernameError("")
-                      }
-                    }}
+                       const value = e.target.value
+                       setUsername(value)
+                       // Clear error when user types a valid email
+                       if (shouldValidateEmail && value && isValidEmail(value)) {
+                         setUsernameError("")
+                       }
+                     }}
+                     onBlur={() => {
+                       // Only validate if email-based login is enabled
+                       if (shouldValidateEmail && username && !isValidEmail(username)) {
+                         setUsernameError(msgStr("invalidEmailMessage"))
+                       } else {
+                         setUsernameError("")
+                       }
+                     }}
                   />
                 )}
 
@@ -120,7 +127,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     type="submit" 
                     name="login" 
                     id="kc-login" 
-                    disabled={isLoginButtonDisabled || !username || !isValidEmail(username)}
+                    disabled={isSubmitting || !username.trim() || (shouldValidateEmail && !isValidEmail(username))}
                     className="css-1qfsvrq"
                   >
                     {msgStr("doLogIn")}
