@@ -45,8 +45,8 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
           name="username"
           type="text"
           fullWidth
+          value={username}
           InputProps={{
-            value: username,
             autoComplete: "on",
             "aria-invalid": messagesPerField.existsError("username") || usernameError !== ""
           }}

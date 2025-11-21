@@ -71,6 +71,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   name="username"
                   type="text"
                   fullWidth
+                  value={username}
                   InputProps={{
                     autoFocus: true,
                     autoComplete: "username",
@@ -81,7 +82,6 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   onChange={e => {
                     setUsername(e.target.value.trim())
                   }}
-                  value={username}
                   onBlur={() => {
                     if (username && !isValidEmail(username)) {
                       setUsernameError("Invalid email address")

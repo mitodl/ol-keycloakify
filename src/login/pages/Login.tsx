@@ -71,8 +71,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     name="username"
                     type="text"
                     fullWidth
+                    value={username}
                     InputProps={{
-                      value: username,
                       autoFocus: true,
                       autoComplete: "username",
                       "aria-invalid": messagesPerField.existsError("username") || usernameError !== ""
