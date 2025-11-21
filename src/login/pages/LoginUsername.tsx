@@ -26,28 +26,32 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
   const [isFocused, setIsFocused] = useState(false)
   const [isEmailValid, setIsEmailValid] = useState(true)
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const isFocusedRef = useRef(isFocused)
+  const usernameRef = useRef(username)
+
+  isFocusedRef.current = isFocused
+  usernameRef.current = username
 
   const shouldValidateEmail = realm.loginWithEmailAllowed
 
-  const checkValidity = useCallback(() => {
-    if (inputRef.current && shouldValidateEmail && username.trim()) {
-      const valid = isValidEmail(username.trim())
-      setIsEmailValid(isValidEmail(username.trim()))
-      return valid
-    }
-    if (!username.trim()) {
+  const checkValidity = useCallback(
+    (value: string) => {
+      if (shouldValidateEmail && value.trim()) {
+        const valid = isValidEmail(value.trim())
+        setIsEmailValid(valid)
+        return valid
+      }
       setIsEmailValid(true)
       return true
-    }
-    setIsEmailValid(true)
-    return true
-  }, [shouldValidateEmail, username])
+    },
+    [shouldValidateEmail]
+  )
 
   const isSubmitDisabled = isSubmitting || !username.trim() || (shouldValidateEmail && !isEmailValid)
 
   useEffect(() => {
     if (shouldValidateEmail) {
-      checkValidity()
+      checkValidity(username)
     }
   }, [username, shouldValidateEmail, checkValidity])
 
@@ -57,7 +61,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
     const handleInvalid = (e: Event) => {
       e.preventDefault() // Prevent browser's default validation message
-      if (!isFocused && username.trim()) {
+      if (!isFocusedRef.current && usernameRef.current.trim()) {
         setEmailInvalid(true)
       }
     }
@@ -67,7 +71,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
     return () => {
       input.removeEventListener("invalid", handleInvalid)
     }
-  }, [shouldValidateEmail, isFocused, username])
+  }, [shouldValidateEmail])
 
   return (
     <Template
@@ -133,8 +137,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                       },
                       onBlur: () => {
                         setIsFocused(false)
-                        const isValid = checkValidity()
-                        if (!isValid && username.trim()) {
+                        const value = inputRef.current?.value ?? ""
+                        const isValid = checkValidity(value)
+                        if (!isValid && value.trim()) {
                           setEmailInvalid(true)
                         }
                       }
@@ -142,8 +147,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                     errorText={messagesPerField.getFirstError("username")}
                     error={messagesPerField.existsError("username") || emailInvalid}
                     onChange={e => {
-                      setUsername(e.target.value.trim())
-                      const isValid = checkValidity()
+                      const value = e.target.value
+                      setUsername(value.trim())
+                      const isValid = checkValidity(value)
                       if (isValid) {
                         setEmailInvalid(false)
                       }
