@@ -3,14 +3,37 @@ import { clsx } from "keycloakify/tools/clsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField, ValidationMessage } from "../components/Elements"
+import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField, ValidationMessage, Suggestion } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
+import emailSpellChecker from "@zootools/email-spell-checker"
 
 const isValidEmail = (email: string): boolean => {
   if (!email || !email.trim()) return false
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email.trim())
 }
+
+const EMAIL_SUGGESTION_DOMAINS = [
+  ...emailSpellChecker.POPULAR_DOMAINS,
+  // https://github.com/mitodl/ol-infrastructure/blob/a0d3000743e198c6a8c91d5a8c87d64de553e15e/src/ol_infrastructure/substructure/keycloak/olapps.py#L672-L688
+  "mit.edu",
+  "broad.mit.edu",
+  "cag.csail.mit.edu",
+  "csail.mit.edu",
+  "education.mit.edu",
+  "ll.mit.edu",
+  "math.mit.edu",
+  "med.mit.edu",
+  "media.mit.edu",
+  "mit.edu",
+  "mitimco.mit.edu",
+  "mtl.mit.edu",
+  "professional.mit.edu",
+  "sloan.mit.edu",
+  "smart.mit.edu",
+  "solve.mit.edu",
+  "wi.mit.edu"
+]
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -25,6 +48,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
   const [emailInvalid, setEmailInvalid] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
   const [isEmailValid, setIsEmailValid] = useState(true)
+  const [suggestion, setSuggestion] = useState<string | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
   const isFocusedRef = useRef(isFocused)
   const usernameRef = useRef(username)
@@ -46,6 +70,17 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
     },
     [shouldValidateEmail]
   )
+
+  const checkEmailForSuggestion = useCallback((value: string) => {
+    if (!value.trim()) {
+      return
+    }
+    const suggestionResult = emailSpellChecker.run({
+      email: value,
+      domains: EMAIL_SUGGESTION_DOMAINS
+    })
+    setSuggestion(suggestionResult?.full || null)
+  }, [])
 
   const isSubmitDisabled = isSubmitting || !username.trim() || (shouldValidateEmail && !isEmailValid)
 
@@ -134,6 +169,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                       onFocus: () => {
                         setIsFocused(true)
                         setEmailInvalid(false)
+                        setSuggestion(null)
                       },
                       onBlur: () => {
                         setIsFocused(false)
@@ -141,6 +177,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                         const isValid = checkValidity(value)
                         if (!isValid && value.trim()) {
                           setEmailInvalid(true)
+                        }
+                        if (shouldValidateEmail && value.trim()) {
+                          checkEmailForSuggestion(value)
                         }
                       }
                     }}
@@ -153,6 +192,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                       if (isValid) {
                         setEmailInvalid(false)
                       }
+                      if (suggestion) {
+                        setSuggestion(null)
+                      }
                     }}
                     value={username}
                   />
@@ -160,6 +202,21 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                     <ValidationMessage id="form-help-text-after-username" aria-live="polite">
                       {msgStr("invalidEmailMessage")}
                     </ValidationMessage>
+                  )}
+                  {suggestion && (
+                    <Suggestion
+                      onClick={() => {
+                        setSuggestion(null)
+                        setUsername(suggestion)
+                        checkValidity(suggestion)
+                        setEmailInvalid(false)
+                        if (inputRef.current) {
+                          inputRef.current.value = suggestion
+                        }
+                      }}
+                    >
+                      Did you mean: {suggestion}?
+                    </Suggestion>
                   )}
                 </div>
               )}
