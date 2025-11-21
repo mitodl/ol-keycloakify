@@ -31,13 +31,13 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
         action={url.loginAction}
         method="post"
         onSubmit={() => {
-          const usernameInput = document.getElementById("username") as HTMLInputElement
-          if (usernameInput && !isValidEmail(usernameInput.value)) {
-            setUsernameError("Invalid email address")
-            return false
-          }
-          return true
-        }}
+           const usernameInput = document.getElementById("username") as HTMLInputElement
+           if (usernameInput && !isValidEmail(usernameInput.value)) {
+             setUsernameError(msgStr("invalidEmailMessage"))
+             return false
+           }
+           return true
+         }}
       >
         <StyledTextField
           id="username"
@@ -58,7 +58,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
           }}
           onBlur={() => {
             if (username && !isValidEmail(username)) {
-              setUsernameError("Invalid email address")
+              setUsernameError(msgStr("invalidEmailMessage"))
             } else {
               setUsernameError("")
             }

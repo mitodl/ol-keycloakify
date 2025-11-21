@@ -331,11 +331,11 @@ function BaseInputTag(
         }
       />
       {/* Display email validation error if present */}
-      {hasEmailError && (
-        <span id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`} aria-live="polite">
-          <ValidationMessage>Invalid email address</ValidationMessage>
-        </span>
-      )}
+       {hasEmailError && (
+         <span id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`} aria-live="polite">
+           <ValidationMessage>{advancedMsg("invalidEmailMessage")}</ValidationMessage>
+         </span>
+       )}
       {(() => {
         if (fieldIndex === undefined) {
           return null

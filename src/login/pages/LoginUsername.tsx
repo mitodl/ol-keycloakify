@@ -16,7 +16,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
   const [usernameError, setUsernameError] = useState<string>("")
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
 
-  const { msg } = i18n
+  const { msg, msgStr } = i18n
 
   // Compute button disabled state based on username validity
   const isButtonDisabled = isLoginButtonDisabled || !username || !isValidEmail(username)
@@ -54,9 +54,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
               id="kc-form-login"
               onSubmit={() => {
                 if (!isValidEmail(username)) {
-                  setUsernameError("Invalid email address")
-                  return false
-                }
+                   setUsernameError(msgStr("invalidEmailMessage"))
+                   return false
+                 }
                 if (realm.registrationEmailAsUsername && username) {
                   sessionStorage.setItem("email", username.trim())
                 }
@@ -91,7 +91,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   }}
                   onBlur={() => {
                     if (username && !isValidEmail(username)) {
-                      setUsernameError("Invalid email address")
+                      setUsernameError(msgStr("invalidEmailMessage"))
                     } else {
                       setUsernameError("")
                     }

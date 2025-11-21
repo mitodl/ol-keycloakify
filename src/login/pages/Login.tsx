@@ -51,14 +51,14 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
               <Form
                 id="kc-form-login"
                 onSubmit={() => {
-                  const usernameInput = document.getElementById("username") as HTMLInputElement
-                  if (usernameInput && !isValidEmail(usernameInput.value)) {
-                    setUsernameError("Invalid email address")
-                    return false
-                  }
-                  setIsLoginButtonDisabled(true)
-                  return true
-                }}
+                   const usernameInput = document.getElementById("username") as HTMLInputElement
+                   if (usernameInput && !isValidEmail(usernameInput.value)) {
+                     setUsernameError(msgStr("invalidEmailMessage"))
+                     return false
+                   }
+                   setIsLoginButtonDisabled(true)
+                   return true
+                 }}
                 action={url.loginAction}
                 method="post"
               >
@@ -85,7 +85,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     }}
                     onBlur={() => {
                       if (username && !isValidEmail(username)) {
-                        setUsernameError("Invalid email address")
+                        setUsernameError(msgStr("invalidEmailMessage"))
                       } else {
                         setUsernameError("")
                       }
