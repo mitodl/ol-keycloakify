@@ -320,7 +320,7 @@ function BaseInputTag(
         }}
         {...Object.fromEntries(Object.entries(attribute.html5DataAnnotations ?? {}).map(([key, value]) => [`data-${key}`, value]))}
         InputProps={{
-          "aria-invalid": (displayableErrors.length !== 0 || hasEmailError) ? true : undefined,
+          "aria-invalid": displayableErrors.length !== 0 || hasEmailError ? true : undefined,
           autoComplete: attribute.autocomplete
         }}
         fullWidth
@@ -331,11 +331,11 @@ function BaseInputTag(
         }
       />
       {/* Display email validation error if present */}
-       {hasEmailError && (
-         <span id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`} aria-live="polite">
-           <ValidationMessage>{advancedMsg("invalidEmailMessage")}</ValidationMessage>
-         </span>
-       )}
+      {hasEmailError && (
+        <span id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`} aria-live="polite">
+          <ValidationMessage>{advancedMsg("invalidEmailMessage")}</ValidationMessage>
+        </span>
+      )}
       {(() => {
         if (fieldIndex === undefined) {
           return null

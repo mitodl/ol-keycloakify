@@ -89,12 +89,12 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   errorText={usernameError || messagesPerField.getFirstError("username")}
                   error={messagesPerField.existsError("username") || usernameError !== ""}
                   onChange={e => {
-                   const value = e.target.value.trim()
-                   setUsername(value)
-                   // Clear error when user types a valid email
-                   if (shouldValidateEmail && value && isValidEmail(value)) {
-                     setUsernameError("")
-                   }
+                    const value = e.target.value.trim()
+                    setUsername(value)
+                    // Clear error when user types a valid email
+                    if (shouldValidateEmail && value && isValidEmail(value)) {
+                      setUsernameError("")
+                    }
                   }}
                   onBlur={() => {
                     // Only validate if email-based login is enabled

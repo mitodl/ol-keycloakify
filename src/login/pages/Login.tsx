@@ -53,14 +53,14 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
               <Form
                 id="kc-form-login"
                 onSubmit={() => {
-                   const usernameInput = document.getElementById("username") as HTMLInputElement
-                   if (usernameInput && shouldValidateEmail && !isValidEmail(usernameInput.value)) {
-                     setUsernameError(msgStr("invalidEmailMessage"))
-                     return false
-                   }
-                   setIsSubmitting(true)
-                   return true
-                 }}
+                  const usernameInput = document.getElementById("username") as HTMLInputElement
+                  if (usernameInput && shouldValidateEmail && !isValidEmail(usernameInput.value)) {
+                    setUsernameError(msgStr("invalidEmailMessage"))
+                    return false
+                  }
+                  setIsSubmitting(true)
+                  return true
+                }}
                 action={url.loginAction}
                 method="post"
               >
@@ -81,22 +81,22 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     }}
                     errorText={usernameError || messagesPerField.getFirstError("username")}
                     error={messagesPerField.existsError("username") || usernameError !== ""}
-                    onChange={(e) => {
-                       const value = e.target.value
-                       setUsername(value)
-                       // Clear error when user types a valid email
-                       if (shouldValidateEmail && value && isValidEmail(value)) {
-                         setUsernameError("")
-                       }
-                     }}
-                     onBlur={() => {
-                       // Only validate if email-based login is enabled
-                       if (shouldValidateEmail && username && !isValidEmail(username)) {
-                         setUsernameError(msgStr("invalidEmailMessage"))
-                       } else {
-                         setUsernameError("")
-                       }
-                     }}
+                    onChange={e => {
+                      const value = e.target.value
+                      setUsername(value)
+                      // Clear error when user types a valid email
+                      if (shouldValidateEmail && value && isValidEmail(value)) {
+                        setUsernameError("")
+                      }
+                    }}
+                    onBlur={() => {
+                      // Only validate if email-based login is enabled
+                      if (shouldValidateEmail && username && !isValidEmail(username)) {
+                        setUsernameError(msgStr("invalidEmailMessage"))
+                      } else {
+                        setUsernameError("")
+                      }
+                    }}
                   />
                 )}
 
@@ -122,11 +122,18 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                   )}
                 </div>
                 <div id="kc-form-buttons">
-                   <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
-                   <Button disabled={isSubmitting || !username.trim() || (shouldValidateEmail && !isValidEmail(username))} name="login" id="kc-login" type="submit" variant="primary" size="large">
-                     {msgStr("doLogIn")}
-                   </Button>
-                 </div>
+                  <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
+                  <Button
+                    disabled={isSubmitting || !username.trim() || (shouldValidateEmail && !isValidEmail(username))}
+                    name="login"
+                    id="kc-login"
+                    type="submit"
+                    variant="primary"
+                    size="large"
+                  >
+                    {msgStr("doLogIn")}
+                  </Button>
+                </div>
               </Form>
             ) : realm.resetPasswordAllowed ? (
               <div id="kc-form-login">

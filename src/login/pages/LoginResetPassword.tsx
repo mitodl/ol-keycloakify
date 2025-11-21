@@ -34,14 +34,14 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
         action={url.loginAction}
         method="post"
         onSubmit={() => {
-           const usernameInput = document.getElementById("username") as HTMLInputElement
-           if (usernameInput && shouldValidateEmail && !isValidEmail(usernameInput.value)) {
-             setUsernameError(msgStr("invalidEmailMessage"))
-             return false
-           }
-           setIsSubmitting(true)
-           return true
-         }}
+          const usernameInput = document.getElementById("username") as HTMLInputElement
+          if (usernameInput && shouldValidateEmail && !isValidEmail(usernameInput.value)) {
+            setUsernameError(msgStr("invalidEmailMessage"))
+            return false
+          }
+          setIsSubmitting(true)
+          return true
+        }}
       >
         <StyledTextField
           id="username"
@@ -56,7 +56,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
           }}
           errorText={usernameError || messagesPerField.get("username")}
           error={messagesPerField.existsError("username") || usernameError !== ""}
-          onChange={(e) => {
+          onChange={e => {
             const value = e.target.value
             setUsername(value)
             // Clear error when user types a valid email
