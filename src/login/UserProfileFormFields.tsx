@@ -351,7 +351,27 @@ function BaseInputTag(
   )
 }
 
-const EMAIL_SUGGESTION_DOMAINS = [...emailSpellChecker.POPULAR_DOMAINS, "mit.edu"]
+const EMAIL_SUGGESTION_DOMAINS = [
+  ...emailSpellChecker.POPULAR_DOMAINS,
+  // https://github.com/mitodl/ol-infrastructure/blob/a0d3000743e198c6a8c91d5a8c87d64de553e15e/src/ol_infrastructure/substructure/keycloak/olapps.py#L672-L688
+  "mit.edu",
+  "broad.mit.edu",
+  "cag.csail.mit.edu",
+  "csail.mit.edu",
+  "education.mit.edu",
+  "ll.mit.edu",
+  "math.mit.edu",
+  "med.mit.edu",
+  "media.mit.edu",
+  "mit.edu",
+  "mitimco.mit.edu",
+  "mtl.mit.edu",
+  "professional.mit.edu",
+  "sloan.mit.edu",
+  "smart.mit.edu",
+  "solve.mit.edu",
+  "wi.mit.edu"
+]
 
 function EmailTag(props: InputFieldByTypeProps & { fieldIndex: number | undefined }) {
   const { attribute, fieldIndex, dispatchFormAction, valueOrValues } = props
