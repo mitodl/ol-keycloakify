@@ -2,7 +2,7 @@ import { useState } from "react"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Form, Subtitle, StyledTextField } from "../components/Elements"
+import { Form, Subtitle, StyledTextField, Button } from "../components/Elements"
 import { isValidEmail } from "../utils/emailValidation"
 
 export default function LoginResetPassword(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
@@ -74,13 +74,9 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
           }}
         />
         <div id="kc-form-buttons">
-          <button 
-            type="submit" 
-            disabled={isSubmitting || !username.trim() || (shouldValidateEmail && !isValidEmail(username))}
-            className="css-1qfsvrq"
-          >
+          <Button disabled={isSubmitting || !username.trim() || (shouldValidateEmail && !isValidEmail(username))} type="submit" size="large">
             {msgStr("doResetPasswordSubmit")}
-          </button>
+          </Button>
         </div>
       </Form>
     </Template>
