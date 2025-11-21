@@ -14,6 +14,7 @@ import type { KcContext } from "./KcContext"
 import type { I18n } from "./i18n"
 import { Label, ValidationMessage, RevealPasswordButton, HelperText, Suggestion } from "./components/Elements"
 import { StyledTextField } from "./components/Elements"
+import { isValidEmail } from "./utils/emailValidation"
 
 export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx">) {
   const { kcContext, i18n, onIsFormSubmittableValueChange, doMakeUserConfirmPassword, BeforeField, AfterField } = props
@@ -241,6 +242,19 @@ function BaseInputTag(
 
   const { advancedMsgStr } = i18n
 
+  // Check if email field has an invalid value
+  const isEmailField = attribute.name === "email"
+  const currentValue = (() => {
+    if (fieldIndex !== undefined) {
+      assert(valueOrValues instanceof Array)
+      return valueOrValues[fieldIndex]
+    }
+
+    assert(typeof valueOrValues === "string")
+    return valueOrValues || valueOrValues
+  })()
+  const hasEmailError = isEmailField && currentValue && !isValidEmail(currentValue)
+
   return (
     <>
       <StyledTextField
@@ -262,16 +276,7 @@ function BaseInputTag(
           return inputType ?? "text"
         })()}
         disabled={attribute.readOnly}
-        value={(() => {
-          if (fieldIndex !== undefined) {
-            assert(valueOrValues instanceof Array)
-            return valueOrValues[fieldIndex]
-          }
-
-          assert(typeof valueOrValues === "string")
-
-          return valueOrValues || valueOrValues
-        })()}
+        value={currentValue}
         placeholder={
           attribute.annotations.inputTypePlaceholder === undefined ? undefined : advancedMsgStr(attribute.annotations.inputTypePlaceholder)
         }
@@ -315,7 +320,7 @@ function BaseInputTag(
         }}
         {...Object.fromEntries(Object.entries(attribute.html5DataAnnotations ?? {}).map(([key, value]) => [`data-${key}`, value]))}
         InputProps={{
-          "aria-invalid": displayableErrors.length !== 0,
+          "aria-invalid": (displayableErrors.length !== 0 || hasEmailError) ? true : undefined,
           autoComplete: attribute.autocomplete
         }}
         fullWidth
@@ -325,6 +330,12 @@ function BaseInputTag(
           ) : undefined
         }
       />
+      {/* Display email validation error if present */}
+      {hasEmailError && (
+        <span id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`} aria-live="polite">
+          <ValidationMessage>Invalid email address</ValidationMessage>
+        </span>
+      )}
       {(() => {
         if (fieldIndex === undefined) {
           return null

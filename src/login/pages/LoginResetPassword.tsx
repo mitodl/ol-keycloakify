@@ -1,7 +1,9 @@
+import { useState } from "react"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
 import { Button, Form, Subtitle, StyledTextField } from "../components/Elements"
+import { isValidEmail } from "../utils/emailValidation"
 
 export default function LoginResetPassword(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -9,6 +11,8 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
   const { url, realm, messagesPerField } = kcContext
 
   const { msg, msgStr } = i18n
+
+  const [usernameError, setUsernameError] = useState<string>("")
 
   return (
     <Template
@@ -21,7 +25,19 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
       headerNode={msg("emailForgotTitle")}
     >
       <Subtitle>{realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}</Subtitle>
-      <Form id="kc-reset-password-form" action={url.loginAction} method="post">
+      <Form
+        id="kc-reset-password-form"
+        action={url.loginAction}
+        method="post"
+        onSubmit={() => {
+          const usernameInput = document.getElementById("username") as HTMLInputElement
+          if (usernameInput && !isValidEmail(usernameInput.value)) {
+            setUsernameError("Invalid email address")
+            return false
+          }
+          return true
+        }}
+      >
         <StyledTextField
           id="username"
           label={!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
@@ -30,10 +46,18 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
           fullWidth
           InputProps={{
             autoComplete: "on",
-            "aria-invalid": messagesPerField.existsError("username")
+            "aria-invalid": messagesPerField.existsError("username") || usernameError !== ""
           }}
-          errorText={messagesPerField.get("username")}
-          error={messagesPerField.existsError("username")}
+          errorText={usernameError || messagesPerField.get("username")}
+          error={messagesPerField.existsError("username") || usernameError !== ""}
+          onBlur={() => {
+            const usernameInput = document.getElementById("username") as HTMLInputElement
+            if (usernameInput && usernameInput.value && !isValidEmail(usernameInput.value)) {
+              setUsernameError("Invalid email address")
+            } else {
+              setUsernameError("")
+            }
+          }}
         />
         <div id="kc-form-buttons">
           <Button type="submit" size="large">

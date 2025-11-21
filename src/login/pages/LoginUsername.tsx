@@ -5,6 +5,7 @@ import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
 import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
+import { isValidEmail } from "../utils/emailValidation"
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -12,6 +13,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
   const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, loginAttempt } = kcContext
 
   const [username, setUsername] = useState(login.username ?? "")
+  const [usernameError, setUsernameError] = useState<string>("")
 
   const { msg } = i18n
 
@@ -49,6 +51,10 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
             <Form
               id="kc-form-login"
               onSubmit={() => {
+                if (!isValidEmail(username)) {
+                  setUsernameError("Invalid email address")
+                  return false
+                }
                 if (realm.registrationEmailAsUsername && username) {
                   sessionStorage.setItem("email", username.trim())
                 }
@@ -68,14 +74,21 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   InputProps={{
                     autoFocus: true,
                     autoComplete: "username",
-                    "aria-invalid": messagesPerField.existsError("username")
+                    "aria-invalid": messagesPerField.existsError("username") || usernameError !== ""
                   }}
-                  errorText={messagesPerField.getFirstError("username")}
-                  error={messagesPerField.existsError("username")}
+                  errorText={usernameError || messagesPerField.getFirstError("username")}
+                  error={messagesPerField.existsError("username") || usernameError !== ""}
                   onChange={e => {
                     setUsername(e.target.value.trim())
                   }}
                   value={username}
+                  onBlur={() => {
+                    if (username && !isValidEmail(username)) {
+                      setUsernameError("Invalid email address")
+                    } else {
+                      setUsernameError("")
+                    }
+                  }}
                 />
               )}
               <div id="kc-form-buttons">

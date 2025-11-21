@@ -4,6 +4,7 @@ import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
 import { Link, Button, Form, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
+import { isValidEmail } from "../utils/emailValidation"
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -13,6 +14,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
   const { msg, msgStr } = i18n
 
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
+  const [usernameError, setUsernameError] = useState<string>("")
 
   return (
     <Template
@@ -48,6 +50,11 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
               <Form
                 id="kc-form-login"
                 onSubmit={() => {
+                  const usernameInput = document.getElementById("username") as HTMLInputElement
+                  if (usernameInput && !isValidEmail(usernameInput.value)) {
+                    setUsernameError("Invalid email address")
+                    return false
+                  }
                   setIsLoginButtonDisabled(true)
                   return true
                 }}
@@ -67,10 +74,18 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                       defaultValue: login.username ?? "",
                       autoFocus: true,
                       autoComplete: "username",
-                      "aria-invalid": messagesPerField.existsError("username")
+                      "aria-invalid": messagesPerField.existsError("username") || usernameError !== ""
                     }}
-                    errorText={messagesPerField.getFirstError("username")}
-                    error={messagesPerField.existsError("username")}
+                    errorText={usernameError || messagesPerField.getFirstError("username")}
+                    error={messagesPerField.existsError("username") || usernameError !== ""}
+                    onBlur={() => {
+                      const usernameInput = document.getElementById("username") as HTMLInputElement
+                      if (usernameInput && usernameInput.value && !isValidEmail(usernameInput.value)) {
+                        setUsernameError("Invalid email address")
+                      } else {
+                        setUsernameError("")
+                      }
+                    }}
                   />
                 )}
 
