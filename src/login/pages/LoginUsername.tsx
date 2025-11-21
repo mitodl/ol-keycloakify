@@ -14,10 +14,12 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
   const [username, setUsername] = useState(login.username ?? "")
   const [usernameError, setUsernameError] = useState<string>("")
+  const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
 
   const { msg } = i18n
 
-  const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
+  // Compute button disabled state based on username validity
+  const isButtonDisabled = isLoginButtonDisabled || !username || !isValidEmail(username)
 
   return (
     <Template
@@ -80,7 +82,12 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   errorText={usernameError || messagesPerField.getFirstError("username")}
                   error={messagesPerField.existsError("username") || usernameError !== ""}
                   onChange={e => {
-                    setUsername(e.target.value.trim())
+                   const value = e.target.value.trim()
+                   setUsername(value)
+                   // Clear error when user starts typing a valid email
+                   if (value && isValidEmail(value)) {
+                     setUsernameError("")
+                   }
                   }}
                   onBlur={() => {
                     if (username && !isValidEmail(username)) {
@@ -92,7 +99,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                 />
               )}
               <div id="kc-form-buttons">
-                <Button disabled={isLoginButtonDisabled || !username || !isValidEmail(username)} name="login" id="kc-login" type="submit" size="large">
+                <Button disabled={isButtonDisabled} name="login" id="kc-login" type="submit" size="large">
                   Next
                 </Button>
               </div>
