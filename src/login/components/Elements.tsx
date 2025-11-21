@@ -5,10 +5,11 @@ import {
   ButtonLink as SmootButtonLink,
   Alert as SmootAlert,
   AdornmentButton as SmootAdornmentButton,
-  TextField
+  TextField,
+  ActionButton
 } from "@mitodl/smoot-design"
 import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed"
-import { RiEyeLine, RiEyeOffLine } from "@remixicon/react"
+import { RiEyeLine, RiEyeOffLine, RiCheckLine } from "@remixicon/react"
 import type { I18n } from "../i18n"
 
 export const Link = styled.a(({ theme }) => ({
@@ -215,3 +216,46 @@ export const HelperText = styled.p(({ theme }) => ({
   color: theme.custom.colors.darkGray1,
   marginTop: "8px"
 }))
+
+const SuggestionContainer = styled.div(({ theme }) => ({
+  ...theme.typography.body2,
+  color: theme.custom.colors.red,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginTop: "4px",
+  cursor: "pointer",
+  "&:hover button": {
+    backgroundColor: "rgba(64, 70, 76, 0.06)"
+  }
+}))
+
+export const Suggestion = ({
+  children,
+  onClick
+}: {
+  children: React.ReactNode
+  onClick: () => void
+}) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault()
+      onClick()
+    }
+  }
+
+  return (
+    <SuggestionContainer
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-live="polite"
+    >
+      {children}
+      <ActionButton variant="text" size="small" aria-hidden="true" tabIndex={-1}>
+        <RiCheckLine aria-hidden="true" />
+      </ActionButton>
+    </SuggestionContainer>
+  )
+}
