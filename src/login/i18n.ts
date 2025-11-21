@@ -66,6 +66,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
       pageExpiredMsg2: "To continue the sign in process",
       invalidUsernameOrEmailMessage:
         " We do not have an account for that email on record. Please try another email or sign up for free.",
+      invalidEmailMessage: "Invalid email address.",
       invalidPasswordMessage:
         "The password you have entered is incorrect. Please try again or select Reset Password below.",
       expiredCodeMessage: "Sign in timeout. Please sign in again.",

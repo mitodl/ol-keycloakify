@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import { clsx } from "keycloakify/tools/clsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField } from "../components/Elements"
+import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField, ValidationMessage } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
+
+const isValidEmail = (email: string): boolean => {
+  if (!email || !email.trim()) return false
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email.trim())
+}
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -13,9 +19,59 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
   const [username, setUsername] = useState(login.username ?? "")
 
-  const { msg } = i18n
+  const { msg, msgStr } = i18n
 
-  const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [emailInvalid, setEmailInvalid] = useState(false)
+  const [isFocused, setIsFocused] = useState(false)
+  const [isEmailValid, setIsEmailValid] = useState(true)
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const isFocusedRef = useRef(isFocused)
+  const usernameRef = useRef(username)
+
+  isFocusedRef.current = isFocused
+  usernameRef.current = username
+
+  const shouldValidateEmail = realm.loginWithEmailAllowed
+
+  const checkValidity = useCallback(
+    (value: string) => {
+      if (shouldValidateEmail && value.trim()) {
+        const valid = isValidEmail(value.trim())
+        setIsEmailValid(valid)
+        return valid
+      }
+      setIsEmailValid(true)
+      return true
+    },
+    [shouldValidateEmail]
+  )
+
+  const isSubmitDisabled = isSubmitting || !username.trim() || (shouldValidateEmail && !isEmailValid)
+
+  useEffect(() => {
+    if (shouldValidateEmail) {
+      checkValidity(username)
+    }
+  }, [username, shouldValidateEmail, checkValidity])
+
+  useEffect(() => {
+    const input = inputRef.current
+    if (!input || !shouldValidateEmail) return
+
+    const handleInvalid = (e: Event) => {
+      e.preventDefault() // Prevent browser's default validation message
+      if (!isFocusedRef.current && usernameRef.current.trim()) {
+        setEmailInvalid(true)
+      }
+    }
+
+    input.addEventListener("invalid", handleInvalid)
+
+    return () => {
+      input.removeEventListener("invalid", handleInvalid)
+    }
+  }, [shouldValidateEmail])
 
   return (
     <Template
@@ -52,34 +108,63 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                 if (realm.registrationEmailAsUsername && username) {
                   sessionStorage.setItem("email", username.trim())
                 }
-                setIsLoginButtonDisabled(true)
+                setIsSubmitting(true)
                 return true
               }}
               action={url.loginAction}
               method="post"
             >
               {!usernameHidden && (
-                <StyledTextField
-                  id="username"
-                  label={!realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")}
-                  name="username"
-                  type="text"
-                  fullWidth
-                  InputProps={{
-                    autoFocus: true,
-                    autoComplete: "username",
-                    "aria-invalid": messagesPerField.existsError("username")
-                  }}
-                  errorText={messagesPerField.getFirstError("username")}
-                  error={messagesPerField.existsError("username")}
-                  onChange={e => {
-                    setUsername(e.target.value.trim())
-                  }}
-                  value={username}
-                />
+                <div>
+                  <StyledTextField
+                    id="username"
+                    label={
+                      !realm.loginWithEmailAllowed ? msg("username") : !realm.registrationEmailAsUsername ? msg("usernameOrEmail") : msg("email")
+                    }
+                    name="username"
+                    type="email"
+                    fullWidth
+                    InputProps={{
+                      autoFocus: true,
+                      autoComplete: "username",
+                      "aria-invalid": messagesPerField.existsError("username") || emailInvalid
+                    }}
+                    inputProps={{
+                      ref: inputRef,
+                      onFocus: () => {
+                        setIsFocused(true)
+                        setEmailInvalid(false)
+                      },
+                      onBlur: () => {
+                        setIsFocused(false)
+                        const value = inputRef.current?.value ?? ""
+                        const isValid = checkValidity(value)
+                        if (!isValid && value.trim()) {
+                          setEmailInvalid(true)
+                        }
+                      }
+                    }}
+                    errorText={messagesPerField.getFirstError("username")}
+                    error={messagesPerField.existsError("username") || emailInvalid}
+                    onChange={e => {
+                      const value = e.target.value
+                      setUsername(value.trim())
+                      const isValid = checkValidity(value)
+                      if (isValid) {
+                        setEmailInvalid(false)
+                      }
+                    }}
+                    value={username}
+                  />
+                  {emailInvalid && !isFocused && (
+                    <ValidationMessage id="form-help-text-after-username" aria-live="polite">
+                      {msgStr("invalidEmailMessage")}
+                    </ValidationMessage>
+                  )}
+                </div>
               )}
               <div id="kc-form-buttons">
-                <Button disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" size="large">
+                <Button disabled={isSubmitDisabled} name="login" id="kc-login" type="submit" size="large">
                   Next
                 </Button>
               </div>
