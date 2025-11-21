@@ -403,6 +403,9 @@ function EmailTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
           if (initialValue) {
             setInitialValue(null)
           }
+          if (suggestion) {
+            setSuggestion(null)
+          }
         }}
         onBlur={checkEmailForSuggestion}
       />

@@ -250,6 +250,7 @@ export const Suggestion = ({
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
+      aria-live="polite"
     >
       {children}
       <ActionButton variant="text" size="small" aria-hidden="true" tabIndex={-1}>
