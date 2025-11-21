@@ -2,7 +2,7 @@ import { useState } from "react"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Link, Button, Form, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton, StyledTextField } from "../components/Elements"
+import { Link, Form, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
 import { isValidEmail } from "../utils/emailValidation"
 
@@ -116,9 +116,15 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 </div>
                 <div id="kc-form-buttons">
                   <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
-                  <Button disabled={isLoginButtonDisabled || !username || !isValidEmail(username)} name="login" id="kc-login" type="submit" variant="primary" size="large">
+                  <button 
+                    type="submit" 
+                    name="login" 
+                    id="kc-login" 
+                    disabled={isLoginButtonDisabled || !username || !isValidEmail(username)}
+                    className="css-1qfsvrq"
+                  >
                     {msgStr("doLogIn")}
-                  </Button>
+                  </button>
                 </div>
               </Form>
             ) : realm.resetPasswordAllowed ? (

@@ -1,9 +1,17 @@
 /**
  * Email validation utility
- * Uses HTML5 email validation standard
+ * Uses a practical email validation regex that covers most common cases
+ * while rejecting obviously invalid formats
  */
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+// Email regex pattern:
+// - Local part: alphanumeric, dots, hyphens, underscores, plus signs
+// - Must not start or end with a dot
+// - Must not have consecutive dots
+// - Domain: alphanumeric, hyphens, dots
+// - Must have at least one dot in domain
+// - TLD must be at least 2 characters
+const EMAIL_REGEX = /^[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/
 
 /**
  * Validates if a string is a valid email address
@@ -15,7 +23,25 @@ export function isValidEmail(email: string): boolean {
     return false
   }
 
-  return EMAIL_REGEX.test(email.trim())
+  const trimmedEmail = email.trim()
+
+  // Check basic regex pattern
+  if (!EMAIL_REGEX.test(trimmedEmail)) {
+    return false
+  }
+
+  // Additional validation: no consecutive dots
+  if (trimmedEmail.includes("..")) {
+    return false
+  }
+
+  // Additional validation: local part shouldn't start or end with dot
+  const [localPart] = trimmedEmail.split("@")
+  if (localPart.startsWith(".") || localPart.endsWith(".")) {
+    return false
+  }
+
+  return true
 }
 
 /**

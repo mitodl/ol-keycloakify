@@ -3,7 +3,7 @@ import { clsx } from "keycloakify/tools/clsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField } from "../components/Elements"
+import { Form, SocialProviderButtonLink, OrBar, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
 import { isValidEmail } from "../utils/emailValidation"
 
@@ -99,9 +99,15 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                 />
               )}
               <div id="kc-form-buttons">
-                <Button disabled={isButtonDisabled} name="login" id="kc-login" type="submit" size="large">
+                <button 
+                  type="submit" 
+                  name="login" 
+                  id="kc-login" 
+                  disabled={isButtonDisabled}
+                  className="css-1qfsvrq"
+                >
                   Next
-                </Button>
+                </button>
               </div>
             </Form>
           )}
