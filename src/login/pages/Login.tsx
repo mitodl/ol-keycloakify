@@ -15,6 +15,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false)
   const [usernameError, setUsernameError] = useState<string>("")
+  const [username, setUsername] = useState(login.username ?? "")
 
   return (
     <Template
@@ -71,16 +72,19 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     type="text"
                     fullWidth
                     InputProps={{
-                      defaultValue: login.username ?? "",
+                      value: username,
                       autoFocus: true,
                       autoComplete: "username",
                       "aria-invalid": messagesPerField.existsError("username") || usernameError !== ""
                     }}
                     errorText={usernameError || messagesPerField.getFirstError("username")}
                     error={messagesPerField.existsError("username") || usernameError !== ""}
+                    onChange={(e) => {
+                      setUsername(e.target.value)
+                      setUsernameError("")
+                    }}
                     onBlur={() => {
-                      const usernameInput = document.getElementById("username") as HTMLInputElement
-                      if (usernameInput && usernameInput.value && !isValidEmail(usernameInput.value)) {
+                      if (username && !isValidEmail(username)) {
                         setUsernameError("Invalid email address")
                       } else {
                         setUsernameError("")
@@ -112,7 +116,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 </div>
                 <div id="kc-form-buttons">
                   <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
-                  <Button disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" variant="primary" size="large">
+                  <Button disabled={isLoginButtonDisabled || !username || !isValidEmail(username)} name="login" id="kc-login" type="submit" variant="primary" size="large">
                     {msgStr("doLogIn")}
                   </Button>
                 </div>

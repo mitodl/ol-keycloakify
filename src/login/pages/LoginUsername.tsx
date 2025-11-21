@@ -92,7 +92,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                 />
               )}
               <div id="kc-form-buttons">
-                <Button disabled={isLoginButtonDisabled} name="login" id="kc-login" type="submit" size="large">
+                <Button disabled={isLoginButtonDisabled || !username || !isValidEmail(username)} name="login" id="kc-login" type="submit" size="large">
                   Next
                 </Button>
               </div>

@@ -1,0 +1,51 @@
+
+# 2025-07-23 16:11:45.975544
++no
+
+# 2025-07-23 16:11:50.688714
++/add "/home/tmacey/code/mit/ops/ol-keycloakify/src/login/pages/Login.tsx"
+
+# 2025-07-23 16:17:54.101546
++I would like to maintain the ability to check if the account needs a password with the logniAttempt context. But I would like to ensure that the first view shows the username/email field as the first step of the Keycloak login flow to allow for the organization flow to route to the appropriate IDP after entering that value.
+
+# 2025-07-23 16:28:56.664833
++The "Password Required" block is automatically showing no the email entry view. It shouldn't do that until the account object has been retrieved, and only if the account exists in Keycloak.
+
+# 2025-07-23 16:30:43.478604
++I don't want to show the password field on the initial view, because after entering the email I may want to redirect to a separate IDP login page based on the kc_idp_hint that gets returned from the organization lookup.
+
+# 2025-07-23 16:32:55.654415
++Now I'm getting this error when trying to load the theme: `Error: Wrong assertion encountered: "Message with key "doNext" not found"
++    u http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/assert-lEPzpKR_.js:1
++    ny http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/KcPage-CnUe_dOZ.js:233
++    ho http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:39
++    qa http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:41
++    Ga http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:41
++    Sd http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:41
++    qr http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:41
++    Iu http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:41
++    Ka http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:41
++    E http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:26
++    sn http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:26
++    EventHandlerNonNull* http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:26
++    <anonymous> http://localhost:8080/resources/uvhh7/login/ol-learn/dist/assets/index-BR34ImQ6.js:26
++index-BR34ImQ6.js:41:161
++`
+
+# 2025-07-23 16:32:59.419390
++y
+
+# 2025-07-23 16:33:03.626702
++no
+
+# 2025-07-23 16:33:06.351447
++yes
+
+# 2025-07-23 16:33:08.535631
++no
+
+# 2025-07-23 16:33:11.657673
++yes
+
+# 2025-07-23 16:33:26.283646
++y

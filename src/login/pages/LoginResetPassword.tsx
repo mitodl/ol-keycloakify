@@ -13,6 +13,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
   const { msg, msgStr } = i18n
 
   const [usernameError, setUsernameError] = useState<string>("")
+  const [username, setUsername] = useState("")
 
   return (
     <Template
@@ -45,14 +46,18 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
           type="text"
           fullWidth
           InputProps={{
+            value: username,
             autoComplete: "on",
             "aria-invalid": messagesPerField.existsError("username") || usernameError !== ""
           }}
           errorText={usernameError || messagesPerField.get("username")}
           error={messagesPerField.existsError("username") || usernameError !== ""}
+          onChange={(e) => {
+            setUsername(e.target.value)
+            setUsernameError("")
+          }}
           onBlur={() => {
-            const usernameInput = document.getElementById("username") as HTMLInputElement
-            if (usernameInput && usernameInput.value && !isValidEmail(usernameInput.value)) {
+            if (username && !isValidEmail(username)) {
               setUsernameError("Invalid email address")
             } else {
               setUsernameError("")
@@ -60,7 +65,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
           }}
         />
         <div id="kc-form-buttons">
-          <Button type="submit" size="large">
+          <Button disabled={!username || !isValidEmail(username)} type="submit" size="large">
             {msgStr("doResetPasswordSubmit")}
           </Button>
         </div>
