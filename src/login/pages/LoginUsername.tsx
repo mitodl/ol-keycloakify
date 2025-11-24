@@ -10,7 +10,7 @@ import { EMAIL_SPELLCHECKER_CONFIG, EMAIL_SUGGESTION_DOMAINS } from "../constant
 
 const isValidEmail = (email: string): boolean => {
   if (!email || !email.trim()) return false
-  const emailRegex = /^[^\s@]+@([A-Za-z0-9]+(-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,}$/
+  const emailRegex = /^[^\s@]+@([A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/
   return emailRegex.test(email.trim())
 }
 
@@ -129,6 +129,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
           {realm.password && (
             <Form
               id="kc-form-login"
+              noValidate
               onSubmit={() => {
                 if (realm.registrationEmailAsUsername && username) {
                   sessionStorage.setItem("email", username.trim())
