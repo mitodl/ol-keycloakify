@@ -10,7 +10,7 @@ import { EMAIL_SPELLCHECKER_CONFIG, EMAIL_SUGGESTION_DOMAINS } from "../constant
 
 const isValidEmail = (email: string): boolean => {
   if (!email || !email.trim()) return false
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  const emailRegex = /^[^\s@]+@([A-Za-z0-9]+(-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,}$/
   return emailRegex.test(email.trim())
 }
 
@@ -169,7 +169,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                           setEmailInvalid(true)
                           setSuggestion(null)
                         } else if (isValid && shouldValidateEmail && value.trim()) {
-                          checkEmailForSuggestion(value)
+                          checkEmailForSuggestion(value.trim())
                         }
                       }
                     }}
@@ -182,7 +182,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                       if (isValid) {
                         setEmailInvalid(false)
                         if (shouldValidateEmail && value.trim()) {
-                          checkEmailForSuggestion(value)
+                          checkEmailForSuggestion(value.trim())
                         } else {
                           setSuggestion(null)
                         }
@@ -204,9 +204,6 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                         setUsername(suggestion)
                         checkValidity(suggestion)
                         setEmailInvalid(false)
-                        if (inputRef.current) {
-                          inputRef.current.value = suggestion
-                        }
                       }}
                     >
                       Did you mean: {suggestion}?

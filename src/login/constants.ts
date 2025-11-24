@@ -25,12 +25,22 @@ export const ORG_EMAIL_DOMAINS = [
 ]
 
 export const EMAIL_SUGGESTION_DOMAINS = [
+  ...ORG_EMAIL_DOMAINS,
   ...emailSpellChecker.POPULAR_DOMAINS,
-  ...ORG_EMAIL_DOMAINS
+  // Adding common email providers to the suggestion list. The email-spell-checker lists these as second-level domains,
+  // but adding them here prevents them being suggested as they are being typed correctly.
+  "yahoo.com",
+  "outlook.com",
+  "hotmail.com",
+  "live.com",
+  "hotmail.co.uk",
+  "hotmail.fr",
+  "msn.com",
+  "icloud.com"
 ]
 
 export const EMAIL_SPELLCHECKER_CONFIG = {
   domains: EMAIL_SUGGESTION_DOMAINS,
-  // Only suggest for .com close matches as the full TLD lists produces eager false positives for domains we can't reliably suggest for
-  topLevelDomains: ["com"]
+  // Empty the TLD list to avoid false positives for domains we can't reliably suggest for.
+  topLevelDomains: []
 }
