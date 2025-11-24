@@ -14,9 +14,24 @@ import type { KcContext } from "./KcContext"
 import type { I18n } from "./i18n"
 import { Label, ValidationMessage, RevealPasswordButton, HelperText, Suggestion } from "./components/Elements"
 import { StyledTextField } from "./components/Elements"
+import { ORG_EMAIL_DOMAINS } from "./constants"
 
-export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx">) {
-  const { kcContext, i18n, onIsFormSubmittableValueChange, doMakeUserConfirmPassword, BeforeField, AfterField } = props
+const isOrgEmail = (email: string): boolean => {
+  if (!email || !email.trim()) return false
+  const emailParts = email.trim().split("@")
+  if (emailParts.length !== 2) return false
+  const domain = emailParts[1].toLowerCase()
+  return ORG_EMAIL_DOMAINS.some(
+    (orgEmailDomain: string) => domain === orgEmailDomain.toLowerCase() || domain.endsWith(`.${orgEmailDomain.toLowerCase()}`)
+  )
+}
+
+export default function UserProfileFormFields(
+  props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx"> & {
+    onEmailValueChange?: (email: string) => void
+  }
+) {
+  const { kcContext, i18n, onIsFormSubmittableValueChange, doMakeUserConfirmPassword, BeforeField, AfterField, onEmailValueChange } = props
 
   const { advancedMsg } = i18n
 
@@ -31,7 +46,15 @@ export default function UserProfileFormFields(props: Omit<UserProfileFormFieldsP
 
   useEffect(() => {
     onIsFormSubmittableValueChange(isFormSubmittable)
-  }, [isFormSubmittable])
+  }, [isFormSubmittable, onIsFormSubmittableValueChange])
+
+  const emailValue = formFieldStates.find(state => state.attribute.name === "email")?.valueOrValues
+
+  useEffect(() => {
+    if (typeof emailValue === "string") {
+      onEmailValueChange?.(emailValue)
+    }
+  }, [emailValue, onEmailValueChange])
 
   const groupNameRef = { current: "" }
 
@@ -235,9 +258,22 @@ function BaseInputTag(
     transformValue?: (value: string) => string
     onBeforeChange?: () => void
     onBlur?: () => void
+    onFocus?: () => void
   }
 ) {
-  const { attribute, fieldIndex, dispatchFormAction, valueOrValues, i18n, displayableErrors, label, transformValue, onBeforeChange, onBlur } = props
+  const {
+    attribute,
+    fieldIndex,
+    dispatchFormAction,
+    valueOrValues,
+    i18n,
+    displayableErrors,
+    label,
+    transformValue,
+    onBeforeChange,
+    onBlur,
+    onFocus
+  } = props
 
   const { advancedMsgStr } = i18n
 
@@ -318,6 +354,11 @@ function BaseInputTag(
           "aria-invalid": displayableErrors.length !== 0,
           autoComplete: attribute.autocomplete
         }}
+        inputProps={{
+          onFocus: () => {
+            onFocus?.()
+          }
+        }}
         fullWidth
         endAdornment={
           attribute.name === "password" || attribute.name === "password-confirm" ? (
@@ -353,31 +394,18 @@ function BaseInputTag(
 
 const EMAIL_SUGGESTION_DOMAINS = [
   ...emailSpellChecker.POPULAR_DOMAINS,
-  // https://github.com/mitodl/ol-infrastructure/blob/a0d3000743e198c6a8c91d5a8c87d64de553e15e/src/ol_infrastructure/substructure/keycloak/olapps.py#L672-L688
-  "mit.edu",
-  "broad.mit.edu",
-  "cag.csail.mit.edu",
-  "csail.mit.edu",
-  "education.mit.edu",
-  "ll.mit.edu",
-  "math.mit.edu",
-  "med.mit.edu",
-  "media.mit.edu",
-  "mit.edu",
-  "mitimco.mit.edu",
-  "mtl.mit.edu",
-  "professional.mit.edu",
-  "sloan.mit.edu",
-  "smart.mit.edu",
-  "solve.mit.edu",
-  "wi.mit.edu"
+  // Users with MIT addresses should have been directed to Touchstone on login. We might prevent some mistyped registrations here, though correct organization addresses will be show a validation error prompting to return to login.
+  ...ORG_EMAIL_DOMAINS
 ]
 
 function EmailTag(props: InputFieldByTypeProps & { fieldIndex: number | undefined }) {
-  const { attribute, fieldIndex, dispatchFormAction, valueOrValues } = props
+  const { attribute, fieldIndex, dispatchFormAction, valueOrValues, i18n } = props
+
+  const { advancedMsgStr } = i18n
 
   const [touched, setTouched] = useState(false)
   const [suggestion, setSuggestion] = useState<string | null>(null)
+  const [hasBeenBlurred, setHasBeenBlurred] = useState(false)
 
   const [initialValue, setInitialValue] = useState<string | null>(() => {
     if (fieldIndex === undefined) {
@@ -390,12 +418,15 @@ function EmailTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
     if (typeof valueOrValues !== "string" || !valueOrValues) {
       return
     }
+    setHasBeenBlurred(true)
     const suggestion = emailSpellChecker.run({
       email: valueOrValues,
       domains: EMAIL_SUGGESTION_DOMAINS
     })
     setSuggestion(suggestion?.full || null)
   }
+
+  const orgEmailDetected = typeof valueOrValues === "string" && valueOrValues.trim() && isOrgEmail(valueOrValues)
 
   useEffect(() => {
     if (initialValue && !touched) {
@@ -428,7 +459,15 @@ function EmailTag(props: InputFieldByTypeProps & { fieldIndex: number | undefine
           }
         }}
         onBlur={checkEmailForSuggestion}
+        onFocus={() => {
+          setHasBeenBlurred(false)
+        }}
       />
+      {orgEmailDetected && hasBeenBlurred ? (
+        <ValidationMessage id="form-help-text-mit-email" aria-live="polite">
+          {advancedMsgStr("orgEmailRegistrationMessage")}
+        </ValidationMessage>
+      ) : null}
       {suggestion ? (
         <Suggestion
           onClick={() => {

@@ -3,12 +3,14 @@ import { clsx } from "keycloakify/tools/clsx"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
-import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField, ValidationMessage } from "../components/Elements"
+import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField, ValidationMessage, Suggestion } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
+import emailSpellChecker from "@zootools/email-spell-checker"
+import { EMAIL_SPELLCHECKER_CONFIG, EMAIL_SUGGESTION_DOMAINS } from "../constants"
 
 const isValidEmail = (email: string): boolean => {
   if (!email || !email.trim()) return false
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  const emailRegex = /^[^\s@]+@([A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/
   return emailRegex.test(email.trim())
 }
 
@@ -25,6 +27,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
   const [emailInvalid, setEmailInvalid] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
   const [isEmailValid, setIsEmailValid] = useState(true)
+  const [suggestion, setSuggestion] = useState<string | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
   const isFocusedRef = useRef(isFocused)
   const usernameRef = useRef(username)
@@ -46,6 +49,28 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
     },
     [shouldValidateEmail]
   )
+
+  const checkEmailForSuggestion = useCallback((value: string) => {
+    if (!value.trim()) {
+      return
+    }
+
+    const parts = value.trim().split("@")
+    const domain = parts[1]
+    const startMatch = EMAIL_SUGGESTION_DOMAINS.some(d => d.startsWith(domain))
+    // Don't show a suggestion while the user is typing towards a match
+    if (startMatch) {
+      setSuggestion(null)
+      return
+    }
+
+    const suggestionResult = emailSpellChecker.run({
+      email: value.trim(),
+      ...EMAIL_SPELLCHECKER_CONFIG
+    })
+
+    setSuggestion(suggestionResult?.full || null)
+  }, [])
 
   const isSubmitDisabled = isSubmitting || !username.trim() || (shouldValidateEmail && !isEmailValid)
 
@@ -104,6 +129,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
           {realm.password && (
             <Form
               id="kc-form-login"
+              noValidate
               onSubmit={() => {
                 if (realm.registrationEmailAsUsername && username) {
                   sessionStorage.setItem("email", username.trim())
@@ -134,6 +160,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                       onFocus: () => {
                         setIsFocused(true)
                         setEmailInvalid(false)
+                        setSuggestion(null)
                       },
                       onBlur: () => {
                         setIsFocused(false)
@@ -141,6 +168,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                         const isValid = checkValidity(value)
                         if (!isValid && value.trim()) {
                           setEmailInvalid(true)
+                          setSuggestion(null)
+                        } else if (isValid && shouldValidateEmail && value.trim()) {
+                          checkEmailForSuggestion(value.trim())
                         }
                       }
                     }}
@@ -152,6 +182,13 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                       const isValid = checkValidity(value)
                       if (isValid) {
                         setEmailInvalid(false)
+                        if (shouldValidateEmail && value.trim()) {
+                          checkEmailForSuggestion(value.trim())
+                        } else {
+                          setSuggestion(null)
+                        }
+                      } else {
+                        setSuggestion(null)
                       }
                     }}
                     value={username}
@@ -160,6 +197,18 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                     <ValidationMessage id="form-help-text-after-username" aria-live="polite">
                       {msgStr("invalidEmailMessage")}
                     </ValidationMessage>
+                  )}
+                  {suggestion && (
+                    <Suggestion
+                      onClick={() => {
+                        setSuggestion(null)
+                        setUsername(suggestion)
+                        checkValidity(suggestion)
+                        setEmailInvalid(false)
+                      }}
+                    >
+                      Did you mean: {suggestion}?
+                    </Suggestion>
                   )}
                 </div>
               )}

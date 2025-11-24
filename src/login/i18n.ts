@@ -67,6 +67,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
       invalidUsernameOrEmailMessage:
         " We do not have an account for that email on record. Please try another email or sign up for free.",
       invalidEmailMessage: "Invalid email address.",
+      orgEmailRegistrationMessage:
+        "Please return to login to be directed to MIT Touchstone.",
       invalidPasswordMessage:
         "The password you have entered is incorrect. Please try again or select Reset Password below.",
       expiredCodeMessage: "Sign in timeout. Please sign in again.",

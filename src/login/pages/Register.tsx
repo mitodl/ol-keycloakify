@@ -7,9 +7,22 @@ import type { PageProps } from "keycloakify/login/pages/PageProps"
 import type { KcContext } from "../KcContext"
 import type { I18n } from "../i18n"
 import { Form, ValidationMessage, Button, Link, Info, Subtitle } from "../components/Elements"
+import { ORG_EMAIL_DOMAINS } from "../constants"
+
+const isOrgEmail = (email: string): boolean => {
+  if (!email || !email.trim()) return false
+  const emailParts = email.trim().split("@")
+  if (emailParts.length !== 2) return false
+  const domain = emailParts[1].toLowerCase()
+  return ORG_EMAIL_DOMAINS.some(
+    (orgEmailDomain: string) => domain === orgEmailDomain.toLowerCase() || domain.endsWith(`.${orgEmailDomain.toLowerCase()}`)
+  )
+}
 
 type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
-  UserProfileFormFields: LazyOrNot<(props: Omit<UserProfileFormFieldsProps, "kcClsx">) => JSX.Element>
+  UserProfileFormFields: LazyOrNot<
+    (props: Omit<UserProfileFormFieldsProps, "kcClsx"> & { onEmailValueChange?: (email: string) => void }) => JSX.Element
+  >
   doMakeUserConfirmPassword: boolean
 }
 
@@ -32,6 +45,11 @@ export default function Register(props: RegisterProps) {
 
   const [isFormSubmittable, setIsFormSubmittable] = useState(false)
   const [areTermsAccepted, setAreTermsAccepted] = useState(false)
+  const [emailValue, setEmailValue] = useState<string>("")
+
+  // Block form submission if org email is detected
+  const hasOrgEmail = emailValue.trim() && isOrgEmail(emailValue)
+  const isFormSubmittableWithOrgCheck = isFormSubmittable && !hasOrgEmail
 
   return (
     <Template
@@ -54,6 +72,7 @@ export default function Register(props: RegisterProps) {
           kcContext={kcContext}
           i18n={i18n}
           onIsFormSubmittableValueChange={setIsFormSubmittable}
+          onEmailValueChange={setEmailValue}
           doMakeUserConfirmPassword={doMakeUserConfirmPassword}
         />
         {termsAcceptanceRequired && (
@@ -87,7 +106,7 @@ export default function Register(props: RegisterProps) {
             </div>
           ) : (
             <div id="kc-form-buttons">
-              <Button disabled={!isFormSubmittable || (termsAcceptanceRequired && !areTermsAccepted)} type="submit" size="large">
+              <Button disabled={!isFormSubmittableWithOrgCheck || (termsAcceptanceRequired && !areTermsAccepted)} type="submit" size="large">
                 {msg("doRegister")}
               </Button>
             </div>
