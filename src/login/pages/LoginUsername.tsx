@@ -6,15 +6,13 @@ import type { I18n } from "../i18n"
 import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField, ValidationMessage, Suggestion } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
 import emailSpellChecker from "@zootools/email-spell-checker"
-import { ORG_EMAIL_DOMAINS } from "../constants"
+import { EMAIL_SPELLCHECKER_CONFIG, EMAIL_SUGGESTION_DOMAINS } from "../constants"
 
 const isValidEmail = (email: string): boolean => {
   if (!email || !email.trim()) return false
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email.trim())
 }
-
-const EMAIL_SUGGESTION_DOMAINS = [...emailSpellChecker.POPULAR_DOMAINS, ...ORG_EMAIL_DOMAINS]
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -56,10 +54,21 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
     if (!value.trim()) {
       return
     }
+
+    const parts = value.trim().split("@")
+    const domain = parts[1]
+    const startMatch = EMAIL_SUGGESTION_DOMAINS.some(d => d.startsWith(domain))
+    // Don't show a suggestion while the user is typing
+    if (startMatch) {
+      setSuggestion(null)
+      return
+    }
+
     const suggestionResult = emailSpellChecker.run({
       email: value,
-      domains: EMAIL_SUGGESTION_DOMAINS
+      ...EMAIL_SPELLCHECKER_CONFIG
     })
+
     setSuggestion(suggestionResult?.full || null)
   }, [])
 
