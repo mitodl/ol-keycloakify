@@ -65,7 +65,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
     }
 
     const suggestionResult = emailSpellChecker.run({
-      email: value,
+      email: value.trim(),
       ...EMAIL_SPELLCHECKER_CONFIG
     })
 
