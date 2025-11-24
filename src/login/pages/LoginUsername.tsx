@@ -58,7 +58,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
     const parts = value.trim().split("@")
     const domain = parts[1]
     const startMatch = EMAIL_SUGGESTION_DOMAINS.some(d => d.startsWith(domain))
-    // Don't show a suggestion while the user is typing
+    // Don't show a suggestion while the user is typing towards a match
     if (startMatch) {
       setSuggestion(null)
       return
