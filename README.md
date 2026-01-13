@@ -51,6 +51,8 @@ yarn keycloakify initialize-email-theme
 # Start in Docker
 
 ```
+POSTHOG_API_KEY="your-posthog-api-key" \
+POSTHOG_API_HOST="https://us.i.posthog.com" \
 yarn keycloakify start-keycloak
 ```
 
