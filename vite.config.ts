@@ -17,6 +17,10 @@ export default defineConfig({
         "22-to-25": true,
         "all-other-versions": `keycloakify-theme_v11-21_and_v26plus.jar`
       },
+      environmentVariables: [
+        { name: "POSTHOG_API_HOST", default: "https://us.i.posthog.com" },
+        { name: "POSTHOG_API_KEY", default: "" }
+      ],
       postBuild: async (buildContext: BuildContext) => {
         await buildEmailTheme({
           templatesSrcDirPath: __dirname + "/src/emails/templates",
