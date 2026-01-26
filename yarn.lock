@@ -1461,28 +1461,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-account-ui@npm:~260305.0.0":
-  version: 260305.0.1
-  resolution: "@keycloakify/keycloak-account-ui@npm:260305.0.1"
+"@keycloakify/keycloak-account-ui@npm:~260502.0.0":
+  version: 260502.0.2
+  resolution: "@keycloakify/keycloak-account-ui@npm:260502.0.2"
   dependencies:
     tsafe: "npm:^1.8.5"
   peerDependencies:
-    "@keycloakify/keycloak-ui-shared": ~260305.0.0
+    "@keycloakify/keycloak-ui-shared": ~260502.0.0
     "@patternfly/patternfly": ^5.4.2
     "@patternfly/react-core": ^5.4.14
     "@patternfly/react-icons": ^5.4.2
     "@patternfly/react-table": ^5.4.16
     "@types/lodash-es": ^4.17.12
     "@types/react": ^18.3.18
-    i18next: ^25.2.1
+    i18next: ^25.7.3
     i18next-fetch-backend: ^6.0.0
-    keycloak-js: ^26.2.0
-    lodash-es: ^4.17.21
+    lodash-es: ^4.17.22
     react: ^18.3.1
-    react-hook-form: ^7.59.0
-    react-i18next: ^15.5.3
-    react-router-dom: ^6.30.1
-  checksum: 10c0/92632e149a99f02ad300dccda9f4c3287805df21636797d85e7fb0a17afa5993d9cb009bf9bb8d32bf4fd717cb80222896db98fda6de52ea86b38cf8bec012db
+    react-hook-form: ^7.70.0
+    react-i18next: ^16.5.1
+    react-router-dom: ^6.30.2
+  checksum: 10c0/c1bc04af5e76504b6c8f86cc7cfbc85517a2889e4c1b2e6b42c853e9c9985b406b1ffe55e08cb6f478dbc6e4fa1723e9520a234517b8af8c850f5cb923fea690
   languageName: node
   linkType: hard
 
@@ -8800,7 +8799,7 @@ __metadata:
     "@emotion/styled": "npm:^11.14.0"
     "@eslint/js": "npm:^9.15.0"
     "@keycloak/keycloak-admin-client": "npm:26.5.2"
-    "@keycloakify/keycloak-account-ui": "npm:~260305.0.0"
+    "@keycloakify/keycloak-account-ui": "npm:~260502.0.0"
     "@keycloakify/keycloak-ui-shared": "npm:~260502.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
     "@mui/lab": "npm:^7.0.0-beta.13"
