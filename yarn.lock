@@ -6645,10 +6645,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-fetch-backend@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "i18next-fetch-backend@npm:6.0.0"
-  checksum: 10c0/5e71a24cc3e9ef8eacc2e41febe218c1fe6093bd3947dce3c07c902adb80c907e370630fe0dc49ffe92f817671ca53d6a21f90cc2abf34ee42279d1fc0817414
+"i18next-fetch-backend@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "i18next-fetch-backend@npm:7.0.0"
+  checksum: 10c0/36b84388467b405473c6be9ff10b96aab379f240d08ac4f55bfe14fd589aa41ff6a699cacc050d23320e12b3d80edb9e0c367feadf065f8d8108ded661a10bb4
   languageName: node
   linkType: hard
 
@@ -8429,7 +8429,7 @@ __metadata:
     eslint-plugin-storybook: "npm:^10.0.0"
     globals: "npm:^17.0.0"
     i18next: "npm:^25.7.3"
-    i18next-fetch-backend: "npm:^6.0.0"
+    i18next-fetch-backend: "npm:^7.0.0"
     jsx-email: "npm:^2.7.2"
     keycloak-js: "npm:^26.2.0"
     keycloakify: "npm:^11.8.27"
