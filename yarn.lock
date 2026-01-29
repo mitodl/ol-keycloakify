@@ -6309,10 +6309,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^16.0.0":
-  version: 16.5.0
-  resolution: "globals@npm:16.5.0"
-  checksum: 10c0/615241dae7851c8012f5aa0223005b1ed6607713d6813de0741768bd4ddc39353117648f1a7086b4b0fa45eae733f1c0a0fe369aa4e543bb63f8de8990178ea9
+"globals@npm:^17.0.0":
+  version: 17.2.0
+  resolution: "globals@npm:17.2.0"
+  checksum: 10c0/fd25a98b08c1d31082337cbbb5ff1b90b9980e1db69a8621fb942bdb2cdca8aa54d61466742e8bf4910578ea5fa903b8bf83bffd1b2d45551cc614830dba910b
   languageName: node
   linkType: hard
 
@@ -6704,7 +6704,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^25.2.1":
+"i18next@npm:^25.7.3":
   version: 25.8.0
   resolution: "i18next@npm:25.8.0"
   dependencies:
@@ -7505,7 +7505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash-es@npm:^4.17.21":
+"lodash-es@npm:^4.17.22":
   version: 4.17.23
   resolution: "lodash-es@npm:4.17.23"
   checksum: 10c0/3150fb6660c14c7a6b5f23bd11597d884b140c0e862a17fdb415aaa5ef7741523182904a6b7929f04e5f60a11edb5a79499eb448734381c99ffb3c4734beeddd
@@ -8436,6 +8436,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"oidc-spa@npm:~10.0.5":
+  version: 10.0.7
+  resolution: "oidc-spa@npm:10.0.7"
+  peerDependencies:
+    "@angular/common": "*"
+    "@angular/core": "*"
+    "@angular/router": "*"
+    "@tanstack/react-router": "*"
+    "@tanstack/react-start": "*"
+    "@types/react": "*"
+    react: "*"
+    rxjs: "*"
+  peerDependenciesMeta:
+    "@angular/common":
+      optional: true
+    "@angular/core":
+      optional: true
+    "@angular/router":
+      optional: true
+    "@tanstack/react-router":
+      optional: true
+    "@tanstack/react-start":
+      optional: true
+    "@types/react":
+      optional: true
+    react:
+      optional: true
+    rxjs:
+      optional: true
+  checksum: 10c0/c2c556a1e796787c1191d8cb57b484adc51466d11ccd663fd6c78a07e36aa1f1c467f5e38fcab2306a167f629563078b64cc5f108df5978c82c07fa883b7ea8d
+  languageName: node
+  linkType: hard
+
 "ol-keycloakify@workspace:.":
   version: 0.0.0-use.local
   resolution: "ol-keycloakify@workspace:."
@@ -8479,22 +8512,23 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^7.0.0"
     eslint-plugin-react-refresh: "npm:^0.4.14"
     eslint-plugin-storybook: "npm:^10.0.0"
-    globals: "npm:^16.0.0"
-    i18next: "npm:^25.2.1"
+    globals: "npm:^17.0.0"
+    i18next: "npm:^25.7.3"
     i18next-fetch-backend: "npm:^6.0.0"
     jsx-email: "npm:^2.7.2"
     keycloak-js: "npm:^26.2.0"
     keycloakify: "npm:^11.8.27"
     keycloakify-emails: "npm:^3.1.0"
-    lodash-es: "npm:^4.17.21"
+    lodash-es: "npm:^4.17.22"
+    oidc-spa: "npm:~10.0.5"
     playwright: "npm:^1.52.0"
     posthog-js: "npm:^1.319.2"
     prettier: "npm:^3.6.2"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
-    react-hook-form: "npm:^7.59.0"
-    react-i18next: "npm:^16.0.0"
-    react-router-dom: "npm:^6.30.1"
+    react-hook-form: "npm:^7.70.0"
+    react-i18next: "npm:^16.5.1"
+    react-router-dom: "npm:^6.30.2"
     storybook: "npm:^10.0.0"
     typescript: "npm:^5.2.2"
     typescript-eslint: "npm:^8.15.0"
@@ -9101,7 +9135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.59.0":
+"react-hook-form@npm:^7.70.0":
   version: 7.71.1
   resolution: "react-hook-form@npm:7.71.1"
   peerDependencies:
@@ -9110,7 +9144,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^16.0.0":
+"react-i18next@npm:^16.5.1":
   version: 16.5.4
   resolution: "react-i18next@npm:16.5.4"
   dependencies:
@@ -9248,7 +9282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.30.1":
+"react-router-dom@npm:^6.30.2":
   version: 6.30.3
   resolution: "react-router-dom@npm:6.30.3"
   dependencies:
