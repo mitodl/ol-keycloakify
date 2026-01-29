@@ -2108,10 +2108,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@patternfly/patternfly@npm:^5.4.2":
-  version: 5.4.2
-  resolution: "@patternfly/patternfly@npm:5.4.2"
-  checksum: 10c0/cf104eee8c04b0f0199d249a2cb5adb6a7a809ac45c320f85493672526c624e400e18416e884f1b2ef0779e846994fb50c89907a0e65661e81a5b591899da478
+"@patternfly/patternfly@npm:^6.0.0":
+  version: 6.4.0
+  resolution: "@patternfly/patternfly@npm:6.4.0"
+  checksum: 10c0/255c22e04a7649c9373790dbc66f97e2f01a121a843d3bc27627596f35296cc7f2228447d5866f63f17bccd36bae24ec68c45e1572778285dea617086d309737
   languageName: node
   linkType: hard
 
@@ -8826,7 +8826,7 @@ __metadata:
     "@mitodl/smoot-design": "npm:^6.10.0"
     "@mui/lab": "npm:^7.0.0-beta.13"
     "@mui/material": "npm:^7.1.1"
-    "@patternfly/patternfly": "npm:^5.4.2"
+    "@patternfly/patternfly": "npm:^6.0.0"
     "@patternfly/react-core": "npm:^5.4.14"
     "@patternfly/react-icons": "npm:^5.4.2"
     "@patternfly/react-styles": "npm:^5.4.1"
