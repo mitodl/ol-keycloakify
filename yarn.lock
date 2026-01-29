@@ -1781,6 +1781,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@patternfly/react-icons@npm:^6.0.0":
+  version: 6.4.0
+  resolution: "@patternfly/react-icons@npm:6.4.0"
+  peerDependencies:
+    react: ^17 || ^18 || ^19
+    react-dom: ^17 || ^18 || ^19
+  checksum: 10c0/2072babe83bad4de05e71b27c1180886912c99f24de8e5358cad06e9410a9643171b5dcda69d7e5c36f1010a2457ec9fdbb89cc9d54d92e63ede82de12c543cb
+  languageName: node
+  linkType: hard
+
 "@patternfly/react-styles@npm:^5.4.1":
   version: 5.4.1
   resolution: "@patternfly/react-styles@npm:5.4.1"
@@ -8400,7 +8410,7 @@ __metadata:
     "@mui/material": "npm:^7.1.1"
     "@patternfly/patternfly": "npm:^6.0.0"
     "@patternfly/react-core": "npm:^5.4.14"
-    "@patternfly/react-icons": "npm:^5.4.2"
+    "@patternfly/react-icons": "npm:^6.0.0"
     "@patternfly/react-styles": "npm:^5.4.1"
     "@patternfly/react-table": "npm:^5.4.16"
     "@posthog/react": "npm:^1.5.2"
