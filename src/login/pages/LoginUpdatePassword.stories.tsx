@@ -80,3 +80,39 @@ export const WithAppInitiatedAction: Story = {
     />
   )
 }
+
+export const WithOrgContext: Story = {
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        org: {
+          member: true,
+          name: "MIT",
+          alias: "mit",
+          attributes: {},
+          domains: []
+        }
+      }}
+    />
+  )
+}
+
+export const WithOrgUser: Story = {
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        username: "user@mit.edu"
+      }}
+    />
+  )
+}
+
+export const WithNonOrgUser: Story = {
+  render: () => (
+    <KcPageStory
+      kcContext={{
+        username: "user@example.com"
+      }}
+    />
+  )
+}

@@ -15,16 +15,7 @@ import type { I18n } from "./i18n"
 import { Label, ValidationMessage, RevealPasswordButton, HelperText, Suggestion } from "./components/Elements"
 import { StyledTextField } from "./components/Elements"
 import { ORG_EMAIL_DOMAINS } from "./constants"
-
-const isOrgEmail = (email: string): boolean => {
-  if (!email || !email.trim()) return false
-  const emailParts = email.trim().split("@")
-  if (emailParts.length !== 2) return false
-  const domain = emailParts[1].toLowerCase()
-  return ORG_EMAIL_DOMAINS.some(
-    (orgEmailDomain: string) => domain === orgEmailDomain.toLowerCase() || domain.endsWith(`.${orgEmailDomain.toLowerCase()}`)
-  )
-}
+import { isOrgEmail } from "./utils/isOrgEmail"
 
 export default function UserProfileFormFields(
   props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx"> & {

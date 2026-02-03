@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 import type { ExtendKcContext } from "keycloakify/login"
 import type { KcEnvName, ThemeName } from "../kc.gen"
 
@@ -12,6 +11,7 @@ export type KcContextExtension = {
     userFullname?: string
     needsPassword: boolean
     hasSocialProviderAuth: boolean
+    isOrgUser?: boolean
   }
 
   olSettings: {
@@ -20,6 +20,19 @@ export type KcContextExtension = {
   }
 }
 
-export type KcContextExtensionPerPage = {}
+type OrganizationContext = {
+  alias: string
+  attributes: Record<string, unknown>
+  domains: string[]
+  member: boolean
+  name: string
+}
+
+export type KcContextExtensionPerPage = {
+  "login-update-password.ftl": {
+    username: string
+    org: OrganizationContext
+  }
+}
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>
