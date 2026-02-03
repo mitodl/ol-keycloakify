@@ -1100,7 +1100,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-account-ui@npm:~260502.0.0":
+"@keycloakify/keycloak-account-ui@npm:^260502.0.2":
   version: 260502.0.2
   resolution: "@keycloakify/keycloak-account-ui@npm:260502.0.2"
   dependencies:
@@ -1124,7 +1124,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-ui-shared@npm:~260502.0.0":
+"@keycloakify/keycloak-ui-shared@npm:^260502.0.0":
   version: 260502.0.0
   resolution: "@keycloakify/keycloak-ui-shared@npm:260502.0.0"
   peerDependencies:
@@ -1747,68 +1747,68 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@patternfly/patternfly@npm:^6.0.0":
-  version: 6.4.0
-  resolution: "@patternfly/patternfly@npm:6.4.0"
-  checksum: 10c0/255c22e04a7649c9373790dbc66f97e2f01a121a843d3bc27627596f35296cc7f2228447d5866f63f17bccd36bae24ec68c45e1572778285dea617086d309737
+"@patternfly/patternfly@npm:^5.4.2":
+  version: 5.4.2
+  resolution: "@patternfly/patternfly@npm:5.4.2"
+  checksum: 10c0/cf104eee8c04b0f0199d249a2cb5adb6a7a809ac45c320f85493672526c624e400e18416e884f1b2ef0779e846994fb50c89907a0e65661e81a5b591899da478
   languageName: node
   linkType: hard
 
-"@patternfly/react-core@npm:^6.0.0, @patternfly/react-core@npm:^6.4.1":
-  version: 6.4.1
-  resolution: "@patternfly/react-core@npm:6.4.1"
+"@patternfly/react-core@npm:^5.4.14":
+  version: 5.4.14
+  resolution: "@patternfly/react-core@npm:5.4.14"
   dependencies:
-    "@patternfly/react-icons": "npm:^6.4.0"
-    "@patternfly/react-styles": "npm:^6.4.0"
-    "@patternfly/react-tokens": "npm:^6.4.0"
-    focus-trap: "npm:7.6.4"
-    react-dropzone: "npm:^14.3.5"
-    tslib: "npm:^2.8.1"
+    "@patternfly/react-icons": "npm:^5.4.2"
+    "@patternfly/react-styles": "npm:^5.4.1"
+    "@patternfly/react-tokens": "npm:^5.4.1"
+    focus-trap: "npm:7.6.2"
+    react-dropzone: "npm:^14.2.3"
+    tslib: "npm:^2.7.0"
   peerDependencies:
-    react: ^17 || ^18 || ^19
-    react-dom: ^17 || ^18 || ^19
-  checksum: 10c0/204b2b9f2990b0f0f5d907ba9d63f4f78f8691c8a4c7c292318978c5d4ea2dea89dab962be20e97bc3f2fd5172f2ee44abc17683c2c96f8f7eeb8ad357ba9326
+    react: ^17 || ^18
+    react-dom: ^17 || ^18
+  checksum: 10c0/f7e6165e0fdead4754f316011c83ae67ab05a63107fee79a78d31eba6865af20da6508b6fe154b3efcbeb688a4b111ed383072f1f1013fa321efe883cc7dc2e2
   languageName: node
   linkType: hard
 
-"@patternfly/react-icons@npm:^6.0.0, @patternfly/react-icons@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@patternfly/react-icons@npm:6.4.0"
+"@patternfly/react-icons@npm:^5.4.2":
+  version: 5.4.2
+  resolution: "@patternfly/react-icons@npm:5.4.2"
   peerDependencies:
-    react: ^17 || ^18 || ^19
-    react-dom: ^17 || ^18 || ^19
-  checksum: 10c0/2072babe83bad4de05e71b27c1180886912c99f24de8e5358cad06e9410a9643171b5dcda69d7e5c36f1010a2457ec9fdbb89cc9d54d92e63ede82de12c543cb
+    react: ^17 || ^18
+    react-dom: ^17 || ^18
+  checksum: 10c0/0b884d038178c4b6e3c0246c9330054a626f91f7e238f8d1cd3581fabfb4cb2255f43ba0d5d8a531f80390c5c5c29557b0e349eb0cb9e743aee2d92e886bb3cc
   languageName: node
   linkType: hard
 
-"@patternfly/react-styles@npm:^6.0.0, @patternfly/react-styles@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@patternfly/react-styles@npm:6.4.0"
-  checksum: 10c0/ed94ec58ddeb21eeecb24a6bbaf2e64d2fb4e641d1e8e49107fa162e7b115a23f9e59242d390937cc2d48a1ee5b2e1133c133e9dd47a5b9b08bf9a157bf8b437
+"@patternfly/react-styles@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "@patternfly/react-styles@npm:5.4.1"
+  checksum: 10c0/6fd02cc93fbca6ad20175780bc1b1435b4cf857cdf36163fc85a34401579a00b97b33b5168d6cfb3a5f737596c77b981f847eef8ee920bab3e69f14c79fb459b
   languageName: node
   linkType: hard
 
-"@patternfly/react-table@npm:^6.0.0":
-  version: 6.4.1
-  resolution: "@patternfly/react-table@npm:6.4.1"
+"@patternfly/react-table@npm:^5.4.16":
+  version: 5.4.16
+  resolution: "@patternfly/react-table@npm:5.4.16"
   dependencies:
-    "@patternfly/react-core": "npm:^6.4.1"
-    "@patternfly/react-icons": "npm:^6.4.0"
-    "@patternfly/react-styles": "npm:^6.4.0"
-    "@patternfly/react-tokens": "npm:^6.4.0"
-    lodash: "npm:^4.17.23"
-    tslib: "npm:^2.8.1"
+    "@patternfly/react-core": "npm:^5.4.14"
+    "@patternfly/react-icons": "npm:^5.4.2"
+    "@patternfly/react-styles": "npm:^5.4.1"
+    "@patternfly/react-tokens": "npm:^5.4.1"
+    lodash: "npm:^4.17.21"
+    tslib: "npm:^2.7.0"
   peerDependencies:
-    react: ^17 || ^18 || ^19
-    react-dom: ^17 || ^18 || ^19
-  checksum: 10c0/9808a71211a70d7b5e6aead5eff49e06021bf621798e752e4c8490c1bc40a99292be877c8403fc89266aadd7299dcd3731b1354b806793b5d2e5a5db5e7d4706
+    react: ^17 || ^18
+    react-dom: ^17 || ^18
+  checksum: 10c0/d272c1a4b348669b0f61b4fcf0b8de4ad1d15d4f8bc138cd719bfc23b225af9ab14d6e6df917a9ff0300304980855faf2a64c6a4e7be806bfcb907e9fb4e3743
   languageName: node
   linkType: hard
 
-"@patternfly/react-tokens@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@patternfly/react-tokens@npm:6.4.0"
-  checksum: 10c0/9b49ac8f1703de0e5b2b6d1154dbf83dbb40eea2850ce1f50ac173cd3d2cc9d4a1ca085c7c3db2a538aa6c137db186cbe783f1ab5985e843dfd455e9095f1a93
+"@patternfly/react-tokens@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "@patternfly/react-tokens@npm:5.4.1"
+  checksum: 10c0/935114c74961f3caff8b92f7ecf8943d1b0d9dadd46c0dd4cdbf7dce28c382ce6ea27400f5d832afb814ca241b22542ce9bf5fd571bf1c036a6845506bcfcb84
   languageName: node
   linkType: hard
 
@@ -2869,6 +2869,13 @@ __metadata:
   version: 1.1.1
   resolution: "@radix-ui/rect@npm:1.1.1"
   checksum: 10c0/0dac4f0f15691199abe6a0e067821ddd9d0349c0c05f39834e4eafc8403caf724106884035ae91bbc826e10367e6a5672e7bec4d4243860fa7649de246b1f60b
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.23.2":
+  version: 1.23.2
+  resolution: "@remix-run/router@npm:1.23.2"
+  checksum: 10c0/7096b7f2086b2cd80c9e06873b71a8317e04858c01edc06a6fed187b660408a90f47c8e120e8af4c369cf1fa6b6a316a66b0917f42b6eb8a566e98b277c50449
   languageName: node
   linkType: hard
 
@@ -6005,12 +6012,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"focus-trap@npm:7.6.4":
-  version: 7.6.4
-  resolution: "focus-trap@npm:7.6.4"
+"focus-trap@npm:7.6.2":
+  version: 7.6.2
+  resolution: "focus-trap@npm:7.6.2"
   dependencies:
     tabbable: "npm:^6.2.0"
-  checksum: 10c0/ed810d47fd904a5e0269e822d98e634c6cbdd7222046c712ef299bdd26a422db754e3cec04e6517065b12be4b47f65c21f6244e0c07a308b1060985463d518cb
+  checksum: 10c0/8d7a5a2bcd53b52392712b9abe7ea349476747cb89afb93ac551d91e9cdc066c6befe2a2d7d76b06d8a7696f4086afcf8b0b2e76e2fa103b5b830f551047f7b4
   languageName: node
   linkType: hard
 
@@ -6638,10 +6645,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-fetch-backend@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "i18next-fetch-backend@npm:7.0.0"
-  checksum: 10c0/36b84388467b405473c6be9ff10b96aab379f240d08ac4f55bfe14fd589aa41ff6a699cacc050d23320e12b3d80edb9e0c367feadf065f8d8108ded661a10bb4
+"i18next-fetch-backend@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "i18next-fetch-backend@npm:6.0.0"
+  checksum: 10c0/5e71a24cc3e9ef8eacc2e41febe218c1fe6093bd3947dce3c07c902adb80c907e370630fe0dc49ffe92f817671ca53d6a21f90cc2abf34ee42279d1fc0817414
   languageName: node
   linkType: hard
 
@@ -7436,7 +7443,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.21, lodash@npm:^4.17.23":
+"lodash@npm:^4.17.21":
   version: 4.17.23
   resolution: "lodash@npm:4.17.23"
   checksum: 10c0/1264a90469f5bb95d4739c43eb6277d15b6d9e186df4ac68c3620443160fc669e2f14c11e7d8b2ccf078b81d06147c01a8ccced9aab9f9f63d50dcf8cace6bf6
@@ -8386,16 +8393,16 @@ __metadata:
     "@emotion/styled": "npm:^11.14.0"
     "@eslint/js": "npm:^9.15.0"
     "@keycloak/keycloak-admin-client": "npm:26.5.2"
-    "@keycloakify/keycloak-account-ui": "npm:~260502.0.0"
-    "@keycloakify/keycloak-ui-shared": "npm:~260502.0.0"
+    "@keycloakify/keycloak-account-ui": "npm:^260502.0.2"
+    "@keycloakify/keycloak-ui-shared": "npm:^260502.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
     "@mui/lab": "npm:^7.0.0-beta.13"
     "@mui/material": "npm:^7.1.1"
-    "@patternfly/patternfly": "npm:^6.0.0"
-    "@patternfly/react-core": "npm:^6.0.0"
-    "@patternfly/react-icons": "npm:^6.0.0"
-    "@patternfly/react-styles": "npm:^6.0.0"
-    "@patternfly/react-table": "npm:^6.0.0"
+    "@patternfly/patternfly": "npm:^5.4.2"
+    "@patternfly/react-core": "npm:^5.4.14"
+    "@patternfly/react-icons": "npm:^5.4.2"
+    "@patternfly/react-styles": "npm:^5.4.1"
+    "@patternfly/react-table": "npm:^5.4.16"
     "@posthog/react": "npm:^1.5.2"
     "@remixicon/react": "npm:^4.6.0"
     "@storybook/addon-a11y": "npm:^10.0.0"
@@ -8422,7 +8429,7 @@ __metadata:
     eslint-plugin-storybook: "npm:^10.0.0"
     globals: "npm:^17.0.0"
     i18next: "npm:^25.7.3"
-    i18next-fetch-backend: "npm:^7.0.0"
+    i18next-fetch-backend: "npm:^6.0.0"
     jsx-email: "npm:^2.7.2"
     keycloak-js: "npm:^26.2.0"
     keycloakify: "npm:^11.8.27"
@@ -8436,7 +8443,7 @@ __metadata:
     react-dom: "npm:^19.1.1"
     react-hook-form: "npm:^7.70.0"
     react-i18next: "npm:^16.5.1"
-    react-router-dom: "npm:^7.0.0"
+    react-router-dom: "npm:^6.30.2"
     storybook: "npm:^10.0.0"
     typescript: "npm:^5.2.2"
     typescript-eslint: "npm:^8.15.0"
@@ -9027,7 +9034,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dropzone@npm:^14.3.5":
+"react-dropzone@npm:^14.2.3":
   version: 14.4.0
   resolution: "react-dropzone@npm:14.4.0"
   dependencies:
@@ -9180,15 +9187,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^7.0.0":
-  version: 7.13.0
-  resolution: "react-router-dom@npm:7.13.0"
+"react-router-dom@npm:^6.30.2":
+  version: 6.30.3
+  resolution: "react-router-dom@npm:6.30.3"
   dependencies:
-    react-router: "npm:7.13.0"
+    "@remix-run/router": "npm:1.23.2"
+    react-router: "npm:6.30.3"
   peerDependencies:
-    react: ">=18"
-    react-dom: ">=18"
-  checksum: 10c0/759bd5e7fe7b5baba50a0264724188707682d217cad8eac702a55e0b1abebf295be014dd3bfaff8e3c2def9dfaa23e6ded3f908feab84df766e9b82cc3774e98
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 10c0/e8a1e13c662ed6ee71a785bd3418ba04b700bcd8aff6ea7b32524371e8abb1c85568cd4fe9b9e9d555b8101fd415f6f1796531f593da60be179ce75b37038657
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.30.3":
+  version: 6.30.3
+  resolution: "react-router@npm:6.30.3"
+  dependencies:
+    "@remix-run/router": "npm:1.23.2"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 10c0/a0a74bf5a933cf0abd47e0eac1d3a505cd66b866e3ee8f20d8016885d3b4361ba3ba72dee026248c6125e631b191ba6ad109184c892281cea6cb747c71bf5940
   languageName: node
   linkType: hard
 
@@ -9205,22 +9224,6 @@ __metadata:
     react-dom:
       optional: true
   checksum: 10c0/abde366f716cb3961a5a390c278375c0591bace5773e1b4420001f0a913b4dd53d490e7dea866acebcac2c0fa07378aa83702769d449449027406ed517a8ea00
-  languageName: node
-  linkType: hard
-
-"react-router@npm:7.13.0":
-  version: 7.13.0
-  resolution: "react-router@npm:7.13.0"
-  dependencies:
-    cookie: "npm:^1.0.1"
-    set-cookie-parser: "npm:^2.6.0"
-  peerDependencies:
-    react: ">=18"
-    react-dom: ">=18"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-  checksum: 10c0/397cb009bc83d071269c8f9323bbfe1f856721fde75e39b29fe0ddfe7564ebdc3b8bbb85768321cae92ec28b406e8fac7eab7e232d0738b3b1c092e2764e4307
   languageName: node
   linkType: hard
 
@@ -10450,7 +10453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.7.0, tslib@npm:^2.8.1":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.7.0":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62

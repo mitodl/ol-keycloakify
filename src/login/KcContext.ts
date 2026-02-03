@@ -11,7 +11,6 @@ export type KcContextExtension = {
     userFullname?: string
     needsPassword: boolean
     hasSocialProviderAuth: boolean
-    isOrgUser?: boolean
   }
 
   olSettings: {
@@ -29,9 +28,9 @@ type OrganizationContext = {
 }
 
 export type KcContextExtensionPerPage = {
-  "login-update-password.ftl": {
-    username: string
-    org: OrganizationContext
+  "login-update-password.ftl"?: {
+    username?: string
+    org?: OrganizationContext
   }
 }
 

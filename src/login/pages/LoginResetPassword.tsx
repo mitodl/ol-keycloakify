@@ -21,6 +21,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
       headerNode={msg("emailForgotTitle")}
     >
       <Subtitle>{realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}</Subtitle>
+
       <Form id="kc-reset-password-form" action={url.loginAction} method="post">
         <StyledTextField
           id="username"
