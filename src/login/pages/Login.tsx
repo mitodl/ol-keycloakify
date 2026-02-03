@@ -43,7 +43,6 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
       <div id="kc-form">
         <div id="kc-form-wrapper">
           {realm.password &&
-            !loginAttempt?.hasSocialProviderAuth &&
             (!loginAttempt?.needsPassword ? (
               <Form
                 id="kc-form-login"
