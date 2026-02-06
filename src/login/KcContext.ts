@@ -11,7 +11,9 @@ export type KcContextExtension = {
   loginAttempt: {
     userFullname?: string
     needsPassword: boolean
-    hasSocialProviderAuth: boolean
+    // Deprecated: No longer used in template logic (removed from Login.tsx to fix bug where
+    // users with both SSO and password auth get stuck)
+    hasSocialProviderAuth?: boolean
   }
 
   olSettings: {

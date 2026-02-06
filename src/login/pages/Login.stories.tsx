@@ -38,7 +38,6 @@ export const WithNeedsPassword: Story = {
         realm: { resetPasswordAllowed: true },
         loginAttempt: {
           userFullname: "First Last",
-          hasSocialProviderAuth: false,
           needsPassword: true
         }
       }}
@@ -53,7 +52,6 @@ export const WithNeedsPasswordNoReset: Story = {
         realm: { resetPasswordAllowed: false },
         loginAttempt: {
           userFullname: "First Last",
-          hasSocialProviderAuth: false,
           needsPassword: true
         }
       }}
