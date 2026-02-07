@@ -42,7 +42,7 @@
     "@remixicon/react": "^4.6.0",
     "@zootools/email-spell-checker": "^1.12.0",
     "i18next": "^25.7.3",
-    "i18next-fetch-backend": "^6.0.0",
+    "i18next-fetch-backend": "^7.0.0",
     "jsx-email": "^2.7.2",
     "keycloak-js": "^26.2.0",
     "keycloakify": "^11.8.27",
