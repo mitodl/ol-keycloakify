@@ -73,12 +73,14 @@ export const EmailLayout = ({
           {/* Header: MIT Learn logo (left) + MIT logo (right) */}
           <Row style={headerRow}>
             <Column style={logoCell}>
-              <Img
-                src={`${baseUrl}/mit-learn-logo.png`}
-                height={24}
-                width={132}
-                alt="MIT Learn"
-              />
+              <a href="${msg('homeUrl')}">
+                <Img
+                  src={`${baseUrl}/mit-learn-logo.png`}
+                  height={24}
+                  width={132}
+                  alt="MIT Learn"
+                />
+              </a>
             </Column>
             <Column style={{ ...logoCell, textAlign: "right" as const }}>
               <a href="https://mit.edu">
