@@ -1,7 +1,11 @@
 import { Body, Column, Head, Html, Img, Preview, Row, Section, Text } from "jsx-email"
 import { PropsWithChildren, ReactNode } from "react"
-import mitLearnLogoUrl from "./templates/assets/mit-logo-learn.svg"
-import mitLogoUrl from "./templates/assets/mit-logo.svg"
+
+// keycloakify-emails copies assets from assetsDirPath into the theme jar.
+// In production Keycloak uses ${url.resourcesUrl} to serve them; the jsx-email
+// preview server serves them from /assets. import.meta.isJsxEmailPreview is
+// replaced at compile time by jsx-email / keycloakify-emails esbuild step.
+const baseUrl = import.meta.isJsxEmailPreview ? "/assets" : "${url.resourcesUrl}"
 
 const main = {
   backgroundColor: "#F3F4F8",
@@ -70,7 +74,7 @@ export const EmailLayout = ({
           <Row style={headerRow}>
             <Column style={logoCell}>
               <Img
-                src={String(mitLearnLogoUrl)}
+                src={`${baseUrl}/mit-learn-logo.png`}
                 height={24}
                 width={132}
                 alt="MIT Learn"
@@ -78,7 +82,12 @@ export const EmailLayout = ({
             </Column>
             <Column style={{ ...logoCell, textAlign: "right" as const }}>
               <a href="https://mit.edu">
-                <Img src={String(mitLogoUrl)} height={24} width={45} alt="MIT" />
+                <Img
+                  src={`${baseUrl}/mit-logo-black.png`}
+                  height={24}
+                  width={45}
+                  alt="MIT"
+                />
               </a>
             </Column>
           </Row>
