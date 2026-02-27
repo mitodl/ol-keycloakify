@@ -36,29 +36,27 @@ export const previewProps: Omit<GetTemplateProps, "plainText"> = {
   themeName: "ol-learn"
 }
 
-export const templateName = "Email Verification"
+export const templateName = "Password Reset"
 
-const { exp } = createVariablesHelper("email-verification.ftl")
+const { exp } = createVariablesHelper("password-reset.ftl")
 
 export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
-  <EmailLayout preview={`Verify your email for ${exp("realmName")}`} locale={locale}>
-    <h1 style={{ color: "#212326", margin: "13px 0" }}>Verify Your Email</h1>
+  <EmailLayout preview={`Reset your password for ${exp("realmName")}`} locale={locale}>
+    <h1 style={{ color: "#212326", margin: "13px 0" }}>Reset Your Password</h1>
     <Text style={paragraph}>
-      Thank you for creating an account with {exp("realmName")}. Please complete the
-      account verification process by clicking this link:
+      You&apos;re receiving this because you requested a password reset for your user
+      account at {exp("realmName")}.
+    </Text>
+    <Text style={paragraph}>
+      Please go to the following page and choose a new password:
     </Text>
     <Text style={{ margin: "20px 0" }}>
       <a href={exp("link")} style={ctaButton}>
-        Verify Your Email
+        Reset Password
       </a>
     </Text>
     <Text style={paragraph}>
       This link will expire within {exp("linkExpirationFormatter(linkExpiration)")}.
-    </Text>
-    <Text style={paragraph}>
-      Welcome and thanks!
-      <br />
-      <strong>{exp("realmName")} Team</strong>
     </Text>
     <Text style={fallbackUrl}>
       If you&apos;re unable to click the button above, copy and paste the following URL
@@ -74,5 +72,5 @@ export const getTemplate: GetTemplate = async props => {
 }
 
 export const getSubject: GetSubject = async () => {
-  return "Verify Your Email"
+  return "Reset password"
 }

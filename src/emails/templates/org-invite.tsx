@@ -1,180 +1,78 @@
-import { Text, render } from "jsx-email"
+import { render, Text } from "jsx-email"
 import { EmailLayout } from "../layout"
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails"
 import { createVariablesHelper } from "keycloakify-emails/variables"
 
 const paragraph = {
-  color: "#555",
-  fontSize: "16px",
-  lineHeight: "24px",
-  textAlign: "left" as const
+  fontFamily: "neue-haas-grotesk-text, sans-serif",
+  fontSize: "13px",
+  lineHeight: "18px",
+  color: "#000000",
+  margin: "13px 0"
 }
 
-const emphasizedText = {
-  fontWeight: "bold" as const,
-  color: "#333"
-}
-
-const linkStyle = {
-  padding: "10px 20px",
-  backgroundColor: "#4a86e8",
-  color: "#ffffff",
-  textDecoration: "none",
-  borderRadius: "4px",
+const ctaButton = {
   display: "inline-block",
-  margin: "15px 0",
-  fontWeight: "bold" as const
+  backgroundColor: "#A31F34",
+  color: "#FFFFFF",
+  fontFamily: "neue-haas-grotesk-text, sans-serif",
+  fontSize: "14px",
+  fontWeight: "bold",
+  lineHeight: "120%",
+  textDecoration: "none",
+  padding: "10px 25px",
+  borderRadius: "4px"
+}
+
+const fallbackUrl = {
+  ...paragraph,
+  fontSize: "12px",
+  wordBreak: "break-all" as const
 }
 
 export const previewProps: Omit<GetTemplateProps, "plainText"> = {
   locale: "en",
-  themeName: "ol-learn" // Currently active theme for preview
+  themeName: "ol-learn"
 }
-
-// Define available themes for reference
-export const availableThemes = ["ol-learn", "ol-data-platform"]
-
-// Helper function to switch themes during development
-export const getPreviewPropsForTheme = (
-  theme: string
-): Omit<GetTemplateProps, "plainText"> => ({
-  locale: "en",
-  themeName: theme
-})
 
 export const templateName = "Org Invite"
 
 const { exp } = createVariablesHelper("org-invite.ftl")
 
-export const Template = ({ locale, themeName }: Omit<GetTemplateProps, "plainText">) => {
-  // Choose the appropriate message based on theme name
-  if (themeName === "ol-learn") {
-    return (
-      <EmailLayout preview={`Invitation to join MIT Learn`} locale={locale}>
-        <Text style={paragraph}>
-          <p>Hi,</p>
-
-          <p>
-            You have been invited to join <span style={emphasizedText}>MIT Learn</span>.
-            This platform provides access to MIT Learn&apos;s educational resources and
-            course materials.
-          </p>
-
-          <p>
-            As a member of MIT Learn, you&apos;ll be able to access courses, tutorials,
-            and learning materials designed to enhance your educational experience.
-          </p>
-
-          <p>
-            To accept this invitation and set up your account, please click the button
-            below:
-          </p>
-
-          <p style={{ textAlign: "center" as const, margin: "25px 0" }}>
-            <a href={exp("link")} style={linkStyle}>
-              Join MIT Learn
-            </a>
-          </p>
-
-          <p>
-            <strong>Important:</strong> This invitation link will expire in{" "}
-            {exp("linkExpirationFormatter(linkExpiration)")}.
-          </p>
-
-          <p>
-            If you did not expect this invitation or have any questions, please contact
-            the MIT Learn support team.
-          </p>
-
-          <p style={{ marginTop: "30px", fontSize: "14px", color: "#777" }}>
-            If you&apos;re unable to click the button above, copy and paste the following
-            URL into your browser:
-            <br />
-            <span style={{ wordBreak: "break-all" as const }}>{exp("link")}</span>
-          </p>
-
-          <p
-            style={{
-              marginTop: "40px",
-              borderTop: "1px solid #eee",
-              paddingTop: "20px",
-              fontSize: "14px",
-              color: "#999"
-            }}
-          >
-            This is an automated message from MIT Learn. Please do not reply to this
-            email.
-          </p>
-        </Text>
-      </EmailLayout>
-    )
-  } else if (themeName === "ol-data-platform") {
-    return (
-      <EmailLayout
-        preview={`Invitation to MIT Open Learning Data Platform`}
-        locale={locale}
-      >
-        <Text style={paragraph}>
-          <p>Hi,</p>
-
-          <p>
-            You have been invited to join{" "}
-            <span style={emphasizedText}>MIT Open Learning Data Platform</span>. This
-            platform provides tools for data analysis and insights into learning patterns
-            across MIT&apos;s courses.
-          </p>
-
-          <p>
-            As a data platform user, you&apos;ll have access to analytics dashboards,
-            research datasets, and collaboration tools designed for educational data
-            science.
-          </p>
-
-          <p>
-            To accept this invitation and begin working with the platform, please click
-            the button below:
-          </p>
-
-          <p style={{ textAlign: "center" as const, margin: "25px 0" }}>
-            <a href={exp("link")} style={linkStyle}>
-              Access Data Platform
-            </a>
-          </p>
-
-          <p>
-            <strong>Important:</strong> This invitation link will expire in{" "}
-            {exp("linkExpirationFormatter(linkExpiration)")}.
-          </p>
-
-          <p>
-            If you have questions about data usage policies or technical requirements,
-            please contact the platform administration team.
-          </p>
-
-          <p style={{ marginTop: "30px", fontSize: "14px", color: "#777" }}>
-            If you&apos;re unable to click the button above, copy and paste the following
-            URL into your browser:
-            <br />
-            <span style={{ wordBreak: "break-all" as const }}>{exp("link")}</span>
-          </p>
-
-          <p
-            style={{
-              marginTop: "40px",
-              borderTop: "1px solid #eee",
-              paddingTop: "20px",
-              fontSize: "14px",
-              color: "#999"
-            }}
-          >
-            This is an automated message from MIT Open Learning Data Platform. Please do
-            not reply to this email.
-          </p>
-        </Text>
-      </EmailLayout>
-    )
-  }
-}
+export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
+  <EmailLayout
+    preview={`Invitation to join ${exp("realmName")}`}
+    locale={locale}
+  >
+    <h1 style={{ color: "#212326", margin: "13px 0" }}>
+      You&apos;re Invited to Join {exp("realmName")}
+    </h1>
+    <Text style={paragraph}>Hi,</Text>
+    <Text style={paragraph}>
+      You have been invited to join <strong>{exp("realmName")}</strong>. To accept this
+      invitation and set up your account, please click the button below:
+    </Text>
+    <Text style={{ margin: "20px 0" }}>
+      <a href={exp("link")} style={ctaButton}>
+        Accept Invitation
+      </a>
+    </Text>
+    <Text style={paragraph}>
+      <strong>Important:</strong> This invitation link will expire in{" "}
+      {exp("linkExpirationFormatter(linkExpiration)")}.
+    </Text>
+    <Text style={paragraph}>
+      If you did not expect this invitation or have any questions, please contact the{" "}
+      {exp("realmName")} support team.
+    </Text>
+    <Text style={fallbackUrl}>
+      If you&apos;re unable to click the button above, copy and paste the following URL
+      into your browser:
+      <br />
+      {exp("link")}
+    </Text>
+  </EmailLayout>
+)
 
 export const getTemplate: GetTemplate = async props => {
   return await render(<Template {...props} />, { plainText: props.plainText })
