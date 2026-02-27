@@ -2,33 +2,7 @@ import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails"
 import { createVariablesHelper } from "keycloakify-emails/variables"
 import { render, Text } from "jsx-email"
 import { EmailLayout } from "../layout"
-
-const paragraph = {
-  fontFamily: "neue-haas-grotesk-text, sans-serif",
-  fontSize: "13px",
-  lineHeight: "18px",
-  color: "#000000",
-  margin: "13px 0"
-}
-
-const ctaButton = {
-  display: "inline-block",
-  backgroundColor: "#A31F34",
-  color: "#FFFFFF",
-  fontFamily: "neue-haas-grotesk-text, sans-serif",
-  fontSize: "14px",
-  fontWeight: "bold",
-  lineHeight: "120%",
-  textDecoration: "none",
-  padding: "10px 25px",
-  borderRadius: "4px"
-}
-
-const fallbackUrl = {
-  ...paragraph,
-  fontSize: "12px",
-  wordBreak: "break-all" as const
-}
+import { paragraph, ctaButton, fallbackUrl } from "../styles"
 
 // used by Preview App of jsx-email
 export const previewProps: Omit<GetTemplateProps, "plainText"> = {
