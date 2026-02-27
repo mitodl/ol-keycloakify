@@ -1,14 +1,4 @@
-import {
-  Body,
-  Column,
-  Head,
-  Html,
-  Img,
-  Preview,
-  Row,
-  Section,
-  Text
-} from "jsx-email"
+import { Body, Column, Head, Html, Img, Preview, Row, Section, Text } from "jsx-email"
 import { PropsWithChildren, ReactNode } from "react"
 import mitLearnLogoUrl from "./templates/assets/mit-logo-learn.svg"
 import mitLogoUrl from "./templates/assets/mit-logo.svg"
