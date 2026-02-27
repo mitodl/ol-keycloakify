@@ -40,7 +40,11 @@ export const templateName = "Org Invite"
 const { exp } = createVariablesHelper("org-invite.ftl")
 
 export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
-  <EmailLayout preview={`Invitation to join ${exp("realmName")}`} locale={locale}>
+  <EmailLayout
+    preview={`Invitation to join ${exp("realmName")}`}
+    locale={locale}
+    realmName={exp("realmName")}
+  >
     <h1 style={{ color: "#212326", margin: "13px 0" }}>
       You&apos;re Invited to Join {exp("realmName")}
     </h1>

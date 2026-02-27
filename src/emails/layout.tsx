@@ -1,4 +1,4 @@
-import { Body, Column, Head, Html, Img, Preview, Row, Section, Text } from "jsx-email"
+import { Body, Column, Head, Hr, Html, Img, Preview, Row, Section, Text } from "jsx-email"
 import { PropsWithChildren, ReactNode } from "react"
 
 // keycloakify-emails copies assets from assetsDirPath into the theme jar.
@@ -100,7 +100,7 @@ export const EmailLayout = ({
           {/* Footer */}
           <Row>
             <Column style={{ padding: "20px 25px 0" }}>
-              <Text style={footerDivider as object} />
+              <Hr style={footerDivider} />
             </Column>
           </Row>
           <Row>

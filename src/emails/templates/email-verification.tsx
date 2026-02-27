@@ -41,7 +41,11 @@ export const templateName = "Email Verification"
 const { exp } = createVariablesHelper("email-verification.ftl")
 
 export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
-  <EmailLayout preview={`Verify your email for ${exp("realmName")}`} locale={locale}>
+  <EmailLayout
+    preview={`Verify your email for ${exp("realmName")}`}
+    locale={locale}
+    realmName={exp("realmName")}
+  >
     <h1 style={{ color: "#212326", margin: "13px 0" }}>Verify Your Email</h1>
     <Text style={paragraph}>
       Thank you for creating an account with {exp("realmName")}. Please complete the

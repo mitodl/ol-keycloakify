@@ -41,7 +41,11 @@ export const templateName = "Password Reset"
 const { exp } = createVariablesHelper("password-reset.ftl")
 
 export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
-  <EmailLayout preview={`Reset your password for ${exp("realmName")}`} locale={locale}>
+  <EmailLayout
+    preview={`Reset your password for ${exp("realmName")}`}
+    locale={locale}
+    realmName={exp("realmName")}
+  >
     <h1 style={{ color: "#212326", margin: "13px 0" }}>Reset Your Password</h1>
     <Text style={paragraph}>
       You&apos;re receiving this because you requested a password reset for your user
