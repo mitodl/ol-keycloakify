@@ -2,7 +2,7 @@ export const paragraph = {
   fontFamily: "neue-haas-grotesk-text, sans-serif",
   fontSize: "13px",
   lineHeight: "18px",
-  color: "#000000",
+  color: "#212326",
   margin: "13px 0"
 }
 
