@@ -55,7 +55,7 @@ export const Template = ({ locale, themeName }: Omit<GetTemplateProps, "plainTex
       </Text>
       <Text style={paragraph}>
         {isDataPlatform
-          ? "If you have questions about data usage policies or technical requirements, please contact the platform administration team."
+          ? "If you have questions about data usage policies or technical requirements, please contact odl-data@mit.edu."
           : `If you did not expect this invitation or have any questions, please contact the ${exp("realmName")} support team.`}
       </Text>
     </EmailLayout>
