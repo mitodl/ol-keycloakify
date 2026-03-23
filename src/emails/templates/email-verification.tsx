@@ -38,12 +38,6 @@ export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
       <br />
       <strong>{exp("realmName")} Team</strong>
     </Text>
-    <Text style={fallbackUrl}>
-      If you&apos;re unable to click the button above, copy and paste the following URL
-      into your browser:
-      <br />
-      {exp("link")}
-    </Text>
   </EmailLayout>
 )
 
