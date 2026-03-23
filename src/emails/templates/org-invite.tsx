@@ -58,12 +58,6 @@ export const Template = ({ locale, themeName }: Omit<GetTemplateProps, "plainTex
           ? "If you have questions about data usage policies or technical requirements, please contact the platform administration team."
           : `If you did not expect this invitation or have any questions, please contact the ${exp("realmName")} support team.`}
       </Text>
-      <Text style={fallbackUrl}>
-        If you&apos;re unable to click the button above, copy and paste the following URL
-        into your browser:
-        <br />
-        {exp("link")}
-      </Text>
     </EmailLayout>
   )
 }
