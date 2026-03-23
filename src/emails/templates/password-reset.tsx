@@ -44,5 +44,5 @@ export const getTemplate: GetTemplate = async props => {
 }
 
 export const getSubject: GetSubject = async () => {
-  return "Reset password"
+  return "Your Password Reset Link"
 }
