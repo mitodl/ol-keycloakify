@@ -8452,13 +8452,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oidc-spa@npm:~10.0.5":
-  version: 10.0.9
-  resolution: "oidc-spa@npm:10.0.9"
+"oidc-spa@npm:~10.2.0":
+  version: 10.2.1
+  resolution: "oidc-spa@npm:10.2.1"
   peerDependencies:
     "@angular/common": "*"
     "@angular/core": "*"
     "@angular/router": "*"
+    "@nuxt/kit": "*"
     "@tanstack/react-router": "*"
     "@tanstack/react-start": "*"
     "@types/react": "*"
@@ -8471,6 +8472,8 @@ __metadata:
       optional: true
     "@angular/router":
       optional: true
+    "@nuxt/kit":
+      optional: true
     "@tanstack/react-router":
       optional: true
     "@tanstack/react-start":
@@ -8481,7 +8484,7 @@ __metadata:
       optional: true
     rxjs:
       optional: true
-  checksum: 10c0/c667b3baa46fc0d13d3a2bb0e030d89933c8e0cc15ca944f427936f6ac21ef801fc338d840b3ac9b5d94e775d91cdd327e58fdccbc84a4f63dba3cffda5dc5ee
+  checksum: 10c0/0eec2f986b495ce30d5345dd6e473ed1937305657f816e2198d6e89f13e3910a4052347e8fb609b53b2b25949380818aab63d176ea391b0c6ff48e937ad8c8db
   languageName: node
   linkType: hard
 
@@ -8536,7 +8539,7 @@ __metadata:
     keycloakify: "npm:^11.8.27"
     keycloakify-emails: "npm:^3.1.0"
     lodash-es: "npm:^4.17.22"
-    oidc-spa: "npm:~10.0.5"
+    oidc-spa: "npm:~10.2.0"
     playwright: "npm:^1.52.0"
     posthog-js: "npm:^1.319.2"
     prettier: "npm:^3.6.2"
