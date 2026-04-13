@@ -1832,10 +1832,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@posthog/core@npm:1.25.1":
-  version: 1.25.1
-  resolution: "@posthog/core@npm:1.25.1"
-  checksum: 10c0/537cd961189d0e367177e1569a5c6f8fa5f156ba9cb7ce857169e270606a83a1d47bb9043199226e36c38101e25be8449ec3957eda7d4f9a6282127e6b908065
+"@posthog/core@npm:1.25.2":
+  version: 1.25.2
+  resolution: "@posthog/core@npm:1.25.2"
+  checksum: 10c0/a462328aa50303417abe0c87a0e4a4760b2e836b74cc582449e0480f2f04b832d1d51ade883c4d7fde2bf7e820646a050577b3a9339dd534de4ddd5cadd4bd15
   languageName: node
   linkType: hard
 
@@ -1853,10 +1853,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@posthog/types@npm:1.365.3":
-  version: 1.365.3
-  resolution: "@posthog/types@npm:1.365.3"
-  checksum: 10c0/69535a7a1af1ccd4035c5d41eafa78ccd78ed898985e7499db968b64364345f5b0ecd8edd539bcb716a729c50b4d111d9374ad92fc4edaa8de1ac0159ffe12b3
+"@posthog/types@npm:1.367.0":
+  version: 1.367.0
+  resolution: "@posthog/types@npm:1.367.0"
+  checksum: 10c0/4441b1cd0170acd3a205f6e47089de20d9171e2ae8778b50ff976fc3ad61e9c8ec76b71742572afb88bfe95c5390aaff78035805c80108ab1d3575dfb104bd67
   languageName: node
   linkType: hard
 
@@ -8949,23 +8949,23 @@ __metadata:
   linkType: hard
 
 "posthog-js@npm:^1.319.2":
-  version: 1.365.3
-  resolution: "posthog-js@npm:1.365.3"
+  version: 1.367.0
+  resolution: "posthog-js@npm:1.367.0"
   dependencies:
     "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/api-logs": "npm:^0.208.0"
     "@opentelemetry/exporter-logs-otlp-http": "npm:^0.208.0"
     "@opentelemetry/resources": "npm:^2.2.0"
     "@opentelemetry/sdk-logs": "npm:^0.208.0"
-    "@posthog/core": "npm:1.25.1"
-    "@posthog/types": "npm:1.365.3"
+    "@posthog/core": "npm:1.25.2"
+    "@posthog/types": "npm:1.367.0"
     core-js: "npm:^3.38.1"
     dompurify: "npm:^3.3.2"
     fflate: "npm:^0.4.8"
     preact: "npm:^10.28.2"
     query-selector-shadow-dom: "npm:^1.0.1"
     web-vitals: "npm:^5.1.0"
-  checksum: 10c0/8dadab1433bc65d1714a91b2b4f03a90acb80d08b0bfc661a7f15dc7c45aaba5de011597ea3830d1b076abd007b2a72e5b63ab5d350c6df1088c49461e574c35
+  checksum: 10c0/888b14c3a7df4d70b10a4d07c3209e76968bc10db0d62304788c4510e210971577e96e66a1170ab6726b4899e07d92da3252acdbf9fca300e87a426fbc4e4537
   languageName: node
   linkType: hard
 
