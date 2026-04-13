@@ -1102,13 +1102,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloak/keycloak-admin-client@npm:26.5.6":
-  version: 26.5.6
-  resolution: "@keycloak/keycloak-admin-client@npm:26.5.6"
+"@keycloak/keycloak-admin-client@npm:26.6.0":
+  version: 26.6.0
+  resolution: "@keycloak/keycloak-admin-client@npm:26.6.0"
   dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.86"
+    "@microsoft/kiota-http-fetchlibrary": "npm:^1.0.0-preview.80"
+    "@microsoft/kiota-serialization-form": "npm:^1.0.0-preview.74"
+    "@microsoft/kiota-serialization-json": "npm:^1.0.0-preview.86"
+    "@microsoft/kiota-serialization-multipart": "npm:^1.0.0-preview.67"
+    "@microsoft/kiota-serialization-text": "npm:^1.0.0-preview.79"
     camelize-ts: "npm:^3.0.0"
     url-template: "npm:^3.1.1"
-  checksum: 10c0/2db755b5842efa5b39f6f637a8d6c83c539344a287a86887d7b175003489f05777980517c2296d6857f62c4a68184381a315f40db6cdabe0fb3b52e9eeb6e512
+  checksum: 10c0/c64d5416e4ca7ca426116229c8ae39550f3bccc1787a9bb291311b41616499a8e12dd130626e091e162cda2e0c936b6e67bae4de2b2d10a368236287fce13cf9
   languageName: node
   linkType: hard
 
@@ -1166,6 +1172,69 @@ __metadata:
     "@types/react": ">=16"
     react: ">=16"
   checksum: 10c0/34ca98bc2a0f969894ea144dc5c8a5294690505458cd24965cd9be854d779c193ad9192bf9143c4c18438fafd1902e100d99067e045c69319288562d497558c6
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-abstractions@npm:^1.0.0-preview.100, @microsoft/kiota-abstractions@npm:^1.0.0-preview.86":
+  version: 1.0.0-preview.100
+  resolution: "@microsoft/kiota-abstractions@npm:1.0.0-preview.100"
+  dependencies:
+    "@opentelemetry/api": "npm:^1.7.0"
+    "@std-uritemplate/std-uritemplate": "npm:^2.0.0"
+    tinyduration: "npm:^3.3.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/bad228e8f57e841c5e2af0be625a2d64ff22c2fa49bc97dfad614670e4dbfb2bd15080c4c7b45cd06a8d5ef98bcd0421c016e2050aac70d891b78eefd0cf81fb
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-http-fetchlibrary@npm:^1.0.0-preview.80":
+  version: 1.0.0-preview.100
+  resolution: "@microsoft/kiota-http-fetchlibrary@npm:1.0.0-preview.100"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
+    "@opentelemetry/api": "npm:^1.7.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/d1bd777f75b113c3eccf59d01bec559cd936ee2e08cac9e0dd10421020b3a8facadd2dc598158a1ea43704d2bfbe727e41fa94053d18b7fd0188fd2c042c8369
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-serialization-form@npm:^1.0.0-preview.74":
+  version: 1.0.0-preview.100
+  resolution: "@microsoft/kiota-serialization-form@npm:1.0.0-preview.100"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/283097ecbeea893c196db6027afb5ebc4918445b8182f5cf7faf414b34c80bfa1f755ac1b208098f05150cc3c7eb74a2007dfa24a321ef6546ac9cd70ca4d279
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-serialization-json@npm:^1.0.0-preview.86":
+  version: 1.0.0-preview.100
+  resolution: "@microsoft/kiota-serialization-json@npm:1.0.0-preview.100"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/821097959f6dbf8378ef243f6875163d5e347d8fd3dce27f55178168cd46dbf29d5cbb01e5a9f9be7e25a9029f8da10d9f33981c7d23cc5528deb2d94460f57b
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-serialization-multipart@npm:^1.0.0-preview.67":
+  version: 1.0.0-preview.100
+  resolution: "@microsoft/kiota-serialization-multipart@npm:1.0.0-preview.100"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/6ef773f513f7c68fe65b7a839e9b5e9d1d935b4425f25e6d49dd9441a827792fdcee5397330709a3f21c2f7e47e3e175b45cc3486ca4958cf50a969f9651eee6
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-serialization-text@npm:^1.0.0-preview.79":
+  version: 1.0.0-preview.100
+  resolution: "@microsoft/kiota-serialization-text@npm:1.0.0-preview.100"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/f1c1603fea7a8420ffda0378c7ae67031c25985213fc528b49982ca962cd5452d06bcd8f7ea902c58be8d46b7fd5772fcb1fc7e71163e70b8c0077e493c53c26
   languageName: node
   linkType: hard
 
@@ -1460,7 +1529,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/api@npm:^1.3.0, @opentelemetry/api@npm:^1.9.0":
+"@opentelemetry/api@npm:^1.3.0, @opentelemetry/api@npm:^1.7.0, @opentelemetry/api@npm:^1.9.0":
   version: 1.9.1
   resolution: "@opentelemetry/api@npm:1.9.1"
   checksum: 10c0/c608485fc8b5a91e1f7e05e843b45b509307456b31cd2ad365933d90813e40ebfedf179f1451c762037e82d7c76aa8500e95d2da3609f640a1206cde5322cd14
@@ -3297,6 +3366,13 @@ __metadata:
   version: 1.1.0
   resolution: "@standard-schema/spec@npm:1.1.0"
   checksum: 10c0/d90f55acde4b2deb983529c87e8025fa693de1a5e8b49ecc6eb84d1fd96328add0e03d7d551442156c7432fd78165b2c26ff561b970a9a881f046abb78d6a526
+  languageName: node
+  linkType: hard
+
+"@std-uritemplate/std-uritemplate@npm:^2.0.0":
+  version: 2.0.8
+  resolution: "@std-uritemplate/std-uritemplate@npm:2.0.8"
+  checksum: 10c0/f046d0bd8a2404baa57c82954c498dc57d969cbe50a0c0d7c6511597e447adafba59b5697204759b2ef9297babcdd9933b0ce1c30c495202e803c07f9063dd23
   languageName: node
   linkType: hard
 
@@ -8496,7 +8572,7 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.0"
     "@eslint/js": "npm:^9.15.0"
-    "@keycloak/keycloak-admin-client": "npm:26.5.6"
+    "@keycloak/keycloak-admin-client": "npm:26.6.0"
     "@keycloakify/keycloak-account-ui": "npm:~260502.0.0"
     "@keycloakify/keycloak-ui-shared": "npm:~260502.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
@@ -10440,6 +10516,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tinyduration@npm:^3.3.0":
+  version: 3.4.1
+  resolution: "tinyduration@npm:3.4.1"
+  checksum: 10c0/06f0fbf5658c92a07d900208bb0bafad30a4c61cc914fdd72edeb5f02ce9f728eebd986da43b115f2b00d6dde06242a107c018e834db2d3a5ddca37b293a61ba
+  languageName: node
+  linkType: hard
+
 "tinyexec@npm:^1.0.2":
   version: 1.1.1
   resolution: "tinyexec@npm:1.1.1"
@@ -10556,7 +10639,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.7.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2, tslib@npm:^2.7.0":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
