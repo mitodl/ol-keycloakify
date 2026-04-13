@@ -47,7 +47,7 @@
     "keycloak-js": "^26.2.0",
     "keycloakify": "^11.8.27",
     "lodash-es": "^4.17.22",
-    "oidc-spa": "~10.0.5",
+    "oidc-spa": "~10.2.0",
     "posthog-js": "^1.319.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
