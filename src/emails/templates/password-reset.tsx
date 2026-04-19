@@ -36,12 +36,6 @@ export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
     <Text style={paragraph}>
       This link will expire within {exp("linkExpirationFormatter(linkExpiration)")}.
     </Text>
-    <Text style={fallbackUrl}>
-      If you&apos;re unable to click the button above, copy and paste the following URL
-      into your browser:
-      <br />
-      {exp("link")}
-    </Text>
   </EmailLayout>
 )
 
@@ -50,5 +44,5 @@ export const getTemplate: GetTemplate = async props => {
 }
 
 export const getSubject: GetSubject = async () => {
-  return "Reset password"
+  return "Your Password Reset Link"
 }

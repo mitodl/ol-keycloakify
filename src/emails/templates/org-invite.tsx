@@ -13,6 +13,8 @@ export const templateName = "Org Invite"
 
 const { exp } = createVariablesHelper("org-invite.ftl")
 
+const DATA_PLATFORM_CONTACT_EMAIL = "odl-data@mit.edu"
+
 export const Template = ({ locale, themeName }: Omit<GetTemplateProps, "plainText">) => {
   const isDataPlatform = themeName === "ol-data-platform"
 
@@ -55,14 +57,8 @@ export const Template = ({ locale, themeName }: Omit<GetTemplateProps, "plainTex
       </Text>
       <Text style={paragraph}>
         {isDataPlatform
-          ? "If you have questions about data usage policies or technical requirements, please contact the platform administration team."
+          ? `If you have questions about data usage policies or technical requirements, please contact ${DATA_PLATFORM_CONTACT_EMAIL}.`
           : `If you did not expect this invitation or have any questions, please contact the ${exp("realmName")} support team.`}
-      </Text>
-      <Text style={fallbackUrl}>
-        If you&apos;re unable to click the button above, copy and paste the following URL
-        into your browser:
-        <br />
-        {exp("link")}
       </Text>
     </EmailLayout>
   )
