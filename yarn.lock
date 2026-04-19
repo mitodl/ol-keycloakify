@@ -1102,9 +1102,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloak/keycloak-admin-client@npm:26.6.0":
-  version: 26.6.0
-  resolution: "@keycloak/keycloak-admin-client@npm:26.6.0"
+"@keycloak/keycloak-admin-client@npm:26.6.1":
+  version: 26.6.1
+  resolution: "@keycloak/keycloak-admin-client@npm:26.6.1"
   dependencies:
     "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.86"
     "@microsoft/kiota-http-fetchlibrary": "npm:^1.0.0-preview.80"
@@ -1114,7 +1114,7 @@ __metadata:
     "@microsoft/kiota-serialization-text": "npm:^1.0.0-preview.79"
     camelize-ts: "npm:^3.0.0"
     url-template: "npm:^3.1.1"
-  checksum: 10c0/c64d5416e4ca7ca426116229c8ae39550f3bccc1787a9bb291311b41616499a8e12dd130626e091e162cda2e0c936b6e67bae4de2b2d10a368236287fce13cf9
+  checksum: 10c0/f6c58456f480122f5a168d2ab14bfdeae41da4becebaae258eebce3dc19f1a8ce25d8b019f2571526a7d3e0b35f66de91925a203e1d79d55eca4e67d623bf9b3
   languageName: node
   linkType: hard
 
@@ -8572,7 +8572,7 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.0"
     "@eslint/js": "npm:^9.15.0"
-    "@keycloak/keycloak-admin-client": "npm:26.6.0"
+    "@keycloak/keycloak-admin-client": "npm:26.6.1"
     "@keycloakify/keycloak-account-ui": "npm:~260502.0.0"
     "@keycloakify/keycloak-ui-shared": "npm:~260502.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
