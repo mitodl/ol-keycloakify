@@ -2,7 +2,7 @@ import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails"
 import { createVariablesHelper } from "keycloakify-emails/variables"
 import { render, Text } from "jsx-email"
 import { EmailLayout } from "../layout"
-import { paragraph, ctaButton, fallbackUrl } from "../styles"
+import { paragraph, ctaButton } from "../styles"
 
 export const previewProps: Omit<GetTemplateProps, "plainText"> = {
   locale: "en",
