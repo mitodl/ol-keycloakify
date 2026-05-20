@@ -24,9 +24,7 @@ export const Template = ({ locale, themeName }: Omit<GetTemplateProps, "plainTex
       locale={locale}
       realmName={exp("realmName")}
     >
-      <h1 style={{ color: "#212326", margin: "13px 0" }}>
-        You&apos;re Invited to Join {exp("realmName")}
-      </h1>
+      <h1 style={{ color: "#212326", margin: "13px 0" }}>You&apos;re Invited</h1>
       <Text style={paragraph}>Hi,</Text>
       {isDataPlatform ? (
         <>
