@@ -5,5 +5,7 @@ export const isOrgEmail = (email: string): boolean => {
   const emailParts = email.trim().split("@")
   if (emailParts.length !== 2) return false
   const domain = emailParts[1].toLowerCase()
-  return ORG_EMAIL_DOMAINS.some((orgEmailDomain: string) => domain === orgEmailDomain.toLowerCase())
+  return ORG_EMAIL_DOMAINS.some(
+    (orgEmailDomain: string) => domain === orgEmailDomain.toLowerCase()
+  )
 }
