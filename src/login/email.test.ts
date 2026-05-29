@@ -31,5 +31,6 @@ describe("isOrgEmail", () => {
     expect(isOrgEmail("")).toBe(false)
     expect(isOrgEmail("notanemail")).toBe(false)
     expect(isOrgEmail("   ")).toBe(false)
+    expect(isOrgEmail("@mit.edu")).toBe(false)
   })
 })
