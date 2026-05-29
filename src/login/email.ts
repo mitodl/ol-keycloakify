@@ -1,0 +1,9 @@
+import { ORG_EMAIL_DOMAINS } from "./constants"
+
+export const isOrgEmail = (email: string): boolean => {
+  if (!email || !email.trim()) return false
+  const emailParts = email.trim().split("@")
+  if (emailParts.length !== 2) return false
+  const domain = emailParts[1].toLowerCase()
+  return ORG_EMAIL_DOMAINS.some((orgEmailDomain: string) => domain === orgEmailDomain.toLowerCase())
+}
