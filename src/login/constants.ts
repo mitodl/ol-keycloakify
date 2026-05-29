@@ -25,13 +25,6 @@ export const ORG_EMAIL_DOMAINS = [
   "wi.mit.edu"
 ]
 
-/* MIT-affiliated domains that are NOT supported by Touchstone and should be excluded from
- * the Touchstone redirect/registration block. Users with these addresses need to register
- * directly via Keycloak.
- */
-export const NON_TOUCHSTONE_MIT_DOMAINS = [
-  "alum.mit.edu"
-]
 
 export const EMAIL_SUGGESTION_DOMAINS = [
   ...ORG_EMAIL_DOMAINS,
