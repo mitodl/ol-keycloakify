@@ -4,6 +4,7 @@ import emailSpellChecker from "@zootools/email-spell-checker"
  * On the login screen, emails that closely match are shown a suggestion for typo corrections.
  * On the registration screen, users attempting to register with MIT email addresses are shown a message to return to login.
  */
+
 export const ORG_EMAIL_DOMAINS = [
   // https://github.com/mitodl/ol-infrastructure/blob/a0d3000743e198c6a8c91d5a8c87d64de553e15e/src/ol_infrastructure/substructure/keycloak/olapps.py#L672-L688
   "mit.edu",
@@ -22,6 +23,14 @@ export const ORG_EMAIL_DOMAINS = [
   "smart.mit.edu",
   "solve.mit.edu",
   "wi.mit.edu"
+]
+
+/* MIT-affiliated domains that are NOT supported by Touchstone and should be excluded from
+ * the Touchstone redirect/registration block. Users with these addresses need to register
+ * directly via Keycloak.
+ */
+export const NON_TOUCHSTONE_MIT_DOMAINS = [
+  "alum.mit.edu"
 ]
 
 export const EMAIL_SUGGESTION_DOMAINS = [
