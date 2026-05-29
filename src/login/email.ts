@@ -7,6 +7,6 @@ export const isOrgEmail = (email: string): boolean => {
   if (lastAtIndex <= 0 || lastAtIndex === trimmed.length - 1) return false
   const domain = trimmed.slice(lastAtIndex + 1).toLowerCase()
   return ORG_EMAIL_DOMAINS.some(
-    (orgEmailDomain: string) => domain === orgEmailDomain.toLowerCase(),
+    (orgEmailDomain: string) => domain === orgEmailDomain.toLowerCase()
   )
 }
