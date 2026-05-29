@@ -4,7 +4,6 @@ import emailSpellChecker from "@zootools/email-spell-checker"
  * On the login screen, emails that closely match are shown a suggestion for typo corrections.
  * On the registration screen, users attempting to register with MIT email addresses are shown a message to return to login.
  */
-
 export const ORG_EMAIL_DOMAINS = [
   // https://github.com/mitodl/ol-infrastructure/blob/a0d3000743e198c6a8c91d5a8c87d64de553e15e/src/ol_infrastructure/substructure/keycloak/olapps.py#L672-L688
   "mit.edu",
@@ -24,7 +23,6 @@ export const ORG_EMAIL_DOMAINS = [
   "solve.mit.edu",
   "wi.mit.edu"
 ]
-
 
 export const EMAIL_SUGGESTION_DOMAINS = [
   ...ORG_EMAIL_DOMAINS,
