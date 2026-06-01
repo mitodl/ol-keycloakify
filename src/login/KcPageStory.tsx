@@ -23,11 +23,30 @@ const kcContextExtension: KcContextExtension = {
 
 const kcContextExtensionPerPage: KcContextExtensionPerPage = {}
 
+const emailValidatorOverride = {
+  profile: {
+    attributesByName: {
+      email: {
+        validators: {
+          pattern: undefined,
+          email: { "ignore.empty.value": true },
+          length: { max: 255, "ignore.empty.value": true }
+        }
+      }
+    }
+  }
+}
+
 export const { getKcContextMock } = createGetKcContextMock({
   kcContextExtension,
   kcContextExtensionPerPage,
   overrides: {},
-  overridesPerPage: {}
+  overridesPerPage: {
+    // The Keycloakify default mock uses a gmail.com pattern validator which doesn't exist
+    // in production. Override with the actual production validators from olapps.py:185-194.
+    "register.ftl": emailValidatorOverride,
+    "update-email.ftl": emailValidatorOverride
+  }
 })
 
 export function createKcPageStory<PageId extends KcContext["pageId"]>(params: {
