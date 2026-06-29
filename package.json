@@ -17,8 +17,8 @@
     "serve-storybook": "yarn build-storybook && serve -s storybook-static",
     "start": "keycloakify start-keycloak",
     "typecheck": "tsc --noEmit",
-    "lint": "biome lint src/emails/ src/login/",
-    "lint:fix": "biome lint --write src/emails/ src/login/",
+    "lint": "biome check src/emails/ src/login/",
+    "lint:fix": "biome check --write src/emails/ src/login/",
     "format": "biome format src/emails/ src/login/",
     "format:fix": "biome format --write src/emails/ src/login/"
   },
