@@ -1,4 +1,4 @@
-import { GetMessages } from "keycloakify-emails"
+import type { GetMessages } from "keycloakify-emails"
 
 /**
  * we want to have this as function with a params, to give developers a

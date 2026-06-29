@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { createKcPageStory } from "../KcPageStory"
 import type { Attribute } from "keycloakify/login"
+import { createKcPageStory } from "../KcPageStory"
 
 const { KcPageStory } = createKcPageStory({ pageId: "register.ftl" })
 

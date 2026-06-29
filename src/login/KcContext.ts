@@ -22,6 +22,7 @@ export type KcContextExtension = {
   }
 }
 
+// biome-ignore lint/complexity/noBannedTypes: {} is the Keycloakify extension-point convention for "no per-page context"
 export type KcContextExtensionPerPage = {}
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>

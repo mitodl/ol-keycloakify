@@ -1,15 +1,15 @@
 import styled from "@emotion/styled"
 import {
-  Input as SmootInput,
+  ActionButton,
+  AdornmentButton as SmootAdornmentButton,
+  Alert as SmootAlert,
   Button as SmootButton,
   ButtonLink as SmootButtonLink,
-  Alert as SmootAlert,
-  AdornmentButton as SmootAdornmentButton,
-  TextField,
-  ActionButton
+  Input as SmootInput,
+  TextField
 } from "@mitodl/smoot-design"
+import { RiCheckLine, RiEyeLine, RiEyeOffLine } from "@remixicon/react"
 import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed"
-import { RiEyeLine, RiEyeOffLine, RiCheckLine } from "@remixicon/react"
 import type { I18n } from "../i18n"
 
 export const Link = styled.a(({ theme }) => ({

@@ -1,7 +1,7 @@
 import type { PageProps } from "keycloakify/login/pages/PageProps"
-import type { KcContext } from "../KcContext"
+import { Button, Form, StyledTextField, Subtitle } from "../components/Elements"
 import type { I18n } from "../i18n"
-import { Button, Form, Subtitle, StyledTextField } from "../components/Elements"
+import type { KcContext } from "../KcContext"
 
 export default function LoginResetPassword(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props

@@ -1,5 +1,5 @@
 import { Body, Column, Head, Hr, Html, Img, Preview, Row, Section, Text } from "jsx-email"
-import { PropsWithChildren, ReactNode } from "react"
+import type { PropsWithChildren, ReactNode } from "react"
 
 // keycloakify-emails copies assets from assetsDirPath into the theme jar.
 // In production Keycloak uses ${url.resourcesUrl} to serve them; the jsx-email

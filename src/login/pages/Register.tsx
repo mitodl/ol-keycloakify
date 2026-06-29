@@ -1,13 +1,13 @@
-import type { JSX } from "keycloakify/tools/JSX"
-import { useState } from "react"
-import type { LazyOrNot } from "keycloakify/tools/LazyOrNot"
 import { kcSanitize } from "keycloakify/lib/kcSanitize"
-import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
-import type { KcContext } from "../KcContext"
-import type { I18n } from "../i18n"
-import { Form, ValidationMessage, Button, Link, Info, Subtitle } from "../components/Elements"
+import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps"
+import type { JSX } from "keycloakify/tools/JSX"
+import type { LazyOrNot } from "keycloakify/tools/LazyOrNot"
+import { useState } from "react"
+import { Button, Form, Info, Link, Subtitle, ValidationMessage } from "../components/Elements"
 import { isOrgEmail } from "../email"
+import type { I18n } from "../i18n"
+import type { KcContext } from "../KcContext"
 
 type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
   UserProfileFormFields: LazyOrNot<
@@ -151,6 +151,7 @@ function TermsAcceptance(props: {
             <ValidationMessage
               id="input-error-terms-accepted"
               aria-live="polite"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: content is sanitized via kcSanitize()
               dangerouslySetInnerHTML={{
                 __html: kcSanitize(messagesPerField.get("termsAccepted"))
               }}

@@ -1,7 +1,7 @@
 import type { PageProps } from "keycloakify/login/pages/PageProps"
-import type { KcContext } from "../KcContext"
-import type { I18n } from "../i18n"
 import { Button, Form, RevealPasswordButton, StyledTextField } from "../components/Elements"
+import type { I18n } from "../i18n"
+import type { KcContext } from "../KcContext"
 
 export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, { pageId: "login-update-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props

@@ -1,13 +1,13 @@
 import styled from "@emotion/styled"
-import type { JSX } from "keycloakify/tools/JSX"
-import { useState } from "react"
-import type { LazyOrNot } from "keycloakify/tools/LazyOrNot"
 import { getKcClsx } from "keycloakify/login/lib/kcClsx"
-import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
-import type { KcContext } from "../KcContext"
+import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps"
+import type { JSX } from "keycloakify/tools/JSX"
+import type { LazyOrNot } from "keycloakify/tools/LazyOrNot"
+import { useState } from "react"
+import { Button, Form } from "../components/Elements"
 import type { I18n } from "../i18n"
-import { Form, Button } from "../components/Elements"
+import type { KcContext } from "../KcContext"
 
 const Buttons = styled.div(({ theme }) => ({
   display: "flex",

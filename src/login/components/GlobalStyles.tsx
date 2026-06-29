@@ -1,5 +1,5 @@
-import React from "react"
-import { css, Theme, Global } from "@emotion/react"
+import { css, Global, type Theme } from "@emotion/react"
+import type React from "react"
 
 const pageCss = (theme: Theme) => css`
   html {
