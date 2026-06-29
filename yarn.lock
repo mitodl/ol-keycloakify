@@ -1198,8 +1198,8 @@ __metadata:
   linkType: hard
 
 "@mitodl/smoot-design@npm:^6.10.0":
-  version: 6.26.0
-  resolution: "@mitodl/smoot-design@npm:6.26.0"
+  version: 6.28.1
+  resolution: "@mitodl/smoot-design@npm:6.28.1"
   dependencies:
     "@ai-sdk/react": "npm:1.2.12"
     "@emotion/cache": "npm:^11.14.0"
@@ -1224,7 +1224,7 @@ __metadata:
     "@remixicon/react": ^4.2.0
     react: ^18 || ^19
     react-dom: ^18 || ^19
-  checksum: 10c0/b1e572669e9e0a668f61302afd49cfa58f2fe12805b31d0cc157edd8c4e27e7c438874119db723ca9951fd91cd909e36ab3ad6008bb012bab2c192abb8007851
+  checksum: 10c0/49bf000036bca23b8ff5b11d7d27741199d287f174c7e21520d936d6a8a4f2bb2a8b83521e5a8c5d091b8b8911cd04f129e2b010a59ecffb75ffa0170b174eb9
   languageName: node
   linkType: hard
 
@@ -3787,7 +3787,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash-es@npm:^4.17.12":
+"@types/lodash-es@npm:4.17.12":
   version: 4.17.12
   resolution: "@types/lodash-es@npm:4.17.12"
   dependencies:
@@ -8693,7 +8693,7 @@ __metadata:
     "@storybook/addon-vitest": "npm:10.3.5"
     "@storybook/react": "npm:10.3.5"
     "@storybook/react-vite": "npm:10.3.5"
-    "@types/lodash-es": "npm:^4.17.12"
+    "@types/lodash-es": "npm:4.17.12"
     "@types/node": "npm:24.12.2"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
