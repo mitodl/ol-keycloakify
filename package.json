@@ -43,7 +43,7 @@
     "@zootools/email-spell-checker": "^1.12.0",
     "i18next": "^25.7.3",
     "i18next-fetch-backend": "^7.0.0",
-    "jsx-email": "^2",
+    "jsx-email": "^3.0.0",
     "keycloak-js": "^26",
     "keycloakify": "^11",
     "lodash-es": "^4.18.1",
