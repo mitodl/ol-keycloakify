@@ -1,13 +1,13 @@
-import { useEffect } from "react"
-import { kcSanitize } from "keycloakify/lib/kcSanitize"
-import type { TemplateProps } from "keycloakify/login/TemplateProps"
-import { useInitialize } from "keycloakify/login/Template.useInitialize"
-import type { I18n } from "./i18n"
-import type { KcContext } from "./KcContext"
-import Logos from "./components/Logos"
 import styled from "@emotion/styled"
 import Typography from "@mui/material/Typography"
-import { Info, Link, Alert, FooterLink } from "./components/Elements"
+import { kcSanitize } from "keycloakify/lib/kcSanitize"
+import { useInitialize } from "keycloakify/login/Template.useInitialize"
+import type { TemplateProps } from "keycloakify/login/TemplateProps"
+import { useEffect } from "react"
+import { Alert, FooterLink, Info, Link } from "./components/Elements"
+import Logos from "./components/Logos"
+import type { I18n } from "./i18n"
+import type { KcContext } from "./KcContext"
 
 const Container = styled.div(({ theme }) => ({
   minHeight: "100vh",
@@ -111,7 +111,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         <Content id="kc-content">
           <div id="kc-content-wrapper">
             {children}
-            {auth !== undefined && auth.showTryAnotherWayLink && (
+            {auth?.showTryAnotherWayLink && (
               <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
                 <Info>
                   <input type="hidden" name="tryAnotherWay" value="on" />

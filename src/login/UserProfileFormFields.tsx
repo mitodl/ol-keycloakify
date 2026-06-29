@@ -1,21 +1,20 @@
-import { useEffect, Fragment, ReactElement, useState } from "react"
 import emailSpellChecker from "@zootools/email-spell-checker"
-import { assert } from "keycloakify/tools/assert"
+import type { Attribute } from "keycloakify/login/KcContext"
 import type { KcClsx } from "keycloakify/login/lib/kcClsx"
 import {
-  useUserProfileForm,
-  getButtonToDisplayForMultivaluedAttributeField,
   type FormAction,
-  type FormFieldError
+  type FormFieldError,
+  getButtonToDisplayForMultivaluedAttributeField,
+  useUserProfileForm
 } from "keycloakify/login/lib/useUserProfileForm"
 import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps"
-import type { Attribute } from "keycloakify/login/KcContext"
-import type { KcContext } from "./KcContext"
-import type { I18n } from "./i18n"
-import { Label, ValidationMessage, RevealPasswordButton, HelperText, Suggestion } from "./components/Elements"
-import { StyledTextField } from "./components/Elements"
+import { assert } from "keycloakify/tools/assert"
+import { Fragment, type ReactElement, useEffect, useState } from "react"
+import { HelperText, Label, RevealPasswordButton, StyledTextField, Suggestion, ValidationMessage } from "./components/Elements"
 import { ORG_EMAIL_DOMAINS } from "./constants"
 import { isOrgEmail } from "./email"
+import type { I18n } from "./i18n"
+import type { KcContext } from "./KcContext"
 
 export default function UserProfileFormFields(
   props: Omit<UserProfileFormFieldsProps<KcContext, I18n>, "kcClsx"> & {
@@ -59,7 +58,7 @@ export default function UserProfileFormFields(
         /* We have an attribute group configured in Prod with firstName and lastName
            that is not shown in the ol-keycloak register.ftl template migrated from. */
         if (attribute.group?.name === "legal-address") {
-          return <input type="hidden" name={attribute.name} value={valueOrValues} key={"legal-address-" + attribute.name} />
+          return <input type="hidden" name={attribute.name} value={valueOrValues} key={`legal-address-${attribute.name}`} />
         }
 
         return (
@@ -191,6 +190,7 @@ function FieldErrors(props: { attribute: Attribute; displayableErrors: FormField
       {displayableErrors
         .filter(error => error.fieldIndex === fieldIndex)
         .map(({ errorMessage }, i, arr) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: error messages have no stable ID
           <ValidationMessage key={i}>
             {errorMessage}
             {arr.length - 1 !== i && <br />}
@@ -228,7 +228,7 @@ function InputFieldByType(props: InputFieldByTypeProps) {
     default: {
       const InputComponent = attribute.name === "email" ? EmailTag : InputTag
 
-      if (valueOrValues instanceof Array) {
+      if (Array.isArray(valueOrValues)) {
         return (
           <>
             {valueOrValues.map((...[, i]) => (
@@ -291,7 +291,7 @@ function BaseInputTag(
         disabled={attribute.readOnly}
         value={(() => {
           if (fieldIndex !== undefined) {
-            assert(valueOrValues instanceof Array)
+            assert(Array.isArray(valueOrValues))
             return valueOrValues[fieldIndex]
           }
 
@@ -315,7 +315,7 @@ function BaseInputTag(
               const processedValue = transformValue ? transformValue(rawValue) : rawValue
 
               if (fieldIndex !== undefined) {
-                assert(valueOrValues instanceof Array)
+                assert(Array.isArray(valueOrValues))
 
                 return valueOrValues.map((value, i) => {
                   if (i === fieldIndex) {
@@ -362,7 +362,7 @@ function BaseInputTag(
           return null
         }
 
-        assert(valueOrValues instanceof Array)
+        assert(Array.isArray(valueOrValues))
 
         const values = valueOrValues
 
@@ -592,7 +592,7 @@ function InputTagSelects(props: InputFieldByTypeProps) {
             value={option}
             aria-invalid={props.displayableErrors.length !== 0}
             disabled={attribute.readOnly}
-            checked={valueOrValues instanceof Array ? valueOrValues.includes(option) : valueOrValues === option}
+            checked={Array.isArray(valueOrValues) ? valueOrValues.includes(option) : valueOrValues === option}
             onChange={event =>
               dispatchFormAction({
                 action: "update",
@@ -600,7 +600,7 @@ function InputTagSelects(props: InputFieldByTypeProps) {
                 valueOrValues: (() => {
                   const isChecked = event.target.checked
 
-                  if (valueOrValues instanceof Array) {
+                  if (Array.isArray(valueOrValues)) {
                     const newValues = [...valueOrValues]
 
                     if (isChecked) {
@@ -644,9 +644,9 @@ function TextareaTag(props: InputFieldByTypeProps) {
       name={attribute.name}
       aria-invalid={displayableErrors.length !== 0}
       disabled={attribute.readOnly}
-      cols={attribute.annotations.inputTypeCols === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeCols}`)}
-      rows={attribute.annotations.inputTypeRows === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeRows}`)}
-      maxLength={attribute.annotations.inputTypeMaxlength === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeMaxlength}`)}
+      cols={attribute.annotations.inputTypeCols === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeCols}`, 10)}
+      rows={attribute.annotations.inputTypeRows === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeRows}`, 10)}
+      maxLength={attribute.annotations.inputTypeMaxlength === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeMaxlength}`, 10)}
       value={value}
       onChange={event =>
         dispatchFormAction({
@@ -678,7 +678,7 @@ function SelectTag(props: InputFieldByTypeProps) {
       aria-invalid={displayableErrors.length !== 0}
       disabled={attribute.readOnly}
       multiple={isMultiple}
-      size={attribute.annotations.inputTypeSize === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeSize}`)}
+      size={attribute.annotations.inputTypeSize === undefined ? undefined : parseInt(`${attribute.annotations.inputTypeSize}`, 10)}
       value={valueOrValues}
       onChange={event =>
         dispatchFormAction({

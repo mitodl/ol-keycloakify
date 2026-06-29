@@ -1,14 +1,15 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps"
-import { kcSanitize } from "keycloakify/lib/kcSanitize"
-import type { KcContext } from "../KcContext"
-import type { I18n } from "../i18n"
-import { Link, Paragraph, Alert } from "../components/Elements"
 import { styled } from "@mui/material/styles"
+import { kcSanitize } from "keycloakify/lib/kcSanitize"
+import type { PageProps } from "keycloakify/login/pages/PageProps"
+import { Alert, Link, Paragraph } from "../components/Elements"
+import type { I18n } from "../i18n"
+import type { KcContext } from "../KcContext"
 
 const StyledAlert = styled(Alert)({
   marginBottom: "60px"
 })
 
+// biome-ignore lint/suspicious/noShadowRestrictedNames: Keycloakify page name convention
 export default function Error(props: PageProps<Extract<KcContext, { pageId: "error.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
 

@@ -1,0 +1,86 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.1/schema.json",
+	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+	"files": {
+		"includes": [
+			"**",
+			"!!**/dist",
+			"!!**/dist_keycloak",
+			"!!**/public",
+			"!!**/node_modules",
+			"!!src/account/**",
+			"!!src/shared/**",
+			"!!*.gen.tsx"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": false,
+		"indentStyle": "space",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 90,
+		"attributePosition": "auto",
+		"bracketSameLine": false,
+		"bracketSpacing": true,
+		"expand": "auto",
+		"useEditorconfig": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"correctness": {
+				"useExhaustiveDependencies": "off"
+			},
+			"suspicious": {
+				"noConfusingLabels": "off",
+				"noTemplateCurlyInString": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "none",
+			"semicolons": "asNeeded",
+			"arrowParentheses": "asNeeded",
+			"bracketSameLine": false,
+			"quoteStyle": "double",
+			"attributePosition": "auto",
+			"bracketSpacing": true
+		}
+	},
+	"html": {
+		"formatter": {
+			"indentScriptAndStyle": false,
+			"selfCloseVoidElements": "always"
+		}
+	},
+	"overrides": [
+		{
+			"includes": [
+				"**/login/pages/*.tsx",
+				"**/account/pages/*.tsx",
+				"**/login/Template.tsx",
+				"**/account/Template.tsx",
+				"**/login/UserProfileFormFields.tsx",
+				"KcApp.tsx"
+			],
+			"formatter": { "lineWidth": 150 }
+		},
+		{
+			"includes": ["**/*.svg"],
+			"linter": {
+				"rules": {
+					"a11y": { "noSvgWithoutTitle": "off" }
+				}
+			}
+		}
+	],
+	"assist": {
+		"enabled": true,
+		"actions": { "source": { "organizeImports": "on" } }
+	}
+}

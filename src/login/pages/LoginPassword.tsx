@@ -1,8 +1,8 @@
-import { useState } from "react"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
-import type { KcContext } from "../KcContext"
+import { useState } from "react"
+import { Button, Form, Link, RevealPasswordButton, StyledTextField } from "../components/Elements"
 import type { I18n } from "../i18n"
-import { Link, Form, Button, RevealPasswordButton, StyledTextField } from "../components/Elements"
+import type { KcContext } from "../KcContext"
 
 export default function LoginPassword(props: PageProps<Extract<KcContext, { pageId: "login-password.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props

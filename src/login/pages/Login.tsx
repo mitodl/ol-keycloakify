@@ -1,9 +1,9 @@
-import { useState } from "react"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
-import type { KcContext } from "../KcContext"
-import type { I18n } from "../i18n"
-import { Link, Button, Form, ButtonLink, SocialProviderButtonLink, OrBar, RevealPasswordButton, StyledTextField } from "../components/Elements"
+import { useState } from "react"
+import { Button, ButtonLink, Form, Link, OrBar, RevealPasswordButton, SocialProviderButtonLink, StyledTextField } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
+import type { I18n } from "../i18n"
+import type { KcContext } from "../KcContext"
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props
@@ -24,20 +24,20 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
       headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("loginAccountTitle")}
       displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
       socialProvidersNode={
-        <>
-          {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
-            <div id="kc-social-providers">
-              <OrBar />
-              {social.providers.map(p => (
-                <SocialProviderButtonLink key={p.alias} id={`social-${p.alias}`} type="button" href={p.loginUrl} variant="bordered" size="large">
-                  {p.iconClasses && <i aria-hidden="true"></i>}
-                  {p.alias === "touchstone-idp" ? <img src={mitLogo} alt="MIT Logo" width={40} /> : null}
-                  <span>{p.displayName}</span>
-                </SocialProviderButtonLink>
-              ))}
-            </div>
-          )}
-        </>
+        realm.password &&
+        social?.providers !== undefined &&
+        social.providers.length !== 0 && (
+          <div id="kc-social-providers">
+            <OrBar />
+            {social.providers.map(p => (
+              <SocialProviderButtonLink key={p.alias} id={`social-${p.alias}`} type="button" href={p.loginUrl} variant="bordered" size="large">
+                {p.iconClasses && <i aria-hidden="true"></i>}
+                {p.alias === "touchstone-idp" ? <img src={mitLogo} alt="MIT Logo" width={40} /> : null}
+                <span>{p.displayName}</span>
+              </SocialProviderButtonLink>
+            ))}
+          </div>
+        )
       }
     >
       <div id="kc-form">

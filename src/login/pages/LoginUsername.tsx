@@ -1,15 +1,15 @@
-import { useState, useRef, useEffect, useCallback } from "react"
-import { clsx } from "keycloakify/tools/clsx"
-import type { PageProps } from "keycloakify/login/pages/PageProps"
-import type { KcContext } from "../KcContext"
-import type { I18n } from "../i18n"
-import { Button, Form, SocialProviderButtonLink, OrBar, StyledTextField, ValidationMessage, Suggestion } from "../components/Elements"
-import mitLogo from "../components/mit-logo.svg"
 import emailSpellChecker from "@zootools/email-spell-checker"
+import type { PageProps } from "keycloakify/login/pages/PageProps"
+import { clsx } from "keycloakify/tools/clsx"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { Button, Form, OrBar, SocialProviderButtonLink, StyledTextField, Suggestion, ValidationMessage } from "../components/Elements"
+import mitLogo from "../components/mit-logo.svg"
 import { EMAIL_SPELLCHECKER_CONFIG, EMAIL_SUGGESTION_DOMAINS } from "../constants"
+import type { I18n } from "../i18n"
+import type { KcContext } from "../KcContext"
 
 const isValidEmail = (email: string): boolean => {
-  if (!email || !email.trim()) return false
+  if (!email?.trim()) return false
   const emailRegex = /^[^\s@]+@([A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/
   return emailRegex.test(email.trim())
 }
@@ -108,20 +108,20 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
       displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
       headerNode={loginAttempt?.userFullname ? msg("loginGreeting", loginAttempt.userFullname) : msg("loginAccountTitle")}
       socialProvidersNode={
-        <>
-          {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
-            <div id="kc-social-providers">
-              <OrBar />
-              {social.providers.map(p => (
-                <SocialProviderButtonLink key={p.alias} id={`social-${p.alias}`} type="button" href={p.loginUrl} variant="bordered" size="large">
-                  {p.iconClasses && <i className={clsx(p.iconClasses)} aria-hidden="true"></i>}
-                  {p.alias === "touchstone-idp" ? <img src={mitLogo} width={40} /> : null}
-                  <span className={clsx(p.iconClasses && "kc-social-icon-text")}>{p.displayName}</span>
-                </SocialProviderButtonLink>
-              ))}
-            </div>
-          )}
-        </>
+        realm.password &&
+        social?.providers !== undefined &&
+        social.providers.length !== 0 && (
+          <div id="kc-social-providers">
+            <OrBar />
+            {social.providers.map(p => (
+              <SocialProviderButtonLink key={p.alias} id={`social-${p.alias}`} type="button" href={p.loginUrl} variant="bordered" size="large">
+                {p.iconClasses && <i className={clsx(p.iconClasses)} aria-hidden="true"></i>}
+                {p.alias === "touchstone-idp" ? <img src={mitLogo} alt="MIT Logo" width={40} /> : null}
+                <span className={clsx(p.iconClasses && "kc-social-icon-text")}>{p.displayName}</span>
+              </SocialProviderButtonLink>
+            ))}
+          </div>
+        )
       }
     >
       <div id="kc-form">
