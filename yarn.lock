@@ -1130,19 +1130,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloak/keycloak-admin-client@npm:26.6.1":
-  version: 26.6.1
-  resolution: "@keycloak/keycloak-admin-client@npm:26.6.1"
+"@keycloak/keycloak-admin-client@npm:26.5.2":
+  version: 26.5.2
+  resolution: "@keycloak/keycloak-admin-client@npm:26.5.2"
   dependencies:
-    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.86"
-    "@microsoft/kiota-http-fetchlibrary": "npm:^1.0.0-preview.80"
-    "@microsoft/kiota-serialization-form": "npm:^1.0.0-preview.74"
-    "@microsoft/kiota-serialization-json": "npm:^1.0.0-preview.86"
-    "@microsoft/kiota-serialization-multipart": "npm:^1.0.0-preview.67"
-    "@microsoft/kiota-serialization-text": "npm:^1.0.0-preview.79"
     camelize-ts: "npm:^3.0.0"
     url-template: "npm:^3.1.1"
-  checksum: 10c0/f6c58456f480122f5a168d2ab14bfdeae41da4becebaae258eebce3dc19f1a8ce25d8b019f2571526a7d3e0b35f66de91925a203e1d79d55eca4e67d623bf9b3
+  checksum: 10c0/ade5923a7d1c4a67161fdbb3020675a1be7fd4850cf456b15488c09d9557e028467773812ba3c0bb9decae8681644901fc58eda6334253bc4bc221293b8cc403
   languageName: node
   linkType: hard
 
@@ -1170,11 +1164,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-ui-shared@npm:~260601.0.0":
-  version: 260601.0.0
-  resolution: "@keycloakify/keycloak-ui-shared@npm:260601.0.0"
+"@keycloakify/keycloak-ui-shared@npm:~260502.0.0":
+  version: 260502.0.0
+  resolution: "@keycloakify/keycloak-ui-shared@npm:260502.0.0"
   peerDependencies:
-    "@keycloak/keycloak-admin-client": 26.6.1
+    "@keycloak/keycloak-admin-client": 26.5.2
     "@patternfly/react-core": ^5.4.14
     "@patternfly/react-icons": ^5.4.2
     "@patternfly/react-styles": ^5.4.1
@@ -1182,12 +1176,12 @@ __metadata:
     "@types/lodash-es": ^4.17.12
     "@types/react": ^18.3.18
     i18next: ^25.7.3
-    lodash-es: ^4.18.1
+    lodash-es: ^4.17.22
     oidc-spa: ~10.0.5
     react: ^18.3.1
     react-hook-form: 7.70.0
     react-i18next: ^16.5.1
-  checksum: 10c0/f5466298a2a8971df4a8e1d2eabe9dce7aed155cfc4583ed678ef11fb50b49ae8f2848df71a40cb7fbff4ac473ac42651380e816911213fd307c6bf0f5c3eefb
+  checksum: 10c0/55bf073faa49cf59c476f3fa708cc38d5f0a2014f6d76e27505c36c13f68b44e28bc3f7d01c948b4a759df88a9e0c0f9f7f6e89590dd4d452639faddf7679581
   languageName: node
   linkType: hard
 
@@ -1200,69 +1194,6 @@ __metadata:
     "@types/react": ">=16"
     react: ">=16"
   checksum: 10c0/34ca98bc2a0f969894ea144dc5c8a5294690505458cd24965cd9be854d779c193ad9192bf9143c4c18438fafd1902e100d99067e045c69319288562d497558c6
-  languageName: node
-  linkType: hard
-
-"@microsoft/kiota-abstractions@npm:^1.0.0-preview.100, @microsoft/kiota-abstractions@npm:^1.0.0-preview.86":
-  version: 1.0.0-preview.100
-  resolution: "@microsoft/kiota-abstractions@npm:1.0.0-preview.100"
-  dependencies:
-    "@opentelemetry/api": "npm:^1.7.0"
-    "@std-uritemplate/std-uritemplate": "npm:^2.0.0"
-    tinyduration: "npm:^3.3.0"
-    tslib: "npm:^2.6.2"
-  checksum: 10c0/bad228e8f57e841c5e2af0be625a2d64ff22c2fa49bc97dfad614670e4dbfb2bd15080c4c7b45cd06a8d5ef98bcd0421c016e2050aac70d891b78eefd0cf81fb
-  languageName: node
-  linkType: hard
-
-"@microsoft/kiota-http-fetchlibrary@npm:^1.0.0-preview.80":
-  version: 1.0.0-preview.100
-  resolution: "@microsoft/kiota-http-fetchlibrary@npm:1.0.0-preview.100"
-  dependencies:
-    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
-    "@opentelemetry/api": "npm:^1.7.0"
-    tslib: "npm:^2.6.2"
-  checksum: 10c0/d1bd777f75b113c3eccf59d01bec559cd936ee2e08cac9e0dd10421020b3a8facadd2dc598158a1ea43704d2bfbe727e41fa94053d18b7fd0188fd2c042c8369
-  languageName: node
-  linkType: hard
-
-"@microsoft/kiota-serialization-form@npm:^1.0.0-preview.74":
-  version: 1.0.0-preview.100
-  resolution: "@microsoft/kiota-serialization-form@npm:1.0.0-preview.100"
-  dependencies:
-    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
-    tslib: "npm:^2.6.2"
-  checksum: 10c0/283097ecbeea893c196db6027afb5ebc4918445b8182f5cf7faf414b34c80bfa1f755ac1b208098f05150cc3c7eb74a2007dfa24a321ef6546ac9cd70ca4d279
-  languageName: node
-  linkType: hard
-
-"@microsoft/kiota-serialization-json@npm:^1.0.0-preview.86":
-  version: 1.0.0-preview.100
-  resolution: "@microsoft/kiota-serialization-json@npm:1.0.0-preview.100"
-  dependencies:
-    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
-    tslib: "npm:^2.6.2"
-  checksum: 10c0/821097959f6dbf8378ef243f6875163d5e347d8fd3dce27f55178168cd46dbf29d5cbb01e5a9f9be7e25a9029f8da10d9f33981c7d23cc5528deb2d94460f57b
-  languageName: node
-  linkType: hard
-
-"@microsoft/kiota-serialization-multipart@npm:^1.0.0-preview.67":
-  version: 1.0.0-preview.100
-  resolution: "@microsoft/kiota-serialization-multipart@npm:1.0.0-preview.100"
-  dependencies:
-    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
-    tslib: "npm:^2.6.2"
-  checksum: 10c0/6ef773f513f7c68fe65b7a839e9b5e9d1d935b4425f25e6d49dd9441a827792fdcee5397330709a3f21c2f7e47e3e175b45cc3486ca4958cf50a969f9651eee6
-  languageName: node
-  linkType: hard
-
-"@microsoft/kiota-serialization-text@npm:^1.0.0-preview.79":
-  version: 1.0.0-preview.100
-  resolution: "@microsoft/kiota-serialization-text@npm:1.0.0-preview.100"
-  dependencies:
-    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.100"
-    tslib: "npm:^2.6.2"
-  checksum: 10c0/f1c1603fea7a8420ffda0378c7ae67031c25985213fc528b49982ca962cd5452d06bcd8f7ea902c58be8d46b7fd5772fcb1fc7e71163e70b8c0077e493c53c26
   languageName: node
   linkType: hard
 
@@ -1569,7 +1500,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/api@npm:^1.3.0, @opentelemetry/api@npm:^1.7.0, @opentelemetry/api@npm:^1.9.0":
+"@opentelemetry/api@npm:^1.3.0, @opentelemetry/api@npm:^1.9.0":
   version: 1.9.1
   resolution: "@opentelemetry/api@npm:1.9.1"
   checksum: 10c0/c608485fc8b5a91e1f7e05e843b45b509307456b31cd2ad365933d90813e40ebfedf179f1451c762037e82d7c76aa8500e95d2da3609f640a1206cde5322cd14
@@ -3532,13 +3463,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@std-uritemplate/std-uritemplate@npm:^2.0.0":
-  version: 2.0.8
-  resolution: "@std-uritemplate/std-uritemplate@npm:2.0.8"
-  checksum: 10c0/f046d0bd8a2404baa57c82954c498dc57d969cbe50a0c0d7c6511597e447adafba59b5697204759b2ef9297babcdd9933b0ce1c30c495202e803c07f9063dd23
-  languageName: node
-  linkType: hard
-
 "@storybook/addon-a11y@npm:10.3.5":
   version: 10.3.5
   resolution: "@storybook/addon-a11y@npm:10.3.5"
@@ -3863,7 +3787,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash-es@npm:4.17.12":
+"@types/lodash-es@npm:^4.17.12":
   version: 4.17.12
   resolution: "@types/lodash-es@npm:4.17.12"
   dependencies:
@@ -4251,30 +4175,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/browser@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/browser@npm:4.1.4"
+"@vitest/browser@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/browser@npm:4.1.9"
   dependencies:
     "@blazediff/core": "npm:1.9.1"
-    "@vitest/mocker": "npm:4.1.4"
-    "@vitest/utils": "npm:4.1.4"
+    "@vitest/mocker": "npm:4.1.9"
+    "@vitest/utils": "npm:4.1.9"
     magic-string: "npm:^0.30.21"
     pngjs: "npm:^7.0.0"
     sirv: "npm:^3.0.2"
     tinyrainbow: "npm:^3.1.0"
     ws: "npm:^8.19.0"
   peerDependencies:
-    vitest: 4.1.4
-  checksum: 10c0/c219c685d5befc2372d7cc80ef4ff78c9e57cb4a1bb74ec25d76596c9ad130d2bf67bc05d7ed1a6a8e0da763cd1c523eb81c95cd623c20f163509d0b36dae1c7
+    vitest: 4.1.9
+  checksum: 10c0/9ff634e56b0bd5a3727f2eec7666f97a089b92fb596d5b9e4fbe2a2e4fd988aa7a7bd2a7b98d7cf14790717db69db8f72bae6dc007f2fac613b9bb93d8e8edfb
   languageName: node
   linkType: hard
 
-"@vitest/coverage-v8@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/coverage-v8@npm:4.1.4"
+"@vitest/coverage-v8@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/coverage-v8@npm:4.1.9"
   dependencies:
     "@bcoe/v8-coverage": "npm:^1.0.2"
-    "@vitest/utils": "npm:4.1.4"
+    "@vitest/utils": "npm:4.1.9"
     ast-v8-to-istanbul: "npm:^1.0.0"
     istanbul-lib-coverage: "npm:^3.2.2"
     istanbul-lib-report: "npm:^3.0.1"
@@ -4284,12 +4208,12 @@ __metadata:
     std-env: "npm:^4.0.0-rc.1"
     tinyrainbow: "npm:^3.1.0"
   peerDependencies:
-    "@vitest/browser": 4.1.4
-    vitest: 4.1.4
+    "@vitest/browser": 4.1.9
+    vitest: 4.1.9
   peerDependenciesMeta:
     "@vitest/browser":
       optional: true
-  checksum: 10c0/e128a70b15eeee55ad201b9f2a9d88f3a2ccd630c1518ec8ab1d80a6e7b557d23d426244ce09748c8553a53725137d92696bd1be3bd9349863dd375749988a4a
+  checksum: 10c0/02bc408d5d8d5188bb569ae1df1f56903e9e19a6a19ddeff07140e1b344b82662f0669c7ee87b6f4f82c9d1d63a0296fe40c023f923a500a707463c8c05ec133
   languageName: node
   linkType: hard
 
@@ -4306,25 +4230,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/expect@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/expect@npm:4.1.4"
+"@vitest/expect@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/expect@npm:4.1.9"
   dependencies:
     "@standard-schema/spec": "npm:^1.1.0"
     "@types/chai": "npm:^5.2.2"
-    "@vitest/spy": "npm:4.1.4"
-    "@vitest/utils": "npm:4.1.4"
+    "@vitest/spy": "npm:4.1.9"
+    "@vitest/utils": "npm:4.1.9"
     chai: "npm:^6.2.2"
     tinyrainbow: "npm:^3.1.0"
-  checksum: 10c0/99b53a931366ddc985f26528495ec991fa2ce64018b00a56f989c322553045c5adf17e091eb7a12d786246712f84d36fc88e9d26c852538ff4dd5a6f9cf98715
+  checksum: 10c0/243bacaed2cba5e0ea4ec7465662fcec465a358a0e06381e337fac49426aa67a73b104fbb9d65d8bccadfba8f70e27f57ffb897aacfa140f579a556367357875
   languageName: node
   linkType: hard
 
-"@vitest/mocker@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/mocker@npm:4.1.4"
+"@vitest/mocker@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/mocker@npm:4.1.9"
   dependencies:
-    "@vitest/spy": "npm:4.1.4"
+    "@vitest/spy": "npm:4.1.9"
     estree-walker: "npm:^3.0.3"
     magic-string: "npm:^0.30.21"
   peerDependencies:
@@ -4335,7 +4259,7 @@ __metadata:
       optional: true
     vite:
       optional: true
-  checksum: 10c0/da61ee63743da4bc45df0488c994e284e7059a4005149195744705945d19aeb267c801b1f7d85e71b40f547ff2d5a195175c5d51e8455179c794ce67a019de87
+  checksum: 10c0/707353b7435bbfd441cc754e4ee7bc5921b70d07b051c6e414b6bbe4ca369154702b0ddeb603389469fe87ca1983e002eb2d55044582661f54a1945dd27e5c82
   languageName: node
   linkType: hard
 
@@ -4348,34 +4272,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/pretty-format@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/pretty-format@npm:4.1.4"
+"@vitest/pretty-format@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/pretty-format@npm:4.1.9"
   dependencies:
     tinyrainbow: "npm:^3.1.0"
-  checksum: 10c0/14a25c5acd02b1d18f9fab01d884658edb9137008d01025273617fb000e36391e4fda1513e94a257f5e611fb09041a0c042d145a90d359c9e810c0044b12763e
+  checksum: 10c0/5b96295f25ab885616230ad1355fc82f490bebb39cc707688d7c8969c08270d7e076ed8a10af4e762ed57145193c6061a1f549f136f0ded344f8db0c2b3fb3de
   languageName: node
   linkType: hard
 
-"@vitest/runner@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/runner@npm:4.1.4"
+"@vitest/runner@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/runner@npm:4.1.9"
   dependencies:
-    "@vitest/utils": "npm:4.1.4"
+    "@vitest/utils": "npm:4.1.9"
     pathe: "npm:^2.0.3"
-  checksum: 10c0/a942ecf2e50e4c380f0d269f87272353dc40fe354357e1ecd0c6568fd37202bb86e33db676f4ad6cc5f1ab30937bba0b278d987729b21a0f22e9827f7f577da2
+  checksum: 10c0/d206b4891a64b1f55c346f832b0a7b489108094d8ae34438d3b53e78be7b45b139fa95ffa027c98c357bd532268ee573168de1943235b7eed32a9236ed5978bb
   languageName: node
   linkType: hard
 
-"@vitest/snapshot@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/snapshot@npm:4.1.4"
+"@vitest/snapshot@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/snapshot@npm:4.1.9"
   dependencies:
-    "@vitest/pretty-format": "npm:4.1.4"
-    "@vitest/utils": "npm:4.1.4"
+    "@vitest/pretty-format": "npm:4.1.9"
+    "@vitest/utils": "npm:4.1.9"
     magic-string: "npm:^0.30.21"
     pathe: "npm:^2.0.3"
-  checksum: 10c0/9221df7c097665a204c811184ac2f3b89638ecd115344e703e9c4361dabd2ba80be4710ed20d127817d34227a74f21b90725deaecd4632954b492ad258d4913f
+  checksum: 10c0/c3099df12ad1f9c1e180441856c9eb82f1990f87ff16aafedd6fa19978eaff20bc59220b692a99fcc822daef86eab256ba3dadb49544b7bd625b57c49cd9d995
   languageName: node
   linkType: hard
 
@@ -4388,10 +4312,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/spy@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/spy@npm:4.1.4"
-  checksum: 10c0/1036591947668845e45515d5b66b2095071609c243d2c987d650c71d0a27418e5de75a8b1ad44b7f45c5d97e71176640f0f49da94b32fb3d11e87cdd009bed26
+"@vitest/spy@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/spy@npm:4.1.9"
+  checksum: 10c0/e51f328f55b76e8ba66e5e18f183484a8dc0a092685b101112d3e9fb8e989ddca162c98ddf00254476502c25bc05c4ec1e277fd6ad8bfc702464c08f6b5dd115
   languageName: node
   linkType: hard
 
@@ -4406,14 +4330,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/utils@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@vitest/utils@npm:4.1.4"
+"@vitest/utils@npm:4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/utils@npm:4.1.9"
   dependencies:
-    "@vitest/pretty-format": "npm:4.1.4"
+    "@vitest/pretty-format": "npm:4.1.9"
     convert-source-map: "npm:^2.0.0"
     tinyrainbow: "npm:^3.1.0"
-  checksum: 10c0/7f81db08e5a8db1e83a37a8d64db011ae3a08b5bcc9aa220a6da428385acb75b11c77b169ab7a9f753529cc25ec11406cff6099b92711fda6291f844fb840a4e
+  checksum: 10c0/d55506c077fd72c091eb66f02926f0abf72801c87a085f565698289562f47befa114ae2c680ab8736dfe46abab0cfd6b8031f2ac519bafeb37578aa6e5ad03c5
   languageName: node
   linkType: hard
 
@@ -7578,7 +7502,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keycloakify@npm:^11.8.27":
+"keycloakify@npm:^11.15.10":
   version: 11.15.10
   resolution: "keycloakify@npm:11.15.10"
   dependencies:
@@ -8709,14 +8633,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oidc-spa@npm:~10.2.0":
-  version: 10.2.2
-  resolution: "oidc-spa@npm:10.2.2"
+"oidc-spa@npm:~10.0.5":
+  version: 10.0.9
+  resolution: "oidc-spa@npm:10.0.9"
   peerDependencies:
     "@angular/common": "*"
     "@angular/core": "*"
     "@angular/router": "*"
-    "@nuxt/kit": "*"
     "@tanstack/react-router": "*"
     "@tanstack/react-start": "*"
     "@types/react": "*"
@@ -8729,8 +8652,6 @@ __metadata:
       optional: true
     "@angular/router":
       optional: true
-    "@nuxt/kit":
-      optional: true
     "@tanstack/react-router":
       optional: true
     "@tanstack/react-start":
@@ -8741,7 +8662,7 @@ __metadata:
       optional: true
     rxjs:
       optional: true
-  checksum: 10c0/8abb99c441136b955f7bf449fd1e4277e0d8a03a52ded8d684718e4231a5f87f7820d924f2678dd86a994554ae5471ad6f5f66740d5ab5bd54c75ff2153e60c6
+  checksum: 10c0/c667b3baa46fc0d13d3a2bb0e030d89933c8e0cc15ca944f427936f6ac21ef801fc338d840b3ac9b5d94e775d91cdd327e58fdccbc84a4f63dba3cffda5dc5ee
   languageName: node
   linkType: hard
 
@@ -8753,9 +8674,9 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.0"
     "@eslint/js": "npm:9.39.4"
-    "@keycloak/keycloak-admin-client": "npm:26.6.1"
+    "@keycloak/keycloak-admin-client": "npm:26.5.2"
     "@keycloakify/keycloak-account-ui": "npm:~260502.0.0"
-    "@keycloakify/keycloak-ui-shared": "npm:~260601.0.0"
+    "@keycloakify/keycloak-ui-shared": "npm:~260502.0.0"
     "@mitodl/smoot-design": "npm:^6.10.0"
     "@mui/lab": "npm:^7.0.0-beta.13"
     "@mui/material": "npm:^7.1.1"
@@ -8772,15 +8693,15 @@ __metadata:
     "@storybook/addon-vitest": "npm:10.3.5"
     "@storybook/react": "npm:10.3.5"
     "@storybook/react-vite": "npm:10.3.5"
-    "@types/lodash-es": "npm:4.17.12"
+    "@types/lodash-es": "npm:^4.17.12"
     "@types/node": "npm:24.12.2"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     "@typescript-eslint/eslint-plugin": "npm:8.58.1"
     "@typescript-eslint/parser": "npm:8.58.1"
     "@vitejs/plugin-react": "npm:5.2.0"
-    "@vitest/browser": "npm:4.1.4"
-    "@vitest/coverage-v8": "npm:4.1.4"
+    "@vitest/browser": "npm:4.1.9"
+    "@vitest/coverage-v8": "npm:4.1.9"
     "@zootools/email-spell-checker": "npm:^1.12.0"
     eslint: "npm:9.39.4"
     eslint-config-prettier: "npm:10.1.8"
@@ -8793,10 +8714,10 @@ __metadata:
     i18next-fetch-backend: "npm:^6.0.0"
     jsx-email: "npm:^2.7.2"
     keycloak-js: "npm:^26.2.0"
-    keycloakify: "npm:^11.8.27"
+    keycloakify: "npm:^11.15.10"
     keycloakify-emails: "npm:3.3.1"
     lodash-es: "npm:^4.17.22"
-    oidc-spa: "npm:~10.2.0"
+    oidc-spa: "npm:~10.0.5"
     playwright: "npm:1.59.1"
     posthog-js: "npm:^1.319.2"
     prettier: "npm:3.8.2"
@@ -8809,7 +8730,7 @@ __metadata:
     typescript: "npm:5.9.3"
     typescript-eslint: "npm:8.58.1"
     vite: "npm:8.0.16"
-    vitest: "npm:4.1.4"
+    vitest: "npm:4.1.9"
   languageName: unknown
   linkType: soft
 
@@ -10766,13 +10687,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinyduration@npm:^3.3.0":
-  version: 3.4.1
-  resolution: "tinyduration@npm:3.4.1"
-  checksum: 10c0/06f0fbf5658c92a07d900208bb0bafad30a4c61cc914fdd72edeb5f02ce9f728eebd986da43b115f2b00d6dde06242a107c018e834db2d3a5ddca37b293a61ba
-  languageName: node
-  linkType: hard
-
 "tinyexec@npm:^1.0.2":
   version: 1.1.1
   resolution: "tinyexec@npm:1.1.1"
@@ -10899,7 +10813,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2, tslib@npm:^2.7.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.7.0":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
@@ -11463,17 +11377,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:4.1.4":
-  version: 4.1.4
-  resolution: "vitest@npm:4.1.4"
+"vitest@npm:4.1.9":
+  version: 4.1.9
+  resolution: "vitest@npm:4.1.9"
   dependencies:
-    "@vitest/expect": "npm:4.1.4"
-    "@vitest/mocker": "npm:4.1.4"
-    "@vitest/pretty-format": "npm:4.1.4"
-    "@vitest/runner": "npm:4.1.4"
-    "@vitest/snapshot": "npm:4.1.4"
-    "@vitest/spy": "npm:4.1.4"
-    "@vitest/utils": "npm:4.1.4"
+    "@vitest/expect": "npm:4.1.9"
+    "@vitest/mocker": "npm:4.1.9"
+    "@vitest/pretty-format": "npm:4.1.9"
+    "@vitest/runner": "npm:4.1.9"
+    "@vitest/snapshot": "npm:4.1.9"
+    "@vitest/spy": "npm:4.1.9"
+    "@vitest/utils": "npm:4.1.9"
     es-module-lexer: "npm:^2.0.0"
     expect-type: "npm:^1.3.0"
     magic-string: "npm:^0.30.21"
@@ -11491,12 +11405,12 @@ __metadata:
     "@edge-runtime/vm": "*"
     "@opentelemetry/api": ^1.9.0
     "@types/node": ^20.0.0 || ^22.0.0 || >=24.0.0
-    "@vitest/browser-playwright": 4.1.4
-    "@vitest/browser-preview": 4.1.4
-    "@vitest/browser-webdriverio": 4.1.4
-    "@vitest/coverage-istanbul": 4.1.4
-    "@vitest/coverage-v8": 4.1.4
-    "@vitest/ui": 4.1.4
+    "@vitest/browser-playwright": 4.1.9
+    "@vitest/browser-preview": 4.1.9
+    "@vitest/browser-webdriverio": 4.1.9
+    "@vitest/coverage-istanbul": 4.1.9
+    "@vitest/coverage-v8": 4.1.9
+    "@vitest/ui": 4.1.9
     happy-dom: "*"
     jsdom: "*"
     vite: ^6.0.0 || ^7.0.0 || ^8.0.0
@@ -11526,8 +11440,8 @@ __metadata:
     vite:
       optional: false
   bin:
-    vitest: vitest.mjs
-  checksum: 10c0/a85288778cf6a6f0222aaac547fc84f917565ba78d1e32df4693226ec93aa8675f549b246b70913e9f1d80a87830b39843f9bd96b39d270e599ff4f71def6260
+    vitest: ./vitest.mjs
+  checksum: 10c0/1ac80ef4991be82822a52aea48415f1bc64ddf8fd88ee24c172ec368f1d480fefacbde622c3c951982f7961a1d07313e18deaafc774d29e42ad6f6ffa63334a7
   languageName: node
   linkType: hard
 
