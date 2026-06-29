@@ -8710,8 +8710,8 @@ __metadata:
   linkType: hard
 
 "oidc-spa@npm:~10.2.0":
-  version: 10.2.2
-  resolution: "oidc-spa@npm:10.2.2"
+  version: 10.2.3
+  resolution: "oidc-spa@npm:10.2.3"
   peerDependencies:
     "@angular/common": "*"
     "@angular/core": "*"
@@ -8741,7 +8741,7 @@ __metadata:
       optional: true
     rxjs:
       optional: true
-  checksum: 10c0/8abb99c441136b955f7bf449fd1e4277e0d8a03a52ded8d684718e4231a5f87f7820d924f2678dd86a994554ae5471ad6f5f66740d5ab5bd54c75ff2153e60c6
+  checksum: 10c0/36b7079fc0041a7dbcb32c1f8a05292d082b7a95bcf1796c030abe9bc07ec38ccf4a6ae79edb840b4f96e0a13acb49e59447fa5a1bfaaa4c4bf2f1f47e20baf9
   languageName: node
   linkType: hard
 
