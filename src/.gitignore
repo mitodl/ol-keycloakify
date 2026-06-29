@@ -3,7 +3,7 @@
 # === Owned files start ===
 # === Owned files end =====
 
-# === @keycloakify/keycloak-ui-shared v260502.0.0 ===
+# === @keycloakify/keycloak-ui-shared v260601.0.0 ===
 /shared/SessionExpirationWarningOverlay.tsx
 /shared/keycloak-ui-shared/index.ts
 /shared/keycloak-ui-shared/main.ts
@@ -73,10 +73,11 @@
 /shared/keycloak-ui-shared/controls/table/PaginatingTableToolbar.tsx
 /shared/keycloak-ui-shared/controls/table/TableToolbar.tsx
 
-# === @keycloakify/keycloak-account-ui v260502.0.2 ===
+# === @keycloakify/keycloak-account-ui v260601.0.0 ===
 /account/api.ts
 /account/colorScheme.ts
 /account/environment.ts
+/account/i18n-type.ts
 /account/i18next.d.ts
 /account/KcAccountUi.tsx
 /account/KcContext.ts
@@ -117,6 +118,8 @@
 /account/i18n/messages_fr.properties
 /account/i18n/messages_hr.properties
 /account/i18n/messages_hu.properties
+/account/i18n/messages_hy.properties
+/account/i18n/messages_id.properties
 /account/i18n/messages_it.properties
 /account/i18n/messages_ja.properties
 /account/i18n/messages_ka.properties
