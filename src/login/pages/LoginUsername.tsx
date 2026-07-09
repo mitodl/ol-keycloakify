@@ -23,6 +23,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
   const { msg, msgStr } = i18n
 
+  const [rememberMe, setRememberMe] = useState(!!login.rememberMe)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [emailInvalid, setEmailInvalid] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
@@ -214,7 +215,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
               )}
 
               <div id="kc-form-options">
-                {realm.rememberMe && !usernameHidden && <Checkbox name="rememberMe" checked={!!login.rememberMe} label={msgStr("rememberMe")} />}
+                {realm.rememberMe && !usernameHidden && (
+                  <Checkbox name="rememberMe" checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} label={msgStr("rememberMe")} />
+                )}
               </div>
 
               <div id="kc-form-buttons">

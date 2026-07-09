@@ -34,7 +34,7 @@ export const Input = styled(SmootInput)({
 })
 
 export const Checkbox = styled(SmootCheckbox)({
-  width: "100%"
+  width: "fit-content"
 })
 
 export const Button = styled(SmootButton)({
