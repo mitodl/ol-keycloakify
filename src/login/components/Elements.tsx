@@ -5,6 +5,7 @@ import {
   Alert as SmootAlert,
   Button as SmootButton,
   ButtonLink as SmootButtonLink,
+  Checkbox as SmootCheckbox,
   Input as SmootInput,
   TextField
 } from "@mitodl/smoot-design"
@@ -29,6 +30,10 @@ export const Label = styled.label(({ theme }) => ({
 }))
 
 export const Input = styled(SmootInput)({
+  width: "100%"
+})
+
+export const Checkbox = styled(SmootCheckbox)({
   width: "100%"
 })
 
