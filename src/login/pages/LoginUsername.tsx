@@ -2,7 +2,7 @@ import emailSpellChecker from "@zootools/email-spell-checker"
 import type { PageProps } from "keycloakify/login/pages/PageProps"
 import { clsx } from "keycloakify/tools/clsx"
 import { useCallback, useEffect, useRef, useState } from "react"
-import { Button, Form, OrBar, SocialProviderButtonLink, StyledTextField, Suggestion, ValidationMessage } from "../components/Elements"
+import { Button, Checkbox, Form, OrBar, SocialProviderButtonLink, StyledTextField, Suggestion, ValidationMessage } from "../components/Elements"
 import mitLogo from "../components/mit-logo.svg"
 import { EMAIL_SPELLCHECKER_CONFIG, EMAIL_SUGGESTION_DOMAINS } from "../constants"
 import type { I18n } from "../i18n"
@@ -23,6 +23,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
   const { msg, msgStr } = i18n
 
+  const [rememberMe, setRememberMe] = useState(!!login.rememberMe)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [emailInvalid, setEmailInvalid] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
@@ -212,6 +213,13 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                   )}
                 </div>
               )}
+
+              <div id="kc-form-options">
+                {realm.rememberMe && !usernameHidden && (
+                  <Checkbox name="rememberMe" checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} label={msgStr("rememberMe")} />
+                )}
+              </div>
+
               <div id="kc-form-buttons">
                 <Button disabled={isSubmitDisabled} name="login" id="kc-login" type="submit" size="large">
                   Next
