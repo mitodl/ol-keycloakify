@@ -1,11 +1,15 @@
-import { createRoot } from "react-dom/client"
-import { StrictMode } from "react"
-import posthog from "posthog-js"
 import { PostHogProvider } from "@posthog/react"
+import posthog from "posthog-js"
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
 import { KcPage } from "./kc.gen"
 
 if (window.kcContext?.properties?.POSTHOG_API_KEY) {
   posthog.init(window.kcContext.properties.POSTHOG_API_KEY, {
+    // Scope the posthog cookie to this site's exact domain. Posthog defaults
+    // this to true, which sets the cookie on the root domain (e.g. mit.edu),
+    // sharing it with every other site there.
+    cross_subdomain_cookie: false,
     api_host: window.kcContext.properties.POSTHOG_API_HOST || "https://us.i.posthog.com",
     defaults: "2025-11-30",
     autocapture: true,
