@@ -4,3 +4,8 @@ repos:
     hooks:
       - id: biome-check
         additional_dependencies: ["@biomejs/biome@2.5.1"]
+
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.29.0
+    hooks:
+      - id: zizmor
