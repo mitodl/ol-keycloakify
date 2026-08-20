@@ -1,9 +1,9 @@
-import { defineConfig } from "vite"
+import { fileURLToPath } from "node:url"
 import react from "@vitejs/plugin-react"
+import type { BuildContext } from "keycloakify/bin/shared/buildContext"
 import { keycloakify } from "keycloakify/vite-plugin"
 import { buildEmailTheme } from "keycloakify-emails"
-import { BuildContext } from "keycloakify/bin/shared/buildContext"
-import { fileURLToPath } from "node:url"
+import { defineConfig } from "vite"
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url))
 
@@ -14,7 +14,10 @@ export default defineConfig({
       themeName: ["ol-learn", "ol-data-platform"],
       accountThemeImplementation: "Single-Page",
       keycloakVersionTargets: {
-        "22-to-25": true,
+        // We run Keycloak 26 exclusively. The 22-to-25 target only differs by
+        // bundling a LoginFormsProviderFactory shim that 26 does not need, and
+        // building it produces a second jar declaring the same theme names.
+        "22-to-25": false,
         "all-other-versions": `keycloakify-theme_v11-21_and_v26plus.jar`
       },
       environmentVariables: [

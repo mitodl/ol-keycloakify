@@ -73,6 +73,8 @@ jobs:
           generate_release_notes: true
           draft: false
           prerelease: ${{ needs.check_if_version_upgraded.outputs.is_pre_release == 'true' }}
-          files: dist_keycloak/keycloak-theme-*.jar
+          # Must not assume keycloakify's default keycloak-theme- prefix: the
+          # only target we build is named in vite.config.ts and would not match.
+          files: dist_keycloak/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
