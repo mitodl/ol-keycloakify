@@ -1411,29 +1411,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloak/keycloak-admin-client@npm:26.6.1":
-  version: 26.6.1
-  resolution: "@keycloak/keycloak-admin-client@npm:26.6.1"
+"@keycloak/keycloak-admin-client@npm:26.7.0":
+  version: 26.7.0
+  resolution: "@keycloak/keycloak-admin-client@npm:26.7.0"
   dependencies:
-    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.86"
-    "@microsoft/kiota-http-fetchlibrary": "npm:^1.0.0-preview.80"
-    "@microsoft/kiota-serialization-form": "npm:^1.0.0-preview.74"
-    "@microsoft/kiota-serialization-json": "npm:^1.0.0-preview.86"
-    "@microsoft/kiota-serialization-multipart": "npm:^1.0.0-preview.67"
-    "@microsoft/kiota-serialization-text": "npm:^1.0.0-preview.79"
+    "@microsoft/kiota-abstractions": "npm:1.0.0-preview.103"
+    "@microsoft/kiota-http-fetchlibrary": "npm:1.0.0-preview.103"
+    "@microsoft/kiota-serialization-form": "npm:1.0.0-preview.103"
+    "@microsoft/kiota-serialization-json": "npm:1.0.0-preview.103"
+    "@microsoft/kiota-serialization-multipart": "npm:1.0.0-preview.103"
+    "@microsoft/kiota-serialization-text": "npm:1.0.0-preview.103"
     camelize-ts: "npm:^3.0.0"
     url-template: "npm:^3.1.1"
-  checksum: 10c0/f6c58456f480122f5a168d2ab14bfdeae41da4becebaae258eebce3dc19f1a8ce25d8b019f2571526a7d3e0b35f66de91925a203e1d79d55eca4e67d623bf9b3
+  checksum: 10c0/a685b5c10e645297d4e4032606dccec3c8471e5068cc453d34788cff36b9fa82aede224b7ad41f099606ded4f692ca110a5a9403e6656f46a496678c5840f226
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-account-ui@npm:~260601.0.0":
-  version: 260601.0.0
-  resolution: "@keycloakify/keycloak-account-ui@npm:260601.0.0"
+"@keycloakify/keycloak-account-ui@npm:~260700.0.0":
+  version: 260700.0.3
+  resolution: "@keycloakify/keycloak-account-ui@npm:260700.0.3"
   dependencies:
     tsafe: "npm:^1.8.5"
   peerDependencies:
-    "@keycloakify/keycloak-ui-shared": ~260601.0.0
+    "@keycloakify/keycloak-ui-shared": ~260700.0.2
     "@patternfly/patternfly": ^5.4.2
     "@patternfly/react-core": ^5.4.14
     "@patternfly/react-icons": ^5.4.2
@@ -1446,16 +1446,16 @@ __metadata:
     react: ^18.3.1
     react-hook-form: ^7.70.0
     react-i18next: ^16.5.1
-    react-router-dom: ^6.30.3
-  checksum: 10c0/f676cca1839947d55db48280d82f26a05ef3d7eb1bb6f6bddf955bcfea1564d63fd56837913766253360f0ed55caee8208f6d211fd7cfac543880decc102466e
+    react-router-dom: ^6.30.4
+  checksum: 10c0/7ab1a01dafc6f14566e2986bd32bb4586cda52ff2694b806f2871ec038fc310d9249fa245bda0fc10e749567832d58aca5be388b8757197d62253cbf769f6ec1
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-ui-shared@npm:~260601.0.0":
-  version: 260601.0.0
-  resolution: "@keycloakify/keycloak-ui-shared@npm:260601.0.0"
+"@keycloakify/keycloak-ui-shared@npm:~260700.0.2":
+  version: 260700.0.2
+  resolution: "@keycloakify/keycloak-ui-shared@npm:260700.0.2"
   peerDependencies:
-    "@keycloak/keycloak-admin-client": 26.6.1
+    "@keycloak/keycloak-admin-client": 26.7.0
     "@patternfly/react-core": ^5.4.14
     "@patternfly/react-icons": ^5.4.2
     "@patternfly/react-styles": ^5.4.1
@@ -1464,11 +1464,11 @@ __metadata:
     "@types/react": ^18.3.18
     i18next: ^25.7.3
     lodash-es: ^4.18.1
-    oidc-spa: ~10.0.5
+    oidc-spa: ~10.2.10
     react: ^18.3.1
     react-hook-form: 7.70.0
     react-i18next: ^16.5.1
-  checksum: 10c0/f5466298a2a8971df4a8e1d2eabe9dce7aed155cfc4583ed678ef11fb50b49ae8f2848df71a40cb7fbff4ac473ac42651380e816911213fd307c6bf0f5c3eefb
+  checksum: 10c0/79d7b787fc4518f5b6c63362b2c1d206e41df5812b7fb1436ed03ab7cf6c45f7c987c56a9386b67651f4a0bf1e54db1b6cdddbfd895d1f266a5daece2c2c9870
   languageName: node
   linkType: hard
 
@@ -1484,7 +1484,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/kiota-abstractions@npm:^1.0.0-preview.103, @microsoft/kiota-abstractions@npm:^1.0.0-preview.86":
+"@microsoft/kiota-abstractions@npm:1.0.0-preview.103, @microsoft/kiota-abstractions@npm:^1.0.0-preview.103":
   version: 1.0.0-preview.103
   resolution: "@microsoft/kiota-abstractions@npm:1.0.0-preview.103"
   dependencies:
@@ -1496,7 +1496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/kiota-http-fetchlibrary@npm:^1.0.0-preview.80":
+"@microsoft/kiota-http-fetchlibrary@npm:1.0.0-preview.103":
   version: 1.0.0-preview.103
   resolution: "@microsoft/kiota-http-fetchlibrary@npm:1.0.0-preview.103"
   dependencies:
@@ -1507,7 +1507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/kiota-serialization-form@npm:^1.0.0-preview.74":
+"@microsoft/kiota-serialization-form@npm:1.0.0-preview.103":
   version: 1.0.0-preview.103
   resolution: "@microsoft/kiota-serialization-form@npm:1.0.0-preview.103"
   dependencies:
@@ -1517,7 +1517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/kiota-serialization-json@npm:^1.0.0-preview.86":
+"@microsoft/kiota-serialization-json@npm:1.0.0-preview.103":
   version: 1.0.0-preview.103
   resolution: "@microsoft/kiota-serialization-json@npm:1.0.0-preview.103"
   dependencies:
@@ -1527,7 +1527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/kiota-serialization-multipart@npm:^1.0.0-preview.67":
+"@microsoft/kiota-serialization-multipart@npm:1.0.0-preview.103":
   version: 1.0.0-preview.103
   resolution: "@microsoft/kiota-serialization-multipart@npm:1.0.0-preview.103"
   dependencies:
@@ -1537,7 +1537,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/kiota-serialization-text@npm:^1.0.0-preview.79":
+"@microsoft/kiota-serialization-text@npm:1.0.0-preview.103":
   version: 1.0.0-preview.103
   resolution: "@microsoft/kiota-serialization-text@npm:1.0.0-preview.103"
   dependencies:
@@ -1547,7 +1547,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mitodl/smoot-design@npm:^6":
+"@mitodl/smoot-design@npm:^6.33.1":
   version: 6.33.1
   resolution: "@mitodl/smoot-design@npm:6.33.1"
   dependencies:
@@ -8424,15 +8424,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oidc-spa@npm:~10.0.5":
-  version: 10.0.9
-  resolution: "oidc-spa@npm:10.0.9"
+"oidc-spa@npm:~10.2.10":
+  version: 10.2.11
+  resolution: "oidc-spa@npm:10.2.11"
   peerDependencies:
     "@angular/common": "*"
     "@angular/core": "*"
     "@angular/router": "*"
+    "@nuxt/kit": "*"
     "@tanstack/react-router": "*"
-    "@tanstack/react-start": "*"
+    "@tanstack/react-start": ">=1.168.25"
     "@types/react": "*"
     react: "*"
     rxjs: "*"
@@ -8442,6 +8443,8 @@ __metadata:
     "@angular/core":
       optional: true
     "@angular/router":
+      optional: true
+    "@nuxt/kit":
       optional: true
     "@tanstack/react-router":
       optional: true
@@ -8453,7 +8456,7 @@ __metadata:
       optional: true
     rxjs:
       optional: true
-  checksum: 10c0/c667b3baa46fc0d13d3a2bb0e030d89933c8e0cc15ca944f427936f6ac21ef801fc338d840b3ac9b5d94e775d91cdd327e58fdccbc84a4f63dba3cffda5dc5ee
+  checksum: 10c0/602dfdac8e1ff73b34fc304d2cc04531b1e3fd5eb5e8eddbae85acb9f672f10d641936057b1525f3c8683ef0a957846b2b7616e85490afe852c2dcee20c148f7
   languageName: node
   linkType: hard
 
@@ -8465,10 +8468,10 @@ __metadata:
     "@chromatic-com/storybook": "npm:5.3.0"
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.0"
-    "@keycloak/keycloak-admin-client": "npm:26.6.1"
-    "@keycloakify/keycloak-account-ui": "npm:~260601.0.0"
-    "@keycloakify/keycloak-ui-shared": "npm:~260601.0.0"
-    "@mitodl/smoot-design": "npm:^6"
+    "@keycloak/keycloak-admin-client": "npm:26.7.0"
+    "@keycloakify/keycloak-account-ui": "npm:~260700.0.0"
+    "@keycloakify/keycloak-ui-shared": "npm:~260700.0.2"
+    "@mitodl/smoot-design": "npm:^6.33.1"
     "@mui/lab": "npm:^7.0.1-beta"
     "@mui/material": "npm:^7"
     "@patternfly/patternfly": "npm:^5.4.2"
@@ -8499,14 +8502,14 @@ __metadata:
     keycloakify: "npm:^11"
     keycloakify-emails: "npm:3.4.0"
     lodash-es: "npm:^4.18.1"
-    oidc-spa: "npm:~10.0.5"
+    oidc-spa: "npm:~10.2.10"
     playwright: "npm:1.62.1"
     posthog-js: "npm:^1"
     react: "npm:^19"
     react-dom: "npm:^19"
     react-hook-form: "npm:^7.70.0"
     react-i18next: "npm:^16.5.1"
-    react-router-dom: "npm:^6.30.3"
+    react-router-dom: "npm:^6.30.4"
     storybook: "npm:10.5.9"
     typescript: "npm:5.9.3"
     vite: "npm:8.2.1"
@@ -9276,7 +9279,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.30.3":
+"react-router-dom@npm:^6.30.4":
   version: 6.30.6
   resolution: "react-router-dom@npm:6.30.6"
   dependencies:

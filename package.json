@@ -27,10 +27,10 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@keycloak/keycloak-admin-client": "26.6.1",
-    "@keycloakify/keycloak-account-ui": "~260601.0.0",
-    "@keycloakify/keycloak-ui-shared": "~260601.0.0",
-    "@mitodl/smoot-design": "^6",
+    "@keycloak/keycloak-admin-client": "26.7.0",
+    "@keycloakify/keycloak-account-ui": "~260700.0.0",
+    "@keycloakify/keycloak-ui-shared": "~260700.0.2",
+    "@mitodl/smoot-design": "^6.33.1",
     "@mui/lab": "^7.0.1-beta",
     "@mui/material": "^7",
     "@patternfly/patternfly": "^5.4.2",
@@ -47,13 +47,13 @@
     "keycloak-js": "^26",
     "keycloakify": "^11",
     "lodash-es": "^4.18.1",
-    "oidc-spa": "~10.0.5",
+    "oidc-spa": "~10.2.10",
     "posthog-js": "^1",
     "react": "^19",
     "react-dom": "^19",
     "react-hook-form": "^7.70.0",
     "react-i18next": "^16.5.1",
-    "react-router-dom": "^6.30.3"
+    "react-router-dom": "^6.30.4"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.9",
