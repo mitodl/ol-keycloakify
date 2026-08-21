@@ -1411,9 +1411,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloak/keycloak-admin-client@npm:26.7.0":
-  version: 26.7.0
-  resolution: "@keycloak/keycloak-admin-client@npm:26.7.0"
+"@keycloak/keycloak-admin-client@npm:26.7.1":
+  version: 26.7.1
+  resolution: "@keycloak/keycloak-admin-client@npm:26.7.1"
   dependencies:
     "@microsoft/kiota-abstractions": "npm:1.0.0-preview.103"
     "@microsoft/kiota-http-fetchlibrary": "npm:1.0.0-preview.103"
@@ -1423,7 +1423,7 @@ __metadata:
     "@microsoft/kiota-serialization-text": "npm:1.0.0-preview.103"
     camelize-ts: "npm:^3.0.0"
     url-template: "npm:^3.1.1"
-  checksum: 10c0/a685b5c10e645297d4e4032606dccec3c8471e5068cc453d34788cff36b9fa82aede224b7ad41f099606ded4f692ca110a5a9403e6656f46a496678c5840f226
+  checksum: 10c0/848417a23355bbef955ffaa3e30a7e8e7aa1831de2d471107c0cc6af41b6260dc64fe7a0bfe0a06f941dd8c83f3c5c37674c9710de5b4b3e626a73e084d3d77a
   languageName: node
   linkType: hard
 
@@ -8608,7 +8608,7 @@ __metadata:
     "@chromatic-com/storybook": "npm:5.3.0"
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.0"
-    "@keycloak/keycloak-admin-client": "npm:26.7.0"
+    "@keycloak/keycloak-admin-client": "npm:26.7.1"
     "@keycloakify/keycloak-account-ui": "npm:~260700.0.0"
     "@keycloakify/keycloak-ui-shared": "npm:~260700.0.2"
     "@mitodl/smoot-design": "npm:^6.33.1"

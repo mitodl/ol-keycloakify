@@ -27,7 +27,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@keycloak/keycloak-admin-client": "26.7.0",
+    "@keycloak/keycloak-admin-client": "26.7.1",
     "@keycloakify/keycloak-account-ui": "~260700.0.0",
     "@keycloakify/keycloak-ui-shared": "~260700.0.2",
     "@mitodl/smoot-design": "^6.33.1",
