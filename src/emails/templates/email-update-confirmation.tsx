@@ -22,12 +22,16 @@ export const Template = ({ locale }: Omit<GetTemplateProps, "plainText">) => (
   >
     <h1 style={{ color: "#212326", margin: "13px 0" }}>Confirm your email change</h1>
     <Text style={paragraph}>
-      Please confirm your email update. Click the button below.
+      Please confirm your email update to <strong>{exp("newEmail")}</strong>. Click the
+      button below.
     </Text>
     <Text style={{ margin: "20px 0" }}>
       <a href={exp("link")} style={ctaButton}>
         Confirm Email Change
       </a>
+    </Text>
+    <Text style={paragraph}>
+      This link will expire within {exp("linkExpirationFormatter(linkExpiration)")}.
     </Text>
     <Text style={paragraph}>
       Welcome and thanks!
