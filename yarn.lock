@@ -2374,6 +2374,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@patternfly/react-styles@npm:^6.0.0":
+  version: 6.6.1
+  resolution: "@patternfly/react-styles@npm:6.6.1"
+  checksum: 10c0/0c50bf72fade26d30e6ff9abe0d2d8dbb5b546fe434067f70665ce704e63767a9f8ea7627871e2c6ce17ea4f475daa931fd420e1f1aee891c1f48b5905e57433
+  languageName: node
+  linkType: hard
+
 "@patternfly/react-table@npm:^5.4.16":
   version: 5.4.16
   resolution: "@patternfly/react-table@npm:5.4.16"
@@ -8617,7 +8624,7 @@ __metadata:
     "@patternfly/patternfly": "npm:^5.4.2"
     "@patternfly/react-core": "npm:^5.4.14"
     "@patternfly/react-icons": "npm:^5.4.2"
-    "@patternfly/react-styles": "npm:^5.4.1"
+    "@patternfly/react-styles": "npm:^6.0.0"
     "@patternfly/react-table": "npm:^5.4.16"
     "@posthog/react": "npm:^1"
     "@remixicon/react": "npm:^4"
