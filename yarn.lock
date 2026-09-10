@@ -6923,10 +6923,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-fetch-backend@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "i18next-fetch-backend@npm:7.0.0"
-  checksum: 10c0/36b84388467b405473c6be9ff10b96aab379f240d08ac4f55bfe14fd589aa41ff6a699cacc050d23320e12b3d80edb9e0c367feadf065f8d8108ded661a10bb4
+"i18next-fetch-backend@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "i18next-fetch-backend@npm:8.0.0"
+  checksum: 10c0/96b97b166e776d79fbcb8d8ff5728ce7aaec263dcc68638a355d705ae659822ece86e3bc76e65eb82858959beedd5686511ffdc5b62b375e0514710d313a373d
   languageName: node
   linkType: hard
 
@@ -8636,7 +8636,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:4.1.11"
     "@zootools/email-spell-checker": "npm:^1.12.0"
     i18next: "npm:^25.7.3"
-    i18next-fetch-backend: "npm:^7.0.0"
+    i18next-fetch-backend: "npm:^8.0.0"
     jsx-email: "npm:^3"
     keycloak-js: "npm:^26"
     keycloakify: "npm:^11"
