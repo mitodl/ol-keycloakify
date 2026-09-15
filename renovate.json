@@ -1,6 +1,34 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>mitodl/.github:renovate-config"
+  "extends": ["local>mitodl/.github:renovate-config"],
+  "packageRules": [
+    {
+      "description": "Peers of the keycloakify extensions. The sync-extensions postinstall resets these package.json ranges on every install, so only in-range lockfile updates stick.",
+      "matchPackageNames": [
+        "@keycloak/keycloak-admin-client",
+        "@patternfly/patternfly",
+        "@patternfly/react-core",
+        "@patternfly/react-icons",
+        "@patternfly/react-styles",
+        "@patternfly/react-table",
+        "@types/lodash-es",
+        "i18next",
+        "i18next-fetch-backend",
+        "lodash-es",
+        "oidc-spa",
+        "react-hook-form",
+        "react-i18next",
+        "react-router-dom"
+      ],
+      "rangeStrategy": "in-range-only"
+    },
+    {
+      "description": "keycloak-account-ui peer-pins keycloak-ui-shared, so a bump to either alone gets reset by sync-extensions.",
+      "matchPackageNames": [
+        "@keycloakify/keycloak-account-ui",
+        "@keycloakify/keycloak-ui-shared"
+      ],
+      "groupName": "keycloakify account UI"
+    }
   ]
 }
