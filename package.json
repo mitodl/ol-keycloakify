@@ -18,10 +18,10 @@
     "start": "keycloakify start-keycloak",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "lint": "biome check src/emails/ src/login/",
-    "lint:fix": "biome check --write src/emails/ src/login/",
-    "format": "biome format src/emails/ src/login/",
-    "format:fix": "biome format --write src/emails/ src/login/"
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format .",
+    "format:fix": "biome format --write ."
   },
   "license": "MIT",
   "keywords": [],
