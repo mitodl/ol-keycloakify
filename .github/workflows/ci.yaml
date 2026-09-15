@@ -26,7 +26,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Lint & Format
-        run: yarn biome check src/emails/ src/login/
+        run: yarn lint
 
       - name: Typecheck
         run: yarn typecheck

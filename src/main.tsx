@@ -33,6 +33,7 @@ if (import.meta.env.DEV) {
 }
 */
 
+// biome-ignore lint/style/noNonNullAssertion: index.html always contains #root
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     {!window.kcContext ? (
