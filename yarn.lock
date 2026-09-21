@@ -2243,8 +2243,8 @@ __metadata:
   linkType: hard
 
 "@posthog/react@npm:^1":
-  version: 1.10.6
-  resolution: "@posthog/react@npm:1.10.6"
+  version: 1.11.1
+  resolution: "@posthog/react@npm:1.11.1"
   peerDependencies:
     "@types/react": ">=16.8.0"
     posthog-js: ">=1.257.2"
@@ -2252,7 +2252,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/2798e710ac9a983f3c0334a0c5aa96de4ea71ce5476c89e343410d167567dc312a0fb7f2ce4685c4cb1ca2fe9cc230ee755f141252f601d01d1fd4a3ee86e911
+  checksum: 10c0/bda8b97b62a02b88ff7e5c8d4ff86d3fbe0a369f957caddef7309f62f347563b4556dca8f76622da089b289264b59959aeb2bf48e49d6fb161e4360e6f52c17b
   languageName: node
   linkType: hard
 
