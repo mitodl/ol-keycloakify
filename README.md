@@ -12,6 +12,17 @@ cd ol-keycloakify
 yarn install # Or use an other package manager, just be sure to delete the yarn.lock if you use another package manager.
 ```
 
+# Development
+
+Code checks run with [prek](https://prek.j178.dev/), which reads `.pre-commit-config.yaml`. The `prek` check runs the same hooks on every pull request, and [autofix.ci](https://autofix.ci/) pushes a commit with any fixes they make.
+
+```bash
+corepack enable
+yarn install --immutable   # installs prek from yarn.lock
+npx prek install -f         # replaces an existing pre-commit git hook
+npx prek run --all-files
+```
+
 # Testing the theme locally
 
 [Documentation](https://docs.keycloakify.dev/testing-your-theme)

@@ -59,6 +59,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.9",
     "@chromatic-com/storybook": "5.3.0",
+    "@j178/prek": "0.5.4",
     "@storybook/addon-a11y": "10.5.9",
     "@storybook/addon-docs": "10.5.9",
     "@storybook/addon-onboarding": "10.5.9",
