@@ -29,6 +29,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
       emailVerifyInstruction4: "Please contact our",
       createPassword: "Create Password",
       termsOfService: "Terms of Service",
+      // Only shown where Keycloak has no application to send the reader back
+      // to -- an action token opened from an email carries no client session.
+      backToLearn: "Back to MIT Learn",
       registerLegalAgreementText: "By creating an account I agree to the",
       registerTermsOfService: "Terms of Service",
       // From ol-keycloak https://github.com/mitodl/ol-keycloak/blob/main/ol-keycloak/oltheme/src/main/resources/theme/ol/email/messages/messages_en.properties
