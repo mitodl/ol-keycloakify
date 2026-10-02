@@ -7,6 +7,7 @@ import { useI18n } from "./i18n"
 import type { KcContext } from "./KcContext"
 // biome-ignore lint/suspicious/noShadowRestrictedNames: Keycloakify page name convention
 import Error from "./pages/Error"
+import Info from "./pages/Info"
 import Login from "./pages/Login"
 import LoginPageExpired from "./pages/LoginPageExpired"
 import LoginPassword from "./pages/LoginPassword"
@@ -111,6 +112,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
             case "error.ftl":
               return (
                 <Error
+                  {...{ kcContext, i18n, classes }}
+                  Template={Template}
+                  doUseDefaultCss={false}
+                />
+              )
+            case "info.ftl":
+              return (
+                <Info
                   {...{ kcContext, i18n, classes }}
                   Template={Template}
                   doUseDefaultCss={false}
