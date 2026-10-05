@@ -7085,13 +7085,13 @@ __metadata:
   linkType: hard
 
 "keycloakify@npm:^11":
-  version: 11.16.0
-  resolution: "keycloakify@npm:11.16.0"
+  version: 11.16.1
+  resolution: "keycloakify@npm:11.16.1"
   dependencies:
     tsafe: "npm:^1.8.5"
   bin:
     keycloakify: bin/main.js
-  checksum: 10c0/ad6c548b47f1547f3bf8377e9f19a7a0b2f8ac94b50f8b802317842f45edb323f9dc4f7cb5a5cf01b164c431d645cb8e55c25eb411a2d4862eb3fd4f9bd774ae
+  checksum: 10c0/c7f395cc1ec0cfb29c29c0bfa759f03c6e72f83db375db6a07c9e7dd758c986eed58261aba99031ec98f2a013c198f1d1c3df4b89ba1b8351c1aadeb36f2a190
   languageName: node
   linkType: hard
 
