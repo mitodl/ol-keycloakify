@@ -86,7 +86,7 @@
   },
   "packageManager": "yarn@4.18.1",
   "resolutions": {
-    "jsx-email/postcss": "8.5.28",
+    "jsx-email/postcss": "8.5.29",
     "jsx-email/react-router-dom": "7.18.2",
     "jsx-email/vite": "8.0.16",
     "speech-rule-engine/@xmldom/xmldom": "0.9.12"
