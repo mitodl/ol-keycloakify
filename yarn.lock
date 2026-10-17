@@ -1236,12 +1236,12 @@ __metadata:
   linkType: hard
 
 "@keycloakify/keycloak-account-ui@npm:~260700.0.0":
-  version: 260700.0.3
-  resolution: "@keycloakify/keycloak-account-ui@npm:260700.0.3"
+  version: 260700.0.4
+  resolution: "@keycloakify/keycloak-account-ui@npm:260700.0.4"
   dependencies:
     tsafe: "npm:^1.8.5"
   peerDependencies:
-    "@keycloakify/keycloak-ui-shared": ~260700.0.2
+    "@keycloakify/keycloak-ui-shared": ~260700.0.3
     "@patternfly/patternfly": ^5.4.2
     "@patternfly/react-core": ^5.4.14
     "@patternfly/react-icons": ^5.4.2
@@ -1255,13 +1255,13 @@ __metadata:
     react-hook-form: ^7.70.0
     react-i18next: ^16.5.1
     react-router-dom: ^6.30.4
-  checksum: 10c0/7ab1a01dafc6f14566e2986bd32bb4586cda52ff2694b806f2871ec038fc310d9249fa245bda0fc10e749567832d58aca5be388b8757197d62253cbf769f6ec1
+  checksum: 10c0/a34ea69183dfea2b20f77924469c0ea8eb658e363d6dff45534691285597872ed4bb95d89002db1264a878e28bcef86d98e839863c45bd5f8b4f2e3cdb414518
   languageName: node
   linkType: hard
 
 "@keycloakify/keycloak-ui-shared@npm:~260700.0.2":
-  version: 260700.0.2
-  resolution: "@keycloakify/keycloak-ui-shared@npm:260700.0.2"
+  version: 260700.0.3
+  resolution: "@keycloakify/keycloak-ui-shared@npm:260700.0.3"
   peerDependencies:
     "@keycloak/keycloak-admin-client": 26.7.0
     "@patternfly/react-core": ^5.4.14
@@ -1272,11 +1272,11 @@ __metadata:
     "@types/react": ^18.3.18
     i18next: ^25.7.3
     lodash-es: ^4.18.1
-    oidc-spa: ~10.2.10
+    oidc-spa: ~10.2.17
     react: ^18.3.1
     react-hook-form: 7.70.0
     react-i18next: ^16.5.1
-  checksum: 10c0/79d7b787fc4518f5b6c63362b2c1d206e41df5812b7fb1436ed03ab7cf6c45f7c987c56a9386b67651f4a0bf1e54db1b6cdddbfd895d1f266a5daece2c2c9870
+  checksum: 10c0/6a9dd97a10978bff13bfe2e1121bb50b148665792be397915b83a2f55b80270c5a990a831d3bccc94894399f0ca9b3e56523aafc1069154278f5958bca4c46aa
   languageName: node
   linkType: hard
 
