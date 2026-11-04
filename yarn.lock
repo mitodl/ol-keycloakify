@@ -1240,7 +1240,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keycloakify/keycloak-ui-shared@npm:~260700.0.2":
+"@keycloakify/keycloak-ui-shared@npm:~260700.0.3":
   version: 260700.0.3
   resolution: "@keycloakify/keycloak-ui-shared@npm:260700.0.3"
   peerDependencies:
@@ -7684,7 +7684,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oidc-spa@npm:~10.2.10":
+"oidc-spa@npm:~10.2.17":
   version: 10.2.18
   resolution: "oidc-spa@npm:10.2.18"
   peerDependencies:
@@ -7731,7 +7731,7 @@ __metadata:
     "@j178/prek": "npm:0.5.4"
     "@keycloak/keycloak-admin-client": "npm:26.7.0"
     "@keycloakify/keycloak-account-ui": "npm:~260700.0.0"
-    "@keycloakify/keycloak-ui-shared": "npm:~260700.0.2"
+    "@keycloakify/keycloak-ui-shared": "npm:~260700.0.3"
     "@mitodl/smoot-design": "npm:^6.33.1"
     "@mui/lab": "npm:^7.0.1-beta"
     "@mui/material": "npm:^7"
@@ -7764,7 +7764,7 @@ __metadata:
     keycloakify: "npm:^11"
     keycloakify-emails: "npm:3.6.0"
     lodash-es: "npm:^4.18.1"
-    oidc-spa: "npm:~10.2.10"
+    oidc-spa: "npm:~10.2.17"
     playwright: "npm:1.63.0"
     posthog-js: "npm:^1"
     react: "npm:^19"
