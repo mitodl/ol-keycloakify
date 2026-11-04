@@ -11,7 +11,7 @@ name: autofix.ci # autofix.ci refuses to run under any other name
 on:
   pull_request:
   push:
-    branches: [main] # ADAPT: the repository's default branch
+    branches: [ main ] # ADAPT: the repository's default branch
 permissions:
   contents: read
 concurrency:

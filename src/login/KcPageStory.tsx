@@ -57,6 +57,7 @@ export function createKcPageStory<PageId extends KcContext["pageId"]>(params: {
 }) {
   const { pageId } = params
 
+  // biome-ignore lint/correctness/noComponentHookFactories: each story file calls createKcPageStory once at module scope, so the component identity is stable across renders.
   function KcPageStory(props: {
     kcContext?: DeepPartial<Extract<KcContext, { pageId: PageId }>>
   }) {
