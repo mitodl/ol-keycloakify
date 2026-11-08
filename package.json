@@ -89,7 +89,7 @@
     "@mitodl/smoot-design/zod": "^4.6.6",
     "jsx-email/postcss": "8.5.32",
     "jsx-email/react-router-dom": "7.18.2",
-    "jsx-email/vite": "8.3.3",
+    "jsx-email/vite": "8.3.6",
     "node-gyp/undici": "^8.12.2",
     "posthog-js/dompurify": "^3.4.17",
     "speech-rule-engine/@xmldom/xmldom": "0.9.12"
